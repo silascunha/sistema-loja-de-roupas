@@ -5,6 +5,8 @@
  */
 package br.sistemalojaroupas.application;
 
+import br.sistemalojaroupas.db.DB;
+
 /**
  *
  * @author silas
@@ -12,6 +14,8 @@ package br.sistemalojaroupas.application;
 public class App {
     
     public static void main(String[] args) {
+        DB.start();
         
+        DB.close();
     }
 }
