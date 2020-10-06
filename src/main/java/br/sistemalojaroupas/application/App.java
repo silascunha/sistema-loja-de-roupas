@@ -7,10 +7,7 @@ package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
 
-/**
- *
- * @author silas
- */
+
 public class App {
     
     public static void main(String[] args) {
