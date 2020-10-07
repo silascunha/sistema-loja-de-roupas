@@ -11,8 +11,8 @@ import br.sistemalojaroupas.db.DB;
 public class App {
     
     public static void main(String[] args) {
-        DB.start();
+        DB.iniciar();
         
-        DB.close();
+        DB.fechar();
     }
 }
