@@ -9,4 +9,4 @@ Grupo:
 - [Mariana Guimarães Jardim](https://github.com/MarianaGJ);
 - [Silas Fernandes da Cunha](https://github.com/silascunha);
 - [Sthefano Garcia Pícoli](https://github.com/steuf0);
-- [Vinícius Ferreira de Souza]().
+- [Vinícius Ferreira de Souza](https://github.com/vfdesouza).
