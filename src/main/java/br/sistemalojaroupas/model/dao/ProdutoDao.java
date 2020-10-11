@@ -7,6 +7,7 @@ package br.sistemalojaroupas.model.dao;
 
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.entities.Produto;
+import org.dizitart.no2.objects.Cursor;
 import org.dizitart.no2.objects.ObjectRepository;
 
 /**
@@ -21,4 +22,22 @@ public class ProdutoDao {
         repProduto = DB.getDB().getRepository(Produto.class);
     }
     
+    public void cadastrarProduto(String modelo, String tamanho, String cor, Double preco ,int quantidade){
+        Produto p = new Produto();
+        p.setModelo(modelo);
+        p.setTamanho(tamanho);
+        p.setCor(cor);
+        p.setPreco(preco);
+        p.setQuantidade(quantidade);
+        repProduto.insert(p);
+    }
+    public void editarProduto(){
+        
+    }
+    public Cursor<Produto> procurarProduto(){
+       return repProduto.find();
+    }
+    public void excluirProduto(){
+        
+    }
 }

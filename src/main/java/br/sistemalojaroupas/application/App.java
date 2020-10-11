@@ -6,21 +6,29 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.model.dao.ProdutoDao;
+import javax.swing.JOptionPane;
 
 
 public class App {
     
     public static void main(String[] args) {
-        int n4 = multiplicar(2, 3);
-        int n3 = multiplicar(1, 3);
+        DB.iniciar();
         
-        System.out.println(n4);
-        System.out.println(n3);
-    }
-    
-    public static int multiplicar(int n1, int n2) {
-        int soma = n1 * n2;
         
-        return soma;
+        ProdutoDao pd = new ProdutoDao();
+        String modelo, tamanho, cor;
+        Double preco;
+        int quantidade;
+        
+        modelo = JOptionPane.showInputDialog(null, "Insira o modelo: ");
+        tamanho = JOptionPane.showInputDialog(null, "Insira o tamanho: ");
+        cor = JOptionPane.showInputDialog(null, "Insira a cor: ");
+        preco = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o preço: "));
+        quantidade = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira a quantidade: "));
+        
+        pd.cadastrarProduto(modelo, tamanho, cor, preco, quantidade);
+        DB.fechar();
+//        System.out.println(pd.procurarProduto());
     }
 }
