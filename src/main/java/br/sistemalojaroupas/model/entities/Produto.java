@@ -21,6 +21,7 @@ public class Produto {
     private String tamanho;
     private String cor;
     private Double preco;
+    private int quantidade;
     //private Marca marca;
 
     public Produto() {}
@@ -71,6 +72,16 @@ public class Produto {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
+    
+    public int getQuantidade(){
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+    
+    
 
     @Override
     public int hashCode() {
