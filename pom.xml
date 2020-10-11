@@ -40,7 +40,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>${mainClass}</mainClass>
+                            <mainClass>br.com.sistemalojaroupas.view.Login</mainClass>
                         </manifest>
                     </archive>
                     <foo>bar</foo>
@@ -54,6 +54,11 @@
             <groupId>org.dizitart</groupId>
             <artifactId>nitrite</artifactId>
             <version>3.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE120</version>
         </dependency>
     </dependencies>
     
