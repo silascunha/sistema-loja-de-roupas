@@ -8,7 +8,11 @@ package br.sistemalojaroupas.application;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.ProdutoDao;
 import javax.swing.JOptionPane;
-
+/*
+    1-Trocar o código de português para ingles.
+    2-Implementar os métodos iniciar dos repositórios dentro do DB.iniciar.
+    3-Criar uma classe "Categoria".
+*/
 
 public class App {
     
