@@ -10,13 +10,23 @@ package br.sistemalojaroupas.view;
  * @author lukas
  */
 public class Register_New_Products extends javax.swing.JDialog {
-
+    
+    public void clearAllFields(){
+        txt_nameProduct.setText("");
+        txt_colorProduct.setText("");
+        txt_price_purchase.setText("");
+        txt_price_sale.setText("");
+        txt_amount.setText("");
+        cb_SizeProduct.setSelectedIndex(-1);
+        txt_nameProduct.requestFocus();
+    } 
     /**
      * Creates new form Register_Products
      */
     public Register_New_Products(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        cb_SizeProduct.setSelectedIndex(-1);
     }
 
     /**
@@ -91,7 +101,7 @@ public class Register_New_Products extends javax.swing.JDialog {
         cb_SizeProduct.setForeground(new java.awt.Color(0, 0, 51));
         cb_SizeProduct.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PP", "P", "M", "G", "GG" }));
         cb_SizeProduct.setBorder(null);
-        pnl_Background.add(cb_SizeProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 40, -1));
+        pnl_Background.add(cb_SizeProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 50, -1));
 
         SalePrice.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         SalePrice.setForeground(new java.awt.Color(0, 0, 51));
@@ -128,6 +138,11 @@ public class Register_New_Products extends javax.swing.JDialog {
 
         btn_ClearProduct1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_ClearProduct1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limpar.png"))); // NOI18N
+        btn_ClearProduct1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_ClearProduct1MouseClicked(evt);
+            }
+        });
         pnl_Background.add(btn_ClearProduct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 110, 40));
 
         Title.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -149,6 +164,10 @@ public class Register_New_Products extends javax.swing.JDialog {
     private void btn_CancelProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelProductMouseClicked
         this.dispose();
     }//GEN-LAST:event_btn_CancelProductMouseClicked
+
+    private void btn_ClearProduct1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ClearProduct1MouseClicked
+        clearAllFields();
+    }//GEN-LAST:event_btn_ClearProduct1MouseClicked
 
     /**
      * @param args the command line arguments
