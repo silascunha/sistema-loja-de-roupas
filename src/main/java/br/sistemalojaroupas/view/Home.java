@@ -37,7 +37,7 @@ public class Home extends javax.swing.JFrame {
     public void changeSizeHead(JPanel pnl, Dimension dim){
         pnl.setPreferredSize(dim);
     }
-    
+       
     public Home() {
         initComponents();
     }
@@ -46,6 +46,8 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField9 = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
         Head = new javax.swing.JPanel();
         MaxMinClose = new javax.swing.JPanel();
         pnl_Max = new javax.swing.JPanel();
@@ -94,11 +96,48 @@ public class Home extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table_Products = new javax.swing.JTable();
         Card_Employees = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        Table_Employees = new javax.swing.JScrollPane();
+        table_Employees = new javax.swing.JTable();
+        btnSaveEmployee = new javax.swing.JLabel();
+        btnEditEmployee = new javax.swing.JLabel();
+        btnDeleteEmployee = new javax.swing.JLabel();
+        Panel_Employees = new javax.swing.JPanel();
+        Name = new javax.swing.JLabel();
+        txtEmployeeName = new javax.swing.JTextField();
+        BirthDate = new javax.swing.JLabel();
+        Address = new javax.swing.JLabel();
+        AdditionalAddress = new javax.swing.JLabel();
+        Job = new javax.swing.JLabel();
+        CPF = new javax.swing.JLabel();
+        Neighbourhood = new javax.swing.JLabel();
+        txtEmployeeBirthDate = new javax.swing.JTextField();
+        txtEmployeeCPF = new javax.swing.JTextField();
+        State = new javax.swing.JLabel();
+        CEP = new javax.swing.JLabel();
+        HouseNumber = new javax.swing.JLabel();
+        txtEmployeeCEP01 = new javax.swing.JTextField();
+        txtEmployeeCEP02 = new javax.swing.JTextField();
+        CPFSeparator = new javax.swing.JLabel();
+        txtEmployeeAddress = new javax.swing.JTextField();
+        City = new javax.swing.JLabel();
+        txtEmployeeAddAddress = new javax.swing.JTextField();
+        txtEmployeeCity = new javax.swing.JTextField();
+        txtEmployeeState = new javax.swing.JTextField();
+        txtEmployeeAddressNum = new javax.swing.JTextField();
+        Phone = new javax.swing.JLabel();
+        txtEmployeeJob = new javax.swing.JTextField();
+        txtEmployeePhone = new javax.swing.JTextField();
+        Email = new javax.swing.JLabel();
+        txtEmployeeEmail = new javax.swing.JTextField();
+        txtEmployeeNeigh = new javax.swing.JTextField();
         Card_Customers = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         Card_Settings = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+
+        jTextField9.setText("jTextField9");
+
+        jLabel20.setText("jLabel20");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -144,7 +183,7 @@ public class Home extends javax.swing.JFrame {
         pnl_MaxLayout.setVerticalGroup(
             pnl_MaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_MaxLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 1, Short.MAX_VALUE)
                 .addComponent(btn_Max, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -180,7 +219,7 @@ public class Home extends javax.swing.JFrame {
         pnl_CloseLayout.setVerticalGroup(
             pnl_CloseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_CloseLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 1, Short.MAX_VALUE)
                 .addComponent(btn_Close, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -216,7 +255,7 @@ public class Home extends javax.swing.JFrame {
         pnl_MinLayout.setVerticalGroup(
             pnl_MinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_MinLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 1, Short.MAX_VALUE)
                 .addComponent(btn_Min, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -288,7 +327,6 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(Head, java.awt.BorderLayout.PAGE_START);
 
-        Body.setBorder(null);
         Body.setDividerLocation(200);
         Body.setDividerSize(0);
         Body.setLastDividerLocation(200);
@@ -489,12 +527,12 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(menu_customers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(menu_settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
             .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MenusLayout.createSequentialGroup()
                     .addGap(89, 89, 89)
                     .addComponent(menu_home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(511, Short.MAX_VALUE)))
+                    .addContainerGap(509, Short.MAX_VALUE)))
         );
 
         Body.setLeftComponent(Menus);
@@ -514,14 +552,14 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_HomeLayout.createSequentialGroup()
                 .addGap(333, 333, 333)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(468, Short.MAX_VALUE))
+                .addContainerGap(713, Short.MAX_VALUE))
         );
         Card_HomeLayout.setVerticalGroup(
             Card_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Card_HomeLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(439, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Home, "card2");
@@ -539,14 +577,14 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_SalesLayout.createSequentialGroup()
                 .addGap(333, 333, 333)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(468, Short.MAX_VALUE))
+                .addContainerGap(713, Short.MAX_VALUE))
         );
         Card_SalesLayout.setVerticalGroup(
             Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Card_SalesLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(439, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Sales, "card3");
@@ -627,35 +665,350 @@ public class Home extends javax.swing.JFrame {
             }
         ));
         table_Products.setGridColor(new java.awt.Color(204, 204, 204));
-        table_Products.setShowVerticalLines(false);
         jScrollPane1.setViewportView(table_Products);
+        if (table_Products.getColumnModel().getColumnCount() > 0) {
+            table_Products.getColumnModel().getColumn(1).setHeaderValue("Cargo");
+            table_Products.getColumnModel().getColumn(2).setHeaderValue("Data Admissão");
+            table_Products.getColumnModel().getColumn(3).setHeaderValue("Data Nascimento");
+            table_Products.getColumnModel().getColumn(4).setHeaderValue("P. Custo");
+            table_Products.getColumnModel().getColumn(5).setHeaderValue("P. Venda");
+            table_Products.getColumnModel().getColumn(6).setHeaderValue("Qtd.");
+        }
 
         Card_Products.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 910, -1));
 
         CollectionCard.add(Card_Products, "card4");
 
         Card_Employees.setBackground(new java.awt.Color(255, 255, 255));
+        Card_Employees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("CARD EMPLOYEES");
+        table_Employees.setBackground(new java.awt.Color(255, 255, 255));
+        table_Employees.setForeground(new java.awt.Color(0, 0, 51));
+        table_Employees.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Nome"
+            }
+        ));
+        table_Employees.setGridColor(new java.awt.Color(204, 204, 204));
+        Table_Employees.setViewportView(table_Employees);
 
-        javax.swing.GroupLayout Card_EmployeesLayout = new javax.swing.GroupLayout(Card_Employees);
-        Card_Employees.setLayout(Card_EmployeesLayout);
-        Card_EmployeesLayout.setHorizontalGroup(
-            Card_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Card_EmployeesLayout.createSequentialGroup()
-                .addGap(333, 333, 333)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(468, Short.MAX_VALUE))
+        Card_Employees.add(Table_Employees, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 190, 310));
+
+        btnSaveEmployee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSaveEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png"))); // NOI18N
+        btnSaveEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSaveEmployeeMouseClicked(evt);
+            }
+        });
+        Card_Employees.add(btnSaveEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, 38));
+
+        btnEditEmployee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnEditEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cadastrar.png"))); // NOI18N
+        btnEditEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditEmployeeMouseClicked(evt);
+            }
+        });
+        Card_Employees.add(btnEditEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, 38));
+
+        btnDeleteEmployee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnDeleteEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png"))); // NOI18N
+        btnDeleteEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteEmployeeMouseClicked(evt);
+            }
+        });
+        Card_Employees.add(btnDeleteEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, 38));
+
+        Panel_Employees.setBackground(new java.awt.Color(255, 255, 255));
+
+        Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Name.setForeground(new java.awt.Color(0, 0, 0));
+        Name.setText("NOME");
+
+        txtEmployeeName.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeName.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmployeeName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmployeeNameActionPerformed(evt);
+            }
+        });
+
+        BirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        BirthDate.setForeground(new java.awt.Color(0, 0, 0));
+        BirthDate.setText("DATA NASC.");
+
+        Address.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Address.setForeground(new java.awt.Color(0, 0, 0));
+        Address.setText("ENDEREÇO");
+
+        AdditionalAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        AdditionalAddress.setForeground(new java.awt.Color(0, 0, 0));
+        AdditionalAddress.setText("COMPLEMENTO");
+
+        Job.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Job.setForeground(new java.awt.Color(0, 0, 0));
+        Job.setText("CARGO");
+
+        CPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CPF.setForeground(new java.awt.Color(0, 0, 0));
+        CPF.setText("CPF");
+
+        Neighbourhood.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Neighbourhood.setForeground(new java.awt.Color(0, 0, 0));
+        Neighbourhood.setText("BAIRRO");
+
+        txtEmployeeBirthDate.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeBirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeBirthDate.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmployeeBirthDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmployeeBirthDateActionPerformed(evt);
+            }
+        });
+
+        txtEmployeeCPF.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeCPF.setForeground(new java.awt.Color(0, 0, 0));
+
+        State.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        State.setForeground(new java.awt.Color(0, 0, 0));
+        State.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        State.setText("UF");
+
+        CEP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CEP.setForeground(new java.awt.Color(0, 0, 0));
+        CEP.setText("CEP");
+
+        HouseNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        HouseNumber.setForeground(new java.awt.Color(0, 0, 0));
+        HouseNumber.setText("Nº");
+
+        txtEmployeeCEP01.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeCEP01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeCEP01.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmployeeCEP01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmployeeCEP01ActionPerformed(evt);
+            }
+        });
+
+        txtEmployeeCEP02.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeCEP02.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeCEP02.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmployeeCEP02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmployeeCEP02ActionPerformed(evt);
+            }
+        });
+
+        CPFSeparator.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CPFSeparator.setForeground(new java.awt.Color(0, 0, 0));
+        CPFSeparator.setText("-");
+
+        txtEmployeeAddress.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeAddress.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmployeeAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmployeeAddressActionPerformed(evt);
+            }
+        });
+
+        City.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        City.setForeground(new java.awt.Color(0, 0, 0));
+        City.setText("CIDADE");
+
+        txtEmployeeAddAddress.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeAddAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeAddAddress.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtEmployeeCity.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeCity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeCity.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtEmployeeState.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeState.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeState.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtEmployeeAddressNum.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeAddressNum.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeAddressNum.setForeground(new java.awt.Color(0, 0, 0));
+
+        Phone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Phone.setForeground(new java.awt.Color(0, 0, 0));
+        Phone.setText("TELEFONE");
+
+        txtEmployeeJob.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeJob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeJob.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtEmployeePhone.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeePhone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeePhone.setForeground(new java.awt.Color(0, 0, 0));
+
+        Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Email.setForeground(new java.awt.Color(0, 0, 0));
+        Email.setText("E-MAIL");
+
+        txtEmployeeEmail.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeEmail.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtEmployeeNeigh.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeNeigh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeNeigh.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout Panel_EmployeesLayout = new javax.swing.GroupLayout(Panel_Employees);
+        Panel_Employees.setLayout(Panel_EmployeesLayout);
+        Panel_EmployeesLayout.setHorizontalGroup(
+            Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addComponent(Name)
+                        .addGap(68, 68, 68)
+                        .addComponent(txtEmployeeName))
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addComponent(BirthDate)
+                        .addGap(32, 32, 32)
+                        .addComponent(txtEmployeeBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(CPF)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtEmployeeCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Job)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEmployeeJob))
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addComponent(Phone)
+                        .addGap(46, 46, 46)
+                        .addComponent(txtEmployeePhone, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(Email)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEmployeeEmail))
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addComponent(CEP)
+                        .addGap(85, 85, 85)
+                        .addComponent(txtEmployeeCEP01, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(CPFSeparator)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtEmployeeCEP02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addComponent(Address)
+                        .addGap(40, 40, 40)
+                        .addComponent(txtEmployeeAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(HouseNumber)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEmployeeAddressNum))
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addComponent(AdditionalAddress)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtEmployeeAddAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Neighbourhood)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtEmployeeNeigh, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addComponent(City)
+                        .addGap(60, 60, 60)
+                        .addComponent(txtEmployeeCity, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(State, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtEmployeeState, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
-        Card_EmployeesLayout.setVerticalGroup(
-            Card_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Card_EmployeesLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(441, Short.MAX_VALUE))
+        Panel_EmployeesLayout.setVerticalGroup(
+            Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(Name))
+                    .addComponent(txtEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmployeeBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmployeeCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmployeeJob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BirthDate)
+                            .addComponent(CPF)
+                            .addComponent(Job))))
+                .addGap(31, 31, 31)
+                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmployeePhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmployeeEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Phone)
+                            .addComponent(Email))))
+                .addGap(18, 18, 18)
+                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmployeeCEP01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmployeeCEP02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CEP)
+                            .addComponent(CPFSeparator))))
+                .addGap(18, 18, 18)
+                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmployeeAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmployeeAddressNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Address)
+                            .addComponent(HouseNumber))))
+                .addGap(16, 16, 16)
+                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmployeeAddAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmployeeNeigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AdditionalAddress)
+                            .addComponent(Neighbourhood))))
+                .addGap(18, 18, 18)
+                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmployeeCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmployeeState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(City)
+                            .addComponent(State)))))
         );
+
+        Card_Employees.add(Panel_Employees, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 870, 450));
 
         CollectionCard.add(Card_Employees, "card5");
 
@@ -672,14 +1025,14 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_CustomersLayout.createSequentialGroup()
                 .addGap(333, 333, 333)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(468, Short.MAX_VALUE))
+                .addContainerGap(713, Short.MAX_VALUE))
         );
         Card_CustomersLayout.setVerticalGroup(
             Card_CustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Card_CustomersLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(439, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Customers, "card6");
@@ -697,14 +1050,14 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_SettingsLayout.createSequentialGroup()
                 .addGap(333, 333, 333)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(468, Short.MAX_VALUE))
+                .addContainerGap(713, Short.MAX_VALUE))
         );
         Card_SettingsLayout.setVerticalGroup(
             Card_SettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Card_SettingsLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(439, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Settings, "card7");
@@ -886,6 +1239,38 @@ public class Home extends javax.swing.JFrame {
         new Register_New_Products(this, true).setVisible(true);
     }//GEN-LAST:event_btn_registerProductMouseClicked
 
+    private void btnSaveEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveEmployeeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveEmployeeMouseClicked
+
+    private void btnEditEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditEmployeeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditEmployeeMouseClicked
+
+    private void btnDeleteEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteEmployeeMouseClicked
+
+    private void txtEmployeeCEP02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeCEP02ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmployeeCEP02ActionPerformed
+
+    private void txtEmployeeCEP01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeCEP01ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmployeeCEP01ActionPerformed
+
+    private void txtEmployeeAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmployeeAddressActionPerformed
+
+    private void txtEmployeeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmployeeNameActionPerformed
+
+    private void txtEmployeeBirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeBirthDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmployeeBirthDateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -922,18 +1307,37 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AdditionalAddress;
+    private javax.swing.JLabel Address;
+    private javax.swing.JLabel BirthDate;
     private javax.swing.JSplitPane Body;
+    private javax.swing.JLabel CEP;
+    private javax.swing.JLabel CPF;
+    private javax.swing.JLabel CPFSeparator;
     private javax.swing.JPanel Card_Customers;
     private javax.swing.JPanel Card_Employees;
     private javax.swing.JPanel Card_Home;
     private javax.swing.JPanel Card_Products;
     private javax.swing.JPanel Card_Sales;
     private javax.swing.JPanel Card_Settings;
+    private javax.swing.JLabel City;
     private javax.swing.JPanel CollectionCard;
+    private javax.swing.JLabel Email;
     private javax.swing.JPanel Head;
+    private javax.swing.JLabel HouseNumber;
+    private javax.swing.JLabel Job;
     private javax.swing.JPanel MaxMinClose;
     private javax.swing.JPanel Menus;
     private javax.swing.JPanel Mid_Header;
+    private javax.swing.JLabel Name;
+    private javax.swing.JLabel Neighbourhood;
+    private javax.swing.JPanel Panel_Employees;
+    private javax.swing.JLabel Phone;
+    private javax.swing.JLabel State;
+    private javax.swing.JScrollPane Table_Employees;
+    private javax.swing.JLabel btnDeleteEmployee;
+    private javax.swing.JLabel btnEditEmployee;
+    private javax.swing.JLabel btnSaveEmployee;
     private javax.swing.JLabel btn_Close;
     private javax.swing.JLabel btn_Max;
     private javax.swing.JLabel btn_Min;
@@ -958,10 +1362,11 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel menu_customers;
     private javax.swing.JPanel menu_employess;
     private javax.swing.JPanel menu_home;
@@ -973,7 +1378,22 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_IconMenu;
     private javax.swing.JPanel pnl_Max;
     private javax.swing.JPanel pnl_Min;
+    private javax.swing.JTable table_Employees;
     private javax.swing.JTable table_Products;
+    private javax.swing.JTextField txtEmployeeAddAddress;
+    private javax.swing.JTextField txtEmployeeAddress;
+    private javax.swing.JTextField txtEmployeeAddressNum;
+    private javax.swing.JTextField txtEmployeeBirthDate;
+    private javax.swing.JTextField txtEmployeeCEP01;
+    private javax.swing.JTextField txtEmployeeCEP02;
+    private javax.swing.JTextField txtEmployeeCPF;
+    private javax.swing.JTextField txtEmployeeCity;
+    private javax.swing.JTextField txtEmployeeEmail;
+    private javax.swing.JTextField txtEmployeeJob;
+    private javax.swing.JTextField txtEmployeeName;
+    private javax.swing.JTextField txtEmployeeNeigh;
+    private javax.swing.JTextField txtEmployeePhone;
+    private javax.swing.JTextField txtEmployeeState;
     private javax.swing.JTextField txt_SearchField;
     // End of variables declaration//GEN-END:variables
 }
