@@ -37,7 +37,7 @@ public class Home extends javax.swing.JFrame {
     public void changeSizeHead(JPanel pnl, Dimension dim){
         pnl.setPreferredSize(dim);
     }
-       
+  
     public Home() {
         initComponents();
     }
@@ -130,14 +130,17 @@ public class Home extends javax.swing.JFrame {
         Email = new javax.swing.JLabel();
         txtEmployeeEmail = new javax.swing.JTextField();
         txtEmployeeNeigh = new javax.swing.JTextField();
+
         Card_Customers = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         Card_Settings = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
+
         jTextField9.setText("jTextField9");
 
         jLabel20.setText("jLabel20");
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -327,6 +330,7 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(Head, java.awt.BorderLayout.PAGE_START);
 
+        Body.setBorder(null);
         Body.setDividerLocation(200);
         Body.setDividerSize(0);
         Body.setLastDividerLocation(200);
@@ -680,6 +684,7 @@ public class Home extends javax.swing.JFrame {
         CollectionCard.add(Card_Products, "card4");
 
         Card_Employees.setBackground(new java.awt.Color(255, 255, 255));
+
         Card_Employees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         table_Employees.setBackground(new java.awt.Color(255, 255, 255));
@@ -1271,6 +1276,7 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmployeeBirthDateActionPerformed
 
+
     /**
      * @param args the command line arguments
      */
@@ -1307,6 +1313,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JLabel AdditionalAddress;
     private javax.swing.JLabel Address;
     private javax.swing.JLabel BirthDate;
