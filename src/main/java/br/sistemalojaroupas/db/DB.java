@@ -19,7 +19,7 @@ public class DB {
      * Inicia a conexão com o banco de dados caso seja nulo. 
      * Não é possível iniciar a conexão mais de uma vez.
      */
-    public static void iniciar() {
+    public static void start() {
         if (db == null) {
             db = Nitrite.builder()
                     .compressed()
@@ -36,7 +36,7 @@ public class DB {
      */
     public static Nitrite getDB() {
         if (db == null) {
-            iniciar();
+            start();
         }
         return db;
     }
@@ -45,7 +45,7 @@ public class DB {
      * Realiza o fechamento da conexão com o banco de dados.
      * É importante utilizar este método quando não há mais uso do banco.
      */
-    public static void fechar() {
+    public static void close() {
         if (db != null) {
             db.close();
         }

@@ -6,21 +6,39 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.entities.Product;
+import java.util.List;
+import org.dizitart.no2.NitriteId;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 
 
 public class App {
     
-    public static void main(String[] args) {
-        int n4 = multiplicar(2, 3);
-        int n3 = multiplicar(1, 3);
-        
-        System.out.println(n4);
-        System.out.println(n3);
-    }
+    /* Apenas realizando testes do banco de dados na classe 
+    enquanto não há interação com a interface grafica */
     
-    public static int multiplicar(int n1, int n2) {
-        int soma = n1 * n2;
+    public static void main(String[] args) {
+        DB.start();
+        ProductDao.start();
+
+        System.out.println();
+
+        //TESTE DE INSERÇÃO
+        /*
+        Product product = new Product("Short do Flamengo Bordado", "P", "Branco", 40.0, 2);
+        ProductDao.insert(product);
+        System.out.println("Produto inserido! Novo ID: " + product.getId());
+        */
         
-        return soma;
+        //TESTE DE LISTAGEM DOS PRODUTOS
+        System.out.println("LISTA DE PRODUTOS REGISTRADOS:");
+        List<Product> list = ProductDao.findAll();
+
+        for(Product p : list) {
+            System.out.println(p);
+        }
+        
+        DB.close();
     }
 }
