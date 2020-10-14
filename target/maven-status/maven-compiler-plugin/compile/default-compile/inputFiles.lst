@@ -1,8 +1,10 @@
-D:\Documents\TADS - UNISALES\TDN2\Git\sistema-loja-de-roupas\src\main\java\br\sistemalojaroupas\view\Register_New_Products.java
-D:\Documents\TADS - UNISALES\TDN2\Git\sistema-loja-de-roupas\src\main\java\br\sistemalojaroupas\db\DB.java
-D:\Documents\TADS - UNISALES\TDN2\Git\sistema-loja-de-roupas\src\main\java\br\sistemalojaroupas\model\entities\Produto.java
-D:\Documents\TADS - UNISALES\TDN2\Git\sistema-loja-de-roupas\src\main\java\br\sistemalojaroupas\view\Insert_Product.java
-D:\Documents\TADS - UNISALES\TDN2\Git\sistema-loja-de-roupas\src\main\java\br\sistemalojaroupas\application\App.java
-D:\Documents\TADS - UNISALES\TDN2\Git\sistema-loja-de-roupas\src\main\java\br\sistemalojaroupas\model\dao\ProdutoDao.java
-D:\Documents\TADS - UNISALES\TDN2\Git\sistema-loja-de-roupas\src\main\java\br\sistemalojaroupas\view\Home.java
-D:\Documents\TADS - UNISALES\TDN2\Git\sistema-loja-de-roupas\src\main\java\br\sistemalojaroupas\view\Login.java
+D:\Arquivos gerais\Documentos\NetBeansProjects\SistemaLojaRoupas\src\main\java\br\sistemalojaroupas\model\entities\Color.java
+D:\Arquivos gerais\Documentos\NetBeansProjects\SistemaLojaRoupas\src\main\java\br\sistemalojaroupas\model\entities\Product.java
+D:\Arquivos gerais\Documentos\NetBeansProjects\SistemaLojaRoupas\src\main\java\br\sistemalojaroupas\view\Home.java
+D:\Arquivos gerais\Documentos\NetBeansProjects\SistemaLojaRoupas\src\main\java\br\sistemalojaroupas\view\Register_New_Employee.java
+D:\Arquivos gerais\Documentos\NetBeansProjects\SistemaLojaRoupas\src\main\java\br\sistemalojaroupas\view\Insert_Product.java
+D:\Arquivos gerais\Documentos\NetBeansProjects\SistemaLojaRoupas\src\main\java\br\sistemalojaroupas\db\DB.java
+D:\Arquivos gerais\Documentos\NetBeansProjects\SistemaLojaRoupas\src\main\java\br\sistemalojaroupas\model\dao\ProductDao.java
+D:\Arquivos gerais\Documentos\NetBeansProjects\SistemaLojaRoupas\src\main\java\br\sistemalojaroupas\view\Register_New_Products.java
+D:\Arquivos gerais\Documentos\NetBeansProjects\SistemaLojaRoupas\src\main\java\br\sistemalojaroupas\application\App.java
+D:\Arquivos gerais\Documentos\NetBeansProjects\SistemaLojaRoupas\src\main\java\br\sistemalojaroupas\view\Login.java

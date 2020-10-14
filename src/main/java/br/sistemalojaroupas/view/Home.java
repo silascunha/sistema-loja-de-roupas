@@ -85,8 +85,6 @@ public class Home extends javax.swing.JFrame {
         CollectionCard = new javax.swing.JPanel();
         Card_Home = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        Card_Sales = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         Card_Products = new javax.swing.JPanel();
         btn_registerProduct = new javax.swing.JLabel();
         btn_removeProduct = new javax.swing.JLabel();
@@ -130,17 +128,22 @@ public class Home extends javax.swing.JFrame {
         Email = new javax.swing.JLabel();
         txtEmployeeEmail = new javax.swing.JTextField();
         txtEmployeeNeigh = new javax.swing.JTextField();
-
         Card_Customers = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         Card_Settings = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-
+        Card_Sales = new javax.swing.JPanel();
+        btn_NewSale = new javax.swing.JLabel();
+        btn_SearchSale = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        salesTable = new javax.swing.JTable();
+        searchSale = new javax.swing.JTextField();
+        btn_CleanSearch = new javax.swing.JLabel();
+        btn_DeleteSale2 = new javax.swing.JLabel();
 
         jTextField9.setText("jTextField9");
 
         jLabel20.setText("jLabel20");
-
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -330,7 +333,6 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(Head, java.awt.BorderLayout.PAGE_START);
 
-        Body.setBorder(null);
         Body.setDividerLocation(200);
         Body.setDividerSize(0);
         Body.setLastDividerLocation(200);
@@ -568,31 +570,6 @@ public class Home extends javax.swing.JFrame {
 
         CollectionCard.add(Card_Home, "card2");
 
-        Card_Sales.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("CARD SALES");
-
-        javax.swing.GroupLayout Card_SalesLayout = new javax.swing.GroupLayout(Card_Sales);
-        Card_Sales.setLayout(Card_SalesLayout);
-        Card_SalesLayout.setHorizontalGroup(
-            Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Card_SalesLayout.createSequentialGroup()
-                .addGap(333, 333, 333)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(713, Short.MAX_VALUE))
-        );
-        Card_SalesLayout.setVerticalGroup(
-            Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Card_SalesLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(439, Short.MAX_VALUE))
-        );
-
-        CollectionCard.add(Card_Sales, "card3");
-
         Card_Products.setBackground(new java.awt.Color(255, 255, 255));
         Card_Products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -684,7 +661,6 @@ public class Home extends javax.swing.JFrame {
         CollectionCard.add(Card_Products, "card4");
 
         Card_Employees.setBackground(new java.awt.Color(255, 255, 255));
-
         Card_Employees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         table_Employees.setBackground(new java.awt.Color(255, 255, 255));
@@ -1067,6 +1043,109 @@ public class Home extends javax.swing.JFrame {
 
         CollectionCard.add(Card_Settings, "card7");
 
+        Card_Sales.setBackground(new java.awt.Color(255, 255, 255));
+
+        btn_NewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png"))); // NOI18N
+        btn_NewSale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_NewSaleMouseClicked(evt);
+            }
+        });
+
+        btn_SearchSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png"))); // NOI18N
+        btn_SearchSale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_SearchSaleMouseClicked(evt);
+            }
+        });
+
+        salesTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"", "", "", "12/10/2020", ""},
+                {"", "", "", "30/12/2018", ""},
+                {"", "", "", "11/05/1989", ""},
+                {"", "", "", "07/09/2015", ""},
+                {"", "", "", "11/10/2020", ""},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Código", "Quantidade", "Total", "Data", "CPF Cliente"
+            }
+        ));
+        salesTable.setGridColor(new java.awt.Color(204, 204, 204));
+        jScrollPane2.setViewportView(salesTable);
+
+        btn_CleanSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limpar.png"))); // NOI18N
+        btn_CleanSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_CleanSearchMouseClicked(evt);
+            }
+        });
+
+        btn_DeleteSale2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png"))); // NOI18N
+        btn_DeleteSale2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_DeleteSale2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Card_SalesLayout = new javax.swing.GroupLayout(Card_Sales);
+        Card_Sales.setLayout(Card_SalesLayout);
+        Card_SalesLayout.setHorizontalGroup(
+            Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Card_SalesLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Card_SalesLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 843, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(Card_SalesLayout.createSequentialGroup()
+                        .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Card_SalesLayout.createSequentialGroup()
+                                .addComponent(searchSale, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_SearchSale)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_CleanSearch))
+                            .addGroup(Card_SalesLayout.createSequentialGroup()
+                                .addComponent(btn_NewSale)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_DeleteSale2)))
+                        .addContainerGap(370, Short.MAX_VALUE))))
+        );
+        Card_SalesLayout.setVerticalGroup(
+            Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Card_SalesLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_NewSale)
+                    .addComponent(btn_DeleteSale2))
+                .addGap(34, 34, 34)
+                .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(searchSale, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_CleanSearch)
+                    .addComponent(btn_SearchSale))
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
+        CollectionCard.add(Card_Sales, "card3");
+
         Body.setRightComponent(CollectionCard);
 
         getContentPane().add(Body, java.awt.BorderLayout.CENTER);
@@ -1276,6 +1355,22 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmployeeBirthDateActionPerformed
 
+    private void btn_NewSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NewSaleMouseClicked
+
+    }//GEN-LAST:event_btn_NewSaleMouseClicked
+
+    private void btn_SearchSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchSaleMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_SearchSaleMouseClicked
+
+    private void btn_CleanSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CleanSearchMouseClicked
+        searchSale.setText("");
+    }//GEN-LAST:event_btn_CleanSearchMouseClicked
+
+    private void btn_DeleteSale2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeleteSale2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_DeleteSale2MouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -1313,7 +1408,6 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-
     private javax.swing.JLabel AdditionalAddress;
     private javax.swing.JLabel Address;
     private javax.swing.JLabel BirthDate;
@@ -1345,10 +1439,14 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel btnDeleteEmployee;
     private javax.swing.JLabel btnEditEmployee;
     private javax.swing.JLabel btnSaveEmployee;
+    private javax.swing.JLabel btn_CleanSearch;
     private javax.swing.JLabel btn_Close;
+    private javax.swing.JLabel btn_DeleteSale2;
     private javax.swing.JLabel btn_Max;
     private javax.swing.JLabel btn_Min;
+    private javax.swing.JLabel btn_NewSale;
     private javax.swing.JLabel btn_Search;
+    private javax.swing.JLabel btn_SearchSale;
     private javax.swing.JLabel btn_ShowHideMenu;
     private javax.swing.JLabel btn_addProduct;
     private javax.swing.JLabel btn_customers;
@@ -1368,11 +1466,11 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel menu_customers;
     private javax.swing.JPanel menu_employess;
@@ -1385,6 +1483,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_IconMenu;
     private javax.swing.JPanel pnl_Max;
     private javax.swing.JPanel pnl_Min;
+    private javax.swing.JTable salesTable;
+    private javax.swing.JTextField searchSale;
     private javax.swing.JTable table_Employees;
     private javax.swing.JTable table_Products;
     private javax.swing.JTextField txtEmployeeAddAddress;
