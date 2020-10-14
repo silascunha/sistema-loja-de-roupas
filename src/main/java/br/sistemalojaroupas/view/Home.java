@@ -1,8 +1,11 @@
 
 package br.sistemalojaroupas.view;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -15,10 +18,24 @@ import javax.swing.SwingUtilities;
 public class Home extends javax.swing.JFrame {
     
     Boolean bool = true;
+    private List<JPanel> menuButtonsList = new ArrayList<>();
+    private CardLayout panelsCardLayout;
     
     public void changeColor(JPanel pnl, Color cor ){
         pnl.setBackground(cor);
     }
+    
+    private void setMenuButtonsColor(JPanel pn1) {
+        
+        pn1.setBackground(new Color(108, 81, 233));
+        
+        for (JPanel pn2 : menuButtonsList) {
+            if (!pn2.equals(pn1)) {
+                pn2.setBackground(new Color(0,0,51));
+            }
+        }
+    }
+    
     public void resetDefaultColor(JPanel pnl){
         pnl.setBackground(new Color(108, 81, 233));
     }
@@ -40,6 +57,16 @@ public class Home extends javax.swing.JFrame {
   
     public Home() {
         initComponents();
+        
+        panelsCardLayout = (CardLayout) CollectionCard.getLayout();
+        
+        //adicionando todos os panels que funcionam como botões no menu principal
+        menuButtonsList.add(menu_home);
+        menuButtonsList.add(menu_customers);
+        menuButtonsList.add(menu_sale);
+        menuButtonsList.add(menu_settings);
+        menuButtonsList.add(menu_employess);
+        menuButtonsList.add(menu_product);
     }
     
     @SuppressWarnings("unchecked")
@@ -343,6 +370,11 @@ public class Home extends javax.swing.JFrame {
 
         menu_sale.setBackground(new java.awt.Color(0, 0, 51));
         menu_sale.setPreferredSize(new java.awt.Dimension(200, 50));
+        menu_sale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_saleMouseClicked(evt);
+            }
+        });
         menu_sale.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_sales.setBackground(new java.awt.Color(255, 255, 255));
@@ -350,11 +382,6 @@ public class Home extends javax.swing.JFrame {
         btn_sales.setForeground(new java.awt.Color(255, 255, 255));
         btn_sales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_sales.setText("Vendas");
-        btn_sales.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_salesMouseClicked(evt);
-            }
-        });
         menu_sale.add(btn_sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 50));
 
         icon_sales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -362,11 +389,6 @@ public class Home extends javax.swing.JFrame {
         icon_sales.setMaximumSize(new java.awt.Dimension(70, 50));
         icon_sales.setMinimumSize(new java.awt.Dimension(70, 50));
         icon_sales.setPreferredSize(new java.awt.Dimension(70, 50));
-        icon_sales.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                icon_salesMouseClicked(evt);
-            }
-        });
         menu_sale.add(icon_sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menu_home.setBackground(new java.awt.Color(0, 0, 51));
@@ -568,7 +590,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(439, Short.MAX_VALUE))
         );
 
-        CollectionCard.add(Card_Home, "card2");
+        CollectionCard.add(Card_Home, "cardHome");
 
         Card_Products.setBackground(new java.awt.Color(255, 255, 255));
         Card_Products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -658,7 +680,7 @@ public class Home extends javax.swing.JFrame {
 
         Card_Products.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 910, -1));
 
-        CollectionCard.add(Card_Products, "card4");
+        CollectionCard.add(Card_Products, "cardProducts");
 
         Card_Employees.setBackground(new java.awt.Color(255, 255, 255));
         Card_Employees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -991,7 +1013,7 @@ public class Home extends javax.swing.JFrame {
 
         Card_Employees.add(Panel_Employees, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 870, 450));
 
-        CollectionCard.add(Card_Employees, "card5");
+        CollectionCard.add(Card_Employees, "cardEmployees");
 
         Card_Customers.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1016,7 +1038,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(439, Short.MAX_VALUE))
         );
 
-        CollectionCard.add(Card_Customers, "card6");
+        CollectionCard.add(Card_Customers, "cardCustomers");
 
         Card_Settings.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1041,7 +1063,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(439, Short.MAX_VALUE))
         );
 
-        CollectionCard.add(Card_Settings, "card7");
+        CollectionCard.add(Card_Settings, "cardSettings");
 
         Card_Sales.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1144,7 +1166,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
-        CollectionCard.add(Card_Sales, "card3");
+        CollectionCard.add(Card_Sales, "cardSales");
 
         Body.setRightComponent(CollectionCard);
 
@@ -1231,84 +1253,70 @@ public class Home extends javax.swing.JFrame {
         changeColor(menu_home, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_employess, new Color(0,0,51));
         changeColor(menu_product, new Color(0,0,51)); changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51)); 
         
-        showCardLayout(Card_Home); hideCardLayout(Card_Sales); hideCardLayout(Card_Products); hideCardLayout(Card_Employees); hideCardLayout(Card_Customers); hideCardLayout(Card_Settings);
+        panelsCardLayout.show(CollectionCard, "cardHome");
     }//GEN-LAST:event_btn_homeMouseClicked
 
     private void icon_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_homeMouseClicked
         changeColor(menu_home, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_employess, new Color(0,0,51));
         changeColor(menu_product, new Color(0,0,51)); changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
         
-        showCardLayout(Card_Home); hideCardLayout(Card_Sales); hideCardLayout(Card_Products); hideCardLayout(Card_Employees); hideCardLayout(Card_Customers); hideCardLayout(Card_Settings);
+        panelsCardLayout.show(CollectionCard, "cardHome");
     }//GEN-LAST:event_icon_homeMouseClicked
-
-    private void btn_salesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_salesMouseClicked
-        changeColor(menu_sale, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_employess, new Color(0,0,51));
-        changeColor(menu_product, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
-        
-        showCardLayout(Card_Sales); hideCardLayout(Card_Home); hideCardLayout(Card_Products); hideCardLayout(Card_Employees); hideCardLayout(Card_Customers); hideCardLayout(Card_Settings);
-    }//GEN-LAST:event_btn_salesMouseClicked
-
-    private void icon_salesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_salesMouseClicked
-        changeColor(menu_sale, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_employess, new Color(0,0,51));
-        changeColor(menu_product, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
-        
-        showCardLayout(Card_Sales); hideCardLayout(Card_Home); hideCardLayout(Card_Products); hideCardLayout(Card_Employees); hideCardLayout(Card_Customers); hideCardLayout(Card_Settings);
-    }//GEN-LAST:event_icon_salesMouseClicked
 
     private void btn_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_productsMouseClicked
         changeColor(menu_product, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_employess, new Color(0,0,51));
         changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
         
-        showCardLayout(Card_Products); hideCardLayout(Card_Sales); hideCardLayout(Card_Home); hideCardLayout(Card_Employees); hideCardLayout(Card_Customers); hideCardLayout(Card_Settings);
+        panelsCardLayout.show(CollectionCard, "cardProducts");
     }//GEN-LAST:event_btn_productsMouseClicked
 
     private void icon_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_productsMouseClicked
         changeColor(menu_product, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_employess, new Color(0,0,51));
         changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
         
-        showCardLayout(Card_Products); hideCardLayout(Card_Sales); hideCardLayout(Card_Home); hideCardLayout(Card_Employees); hideCardLayout(Card_Customers); hideCardLayout(Card_Settings);
+        panelsCardLayout.show(CollectionCard, "cardProducts");
     }//GEN-LAST:event_icon_productsMouseClicked
 
     private void btn_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_employeesMouseClicked
         changeColor(menu_employess, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_product, new Color(0,0,51));
         changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
         
-        showCardLayout(Card_Employees); hideCardLayout(Card_Sales); hideCardLayout(Card_Products); hideCardLayout(Card_Home); hideCardLayout(Card_Customers); hideCardLayout(Card_Settings);
+        panelsCardLayout.show(CollectionCard, "cardEmployees");
     }//GEN-LAST:event_btn_employeesMouseClicked
 
     private void icon_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_employeesMouseClicked
         changeColor(menu_employess, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_product, new Color(0,0,51));
         changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
         
-        showCardLayout(Card_Employees); hideCardLayout(Card_Sales); hideCardLayout(Card_Products); hideCardLayout(Card_Home); hideCardLayout(Card_Customers); hideCardLayout(Card_Settings);
+        panelsCardLayout.show(CollectionCard, "cardEmployees");
     }//GEN-LAST:event_icon_employeesMouseClicked
 
     private void btn_customersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customersMouseClicked
         changeColor(menu_customers, new Color(108, 81, 233)); changeColor(menu_employess, new Color(0,0,51)); changeColor(menu_product, new Color(0,0,51));
         changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
         
-        showCardLayout(Card_Customers); hideCardLayout(Card_Sales); hideCardLayout(Card_Products); hideCardLayout(Card_Employees); hideCardLayout(Card_Home); hideCardLayout(Card_Settings);
+        panelsCardLayout.show(CollectionCard, "cardCustomers");
     }//GEN-LAST:event_btn_customersMouseClicked
 
     private void icon_customersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_customersMouseClicked
         changeColor(menu_customers, new Color(108, 81, 233)); changeColor(menu_employess, new Color(0,0,51)); changeColor(menu_product, new Color(0,0,51));
         changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
         
-        showCardLayout(Card_Customers); hideCardLayout(Card_Sales); hideCardLayout(Card_Products); hideCardLayout(Card_Employees); hideCardLayout(Card_Home); hideCardLayout(Card_Settings);
+        panelsCardLayout.show(CollectionCard, "cardCustomers");
     }//GEN-LAST:event_icon_customersMouseClicked
 
     private void btn_settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_settingsMouseClicked
         changeColor(menu_settings, new Color(108, 81, 233)); changeColor(menu_employess, new Color(0,0,51)); changeColor(menu_product, new Color(0,0,51));
         changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_customers, new Color(0,0,51));
         
-        showCardLayout(Card_Settings); hideCardLayout(Card_Sales); hideCardLayout(Card_Products); hideCardLayout(Card_Employees); hideCardLayout(Card_Customers); hideCardLayout(Card_Home);
+        panelsCardLayout.show(CollectionCard, "cardSettings");
     }//GEN-LAST:event_btn_settingsMouseClicked
 
     private void icon_settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_settingsMouseClicked
         changeColor(menu_settings, new Color(108, 81, 233)); changeColor(menu_employess, new Color(0,0,51)); changeColor(menu_product, new Color(0,0,51));
         changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_customers, new Color(0,0,51));
         
-        showCardLayout(Card_Settings); hideCardLayout(Card_Sales); hideCardLayout(Card_Products); hideCardLayout(Card_Employees); hideCardLayout(Card_Customers); hideCardLayout(Card_Home);
+        panelsCardLayout.show(CollectionCard, "cardSettings");
     }//GEN-LAST:event_icon_settingsMouseClicked
 
     private void btn_addProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseClicked
@@ -1370,6 +1378,11 @@ public class Home extends javax.swing.JFrame {
     private void btn_DeleteSale2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeleteSale2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_DeleteSale2MouseClicked
+
+    private void menu_saleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_saleMouseClicked
+        panelsCardLayout.show(CollectionCard, "cardSales");
+        setMenuButtonsColor(menu_sale);
+    }//GEN-LAST:event_menu_saleMouseClicked
 
 
     /**
