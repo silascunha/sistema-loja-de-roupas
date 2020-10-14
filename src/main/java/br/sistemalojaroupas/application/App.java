@@ -6,29 +6,39 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
-import br.sistemalojaroupas.model.dao.ProdutoDao;
-import javax.swing.JOptionPane;
+import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.entities.Product;
+import java.util.List;
+import org.dizitart.no2.NitriteId;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 
 
 public class App {
     
+    /* Apenas realizando testes do banco de dados na classe 
+    enquanto não há interação com a interface grafica */
+    
     public static void main(String[] args) {
-        DB.iniciar();
+        DB.start();
+        ProductDao.start();
+
+        System.out.println();
+
+        //TESTE DE INSERÇÃO
+        /*
+        Product product = new Product("Short do Flamengo Bordado", "P", "Branco", 40.0, 2);
+        ProductDao.insert(product);
+        System.out.println("Produto inserido! Novo ID: " + product.getId());
+        */
         
+        //TESTE DE LISTAGEM DOS PRODUTOS
+        System.out.println("LISTA DE PRODUTOS REGISTRADOS:");
+        List<Product> list = ProductDao.findAll();
+
+        for(Product p : list) {
+            System.out.println(p);
+        }
         
-        ProdutoDao pd = new ProdutoDao();
-        String modelo, tamanho, cor;
-        Double preco;
-        int quantidade;
-        
-        modelo = JOptionPane.showInputDialog(null, "Insira o modelo: ");
-        tamanho = JOptionPane.showInputDialog(null, "Insira o tamanho: ");
-        cor = JOptionPane.showInputDialog(null, "Insira a cor: ");
-        preco = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o preço: "));
-        quantidade = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira a quantidade: "));
-        
-        pd.cadastrarProduto(modelo, tamanho, cor, preco, quantidade);
-        DB.fechar();
-//        System.out.println(pd.procurarProduto());
+        DB.close();
     }
 }
