@@ -20,15 +20,17 @@ public class Product implements Serializable {
     @Id
     private NitriteId id;
     private String description;
+    private Category category;
     private String size;
-    private String color;
+    private Color color;
     private Double price;
     private int quantity;
-
+    
     public Product() {}
     
-    public Product(String description, String size, String color, Double price, int quantity) {
+    public Product(String description, Category category, String size, Color color, Double price, int quantity) {
         this.description = description;
+        this.category = category;
         this.size = size;
         this.color = color;
         this.price = price;
@@ -51,6 +53,14 @@ public class Product implements Serializable {
         this.description = description;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategoria(Category category) {
+        this.category = category;
+    }
+    
     public String getSize() {
         return size;
     }
@@ -59,11 +69,11 @@ public class Product implements Serializable {
         this.size = size;
     }
 
-    public String getString() {
+    public Color getColor() {
         return color;
     }
 
-    public void setString(String color) {
+    public void setColor(Color  color) {
         this.color = color;
     }
 
@@ -113,6 +123,7 @@ public class Product implements Serializable {
     @Override
     public String toString() {
         return "Product{" + "id=" + id + ", description=" + description 
+                + ", category=" + category
                 + ", size=" + size 
                 + ", color=" + color + ", price=" 
                 + price + ", quantity=" 
