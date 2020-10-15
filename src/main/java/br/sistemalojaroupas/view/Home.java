@@ -4,12 +4,18 @@ package br.sistemalojaroupas.view;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 /**
  *
@@ -54,10 +60,10 @@ public class Home extends javax.swing.JFrame {
     public void changeSizeHead(JPanel pnl, Dimension dim){
         pnl.setPreferredSize(dim);
     }
-  
+
     public Home() {
-        initComponents();
-        
+        initComponents();       
+               
         panelsCardLayout = (CardLayout) CollectionCard.getLayout();
         
         //adicionando todos os panels que funcionam como botões no menu principal
@@ -66,7 +72,7 @@ public class Home extends javax.swing.JFrame {
         menuButtonsList.add(menu_sale);
         menuButtonsList.add(menu_settings);
         menuButtonsList.add(menu_employess);
-        menuButtonsList.add(menu_product);
+        menuButtonsList.add(menu_product);        
     }
     
     @SuppressWarnings("unchecked")
@@ -110,8 +116,6 @@ public class Home extends javax.swing.JFrame {
         btn_settings = new javax.swing.JLabel();
         icon_settings = new javax.swing.JLabel();
         CollectionCard = new javax.swing.JPanel();
-        Card_Home = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         Card_Products = new javax.swing.JPanel();
         btn_registerProduct = new javax.swing.JLabel();
         btn_removeProduct = new javax.swing.JLabel();
@@ -167,6 +171,18 @@ public class Home extends javax.swing.JFrame {
         searchSale = new javax.swing.JTextField();
         btn_CleanSearch = new javax.swing.JLabel();
         btn_DeleteSale2 = new javax.swing.JLabel();
+        Card_Home = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         jTextField9.setText("jTextField9");
 
@@ -555,42 +571,17 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(menu_customers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(menu_settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
             .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MenusLayout.createSequentialGroup()
                     .addGap(89, 89, 89)
                     .addComponent(menu_home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(509, Short.MAX_VALUE)))
+                    .addContainerGap(533, Short.MAX_VALUE)))
         );
 
         Body.setLeftComponent(Menus);
 
         CollectionCard.setLayout(new java.awt.CardLayout());
-
-        Card_Home.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CARD HOME");
-
-        javax.swing.GroupLayout Card_HomeLayout = new javax.swing.GroupLayout(Card_Home);
-        Card_Home.setLayout(Card_HomeLayout);
-        Card_HomeLayout.setHorizontalGroup(
-            Card_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Card_HomeLayout.createSequentialGroup()
-                .addGap(333, 333, 333)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(713, Short.MAX_VALUE))
-        );
-        Card_HomeLayout.setVerticalGroup(
-            Card_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Card_HomeLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(439, Short.MAX_VALUE))
-        );
-
-        CollectionCard.add(Card_Home, "cardHome");
 
         Card_Products.setBackground(new java.awt.Color(255, 255, 255));
         Card_Products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1035,7 +1026,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_CustomersLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(463, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Customers, "cardCustomers");
@@ -1060,7 +1051,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_SettingsLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(463, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Settings, "cardSettings");
@@ -1163,10 +1154,71 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(btn_SearchSale))
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Sales, "cardSales");
+
+        Card_Home.setBackground(new java.awt.Color(255, 255, 255));
+        Card_Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("NOVO CLIENTE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        Card_Home.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 133, 132));
+
+        jButton2.setBackground(new java.awt.Color(204, 204, 204));
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setText("ENTRADA PROD");
+        Card_Home.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 133, 132));
+
+        jButton3.setBackground(new java.awt.Color(204, 204, 204));
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jButton3.setText("NOVA VENDA");
+        Card_Home.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 133, 132));
+
+        jButton4.setBackground(new java.awt.Color(204, 204, 204));
+        jButton4.setForeground(new java.awt.Color(0, 0, 0));
+        jButton4.setText("CONSULTA PROD");
+        Card_Home.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 133, 132));
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("F. Mensal");
+        Card_Home.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, -1, -1));
+
+        jFormattedTextField1.setBackground(new java.awt.Color(204, 204, 204));
+        jFormattedTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        Card_Home.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, 100, -1));
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Ticket Médio");
+        Card_Home.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 610, -1, -1));
+
+        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        Card_Home.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 640, 110, -1));
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Qtd. Vendas");
+        Card_Home.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, -1, -1));
+
+        jTextField2.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
+        Card_Home.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 640, 110, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/welcome_Test.png"))); // NOI18N
+        Card_Home.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 339, 53));
+
+        CollectionCard.add(Card_Home, "cardHome");
 
         Body.setRightComponent(CollectionCard);
 
@@ -1384,6 +1436,10 @@ public class Home extends javax.swing.JFrame {
         setMenuButtonsColor(menu_sale);
     }//GEN-LAST:event_menu_saleMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -1476,14 +1532,24 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel icon_products;
     private javax.swing.JLabel icon_sales;
     private javax.swing.JLabel icon_settings;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel menu_customers;
     private javax.swing.JPanel menu_employess;
