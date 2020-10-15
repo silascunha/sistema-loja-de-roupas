@@ -162,11 +162,13 @@ public class Home extends javax.swing.JFrame {
         Card_Sales = new javax.swing.JPanel();
         btn_NewSale = new javax.swing.JLabel();
         btn_SearchSale = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        salesTable = new javax.swing.JTable();
         searchSale = new javax.swing.JTextField();
         btn_CleanSearch = new javax.swing.JLabel();
-        btn_DeleteSale2 = new javax.swing.JLabel();
+        btn_DeleteSale = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        salesTable = new javax.swing.JTable();
 
         jTextField9.setText("jTextField9");
 
@@ -555,12 +557,12 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(menu_customers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(menu_settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
             .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MenusLayout.createSequentialGroup()
                     .addGap(89, 89, 89)
                     .addComponent(menu_home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(509, Short.MAX_VALUE)))
+                    .addContainerGap(533, Short.MAX_VALUE)))
         );
 
         Body.setLeftComponent(Menus);
@@ -587,7 +589,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_HomeLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(463, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Home, "cardHome");
@@ -1006,7 +1008,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_CustomersLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(463, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Customers, "cardCustomers");
@@ -1031,7 +1033,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_SettingsLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(463, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Settings, "cardSettings");
@@ -1052,13 +1054,34 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        btn_CleanSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png"))); // NOI18N
+        btn_CleanSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_CleanSearchMouseClicked(evt);
+            }
+        });
+
+        btn_DeleteSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png"))); // NOI18N
+        btn_DeleteSale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_DeleteSaleMouseClicked(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(108, 81, 233));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("HISTÓRICO DE VENDAS");
+
         salesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", "", "", "12/10/2020", ""},
-                {"", "", "", "30/12/2018", ""},
-                {"", "", "", "11/05/1989", ""},
-                {"", "", "", "07/09/2015", ""},
-                {"", "", "", "11/10/2020", ""},
+                {"", "", "", "", null},
+                {"", "", "", "", null},
+                {"", "", "", "", null},
+                {"", "", "", "", null},
+                {"", "", "", "", null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -1076,65 +1099,83 @@ public class Home extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Quantidade", "Total", "Data", "CPF Cliente"
+                "Código da Venda", "CPF Cliente", "Total", "Vendedor", "Data"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         salesTable.setGridColor(new java.awt.Color(204, 204, 204));
+        salesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salesTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(salesTable);
 
-        btn_CleanSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limpar.png"))); // NOI18N
-        btn_CleanSearch.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_CleanSearchMouseClicked(evt);
-            }
-        });
-
-        btn_DeleteSale2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png"))); // NOI18N
-        btn_DeleteSale2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_DeleteSale2MouseClicked(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout Card_SalesLayout = new javax.swing.GroupLayout(Card_Sales);
         Card_Sales.setLayout(Card_SalesLayout);
         Card_SalesLayout.setHorizontalGroup(
             Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Card_SalesLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
                 .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Card_SalesLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 843, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(Card_SalesLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
                         .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Card_SalesLayout.createSequentialGroup()
                                 .addComponent(searchSale, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btn_SearchSale)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btn_CleanSearch))
                             .addGroup(Card_SalesLayout.createSequentialGroup()
                                 .addComponent(btn_NewSale)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_DeleteSale2)))
-                        .addContainerGap(370, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_DeleteSale))))
+                    .addGroup(Card_SalesLayout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         Card_SalesLayout.setVerticalGroup(
             Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Card_SalesLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(87, 87, 87)
                 .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_NewSale)
-                    .addComponent(btn_DeleteSale2))
-                .addGap(34, 34, 34)
-                .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchSale, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_CleanSearch)
-                    .addComponent(btn_SearchSale))
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(btn_DeleteSale))
+                .addGap(18, 18, 18)
+                .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_SearchSale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_CleanSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchSale))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         CollectionCard.add(Card_Sales, "cardSales");
@@ -1307,7 +1348,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveEmployeeMouseClicked
 
     private void btnEditEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditEmployeeMouseClicked
-        // TODO add your handling code here:
+        new Register_New_Employee(this, true).setVisible(true);
     }//GEN-LAST:event_btnEditEmployeeMouseClicked
 
     private void btnDeleteEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeMouseClicked
@@ -1346,14 +1387,21 @@ public class Home extends javax.swing.JFrame {
         searchSale.setText("");
     }//GEN-LAST:event_btn_CleanSearchMouseClicked
 
-    private void btn_DeleteSale2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeleteSale2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_DeleteSale2MouseClicked
+    private void btn_DeleteSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeleteSaleMouseClicked
+        int del;
+        del = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir registro de venda?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if(del == 0){
+            } 
+    }//GEN-LAST:event_btn_DeleteSaleMouseClicked
 
     private void menu_saleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_saleMouseClicked
         panelsCardLayout.show(CollectionCard, "cardSales");
         setMenuButtonsColor(menu_sale);
     }//GEN-LAST:event_menu_saleMouseClicked
+
+    private void salesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesTableMouseClicked
+       new Sale_Information().setVisible(true);
+    }//GEN-LAST:event_salesTableMouseClicked
 
 
     /**
@@ -1425,7 +1473,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel btnSaveEmployee;
     private javax.swing.JLabel btn_CleanSearch;
     private javax.swing.JLabel btn_Close;
-    private javax.swing.JLabel btn_DeleteSale2;
+    private javax.swing.JLabel btn_DeleteSale;
     private javax.swing.JLabel btn_Max;
     private javax.swing.JLabel btn_Min;
     private javax.swing.JLabel btn_NewSale;
@@ -1450,9 +1498,11 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField9;
