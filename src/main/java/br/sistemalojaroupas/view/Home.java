@@ -685,7 +685,6 @@ public class Home extends javax.swing.JFrame {
         Card_Employees.setBackground(new java.awt.Color(255, 255, 255));
         Card_Employees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        table_Employees.setBackground(new java.awt.Color(255, 255, 255));
         table_Employees.setForeground(new java.awt.Color(0, 0, 51));
         table_Employees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -743,12 +742,10 @@ public class Home extends javax.swing.JFrame {
         Panel_Employees.setBackground(new java.awt.Color(255, 255, 255));
 
         Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Name.setForeground(new java.awt.Color(0, 0, 0));
         Name.setText("NOME");
 
         txtEmployeeName.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeName.setForeground(new java.awt.Color(0, 0, 0));
         txtEmployeeName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmployeeNameActionPerformed(evt);
@@ -756,32 +753,25 @@ public class Home extends javax.swing.JFrame {
         });
 
         BirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        BirthDate.setForeground(new java.awt.Color(0, 0, 0));
         BirthDate.setText("DATA NASC.");
 
         Address.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Address.setForeground(new java.awt.Color(0, 0, 0));
         Address.setText("ENDEREÇO");
 
         AdditionalAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        AdditionalAddress.setForeground(new java.awt.Color(0, 0, 0));
         AdditionalAddress.setText("COMPLEMENTO");
 
         Job.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Job.setForeground(new java.awt.Color(0, 0, 0));
         Job.setText("CARGO");
 
         CPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        CPF.setForeground(new java.awt.Color(0, 0, 0));
         CPF.setText("CPF");
 
         Neighbourhood.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Neighbourhood.setForeground(new java.awt.Color(0, 0, 0));
         Neighbourhood.setText("BAIRRO");
 
         txtEmployeeBirthDate.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeBirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeBirthDate.setForeground(new java.awt.Color(0, 0, 0));
         txtEmployeeBirthDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmployeeBirthDateActionPerformed(evt);
@@ -790,24 +780,19 @@ public class Home extends javax.swing.JFrame {
 
         txtEmployeeCPF.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeCPF.setForeground(new java.awt.Color(0, 0, 0));
 
         State.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        State.setForeground(new java.awt.Color(0, 0, 0));
         State.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         State.setText("UF");
 
         CEP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        CEP.setForeground(new java.awt.Color(0, 0, 0));
         CEP.setText("CEP");
 
         HouseNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        HouseNumber.setForeground(new java.awt.Color(0, 0, 0));
         HouseNumber.setText("Nº");
 
         txtEmployeeCEP01.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCEP01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeCEP01.setForeground(new java.awt.Color(0, 0, 0));
         txtEmployeeCEP01.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmployeeCEP01ActionPerformed(evt);
@@ -816,7 +801,6 @@ public class Home extends javax.swing.JFrame {
 
         txtEmployeeCEP02.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCEP02.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeCEP02.setForeground(new java.awt.Color(0, 0, 0));
         txtEmployeeCEP02.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmployeeCEP02ActionPerformed(evt);
@@ -824,12 +808,10 @@ public class Home extends javax.swing.JFrame {
         });
 
         CPFSeparator.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        CPFSeparator.setForeground(new java.awt.Color(0, 0, 0));
         CPFSeparator.setText("-");
 
         txtEmployeeAddress.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeAddress.setForeground(new java.awt.Color(0, 0, 0));
         txtEmployeeAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmployeeAddressActionPerformed(evt);
@@ -837,48 +819,37 @@ public class Home extends javax.swing.JFrame {
         });
 
         City.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        City.setForeground(new java.awt.Color(0, 0, 0));
         City.setText("CIDADE");
 
         txtEmployeeAddAddress.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeAddAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeAddAddress.setForeground(new java.awt.Color(0, 0, 0));
 
         txtEmployeeCity.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeCity.setForeground(new java.awt.Color(0, 0, 0));
 
         txtEmployeeState.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeState.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeState.setForeground(new java.awt.Color(0, 0, 0));
 
         txtEmployeeAddressNum.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeAddressNum.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeAddressNum.setForeground(new java.awt.Color(0, 0, 0));
 
         Phone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Phone.setForeground(new java.awt.Color(0, 0, 0));
         Phone.setText("TELEFONE");
 
         txtEmployeeJob.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeJob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeJob.setForeground(new java.awt.Color(0, 0, 0));
 
         txtEmployeePhone.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeePhone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeePhone.setForeground(new java.awt.Color(0, 0, 0));
 
         Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Email.setForeground(new java.awt.Color(0, 0, 0));
         Email.setText("E-MAIL");
 
         txtEmployeeEmail.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeEmail.setForeground(new java.awt.Color(0, 0, 0));
 
         txtEmployeeNeigh.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeNeigh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeNeigh.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout Panel_EmployeesLayout = new javax.swing.GroupLayout(Panel_Employees);
         Panel_Employees.setLayout(Panel_EmployeesLayout);

@@ -31,7 +31,6 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-70,0,0,5,35"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -1063,9 +1062,6 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="table_Employees">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="33" green="0" red="0" type="rgb"/>
                         </Property>
@@ -1321,9 +1317,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="NOME"/>
                       </Properties>
                     </Component>
@@ -1335,9 +1328,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmployeeNameActionPerformed"/>
@@ -1348,9 +1338,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="DATA NASC."/>
                       </Properties>
                     </Component>
@@ -1358,9 +1345,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="ENDERE&#xc7;O"/>
                       </Properties>
@@ -1370,9 +1354,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="COMPLEMENTO"/>
                       </Properties>
                     </Component>
@@ -1380,9 +1361,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="CARGO"/>
                       </Properties>
@@ -1392,9 +1370,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="CPF"/>
                       </Properties>
                     </Component>
@@ -1402,9 +1377,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="BAIRRO"/>
                       </Properties>
@@ -1416,9 +1388,6 @@
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -1433,18 +1402,12 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="State">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
                         <Property name="text" type="java.lang.String" value="UF"/>
@@ -1455,9 +1418,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="CEP"/>
                       </Properties>
                     </Component>
@@ -1465,9 +1425,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="N&#xba;"/>
                       </Properties>
@@ -1479,9 +1436,6 @@
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -1496,9 +1450,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmployeeCEP02ActionPerformed"/>
@@ -1508,9 +1459,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="-"/>
                       </Properties>
@@ -1523,9 +1471,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmployeeAddressActionPerformed"/>
@@ -1535,9 +1480,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="CIDADE"/>
                       </Properties>
@@ -1550,9 +1492,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEmployeeCity">
@@ -1562,9 +1501,6 @@
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -1576,9 +1512,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEmployeeAddressNum">
@@ -1589,18 +1522,12 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="Phone">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="TELEFONE"/>
                       </Properties>
@@ -1613,9 +1540,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEmployeePhone">
@@ -1626,18 +1550,12 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="Email">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="E-MAIL"/>
                       </Properties>
@@ -1650,9 +1568,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEmployeeNeigh">
@@ -1662,9 +1577,6 @@
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                       </Properties>
                     </Component>
