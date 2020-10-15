@@ -12,7 +12,6 @@ br\sistemalojaroupas\model\entities\Product.class
 br\sistemalojaroupas\model\dao\ProductDao.class
 br\sistemalojaroupas\view\Home$17.class
 br\sistemalojaroupas\view\Register_New_Employee$4$1.class
-br\sistemalojaroupas\view\Home$32.class
 br\sistemalojaroupas\view\Home$7.class
 br\sistemalojaroupas\model\entities\Color.class
 br\sistemalojaroupas\view\Register_New_Employee$2.class
@@ -28,6 +27,7 @@ br\sistemalojaroupas\view\Login.class
 br\sistemalojaroupas\view\Register_New_Products$3.class
 br\sistemalojaroupas\view\Home$18.class
 br\sistemalojaroupas\view\Insert_Product$1.class
+br\sistemalojaroupas\view\Login$3.class
 br\sistemalojaroupas\view\Register_New_Employee$3.class
 br\sistemalojaroupas\db\DB.class
 br\sistemalojaroupas\view\Home.class
@@ -46,6 +46,7 @@ br\sistemalojaroupas\view\Home$19.class
 br\sistemalojaroupas\view\Home$22.class
 br\sistemalojaroupas\view\Register_New_Products$1.class
 br\sistemalojaroupas\view\Home$5.class
+br\sistemalojaroupas\view\Login$2.class
 br\sistemalojaroupas\view\Home$9.class
 br\sistemalojaroupas\view\Home$10.class
 br\sistemalojaroupas\view\Home$25.class
