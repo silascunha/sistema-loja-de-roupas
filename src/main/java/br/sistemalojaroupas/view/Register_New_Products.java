@@ -5,20 +5,23 @@
  */
 package br.sistemalojaroupas.view;
 
+import java.awt.Component;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author lukas
  */
 public class Register_New_Products extends javax.swing.JDialog {
     
-    public void clearAllFields(){
-        txt_nameProduct.setText("");
-        txt_colorProduct.setText("");
-        txt_price_purchase.setText("");
-        txt_price_sale.setText("");
-        txt_amount.setText("");
-        cb_SizeProduct.setSelectedIndex(-1);
-        txt_nameProduct.requestFocus();
+    public void clearFields(JPanel pn){
+        
+        for (Component c : pn.getComponents()) {
+            if (c instanceof JComboBox) ((JComboBox)c).setSelectedIndex(-1);
+            if (c instanceof JTextField) ((JTextField)c).setText("");
+        }
     } 
     /**
      * Creates new form Register_Products
@@ -166,7 +169,7 @@ public class Register_New_Products extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_CancelProductMouseClicked
 
     private void btn_ClearProduct1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ClearProduct1MouseClicked
-        clearAllFields();
+        clearFields(pnl_Background);
     }//GEN-LAST:event_btn_ClearProduct1MouseClicked
 
     /**

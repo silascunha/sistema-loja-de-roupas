@@ -57,7 +57,7 @@ public class Product implements Serializable {
         return category;
     }
 
-    public void setCategoria(Category category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
     

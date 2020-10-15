@@ -6,13 +6,19 @@
 package br.sistemalojaroupas.model.entities;
 
 import java.io.Serializable;
+import org.dizitart.no2.IndexType;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
+import org.dizitart.no2.objects.Index;
+import org.dizitart.no2.objects.Indices;
 
 /**
  *
  * @author Marquinhos
  */
+@Indices(
+    @Index(value = "category", type = IndexType.Unique)
+)
 public class Category implements Serializable{
     private static long serialVersionUID = 1L;
     
@@ -45,6 +51,6 @@ public class Category implements Serializable{
     
     @Override
     public String toString() {
-        return "Category{" + "id=" + id + ", category=" + category + '}';
+        return category;
     }
 }
