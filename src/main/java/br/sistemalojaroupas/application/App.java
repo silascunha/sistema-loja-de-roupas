@@ -9,8 +9,6 @@ import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.entities.Product;
 import java.util.List;
-import org.dizitart.no2.NitriteId;
-import org.dizitart.no2.objects.filters.ObjectFilters;
 
 
 public class App {
@@ -20,24 +18,17 @@ public class App {
     
     public static void main(String[] args) {
         DB.start();
-        ProductDao.start();
-
-        System.out.println();
-
-        //TESTE DE INSERÇÃO
-        /*
-        Product product = new Product("Short do Flamengo Bordado", "P", "Branco", 40.0, 2);
-        ProductDao.insert(product);
-        System.out.println("Produto inserido! Novo ID: " + product.getId());
-        */
         
-        //TESTE DE LISTAGEM DOS PRODUTOS
-        System.out.println("LISTA DE PRODUTOS REGISTRADOS:");
+        //Color color = new Color("Vermelha");
+        //Category category = new Category("Camisas");
+        
+        //Product produto = new Product("Camisa Lacoste", category, "G", color, 45.0, 1);
+        
+        //ProductDao.insert(produto);
+        
         List<Product> list = ProductDao.findAll();
-
-        for(Product p : list) {
-            System.out.println(p);
-        }
+        
+        list.forEach(System.out::println);
         
         DB.close();
     }

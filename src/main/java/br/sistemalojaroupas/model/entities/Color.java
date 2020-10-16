@@ -20,6 +20,17 @@ public class Color implements Serializable {
     @Id
     private NitriteId id;
     private String name;
-    
 
+    public Color() {
+    }
+
+    public Color(String name) {
+        this.name = name;
+    }
+
+    
+    @Override
+    public String toString() {
+        return name;
+    }
 }

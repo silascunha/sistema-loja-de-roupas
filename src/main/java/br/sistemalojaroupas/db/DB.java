@@ -5,6 +5,8 @@
  */
 package br.sistemalojaroupas.db;
 
+import br.sistemalojaroupas.model.dao.CategoryDao;
+import br.sistemalojaroupas.model.dao.ProductDao;
 import org.dizitart.no2.Nitrite;
 
 /**
@@ -25,6 +27,9 @@ public class DB {
                     .compressed()
                     .filePath("dataBase.db")
                     .openOrCreate("dev", "73313391");
+            ProductDao.start();
+            CategoryDao.start();
+            //ColorDao.start();
         }
     }
     
@@ -58,4 +63,5 @@ public class DB {
     public static boolean isClosed() {
         return db.isClosed();
     }
+    
 }
