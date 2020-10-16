@@ -71,7 +71,7 @@ public class Home extends javax.swing.JFrame {
         menuButtonsList.add(menu_customers);
         menuButtonsList.add(menu_sale);
         menuButtonsList.add(menu_settings);
-        menuButtonsList.add(menu_employess);
+        menuButtonsList.add(menu_employees);
         menuButtonsList.add(menu_product);        
     }
     
@@ -106,7 +106,7 @@ public class Home extends javax.swing.JFrame {
         menu_product = new javax.swing.JPanel();
         btn_products = new javax.swing.JLabel();
         icon_products = new javax.swing.JLabel();
-        menu_employess = new javax.swing.JPanel();
+        menu_employees = new javax.swing.JPanel();
         btn_employees = new javax.swing.JLabel();
         icon_employees = new javax.swing.JLabel();
         menu_customers = new javax.swing.JPanel();
@@ -410,6 +410,11 @@ public class Home extends javax.swing.JFrame {
         menu_sale.add(icon_sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menu_home.setBackground(new java.awt.Color(0, 0, 51));
+        menu_home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_homeMouseClicked(evt);
+            }
+        });
         menu_home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_home.setBackground(new java.awt.Color(255, 255, 255));
@@ -417,11 +422,6 @@ public class Home extends javax.swing.JFrame {
         btn_home.setForeground(new java.awt.Color(255, 255, 255));
         btn_home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_home.setText("Início");
-        btn_home.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_homeMouseClicked(evt);
-            }
-        });
         menu_home.add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 50));
 
         icon_home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -429,15 +429,15 @@ public class Home extends javax.swing.JFrame {
         icon_home.setMaximumSize(new java.awt.Dimension(70, 50));
         icon_home.setMinimumSize(new java.awt.Dimension(70, 50));
         icon_home.setPreferredSize(new java.awt.Dimension(70, 50));
-        icon_home.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                icon_homeMouseClicked(evt);
-            }
-        });
         menu_home.add(icon_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menu_product.setBackground(new java.awt.Color(0, 0, 51));
         menu_product.setPreferredSize(new java.awt.Dimension(200, 50));
+        menu_product.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_productMouseClicked(evt);
+            }
+        });
         menu_product.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_products.setBackground(new java.awt.Color(255, 255, 255));
@@ -445,11 +445,6 @@ public class Home extends javax.swing.JFrame {
         btn_products.setForeground(new java.awt.Color(255, 255, 255));
         btn_products.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_products.setText("Produtos");
-        btn_products.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_productsMouseClicked(evt);
-            }
-        });
         menu_product.add(btn_products, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 50));
 
         icon_products.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -457,43 +452,38 @@ public class Home extends javax.swing.JFrame {
         icon_products.setMaximumSize(new java.awt.Dimension(70, 50));
         icon_products.setMinimumSize(new java.awt.Dimension(70, 50));
         icon_products.setPreferredSize(new java.awt.Dimension(70, 50));
-        icon_products.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                icon_productsMouseClicked(evt);
-            }
-        });
         menu_product.add(icon_products, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        menu_employess.setBackground(new java.awt.Color(0, 0, 51));
-        menu_employess.setPreferredSize(new java.awt.Dimension(200, 50));
-        menu_employess.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menu_employees.setBackground(new java.awt.Color(0, 0, 51));
+        menu_employees.setPreferredSize(new java.awt.Dimension(200, 50));
+        menu_employees.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_employeesMouseClicked(evt);
+            }
+        });
+        menu_employees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_employees.setBackground(new java.awt.Color(255, 255, 255));
         btn_employees.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_employees.setForeground(new java.awt.Color(255, 255, 255));
         btn_employees.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_employees.setText("Funcionários");
-        btn_employees.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_employeesMouseClicked(evt);
-            }
-        });
-        menu_employess.add(btn_employees, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 50));
+        menu_employees.add(btn_employees, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 50));
 
         icon_employees.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         icon_employees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_users.png"))); // NOI18N
         icon_employees.setMaximumSize(new java.awt.Dimension(70, 50));
         icon_employees.setMinimumSize(new java.awt.Dimension(70, 50));
         icon_employees.setPreferredSize(new java.awt.Dimension(70, 50));
-        icon_employees.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                icon_employeesMouseClicked(evt);
-            }
-        });
-        menu_employess.add(icon_employees, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        menu_employees.add(icon_employees, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menu_customers.setBackground(new java.awt.Color(0, 0, 51));
         menu_customers.setPreferredSize(new java.awt.Dimension(200, 50));
+        menu_customers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_customersMouseClicked(evt);
+            }
+        });
         menu_customers.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_customers.setBackground(new java.awt.Color(255, 255, 255));
@@ -501,11 +491,6 @@ public class Home extends javax.swing.JFrame {
         btn_customers.setForeground(new java.awt.Color(255, 255, 255));
         btn_customers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_customers.setText("Clientes");
-        btn_customers.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_customersMouseClicked(evt);
-            }
-        });
         menu_customers.add(btn_customers, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 50));
 
         icon_customers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -513,15 +498,15 @@ public class Home extends javax.swing.JFrame {
         icon_customers.setMaximumSize(new java.awt.Dimension(70, 50));
         icon_customers.setMinimumSize(new java.awt.Dimension(70, 50));
         icon_customers.setPreferredSize(new java.awt.Dimension(70, 50));
-        icon_customers.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                icon_customersMouseClicked(evt);
-            }
-        });
         menu_customers.add(icon_customers, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menu_settings.setBackground(new java.awt.Color(0, 0, 51));
         menu_settings.setPreferredSize(new java.awt.Dimension(200, 50));
+        menu_settings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_settingsMouseClicked(evt);
+            }
+        });
         menu_settings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_settings.setBackground(new java.awt.Color(255, 255, 255));
@@ -529,11 +514,6 @@ public class Home extends javax.swing.JFrame {
         btn_settings.setForeground(new java.awt.Color(255, 255, 255));
         btn_settings.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_settings.setText("Configurações");
-        btn_settings.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_settingsMouseClicked(evt);
-            }
-        });
         menu_settings.add(btn_settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 50));
 
         icon_settings.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -541,11 +521,6 @@ public class Home extends javax.swing.JFrame {
         icon_settings.setMaximumSize(new java.awt.Dimension(70, 50));
         icon_settings.setMinimumSize(new java.awt.Dimension(70, 50));
         icon_settings.setPreferredSize(new java.awt.Dimension(70, 50));
-        icon_settings.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                icon_settingsMouseClicked(evt);
-            }
-        });
         menu_settings.add(icon_settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout MenusLayout = new javax.swing.GroupLayout(Menus);
@@ -554,7 +529,7 @@ public class Home extends javax.swing.JFrame {
             MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(menu_sale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(menu_product, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(menu_employess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menu_employees, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(menu_customers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(menu_settings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -568,7 +543,7 @@ public class Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(menu_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(menu_employess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menu_employees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(menu_customers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1313,76 +1288,6 @@ public class Home extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_ShowHideMenuMouseClicked
 
-    private void btn_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_homeMouseClicked
-        changeColor(menu_home, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_employess, new Color(0,0,51));
-        changeColor(menu_product, new Color(0,0,51)); changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51)); 
-        
-        panelsCardLayout.show(CollectionCard, "cardHome");
-    }//GEN-LAST:event_btn_homeMouseClicked
-
-    private void icon_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_homeMouseClicked
-        changeColor(menu_home, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_employess, new Color(0,0,51));
-        changeColor(menu_product, new Color(0,0,51)); changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
-        
-        panelsCardLayout.show(CollectionCard, "cardHome");
-    }//GEN-LAST:event_icon_homeMouseClicked
-
-    private void btn_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_productsMouseClicked
-        changeColor(menu_product, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_employess, new Color(0,0,51));
-        changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
-        
-        panelsCardLayout.show(CollectionCard, "cardProducts");
-    }//GEN-LAST:event_btn_productsMouseClicked
-
-    private void icon_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_productsMouseClicked
-        changeColor(menu_product, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_employess, new Color(0,0,51));
-        changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
-        
-        panelsCardLayout.show(CollectionCard, "cardProducts");
-    }//GEN-LAST:event_icon_productsMouseClicked
-
-    private void btn_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_employeesMouseClicked
-        changeColor(menu_employess, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_product, new Color(0,0,51));
-        changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
-        
-        panelsCardLayout.show(CollectionCard, "cardEmployees");
-    }//GEN-LAST:event_btn_employeesMouseClicked
-
-    private void icon_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_employeesMouseClicked
-        changeColor(menu_employess, new Color(108, 81, 233)); changeColor(menu_customers, new Color(0,0,51)); changeColor(menu_product, new Color(0,0,51));
-        changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
-        
-        panelsCardLayout.show(CollectionCard, "cardEmployees");
-    }//GEN-LAST:event_icon_employeesMouseClicked
-
-    private void btn_customersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_customersMouseClicked
-        changeColor(menu_customers, new Color(108, 81, 233)); changeColor(menu_employess, new Color(0,0,51)); changeColor(menu_product, new Color(0,0,51));
-        changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
-        
-        panelsCardLayout.show(CollectionCard, "cardCustomers");
-    }//GEN-LAST:event_btn_customersMouseClicked
-
-    private void icon_customersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_customersMouseClicked
-        changeColor(menu_customers, new Color(108, 81, 233)); changeColor(menu_employess, new Color(0,0,51)); changeColor(menu_product, new Color(0,0,51));
-        changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_settings, new Color(0,0,51));
-        
-        panelsCardLayout.show(CollectionCard, "cardCustomers");
-    }//GEN-LAST:event_icon_customersMouseClicked
-
-    private void btn_settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_settingsMouseClicked
-        changeColor(menu_settings, new Color(108, 81, 233)); changeColor(menu_employess, new Color(0,0,51)); changeColor(menu_product, new Color(0,0,51));
-        changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_customers, new Color(0,0,51));
-        
-        panelsCardLayout.show(CollectionCard, "cardSettings");
-    }//GEN-LAST:event_btn_settingsMouseClicked
-
-    private void icon_settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_settingsMouseClicked
-        changeColor(menu_settings, new Color(108, 81, 233)); changeColor(menu_employess, new Color(0,0,51)); changeColor(menu_product, new Color(0,0,51));
-        changeColor(menu_sale, new Color(0,0,51)); changeColor(menu_home, new Color(0,0,51)); changeColor(menu_customers, new Color(0,0,51));
-        
-        panelsCardLayout.show(CollectionCard, "cardSettings");
-    }//GEN-LAST:event_icon_settingsMouseClicked
-
     private void btn_addProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseClicked
       new Insert_Product(this, true).setVisible(true);
     }//GEN-LAST:event_btn_addProductMouseClicked
@@ -1458,6 +1363,31 @@ public class Home extends javax.swing.JFrame {
     private void salesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesTableMouseClicked
        new Sale_Information().setVisible(true);
     }//GEN-LAST:event_salesTableMouseClicked
+
+    private void menu_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_homeMouseClicked
+        panelsCardLayout.show(CollectionCard, "cardHome");
+        setMenuButtonsColor(menu_home);
+    }//GEN-LAST:event_menu_homeMouseClicked
+
+    private void menu_productMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_productMouseClicked
+        panelsCardLayout.show(CollectionCard, "cardProducts");
+        setMenuButtonsColor(menu_product);
+    }//GEN-LAST:event_menu_productMouseClicked
+
+    private void menu_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_employeesMouseClicked
+        panelsCardLayout.show(CollectionCard, "cardEmployees");
+        setMenuButtonsColor(menu_employees);
+    }//GEN-LAST:event_menu_employeesMouseClicked
+
+    private void menu_customersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_customersMouseClicked
+        panelsCardLayout.show(CollectionCard, "cardCustomers");
+        setMenuButtonsColor(menu_customers);
+    }//GEN-LAST:event_menu_customersMouseClicked
+
+    private void menu_settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_settingsMouseClicked
+        panelsCardLayout.show(CollectionCard, "cardSettings");
+        setMenuButtonsColor(menu_settings);
+    }//GEN-LAST:event_menu_settingsMouseClicked
 
 
     /**
@@ -1573,7 +1503,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel menu_customers;
-    private javax.swing.JPanel menu_employess;
+    private javax.swing.JPanel menu_employees;
     private javax.swing.JPanel menu_home;
     private javax.swing.JPanel menu_product;
     private javax.swing.JPanel menu_sale;
