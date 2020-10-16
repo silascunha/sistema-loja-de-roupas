@@ -27,39 +27,6 @@ public class Home extends javax.swing.JFrame {
     private List<JPanel> menuButtonsList = new ArrayList<>();
     private CardLayout panelsCardLayout;
     
-    public void changeColor(JPanel pnl, Color cor ){
-        pnl.setBackground(cor);
-    }
-    
-    private void setMenuButtonsColor(JPanel pn1) {
-        
-        pn1.setBackground(new Color(108, 81, 233));
-        
-        for (JPanel pn2 : menuButtonsList) {
-            if (!pn2.equals(pn1)) {
-                pn2.setBackground(new Color(0,0,51));
-            }
-        }
-    }
-    
-    public void resetDefaultColor(JPanel pnl){
-        pnl.setBackground(new Color(108, 81, 233));
-    }
-    public void setDefaultColor(JPanel pnl){
-        pnl.setBackground(new Color(98, 85, 158));
-    }
-    public void showCardLayout(JPanel pnl){
-        pnl.setVisible(true);
-    }
-    public void hideCardLayout(JPanel pnl){
-        pnl.setVisible(false);
-    }
-    public void changeSizeMenu(JSplitPane menu, int size){
-        menu.setDividerLocation(size);
-    }
-    public void changeSizeHead(JPanel pnl, Dimension dim){
-        pnl.setPreferredSize(dim);
-    }
 
     public Home() {
         initComponents();       
@@ -73,6 +40,30 @@ public class Home extends javax.swing.JFrame {
         menuButtonsList.add(menu_settings);
         menuButtonsList.add(menu_employees);
         menuButtonsList.add(menu_product);        
+    }
+    
+    private void setMenuButtonsColor(JPanel pn1) {
+        
+        pn1.setBackground(new Color(108, 81, 233));
+        
+        menuButtonsList.forEach(pn2 -> {
+            if (!pn2.equals(pn1)) pn2.setBackground(new Color(0,0,51));
+        });
+    }
+    
+    public void setDefaultColor(JPanel pnl){
+        pnl.setBackground(new Color(98, 85, 158));
+    }
+    
+    public void resetDefaultColor(JPanel pnl){
+        pnl.setBackground(new Color(108, 81, 233));
+    }
+   
+    public void changeSizeMenu(JSplitPane menu, int size){
+        menu.setDividerLocation(size);
+    }
+    public void changeSizeHead(JPanel pnl, Dimension dim){
+        pnl.setPreferredSize(dim);
     }
     
     @SuppressWarnings("unchecked")
@@ -1217,7 +1208,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btn_CloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CloseMouseEntered
         // color red
-        changeColor(pnl_Close, new Color(232, 17, 35) );
+        pnl_Close.setBackground(new Color(232, 17, 35));
     }//GEN-LAST:event_btn_CloseMouseEntered
 
     private void btn_CloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CloseMouseExited
