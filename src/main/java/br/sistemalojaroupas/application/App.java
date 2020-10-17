@@ -9,6 +9,7 @@ import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.entities.Product;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class App {
@@ -17,12 +18,17 @@ public class App {
     enquanto não há interação com a interface grafica */
     
     public static void main(String[] args) {
-        DB.start();
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        String str2 = sc.next();
         
-        List<Product> list = ProductDao.findAll();
+        if (str.equals(str2)) {
+            System.out.println("É igual");
+        }
+        else {
+            System.out.println("Não é igual");
+        }
         
-        list.forEach(System.out::println);
-        
-        DB.close();
+        sc.close();
     }
 }

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package br.sistemalojaroupas.view.test;
+package br.sistemalojaroupas.view.util;
 
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.entities.Product;

@@ -5,6 +5,8 @@
  */
 package br.sistemalojaroupas.view;
 
+
+import br.sistemalojaroupas.view.util.ComboBoxRenderer;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -22,6 +24,7 @@ public class Insert_Product extends javax.swing.JDialog {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
         pnl_background.setBackground(new Color(0,0,0,0));
+        cb_size.setRenderer(new ComboBoxRenderer());
     }
 
     /**
@@ -177,7 +180,8 @@ public class Insert_Product extends javax.swing.JDialog {
         pnl_background.add(txt_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 60, 30));
 
         cb_size.setBackground(new java.awt.Color(108, 81, 233));
-        cb_size.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "PP", "P", "M", "G", "GG" }));
+        cb_size.setForeground(new java.awt.Color(255, 255, 255));
+        cb_size.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "PP", "P", "M", "G", "GG" }));
         pnl_background.add(cb_size, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 90, 30));
 
         jLabel6.setBackground(new java.awt.Color(59, 44, 150));

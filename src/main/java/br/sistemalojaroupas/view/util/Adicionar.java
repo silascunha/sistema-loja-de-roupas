@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.sistemalojaroupas.view.test;
+package br.sistemalojaroupas.view.util;
 
 import br.sistemalojaroupas.model.dao.CategoryDao;
 import br.sistemalojaroupas.model.dao.ColorDao;
@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Locale;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.border.Border;
 import org.dizitart.no2.NitriteId;
 
 /**
@@ -29,6 +30,8 @@ public class Adicionar extends javax.swing.JDialog {
     public Adicionar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        comboCategoria.setRenderer(new ComboBoxRenderer());
+        comboCategoria.setBackground(new java.awt.Color(0, 0, 51));
         atualizaComboBox(CategoryDao.findAll(), comboCategoria);
         atualizaComboBox(ColorDao.findAll(), comboCor);
     }
@@ -89,6 +92,7 @@ public class Adicionar extends javax.swing.JDialog {
 
         jLabel5.setText("Categoria:");
 
+        comboCategoria.setForeground(new java.awt.Color(255, 255, 255));
         comboCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCategoriaActionPerformed(evt);
@@ -139,16 +143,12 @@ public class Adicionar extends javax.swing.JDialog {
                         .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txtPCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel7))
-                                .addGap(12, 12, 12))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(comboCor, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
+                            .addComponent(jLabel2)
+                            .addComponent(txtPCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel7)
+                            .addComponent(comboCor, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
