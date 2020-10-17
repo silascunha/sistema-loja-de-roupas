@@ -454,7 +454,7 @@
         <Component class="javax.swing.JLabel" name="btn_cancel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\lukas\OneDrive\&#xc1;rea de Trabalho\FrontEnd Vendas\icons\icon_cancelarClaro.png"/>
+              <Image iconType="3" name="/img/icon_cancelarClaro.png"/>
             </Property>
           </Properties>
           <Events>
@@ -471,7 +471,7 @@
         <Component class="javax.swing.JLabel" name="bnt_save">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\lukas\OneDrive\&#xc1;rea de Trabalho\FrontEnd Vendas\icons\icon_salvarClaro.png"/>
+              <Image iconType="3" name="/img/icon_salvarClaro.png"/>
             </Property>
           </Properties>
           <Events>
