@@ -6,6 +6,7 @@
 package br.sistemalojaroupas.model.entities;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 import org.dizitart.no2.NitriteId;
@@ -17,6 +18,8 @@ import org.dizitart.no2.objects.Id;
  */
 public class Product implements Serializable {
     private static long serialVersionUID = 1L;
+    
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
     @Id
     private NitriteId id;
@@ -99,6 +102,11 @@ public class Product implements Serializable {
 
     public Date getDate() {
         return date;
+    }
+    
+    public String getFormattedDate() {
+        String formattedDate = sdf.format(this.date);
+        return formattedDate;
     }
 
     public void setDate(Date date) {

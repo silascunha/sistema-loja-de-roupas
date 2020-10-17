@@ -6,6 +6,11 @@
 
 package br.sistemalojaroupas.view.test;
 
+import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.entities.Product;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author silas
@@ -15,6 +20,27 @@ public class Produtos extends javax.swing.JFrame {
     /** Creates new form Produtos */
     public Produtos() {
         initComponents();
+        atualizaTabela();
+    }
+    
+    public void atualizaTabela() {
+        DefaultTableModel dtm = (DefaultTableModel) tableProdutos.getModel();
+        dtm.setRowCount(0);
+        
+        List<Product> list = ProductDao.findAll();
+        
+        list.forEach(p -> {
+            dtm.addRow(new Object[] {
+                p.getId(),
+                p.getDescription(),
+                p.getSize(),
+                p.getCategory(),
+                p.getCostPrice(),
+                p.getSalePrice(),
+                p.getFormattedDate(),
+                p.getQuantity()
+            });
+        });
     }
 
     /** This method is called from within the constructor to
@@ -28,13 +54,13 @@ public class Produtos extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableProdutos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        buttonAdicionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -50,28 +76,29 @@ public class Produtos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(80);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(80);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(80);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(150);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(180);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(20);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(60);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(6).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(7).setMinWidth(60);
-            jTable1.getColumnModel().getColumn(7).setPreferredWidth(60);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+        tableProdutos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(tableProdutos);
+        if (tableProdutos.getColumnModel().getColumnCount() > 0) {
+            tableProdutos.getColumnModel().getColumn(0).setMinWidth(80);
+            tableProdutos.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tableProdutos.getColumnModel().getColumn(0).setMaxWidth(80);
+            tableProdutos.getColumnModel().getColumn(1).setMinWidth(150);
+            tableProdutos.getColumnModel().getColumn(1).setPreferredWidth(180);
+            tableProdutos.getColumnModel().getColumn(2).setMinWidth(20);
+            tableProdutos.getColumnModel().getColumn(2).setPreferredWidth(60);
+            tableProdutos.getColumnModel().getColumn(2).setMaxWidth(100);
+            tableProdutos.getColumnModel().getColumn(6).setMinWidth(100);
+            tableProdutos.getColumnModel().getColumn(6).setPreferredWidth(100);
+            tableProdutos.getColumnModel().getColumn(6).setMaxWidth(100);
+            tableProdutos.getColumnModel().getColumn(7).setMinWidth(60);
+            tableProdutos.getColumnModel().getColumn(7).setPreferredWidth(60);
+            tableProdutos.getColumnModel().getColumn(7).setMaxWidth(60);
         }
 
-        jButton1.setText("Adicionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonAdicionar.setText("Adicionar");
+        buttonAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonAdicionarActionPerformed(evt);
             }
         });
 
@@ -81,14 +108,14 @@ public class Produtos extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(buttonAdicionar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(buttonAdicionar)
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
@@ -133,9 +160,9 @@ public class Produtos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new Adicionar(null, true).setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
+        new Adicionar(this, true).setVisible(true);
+    }//GEN-LAST:event_buttonAdicionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,11 +200,11 @@ public class Produtos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonAdicionar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tableProdutos;
     // End of variables declaration//GEN-END:variables
 
 }
