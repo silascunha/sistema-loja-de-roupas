@@ -1,6 +1,8 @@
 
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.entities.Product;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,6 +43,27 @@ public class Home extends javax.swing.JFrame {
         menuButtonsList.add(menu_settings);
         menuButtonsList.add(menu_employees);
         menuButtonsList.add(menu_product);        
+    }
+    
+    private void refreshProductsTable() {
+        DefaultTableModel dtm = (DefaultTableModel) table_Products.getModel();
+        dtm.setRowCount(0);
+        
+        List<Product> list = ProductDao.findAll();
+        
+        list.forEach(p -> {
+            dtm.addRow(new Object[] {
+                p.getId(),
+                p.getDescription(),
+                p.getColor(),
+                p.getSize(),
+                p.getCategory(),
+                p.getCostPrice(),
+                p.getSalePrice(),
+                p.getQuantity(),
+                p.getFormattedDate()
+            });
+        });
     }
     
     private void setMenuButtonsColor(JPanel pn1) {
@@ -707,9 +731,22 @@ public class Home extends javax.swing.JFrame {
             new String [] {
                 "Id", "Descrição", "Cor", "Tamanho", "Categoria", "P. Custo", "P. Venda", "Qtd.", "Data entrada"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         table_Products.setGridColor(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(table_Products);
+        if (table_Products.getColumnModel().getColumnCount() > 0) {
+            table_Products.getColumnModel().getColumn(1).setMinWidth(150);
+            table_Products.getColumnModel().getColumn(1).setPreferredWidth(200);
+            table_Products.getColumnModel().getColumn(1).setMaxWidth(250);
+        }
 
         Card_Products.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 910, -1));
 
@@ -1383,6 +1420,8 @@ public class Home extends javax.swing.JFrame {
     private void menu_productMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_productMouseClicked
         panelsCardLayout.show(CollectionCard, "cardProducts");
         setMenuButtonsColor(menu_product);
+        
+        refreshProductsTable();
     }//GEN-LAST:event_menu_productMouseClicked
 
     private void menu_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_employeesMouseClicked
@@ -1456,7 +1495,7 @@ public class Home extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
