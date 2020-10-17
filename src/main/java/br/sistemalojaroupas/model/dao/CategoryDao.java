@@ -6,12 +6,15 @@
 package br.sistemalojaroupas.model.dao;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.entities.Category;
 import java.util.List;
 import org.dizitart.no2.FindOptions;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.SortOrder;
+import org.dizitart.no2.exceptions.NitriteException;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 
 /**
  *
@@ -25,11 +28,23 @@ public class CategoryDao {
     }
     
     public static void insert(Category c) {
-        repCategory.insert(c);
+        try {
+            repCategory.insert(c);
+        } catch (NitriteException e) {
+            throw new DBException(e.getMessage());
+        }
     }
    
     public static void update(Category c) {
-        repCategory.update(c);
+        Category temp = repCategory.find(ObjectFilters.eq("category", c.getCategory()))
+                .firstOrDefault();
+        
+        if (c.equals(temp) || temp == null) {
+            repCategory.update(c);
+        }
+        else {
+            throw new DBException("Essa categoria já existe.");
+        }
     }
     
     public static List<Category> findAll() {
@@ -45,5 +60,10 @@ public class CategoryDao {
     
     public static void remove(Category c) {
         repCategory.remove(c);
+    }
+    
+    public static void removeById(NitriteId id) {
+        Category c = findById(id);
+        remove(c);
     }
 }
