@@ -14,6 +14,7 @@ import br.sistemalojaroupas.model.entities.Product;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import org.dizitart.no2.NitriteId;
 
 /**
@@ -244,7 +245,7 @@ public class Adicionar extends javax.swing.JDialog {
         
         Double pCusto = Double.parseDouble(txtPCusto.getText().replace(',', '.'));
         Double pVenda = Double.parseDouble(txtPVenda.getText().replace(',', '.'));
-
+        
         p.setDescription(txtDescricao.getText());
         p.setCostPrice(pCusto);
         p.setSalePrice(pVenda);
@@ -255,6 +256,9 @@ public class Adicionar extends javax.swing.JDialog {
         
         ProductDao.insert(p);
         System.out.println("INSERIDO");
+        
+        Produtos root = (Produtos) this.getParent();
+        root.atualizaTabela();
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
     /**
