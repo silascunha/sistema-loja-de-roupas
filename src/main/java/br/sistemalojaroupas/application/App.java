@@ -6,7 +6,8 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
-import br.sistemalojaroupas.model.dao.ColorDao;
+import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.entities.Product;
 import java.util.List;
 
 
@@ -17,6 +18,10 @@ public class App {
     
     public static void main(String[] args) {
         DB.start();
+        
+        List<Product> list = ProductDao.findAll();
+        
+        list.forEach(System.out::println);
         
         DB.close();
     }

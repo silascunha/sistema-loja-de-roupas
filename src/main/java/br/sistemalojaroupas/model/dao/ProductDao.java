@@ -47,5 +47,5 @@ public class ProductDao {
     public static void remove(Product p) {
         repProduct.remove(p);
     }
-     
+    
 }

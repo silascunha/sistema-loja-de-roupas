@@ -26,7 +26,7 @@ public class Product implements Serializable {
     private Color color;
     private Double costPrice;
     private Double salePrice;
-    private Date date;
+    private Date date = new Date();
     private int quantity;
     
     public Product() {}
@@ -112,8 +112,6 @@ public class Product implements Serializable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -142,16 +140,9 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", description=" +
-                description +
-                ", category=" +
-                category + ", size=" +
-                size + ", color=" +
-                color + ", costPrice=" +
-                costPrice + ", salePrice=" +
-                salePrice + ", quantity=" + quantity + '}';
+        return "Product{" + "id=" + id + ", description=" + description + ", category=" + category + ", size=" + size + ", color=" + color + ", costPrice=" + costPrice + ", salePrice=" + salePrice + ", date=" + date + ", quantity=" + quantity + '}';
     }
+
+    
     
 }
