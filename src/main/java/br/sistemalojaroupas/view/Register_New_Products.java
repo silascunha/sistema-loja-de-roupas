@@ -195,7 +195,7 @@ public class Register_New_Products extends javax.swing.JDialog {
         txt_amount.setOpaque(false);
         pnl_Background.add(txt_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 60, 30));
 
-        bnt_save.setIcon(new javax.swing.ImageIcon("C:\\Users\\lukas\\OneDrive\\Área de Trabalho\\FrontEnd Vendas\\icons\\icon_salvarClaro.png")); // NOI18N
+        bnt_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
         bnt_save.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bnt_saveMouseClicked(evt);
@@ -209,7 +209,7 @@ public class Register_New_Products extends javax.swing.JDialog {
         });
         pnl_Background.add(bnt_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
 
-        btn_clear.setIcon(new javax.swing.ImageIcon("C:\\Users\\lukas\\OneDrive\\Área de Trabalho\\FrontEnd Vendas\\icons\\icon_limparClaro.png")); // NOI18N
+        btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png"))); // NOI18N
         btn_clear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_clearMouseClicked(evt);
@@ -223,7 +223,7 @@ public class Register_New_Products extends javax.swing.JDialog {
         });
         pnl_Background.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
 
-        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\lukas\\OneDrive\\Área de Trabalho\\FrontEnd Vendas\\icons\\icon_cancelarClaro.png")); // NOI18N
+        btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png"))); // NOI18N
         btn_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_cancelMouseClicked(evt);
@@ -275,11 +275,13 @@ public class Register_New_Products extends javax.swing.JDialog {
     }//GEN-LAST:event_bnt_saveMouseClicked
 
     private void bnt_saveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseEntered
-        // TODO add your handling code here:
+        // Trocar para ícone escuro
+        bnt_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvar.png")));
     }//GEN-LAST:event_bnt_saveMouseEntered
 
     private void bnt_saveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseExited
-        // TODO add your handling code here:
+        // Voltar para ícone original
+        bnt_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png")));
     }//GEN-LAST:event_bnt_saveMouseExited
 
     private void btn_clearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clearMouseClicked
@@ -289,11 +291,13 @@ public class Register_New_Products extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_clearMouseClicked
 
     private void btn_clearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clearMouseEntered
-        // TODO add your handling code here:
+        // Trocar para ícone escuro
+        btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limpar.png")));
     }//GEN-LAST:event_btn_clearMouseEntered
 
     private void btn_clearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clearMouseExited
-        // TODO add your handling code here:
+        // Voltar para ícone original
+        btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png")));
     }//GEN-LAST:event_btn_clearMouseExited
 
     private void btn_cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelMouseClicked
@@ -301,11 +305,13 @@ public class Register_New_Products extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_cancelMouseClicked
 
     private void btn_cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelMouseEntered
-        // TODO add your handling code here:
+        // Trocar para ícone escuro
+        btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelar.png")));
     }//GEN-LAST:event_btn_cancelMouseEntered
 
     private void btn_cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelMouseExited
-        // TODO add your handling code here:
+        // Voltar para ícone original
+        btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png")));
     }//GEN-LAST:event_btn_cancelMouseExited
 
     private void btn_addColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addColorMouseClicked
