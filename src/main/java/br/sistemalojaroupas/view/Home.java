@@ -120,13 +120,15 @@ public class Home extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Card_Products = new javax.swing.JPanel();
-        btn_registerProduct = new javax.swing.JLabel();
+        btn_editProduct = new javax.swing.JLabel();
         btn_removeProduct = new javax.swing.JLabel();
         btn_addProduct = new javax.swing.JLabel();
         btn_Search = new javax.swing.JLabel();
         txt_SearchField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_Products = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         Card_Employees = new javax.swing.JPanel();
         Table_Employees = new javax.swing.JScrollPane();
         table_Employees = new javax.swing.JTable();
@@ -555,7 +557,6 @@ public class Home extends javax.swing.JFrame {
         Card_Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("NOVO CLIENTE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -565,46 +566,37 @@ public class Home extends javax.swing.JFrame {
         Card_Home.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 133, 132));
 
         jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("ENTRADA PROD");
         Card_Home.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 133, 132));
 
         jButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("NOVA VENDA");
         Card_Home.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 133, 132));
 
         jButton4.setBackground(new java.awt.Color(204, 204, 204));
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("CONSULTA PROD");
         Card_Home.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 133, 132));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("F. Mensal");
         Card_Home.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, -1, -1));
 
         jFormattedTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jFormattedTextField1.setForeground(new java.awt.Color(0, 0, 0));
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
         Card_Home.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, 100, -1));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Ticket Médio");
         Card_Home.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 610, -1, -1));
 
         jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         Card_Home.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 640, 110, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Qtd. Vendas");
         Card_Home.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, -1, -1));
 
         jTextField2.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
         Card_Home.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 640, 110, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/welcome_Test.png"))); // NOI18N
@@ -615,35 +607,64 @@ public class Home extends javax.swing.JFrame {
         Card_Products.setBackground(new java.awt.Color(255, 255, 255));
         Card_Products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_registerProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_registerProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cadastrar.png"))); // NOI18N
-        btn_registerProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_editProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_editProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_Editar.png"))); // NOI18N
+        btn_editProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_registerProductMouseClicked(evt);
+                btn_editProductMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_editProductMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_editProductMouseExited(evt);
             }
         });
-        Card_Products.add(btn_registerProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 98, -1, 38));
+        Card_Products.add(btn_editProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 98, -1, 38));
 
         btn_removeProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_removeProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png"))); // NOI18N
+        btn_removeProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluirClaro.png"))); // NOI18N
         btn_removeProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_removeProductMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_removeProductMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_removeProductMouseExited(evt);
             }
         });
         Card_Products.add(btn_removeProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 98, -1, 38));
 
         btn_addProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_addProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png"))); // NOI18N
+        btn_addProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarClaro.png"))); // NOI18N
         btn_addProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_addProductMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_addProductMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_addProductMouseExited(evt);
             }
         });
         Card_Products.add(btn_addProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 98, -1, 38));
 
         btn_Search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png"))); // NOI18N
+        btn_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png"))); // NOI18N
+        btn_Search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_SearchMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_SearchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_SearchMouseExited(evt);
+            }
+        });
         Card_Products.add(btn_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 98, -1, 38));
 
         txt_SearchField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -652,53 +673,52 @@ public class Home extends javax.swing.JFrame {
         table_Products.setForeground(new java.awt.Color(0, 0, 51));
         table_Products.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Modelo", "Cor", "Tamanho", "P. Custo", "P. Venda", "Qtd."
+                "Id", "Descrição", "Cor", "Tamanho", "Categoria", "P. Custo", "P. Venda", "Qtd.", "Data entrada"
             }
         ));
         table_Products.setGridColor(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(table_Products);
-        if (table_Products.getColumnModel().getColumnCount() > 0) {
-            table_Products.getColumnModel().getColumn(1).setHeaderValue("Cargo");
-            table_Products.getColumnModel().getColumn(2).setHeaderValue("Data Admissão");
-            table_Products.getColumnModel().getColumn(3).setHeaderValue("Data Nascimento");
-            table_Products.getColumnModel().getColumn(4).setHeaderValue("P. Custo");
-            table_Products.getColumnModel().getColumn(5).setHeaderValue("P. Venda");
-            table_Products.getColumnModel().getColumn(6).setHeaderValue("Qtd.");
-        }
 
         Card_Products.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 910, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel1.setText(" Produtos");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(108, 81, 233)));
+        Card_Products.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 100, -1));
+        Card_Products.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 1060, 10));
 
         CollectionCard.add(Card_Products, "cardProducts");
 
@@ -1280,16 +1300,16 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ShowHideMenuMouseClicked
 
     private void btn_addProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseClicked
-      new Insert_Product(this, true).setVisible(true);
+      new Register_Or_Insert(this, true).setVisible(true);
     }//GEN-LAST:event_btn_addProductMouseClicked
 
     private void btn_removeProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_removeProductMouseClicked
 
-    private void btn_registerProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registerProductMouseClicked
+    private void btn_editProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editProductMouseClicked
         new Register_New_Products(this, true).setVisible(true);
-    }//GEN-LAST:event_btn_registerProductMouseClicked
+    }//GEN-LAST:event_btn_editProductMouseClicked
 
     private void btnSaveEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveEmployeeMouseClicked
         // TODO add your handling code here:
@@ -1380,6 +1400,50 @@ public class Home extends javax.swing.JFrame {
         setMenuButtonsColor(menu_settings);
     }//GEN-LAST:event_menu_settingsMouseClicked
 
+    private void btn_addProductMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseEntered
+        // Trocar para o ícone escuro
+        btn_addProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png")));
+    }//GEN-LAST:event_btn_addProductMouseEntered
+
+    private void btn_addProductMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseExited
+        // Voltar para o ícone original
+        btn_addProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarClaro.png")));
+    }//GEN-LAST:event_btn_addProductMouseExited
+
+    private void btn_editProductMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editProductMouseEntered
+        // Trocar para o ícone escuro
+        btn_editProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_EditarEscuro.png"))); 
+    }//GEN-LAST:event_btn_editProductMouseEntered
+
+    private void btn_editProductMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editProductMouseExited
+        // Voltar para o ícone original
+        btn_editProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_Editar.png"))); 
+    }//GEN-LAST:event_btn_editProductMouseExited
+
+    private void btn_removeProductMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseEntered
+        // Trocar para o ícone escuro
+        btn_removeProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png")));
+    }//GEN-LAST:event_btn_removeProductMouseEntered
+
+    private void btn_removeProductMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseExited
+        // Voltar para o ícone original
+        btn_removeProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluirClaro.png")));
+    }//GEN-LAST:event_btn_removeProductMouseExited
+
+    private void btn_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_SearchMouseClicked
+
+    private void btn_SearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchMouseEntered
+        // Trocar para o ícone escuro:
+        btn_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png")));
+    }//GEN-LAST:event_btn_SearchMouseEntered
+
+    private void btn_SearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchMouseExited
+       // Voltar para o ícone original
+       btn_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
+    }//GEN-LAST:event_btn_SearchMouseExited
+
 
     /**
      * @param args the command line arguments
@@ -1459,10 +1523,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel btn_ShowHideMenu;
     private javax.swing.JLabel btn_addProduct;
     private javax.swing.JLabel btn_customers;
+    private javax.swing.JLabel btn_editProduct;
     private javax.swing.JLabel btn_employees;
     private javax.swing.JLabel btn_home;
     private javax.swing.JLabel btn_products;
-    private javax.swing.JLabel btn_registerProduct;
     private javax.swing.JLabel btn_removeProduct;
     private javax.swing.JLabel btn_sales;
     private javax.swing.JLabel btn_settings;
@@ -1477,6 +1541,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -1490,6 +1555,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField9;
