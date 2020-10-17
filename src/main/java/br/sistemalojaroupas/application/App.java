@@ -6,8 +6,7 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
-import br.sistemalojaroupas.model.dao.ProductDao;
-import br.sistemalojaroupas.model.entities.Product;
+import br.sistemalojaroupas.model.dao.ColorDao;
 import java.util.List;
 
 
@@ -18,17 +17,6 @@ public class App {
     
     public static void main(String[] args) {
         DB.start();
-        
-        //Color color = new Color("Vermelha");
-        //Category category = new Category("Camisas");
-        
-        //Product produto = new Product("Camisa Lacoste", category, "G", color, 45.0, 1);
-        
-        //ProductDao.insert(produto);
-        
-        List<Product> list = ProductDao.findAll();
-        
-        list.forEach(System.out::println);
         
         DB.close();
     }

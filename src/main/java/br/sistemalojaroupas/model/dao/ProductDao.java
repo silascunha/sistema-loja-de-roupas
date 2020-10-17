@@ -21,7 +21,7 @@ public class ProductDao {
     
     private static ObjectRepository<Product> repProduct;
     
-    public static void start() {
+    static {
         repProduct = DB.getDB().getRepository(Product.class);
     }
     

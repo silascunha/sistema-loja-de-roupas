@@ -20,7 +20,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 public class CategoryDao {
     private static ObjectRepository<Category> repCategory;
     
-    public static void start() {
+    static {
         repCategory = DB.getDB().getRepository(Category.class);
     }
     

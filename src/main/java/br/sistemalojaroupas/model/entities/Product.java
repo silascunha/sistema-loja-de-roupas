@@ -6,6 +6,7 @@
 package br.sistemalojaroupas.model.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
@@ -23,17 +24,20 @@ public class Product implements Serializable {
     private Category category;
     private String size;
     private Color color;
-    private Double price;
+    private Double costPrice;
+    private Double salePrice;
+    private Date date;
     private int quantity;
     
     public Product() {}
-    
-    public Product(String description, Category category, String size, Color color, Double price, int quantity) {
+
+    public Product(String description, Category category, String size, Color color, Double costPrice, Double salePrice, int quantity) {
         this.description = description;
         this.category = category;
         this.size = size;
         this.color = color;
-        this.price = price;
+        this.costPrice = costPrice;
+        this.salePrice = salePrice;
         this.quantity = quantity;
     }
 
@@ -60,7 +64,7 @@ public class Product implements Serializable {
     public void setCategory(Category category) {
         this.category = category;
     }
-    
+
     public String getSize() {
         return size;
     }
@@ -73,19 +77,35 @@ public class Product implements Serializable {
         return color;
     }
 
-    public void setColor(Color  color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getCostPrice() {
+        return costPrice;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setCostPrice(Double costPrice) {
+        this.costPrice = costPrice;
     }
-    
-    public int getQuantity(){
+
+    public Double getSalePrice() {
+        return salePrice;
+    }
+
+    public void setSalePrice(Double salePrice) {
+        this.salePrice = salePrice;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public int getQuantity() {
         return quantity;
     }
 
@@ -122,12 +142,16 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", description=" + description 
-                + ", category=" + category
-                + ", size=" + size 
-                + ", color=" + color + ", price=" 
-                + price + ", quantity=" 
-                + quantity + '}';
+        return "Product{" +
+                "id=" + id +
+                ", description=" +
+                description +
+                ", category=" +
+                category + ", size=" +
+                size + ", color=" +
+                color + ", costPrice=" +
+                costPrice + ", salePrice=" +
+                salePrice + ", quantity=" + quantity + '}';
     }
-
+    
 }
