@@ -28,6 +28,9 @@ public class Register_New_Products extends javax.swing.JDialog {
     /**
      * Creates new form Register_Products
      */
+    
+    Home home = new Home();
+    
     public Register_New_Products(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();   
@@ -63,6 +66,8 @@ public class Register_New_Products extends javax.swing.JDialog {
         bnt_save = new javax.swing.JLabel();
         btn_clear = new javax.swing.JLabel();
         btn_cancel = new javax.swing.JLabel();
+        btn_addCategory = new javax.swing.JLabel();
+        btn_addColor = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -116,11 +121,11 @@ public class Register_New_Products extends javax.swing.JDialog {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Tamanho:");
         jLabel6.setOpaque(true);
-        pnl_Background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 110, 30));
+        pnl_Background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 90, 30));
 
         cb_size.setBackground(new java.awt.Color(108, 81, 233));
         cb_size.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "PP", "P", "M", "G", "GG" }));
-        pnl_Background.add(cb_size, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 90, 30));
+        pnl_Background.add(cb_size, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 70, 30));
 
         jLabel2.setBackground(new java.awt.Color(59, 44, 150));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -232,6 +237,24 @@ public class Register_New_Products extends javax.swing.JDialog {
         });
         pnl_Background.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, -1, -1));
 
+        btn_addCategory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_addCategory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais.png"))); // NOI18N
+        btn_addCategory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_addCategoryMouseClicked(evt);
+            }
+        });
+        pnl_Background.add(btn_addCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 30, 30));
+
+        btn_addColor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_addColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais.png"))); // NOI18N
+        btn_addColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_addColorMouseClicked(evt);
+            }
+        });
+        pnl_Background.add(btn_addColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 30, 30));
+
         Background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tela_cadastro_dark.png"))); // NOI18N
         pnl_Background.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, -1));
@@ -285,6 +308,16 @@ public class Register_New_Products extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_cancelMouseExited
 
+    private void btn_addColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addColorMouseClicked
+        // Chamar tela de cadastrar CORES
+        new New_Color(home, true).setVisible(true);
+    }//GEN-LAST:event_btn_addColorMouseClicked
+
+    private void btn_addCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addCategoryMouseClicked
+        // Chamar tela de cadastrar CATEGORIAS
+        new New_Category(home, true).setVisible(true);
+    }//GEN-LAST:event_btn_addCategoryMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -332,6 +365,8 @@ public class Register_New_Products extends javax.swing.JDialog {
     private javax.swing.JLabel Background;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel bnt_save;
+    private javax.swing.JLabel btn_addCategory;
+    private javax.swing.JLabel btn_addColor;
     private javax.swing.JLabel btn_cancel;
     private javax.swing.JLabel btn_clear;
     private javax.swing.JComboBox<String> cb_size;
