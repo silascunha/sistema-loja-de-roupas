@@ -12,6 +12,7 @@ import br.sistemalojaroupas.model.entities.Category;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.view.util.ComboBoxRenderer;
 import br.sistemalojaroupas.model.entities.Color;
+import br.sistemalojaroupas.view.util.NodesController;
 import java.awt.Component;
 import java.util.List;
 import javax.swing.JComboBox;
@@ -41,30 +42,13 @@ public class Register_New_Products extends javax.swing.JDialog {
         this.setBackground(new java.awt.Color(0,0,0,0));
         pnl_Background.setBackground(new java.awt.Color(0,0,0,0));
         
-        initializeComboBox(CategoryDao.findAll(), cbCategory);
-        initializeComboBox(ColorDao.findAll(), cbColor);
+        NodesController.initializeComboBox(CategoryDao.findAll(), cbCategory);
+        NodesController.initializeComboBox(ColorDao.findAll(), cbColor);
         
         cbCategory.setRenderer(new ComboBoxRenderer());
         cbColor.setRenderer(new ComboBoxRenderer());
         cbSize.setRenderer(new ComboBoxRenderer());
     }
-    
-    private void initializeComboBox(List<?> list, JComboBox cb) {
-        cb.removeAllItems();
-        cb.addItem("Selecione...");
-        for (Object c : list) {
-            cb.addItem(c);
-        }
-    }
-    
-    private void clearFields(JPanel pn){
-        
-        for (Component c : pn.getComponents()) {
-            if (c instanceof JComboBox) ((JComboBox)c).setSelectedIndex(0);
-            if (c instanceof JTextField) ((JTextField)c).setText("");
-            if (c instanceof JFormattedTextField) ((JFormattedTextField)c).setText("");
-        }
-    } 
     
     private boolean isAllFieldsFilled(JPanel pn) {
         
@@ -303,7 +287,7 @@ public class Register_New_Products extends javax.swing.JDialog {
     private void bnt_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseClicked
         //verificar se todos campos foram preenchidos
         
-        if (isAllFieldsFilled(pnl_Background)) {
+        if (NodesController.isAllFieldsFilled(pnl_Background)) {
             Product p = new Product();
             
             Double costPrice = Double.parseDouble(txt_costPrice.getText().replace(',', '.'));
@@ -321,8 +305,7 @@ public class Register_New_Products extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!",
                 "Atenção", JOptionPane.INFORMATION_MESSAGE);
             
-            clearFields(pnl_Background);
-            parent.refreshProductsTable();
+            NodesController.clearFields(pnl_Background);
         }
         else {
             JOptionPane.showMessageDialog(null, "Você deve preencher todos os campos.",
@@ -343,7 +326,7 @@ public class Register_New_Products extends javax.swing.JDialog {
 
     private void btn_clearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clearMouseClicked
         // Limpar todos os campos (criar método depois)
-        clearFields(pnl_Background);
+        NodesController.clearFields(pnl_Background);
     }//GEN-LAST:event_btn_clearMouseClicked
 
     private void btn_clearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clearMouseEntered
@@ -357,7 +340,6 @@ public class Register_New_Products extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_clearMouseExited
 
     private void btn_cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelMouseClicked
-        parent.refreshProductsTable();
         this.dispose();
     }//GEN-LAST:event_btn_cancelMouseClicked
 
@@ -381,48 +363,6 @@ public class Register_New_Products extends javax.swing.JDialog {
         new New_Category(parent, true).setVisible(true);
     }//GEN-LAST:event_btn_addCategoryMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Register_New_Products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Register_New_Products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Register_New_Products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Register_New_Products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Register_New_Products dialog = new Register_New_Products(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;

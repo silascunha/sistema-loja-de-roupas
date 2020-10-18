@@ -16,7 +16,7 @@ import org.dizitart.no2.objects.Id;
  *
  * @author silas
  */
-public class Product implements Serializable {
+public class Product implements Serializable, TableContract {
     private static long serialVersionUID = 1L;
     
     private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -149,6 +149,21 @@ public class Product implements Serializable {
     @Override
     public String toString() {
         return "Product{" + "id=" + id + ", description=" + description + ", category=" + category + ", size=" + size + ", color=" + color + ", costPrice=" + costPrice + ", salePrice=" + salePrice + ", date=" + date + ", quantity=" + quantity + '}';
+    }
+
+    @Override
+    public Object[] tableRowModel() {
+        return new Object[] {
+            getId(),
+            getDescription(),
+            getColor(),
+            getSize(),
+            getCategory(),
+            getCostPrice(),
+            getSalePrice(),
+            getQuantity(),
+            getFormattedDate()
+        };
     }
 
     

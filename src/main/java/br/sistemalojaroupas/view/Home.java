@@ -4,6 +4,7 @@ package br.sistemalojaroupas.view;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.entities.Product;
+import br.sistemalojaroupas.view.util.NodesController;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -45,27 +46,6 @@ public class Home extends javax.swing.JFrame {
         menuButtonsList.add(menu_settings);
         menuButtonsList.add(menu_employees);
         menuButtonsList.add(menu_product);        
-    }
-    
-    public void refreshProductsTable() {
-        DefaultTableModel dtm = (DefaultTableModel) table_Products.getModel();
-        dtm.setRowCount(0);
-        
-        List<Product> list = ProductDao.findAll();
-        
-        list.forEach(p -> {
-            dtm.addRow(new Object[] {
-                p.getId(),
-                p.getDescription(),
-                p.getColor(),
-                p.getSize(),
-                p.getCategory(),
-                p.getCostPrice(),
-                p.getSalePrice(),
-                p.getQuantity(),
-                p.getFormattedDate()
-            });
-        });
     }
     
     private void setMenuButtonsColor(JPanel pn1) {
@@ -211,6 +191,13 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -589,11 +576,6 @@ public class Home extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setText("NOVO CLIENTE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
         Card_Home.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 133, 132));
 
         jButton2.setBackground(new java.awt.Color(204, 204, 204));
@@ -831,11 +813,6 @@ public class Home extends javax.swing.JFrame {
 
         txtEmployeeName.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmployeeNameActionPerformed(evt);
-            }
-        });
 
         BirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         BirthDate.setText("DATA NASC.");
@@ -857,11 +834,6 @@ public class Home extends javax.swing.JFrame {
 
         txtEmployeeBirthDate.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeBirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeBirthDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmployeeBirthDateActionPerformed(evt);
-            }
-        });
 
         txtEmployeeCPF.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -878,30 +850,15 @@ public class Home extends javax.swing.JFrame {
 
         txtEmployeeCEP01.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCEP01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeCEP01.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmployeeCEP01ActionPerformed(evt);
-            }
-        });
 
         txtEmployeeCEP02.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCEP02.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeCEP02.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmployeeCEP02ActionPerformed(evt);
-            }
-        });
 
         CPFSeparator.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CPFSeparator.setText("-");
 
         txtEmployeeAddress.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmployeeAddressActionPerformed(evt);
-            }
-        });
 
         City.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         City.setText("CIDADE");
@@ -1194,11 +1151,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
         salesTable.setGridColor(new java.awt.Color(204, 204, 204));
-        salesTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                salesTableMouseClicked(evt);
-            }
-        });
         jScrollPane2.setViewportView(salesTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -1306,7 +1258,6 @@ public class Home extends javax.swing.JFrame {
         }else{
             this.setExtendedState(Home.NORMAL);
         }
-    
     }//GEN-LAST:event_btn_MaxMouseClicked
 
     private void btn_MinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MinMouseEntered
@@ -1346,8 +1297,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ShowHideMenuMouseClicked
 
     private void btn_addProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseClicked
-      new Register_Or_Insert(this, true).setVisible(true);
-      refreshProductsTable();
+        new Register_Or_Insert(this, true).setVisible(true);
     }//GEN-LAST:event_btn_addProductMouseClicked
 
     private void btn_removeProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseClicked
@@ -1362,7 +1312,7 @@ public class Home extends javax.swing.JFrame {
                     "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
             if(op == 0){
                 ProductDao.removeById(id);
-                refreshProductsTable();
+                NodesController.initializeTable(ProductDao.findAll(), table_Products);
             } 
         }
     }//GEN-LAST:event_btn_removeProductMouseClicked
@@ -1382,26 +1332,6 @@ public class Home extends javax.swing.JFrame {
     private void btnDeleteEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteEmployeeMouseClicked
-
-    private void txtEmployeeCEP02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeCEP02ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmployeeCEP02ActionPerformed
-
-    private void txtEmployeeCEP01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeCEP01ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmployeeCEP01ActionPerformed
-
-    private void txtEmployeeAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeAddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmployeeAddressActionPerformed
-
-    private void txtEmployeeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmployeeNameActionPerformed
-
-    private void txtEmployeeBirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeBirthDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmployeeBirthDateActionPerformed
 
     private void btn_NewSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NewSaleMouseClicked
 
@@ -1426,15 +1356,7 @@ public class Home extends javax.swing.JFrame {
         panelsCardLayout.show(CollectionCard, "cardSales");
         setMenuButtonsColor(menu_sale);
     }//GEN-LAST:event_menu_saleMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
   
-    private void salesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesTableMouseClicked
-       new Sale_Information().setVisible(true);
-    }//GEN-LAST:event_salesTableMouseClicked
-
     private void menu_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_homeMouseClicked
         panelsCardLayout.show(CollectionCard, "cardHome");
         setMenuButtonsColor(menu_home);
@@ -1444,7 +1366,7 @@ public class Home extends javax.swing.JFrame {
         panelsCardLayout.show(CollectionCard, "cardProducts");
         setMenuButtonsColor(menu_product);
         
-        refreshProductsTable();
+        NodesController.initializeTable(ProductDao.findAll(), table_Products);
     }//GEN-LAST:event_menu_productMouseClicked
 
     private void menu_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_employeesMouseClicked
@@ -1509,6 +1431,11 @@ public class Home extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         if(!DB.isClosed()) DB.close();
     }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        
+        
+    }//GEN-LAST:event_formWindowGainedFocus
 
 
     /**
