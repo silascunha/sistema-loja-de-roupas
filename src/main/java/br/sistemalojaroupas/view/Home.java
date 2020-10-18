@@ -1,6 +1,7 @@
 
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.entities.Product;
 import java.awt.CardLayout;
@@ -19,6 +20,7 @@ import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
+import org.dizitart.no2.NitriteId;
 
 /**
  *
@@ -45,7 +47,7 @@ public class Home extends javax.swing.JFrame {
         menuButtonsList.add(menu_product);        
     }
     
-    private void refreshProductsTable() {
+    public void refreshProductsTable() {
         DefaultTableModel dtm = (DefaultTableModel) table_Products.getModel();
         dtm.setRowCount(0);
         
@@ -209,6 +211,11 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         Head.setBackground(new java.awt.Color(108, 81, 233));
         Head.setMaximumSize(new java.awt.Dimension(1000, 50));
@@ -741,6 +748,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
         table_Products.setGridColor(new java.awt.Color(204, 204, 204));
+        table_Products.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(table_Products);
         if (table_Products.getColumnModel().getColumnCount() > 0) {
             table_Products.getColumnModel().getColumn(1).setMinWidth(150);
@@ -1278,6 +1286,7 @@ public class Home extends javax.swing.JFrame {
         int op;
         op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(op == 0){
+            DB.close();
             System.exit(0);
         }        
     }//GEN-LAST:event_btn_CloseMouseClicked
@@ -1338,10 +1347,24 @@ public class Home extends javax.swing.JFrame {
 
     private void btn_addProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseClicked
       new Register_Or_Insert(this, true).setVisible(true);
+      refreshProductsTable();
     }//GEN-LAST:event_btn_addProductMouseClicked
 
     private void btn_removeProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseClicked
-        // TODO add your handling code here:
+        int row = table_Products.getSelectedRow();
+        
+        if (row > -1) {
+            DefaultTableModel dtm = (DefaultTableModel) table_Products.getModel();
+            NitriteId id = (NitriteId) dtm.getValueAt(row, 0);
+            
+            int op;
+            op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esse produto?",
+                    "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if(op == 0){
+                ProductDao.removeById(id);
+                refreshProductsTable();
+            } 
+        }
     }//GEN-LAST:event_btn_removeProductMouseClicked
 
     private void btn_editProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editProductMouseClicked
@@ -1482,6 +1505,10 @@ public class Home extends javax.swing.JFrame {
        // Voltar para o ícone original
        btn_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
     }//GEN-LAST:event_btn_SearchMouseExited
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        if(!DB.isClosed()) DB.close();
+    }//GEN-LAST:event_formWindowClosed
 
 
     /**

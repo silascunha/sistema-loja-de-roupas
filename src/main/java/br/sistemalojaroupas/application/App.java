@@ -6,7 +6,11 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.model.dao.CategoryDao;
+import br.sistemalojaroupas.model.dao.ColorDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.entities.Category;
+import br.sistemalojaroupas.model.entities.Color;
 import br.sistemalojaroupas.model.entities.Product;
 import java.util.List;
 import java.util.Scanner;
@@ -18,17 +22,9 @@ public class App {
     enquanto não há interação com a interface grafica */
     
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String str = sc.next();
-        String str2 = sc.next();
+        DB.start();
         
-        if (str.equals(str2)) {
-            System.out.println("É igual");
-        }
-        else {
-            System.out.println("Não é igual");
-        }
         
-        sc.close();
+        DB.close();
     }
 }

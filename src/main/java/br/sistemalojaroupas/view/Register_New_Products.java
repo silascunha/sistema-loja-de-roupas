@@ -7,8 +7,11 @@ package br.sistemalojaroupas.view;
 
 import br.sistemalojaroupas.model.dao.CategoryDao;
 import br.sistemalojaroupas.model.dao.ColorDao;
+import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.entities.Category;
+import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.view.util.ComboBoxRenderer;
-import java.awt.Color;
+import br.sistemalojaroupas.model.entities.Color;
 import java.awt.Component;
 import java.util.List;
 import javax.swing.JComboBox;
@@ -23,25 +26,20 @@ import javax.swing.JTextField;
  */
 public class Register_New_Products extends javax.swing.JDialog {
     
-    public void clearFields(JPanel pn){
-        
-        for (Component c : pn.getComponents()) {
-            if (c instanceof JComboBox) ((JComboBox)c).setSelectedIndex(0);
-            if (c instanceof JTextField) ((JTextField)c).setText("");
-            if (c instanceof JFormattedTextField) ((JFormattedTextField)c).setText("");
-        }
-    } 
+    
     /**
      * Creates new form Register_Products
      */
     
-    Home home = new Home();
+    private Home parent;
     
     public Register_New_Products(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();   
-        this.setBackground(new Color(0,0,0,0));
-        pnl_Background.setBackground(new Color(0,0,0,0));
+        
+        this.parent = (Home) parent;
+        this.setBackground(new java.awt.Color(0,0,0,0));
+        pnl_Background.setBackground(new java.awt.Color(0,0,0,0));
         
         initializeComboBox(CategoryDao.findAll(), cbCategory);
         initializeComboBox(ColorDao.findAll(), cbColor);
@@ -57,6 +55,34 @@ public class Register_New_Products extends javax.swing.JDialog {
         for (Object c : list) {
             cb.addItem(c);
         }
+    }
+    
+    private void clearFields(JPanel pn){
+        
+        for (Component c : pn.getComponents()) {
+            if (c instanceof JComboBox) ((JComboBox)c).setSelectedIndex(0);
+            if (c instanceof JTextField) ((JTextField)c).setText("");
+            if (c instanceof JFormattedTextField) ((JFormattedTextField)c).setText("");
+        }
+    } 
+    
+    private boolean isAllFieldsFilled(JPanel pn) {
+        
+        for (Component c : pn.getComponents()) {
+            if (c instanceof JComboBox) {
+                int i = ((JComboBox)c).getSelectedIndex();
+                if (i < 1) return false;
+            }
+            if (c instanceof JTextField) {
+                String s = ((JTextField)c).getText();
+                if (s.equals("")) return false;
+            }
+            if (c instanceof JFormattedTextField) {
+                String s = ((JFormattedTextField)c).getText();
+                if (s.equals("")) return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -79,9 +105,9 @@ public class Register_New_Products extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        txt_amount = new javax.swing.JTextField();
+        txt_salePrice = new javax.swing.JFormattedTextField();
+        txt_costPrice = new javax.swing.JFormattedTextField();
+        txt_quantity = new javax.swing.JFormattedTextField();
         bnt_save = new javax.swing.JLabel();
         btn_clear = new javax.swing.JLabel();
         btn_cancel = new javax.swing.JLabel();
@@ -114,7 +140,6 @@ public class Register_New_Products extends javax.swing.JDialog {
         txt_description.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_description.setForeground(new java.awt.Color(255, 255, 255));
         txt_description.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txt_description.setText("Camisa");
         txt_description.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         txt_description.setCaretColor(new java.awt.Color(255, 255, 255));
         txt_description.setOpaque(false);
@@ -174,29 +199,26 @@ public class Register_New_Products extends javax.swing.JDialog {
         jLabel5.setOpaque(true);
         pnl_Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 50, 30));
 
-        jFormattedTextField1.setBackground(new java.awt.Color(0, 0, 51));
-        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        jFormattedTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        jFormattedTextField1.setOpaque(false);
-        pnl_Background.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 70, 30));
+        txt_salePrice.setBackground(new java.awt.Color(0, 0, 51));
+        txt_salePrice.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txt_salePrice.setForeground(new java.awt.Color(255, 255, 255));
+        txt_salePrice.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txt_salePrice.setOpaque(false);
+        pnl_Background.add(txt_salePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 70, 30));
 
-        jFormattedTextField2.setBackground(new java.awt.Color(0, 0, 51));
-        jFormattedTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        jFormattedTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        jFormattedTextField2.setOpaque(false);
-        pnl_Background.add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 70, 30));
+        txt_costPrice.setBackground(new java.awt.Color(0, 0, 51));
+        txt_costPrice.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txt_costPrice.setForeground(new java.awt.Color(255, 255, 255));
+        txt_costPrice.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txt_costPrice.setOpaque(false);
+        pnl_Background.add(txt_costPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 70, 30));
 
-        txt_amount.setBackground(new java.awt.Color(0, 0, 51));
-        txt_amount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_amount.setForeground(new java.awt.Color(255, 255, 255));
-        txt_amount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_amount.setText("5");
-        txt_amount.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        txt_amount.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_amount.setOpaque(false);
-        pnl_Background.add(txt_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 60, 30));
+        txt_quantity.setBackground(new java.awt.Color(0, 0, 51));
+        txt_quantity.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txt_quantity.setForeground(new java.awt.Color(255, 255, 255));
+        txt_quantity.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        txt_quantity.setOpaque(false);
+        pnl_Background.add(txt_quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 60, 30));
 
         bnt_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
         bnt_save.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -281,10 +303,32 @@ public class Register_New_Products extends javax.swing.JDialog {
     private void bnt_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseClicked
         //verificar se todos campos foram preenchidos
         
-        //limpar todos os campos(criar método)
-        clearFields(pnl_Background);
-        // Mensagem de sucesso
-        JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        if (isAllFieldsFilled(pnl_Background)) {
+            Product p = new Product();
+            
+            Double costPrice = Double.parseDouble(txt_costPrice.getText().replace(',', '.'));
+            Double salePrice = Double.parseDouble(txt_salePrice.getText().replace(',', '.'));
+            
+            p.setDescription(txt_description.getText());
+            p.setCategory((Category) cbCategory.getSelectedItem());
+            p.setColor((Color) cbColor.getSelectedItem());
+            p.setQuantity(Integer.parseInt(txt_quantity.getText()));
+            p.setCostPrice(costPrice);
+            p.setSalePrice(salePrice);
+            p.setSize(cbSize.getSelectedItem().toString());
+            
+            ProductDao.insert(p);
+            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!",
+                "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            
+            clearFields(pnl_Background);
+            parent.refreshProductsTable();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Você deve preencher todos os campos.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_bnt_saveMouseClicked
 
     private void bnt_saveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseEntered
@@ -313,6 +357,7 @@ public class Register_New_Products extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_clearMouseExited
 
     private void btn_cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelMouseClicked
+        parent.refreshProductsTable();
         this.dispose();
     }//GEN-LAST:event_btn_cancelMouseClicked
 
@@ -328,12 +373,12 @@ public class Register_New_Products extends javax.swing.JDialog {
 
     private void btn_addColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addColorMouseClicked
         // Chamar tela de cadastrar CORES
-        new New_Color(home, true).setVisible(true);
+        new New_Color(parent, true).setVisible(true);
     }//GEN-LAST:event_btn_addColorMouseClicked
 
     private void btn_addCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addCategoryMouseClicked
         // Chamar tela de cadastrar CATEGORIAS
-        new New_Category(home, true).setVisible(true);
+        new New_Category(parent, true).setVisible(true);
     }//GEN-LAST:event_btn_addCategoryMouseClicked
 
     /**
@@ -390,8 +435,6 @@ public class Register_New_Products extends javax.swing.JDialog {
     private javax.swing.JComboBox<Object> cbCategory;
     private javax.swing.JComboBox<Object> cbColor;
     private javax.swing.JComboBox<String> cbSize;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -400,7 +443,9 @@ public class Register_New_Products extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel pnl_Background;
-    private javax.swing.JTextField txt_amount;
+    private javax.swing.JFormattedTextField txt_costPrice;
     private javax.swing.JTextField txt_description;
+    private javax.swing.JFormattedTextField txt_quantity;
+    private javax.swing.JFormattedTextField txt_salePrice;
     // End of variables declaration//GEN-END:variables
 }

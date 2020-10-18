@@ -48,4 +48,8 @@ public class ProductDao {
         repProduct.remove(p);
     }
     
+    public static void removeById(NitriteId id) {
+        Product p = findById(id);
+        remove(p);
+    }
 }
