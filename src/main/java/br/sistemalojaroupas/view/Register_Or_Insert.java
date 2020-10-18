@@ -6,7 +6,6 @@
 package br.sistemalojaroupas.view;
 
 import java.awt.Color;
-import java.awt.Frame;
 
 /**
  *
@@ -14,13 +13,11 @@ import java.awt.Frame;
  */
 public class Register_Or_Insert extends javax.swing.JDialog {
     
-    private Home parent;
     
     public Register_Or_Insert(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setBackground(new Color(0,0,0,0));
-        this.parent = (Home) parent;
         pnl_background.setBackground(new Color(0,0,0,0));
     }
 
@@ -118,7 +115,7 @@ public class Register_Or_Insert extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_newProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_newProductMouseClicked
-        new Register_New_Products(parent, true).setVisible(true);
+        new Register_New_Products(this, true).setVisible(true);
     }//GEN-LAST:event_btn_newProductMouseClicked
 
     private void btn_newProductMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_newProductMouseEntered
@@ -132,7 +129,7 @@ public class Register_Or_Insert extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_newProductMouseExited
 
     private void btn_insertProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_insertProductMouseClicked
-        new Insert_Product(parent, true).setVisible(true);
+        new Insert_Product(null, true).setVisible(true);
     }//GEN-LAST:event_btn_insertProductMouseClicked
 
     private void btn_insertProductMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_insertProductMouseEntered

@@ -32,13 +32,10 @@ public class Register_New_Products extends javax.swing.JDialog {
      * Creates new form Register_Products
      */
     
-    private Home parent;
-    
-    public Register_New_Products(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public Register_New_Products(java.awt.Dialog owner, boolean modal) {
+        super(owner, modal);
         initComponents();   
         
-        this.parent = (Home) parent;
         this.setBackground(new java.awt.Color(0,0,0,0));
         pnl_Background.setBackground(new java.awt.Color(0,0,0,0));
         
@@ -49,24 +46,13 @@ public class Register_New_Products extends javax.swing.JDialog {
         cbColor.setRenderer(new ComboBoxRenderer());
         cbSize.setRenderer(new ComboBoxRenderer());
     }
-    
-    private boolean isAllFieldsFilled(JPanel pn) {
-        
-        for (Component c : pn.getComponents()) {
-            if (c instanceof JComboBox) {
-                int i = ((JComboBox)c).getSelectedIndex();
-                if (i < 1) return false;
-            }
-            if (c instanceof JTextField) {
-                String s = ((JTextField)c).getText();
-                if (s.equals("")) return false;
-            }
-            if (c instanceof JFormattedTextField) {
-                String s = ((JFormattedTextField)c).getText();
-                if (s.equals("")) return false;
-            }
-        }
-        return true;
+
+    public JComboBox<Object> getCbCategory() {
+        return cbCategory;
+    }
+
+    public JComboBox<Object> getCbColor() {
+        return cbColor;
     }
 
     /**
@@ -341,6 +327,7 @@ public class Register_New_Products extends javax.swing.JDialog {
 
     private void btn_cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelMouseClicked
         this.dispose();
+        this.getOwner().dispose();
     }//GEN-LAST:event_btn_cancelMouseClicked
 
     private void btn_cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelMouseEntered
@@ -355,12 +342,12 @@ public class Register_New_Products extends javax.swing.JDialog {
 
     private void btn_addColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addColorMouseClicked
         // Chamar tela de cadastrar CORES
-        new New_Color(parent, true).setVisible(true);
+        new New_Color(this, true).setVisible(true);
     }//GEN-LAST:event_btn_addColorMouseClicked
 
     private void btn_addCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addCategoryMouseClicked
         // Chamar tela de cadastrar CATEGORIAS
-        new New_Category(parent, true).setVisible(true);
+        new New_Category(this, true).setVisible(true);
     }//GEN-LAST:event_btn_addCategoryMouseClicked
 
 

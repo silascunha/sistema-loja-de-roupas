@@ -48,6 +48,13 @@ public class ColorDao {
         }
     }
     
+    public static List<Color> search(String arg0) {
+        List<Color> list = repColor.find(ObjectFilters.regex("name", arg0),
+                FindOptions.sort("name", SortOrder.Ascending)).toList();
+        
+        return list;
+    }
+    
     public static List<Color> findAll() {
         List<Color> list = repColor.find(FindOptions
                 .sort("name", SortOrder.Ascending)).toList();

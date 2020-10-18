@@ -58,6 +58,13 @@ public class CategoryDao {
         return c;
     }
     
+    public static List<Category> search(String arg0) {
+        List<Category> list = repCategory.find(ObjectFilters.regex("category", arg0),
+                FindOptions.sort("category", SortOrder.Ascending)).toList();
+        
+        return list;
+    }
+    
     public static void remove(Category c) {
         repCategory.remove(c);
     }

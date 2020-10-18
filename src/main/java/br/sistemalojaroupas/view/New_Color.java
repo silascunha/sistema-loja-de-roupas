@@ -5,7 +5,10 @@
  */
 package br.sistemalojaroupas.view;
 
-import java.awt.Color;
+import br.sistemalojaroupas.db.DBException;
+import br.sistemalojaroupas.model.dao.ColorDao;
+import br.sistemalojaroupas.model.entities.Color;
+import br.sistemalojaroupas.view.util.NodesController;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,11 +20,14 @@ public class New_Color extends javax.swing.JDialog {
     /**
      * Creates new form New_Color
      */
-    public New_Color(java.awt.Frame parent, boolean modal) {
+    private java.awt.Dialog parent;
+    
+    public New_Color(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
+        this.parent = parent;
         initComponents();
-        this.setBackground(new Color(0,0,0,0));
-        jPanel1.setBackground(new Color(0,0,0,0));
+        this.setBackground(new java.awt.Color(0,0,0,0));
+        jPanel1.setBackground(new java.awt.Color(0,0,0,0));
     }
 
     /**
@@ -37,7 +43,7 @@ public class New_Color extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         txt_newColor = new javax.swing.JTextField();
         btn_close = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        btn_save = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -50,6 +56,7 @@ public class New_Color extends javax.swing.JDialog {
         jLabel2.setText("Nova cor:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 70, 30));
 
+        txt_newColor.setBackground(new java.awt.Color(108, 81, 233));
         txt_newColor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_newColor.setForeground(new java.awt.Color(0, 0, 51));
         txt_newColor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -66,20 +73,20 @@ public class New_Color extends javax.swing.JDialog {
         });
         jPanel1.add(btn_close, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 7, 20, 20));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
-        jLabel3.setToolTipText("");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
+        btn_save.setToolTipText("");
+        btn_save.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                btn_saveMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel3MouseEntered(evt);
+                btn_saveMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel3MouseExited(evt);
+                btn_saveMouseExited(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, 30));
+        jPanel1.add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundoTelaRoxa.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 250, 120));
@@ -94,67 +101,46 @@ public class New_Color extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btn_closeMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        JOptionPane.showMessageDialog(null, "Salvo!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jLabel3MouseClicked
-
-    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
-        // Trocar pelo ícone mais escuro
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvar.png")));
-    }//GEN-LAST:event_jLabel3MouseEntered
-
-    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
-        // Voltar ao ícone original
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png")));
-    }//GEN-LAST:event_jLabel3MouseExited
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    private void btn_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_saveMouseClicked
+        
+        if (!txt_newColor.getText().equals("")){
+            Color c = new Color(txt_newColor.getText());
+            try {
+                ColorDao.insert(c);
+                
+                JOptionPane.showMessageDialog(null, "Cor salva!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                if (parent instanceof Register_New_Products) {
+                    NodesController.initializeComboBox(ColorDao.findAll(),
+                            ((Register_New_Products)parent).getCbColor());
                 }
+                
+            } catch (DBException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(New_Color.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(New_Color.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(New_Color.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(New_Color.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            this.dispose();
         }
-        //</editor-fold>
+        else {
+            JOptionPane.showMessageDialog(null, "Você deve preencher o campo para salvar.", "Atenção",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_saveMouseClicked
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                New_Color dialog = new New_Color(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void btn_saveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_saveMouseEntered
+        // Trocar pelo ícone mais escuro
+        btn_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvar.png")));
+    }//GEN-LAST:event_btn_saveMouseEntered
+
+    private void btn_saveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_saveMouseExited
+        // Voltar ao ícone original
+        btn_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png")));
+    }//GEN-LAST:event_btn_saveMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_close;
+    private javax.swing.JLabel btn_save;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt_newColor;
     // End of variables declaration//GEN-END:variables

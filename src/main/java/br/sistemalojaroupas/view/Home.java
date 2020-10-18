@@ -1318,7 +1318,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_removeProductMouseClicked
 
     private void btn_editProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editProductMouseClicked
-        new Register_New_Products(this, true).setVisible(true);
+        new Register_New_Products(null, true).setVisible(true);
     }//GEN-LAST:event_btn_editProductMouseClicked
 
     private void btnSaveEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveEmployeeMouseClicked
@@ -1433,8 +1433,19 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        
-        
+        //Método para quando um JDialog for fechado a tabela do card aberto ser atualizada
+        if (Card_Products.isShowing()) {
+            NodesController.initializeTable(ProductDao.findAll(), table_Products);
+        }
+        if (Card_Employees.isShowing()) {
+            System.out.println("Tela funcionarios");
+        }
+        if (Card_Customers.isShowing()) {
+            System.out.println("Tela clientes");
+        }
+        if (Card_Sales.isShowing()) {
+            System.out.println("Tela vendas");
+        }
     }//GEN-LAST:event_formWindowGainedFocus
 
 

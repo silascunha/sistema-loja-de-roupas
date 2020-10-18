@@ -5,7 +5,10 @@
  */
 package br.sistemalojaroupas.view;
 
-import java.awt.Color;
+import br.sistemalojaroupas.db.DBException;
+import br.sistemalojaroupas.model.dao.CategoryDao;
+import br.sistemalojaroupas.model.entities.Category;
+import br.sistemalojaroupas.view.util.NodesController;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,15 +16,17 @@ import javax.swing.JOptionPane;
  * @author lukas
  */
 public class New_Category extends javax.swing.JDialog {
-
+    
+    private java.awt.Dialog parent;
     /**
      * Creates new form New_Category
      */
-    public New_Category(java.awt.Frame parent, boolean modal) {
+    public New_Category(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
+        this.parent = parent;
         initComponents();
-        this.setBackground(new Color(0,0,0,0));
-        jPanel1.setBackground(new Color(0,0,0,0));
+        this.setBackground(new java.awt.Color(0,0,0,0));
+        jPanel1.setBackground(new java.awt.Color(0,0,0,0));
     }
 
     /**
@@ -35,9 +40,9 @@ public class New_Category extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txt_newColor = new javax.swing.JTextField();
+        txt_newCategory = new javax.swing.JTextField();
         btn_close = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        btn_save = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -50,12 +55,13 @@ public class New_Category extends javax.swing.JDialog {
         jLabel2.setText("Nova categoria:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 35, 100, 30));
 
-        txt_newColor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txt_newColor.setForeground(new java.awt.Color(0, 0, 51));
-        txt_newColor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txt_newColor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 51)));
-        txt_newColor.setOpaque(false);
-        jPanel1.add(txt_newColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 35, 100, 30));
+        txt_newCategory.setBackground(new java.awt.Color(108, 81, 233));
+        txt_newCategory.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txt_newCategory.setForeground(new java.awt.Color(0, 0, 51));
+        txt_newCategory.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txt_newCategory.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 51)));
+        txt_newCategory.setOpaque(false);
+        jPanel1.add(txt_newCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 35, 100, 30));
 
         btn_close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_X_Preto.png"))); // NOI18N
@@ -66,20 +72,20 @@ public class New_Category extends javax.swing.JDialog {
         });
         jPanel1.add(btn_close, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 7, 20, 20));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
-        jLabel3.setToolTipText("");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
+        btn_save.setToolTipText("");
+        btn_save.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                btn_saveMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel3MouseEntered(evt);
+                btn_saveMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel3MouseExited(evt);
+                btn_saveMouseExited(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, 30));
+        jPanel1.add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundoTelaRoxa.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 250, 120));
@@ -113,68 +119,47 @@ public class New_Category extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btn_closeMouseClicked
 
-    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+    private void btn_saveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_saveMouseEntered
         // Trocar pelo ícone mais escuro
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvar.png")));
-    }//GEN-LAST:event_jLabel3MouseEntered
+        btn_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvar.png")));
+    }//GEN-LAST:event_btn_saveMouseEntered
 
-    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+    private void btn_saveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_saveMouseExited
         // Voltar ao ícone original
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png")));
-    }//GEN-LAST:event_jLabel3MouseExited
+        btn_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png")));
+    }//GEN-LAST:event_btn_saveMouseExited
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        JOptionPane.showMessageDialog(null, "Salvo!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jLabel3MouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    private void btn_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_saveMouseClicked
+        
+        if (!txt_newCategory.getText().equals("")){
+            Category c = new Category(txt_newCategory.getText());
+            try {
+                CategoryDao.insert(c);
+                
+                JOptionPane.showMessageDialog(null, "Categoria salva!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                if (parent instanceof Register_New_Products) {
+                    NodesController.initializeComboBox(CategoryDao.findAll(),
+                            ((Register_New_Products)parent).getCbCategory());
                 }
+                
+            } catch (DBException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(New_Category.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(New_Category.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(New_Category.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(New_Category.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            this.dispose();
         }
-        //</editor-fold>
+        else {
+            JOptionPane.showMessageDialog(null, "Você deve preencher o campo para salvar.", "Atenção",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_saveMouseClicked
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                New_Category dialog = new New_Category(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_close;
+    private javax.swing.JLabel btn_save;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txt_newColor;
+    private javax.swing.JTextField txt_newCategory;
     // End of variables declaration//GEN-END:variables
 }
