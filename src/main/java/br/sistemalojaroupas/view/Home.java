@@ -3,23 +3,16 @@ package br.sistemalojaroupas.view;
 
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.ProductDao;
-import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.view.util.NodesController;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
-import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import org.dizitart.no2.NitriteId;
 
@@ -114,17 +107,32 @@ public class Home extends javax.swing.JFrame {
         icon_settings = new javax.swing.JLabel();
         CollectionCard = new javax.swing.JPanel();
         Card_Home = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        btnNewSale = new javax.swing.JLabel();
+        btnNewClient = new javax.swing.JLabel();
+        btnNewProduct = new javax.swing.JLabel();
+        btnSearchProduct = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        btnHideInfo = new javax.swing.JLabel();
+        mainWelcome = new javax.swing.JLabel();
+        Card_Sales = new javax.swing.JPanel();
+        btn_NewSale = new javax.swing.JLabel();
+        btn_SearchSale = new javax.swing.JLabel();
+        searchSale = new javax.swing.JTextField();
+        btn_CleanSearch = new javax.swing.JLabel();
+        btn_DeleteSale = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        salesTable = new javax.swing.JTable();
         Card_Products = new javax.swing.JPanel();
         btn_editProduct = new javax.swing.JLabel();
         btn_removeProduct = new javax.swing.JLabel();
@@ -174,16 +182,6 @@ public class Home extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         Card_Settings = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        Card_Sales = new javax.swing.JPanel();
-        btn_NewSale = new javax.swing.JLabel();
-        btn_SearchSale = new javax.swing.JLabel();
-        searchSale = new javax.swing.JTextField();
-        btn_CleanSearch = new javax.swing.JLabel();
-        btn_DeleteSale = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        salesTable = new javax.swing.JTable();
 
         jTextField9.setText("jTextField9");
 
@@ -559,12 +557,12 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(menu_customers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(menu_settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
             .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MenusLayout.createSequentialGroup()
                     .addGap(89, 89, 89)
                     .addComponent(menu_home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(533, Short.MAX_VALUE)))
+                    .addContainerGap(535, Short.MAX_VALUE)))
         );
 
         Body.setLeftComponent(Menus);
@@ -574,48 +572,217 @@ public class Home extends javax.swing.JFrame {
         Card_Home.setBackground(new java.awt.Color(255, 255, 255));
         Card_Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("NOVO CLIENTE");
-        Card_Home.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 133, 132));
+        btnNewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-icons/tag.png"))); // NOI18N
+        btnNewSale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNewSaleMouseClicked(evt);
+            }
+        });
+        Card_Home.add(btnNewSale, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 190, 130));
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("ENTRADA PROD");
-        Card_Home.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 133, 132));
+        btnNewClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-icons/package.png"))); // NOI18N
+        Card_Home.add(btnNewClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, -1));
 
-        jButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jButton3.setText("NOVA VENDA");
-        Card_Home.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 133, 132));
+        btnNewProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-icons/verification.png"))); // NOI18N
+        btnNewProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNewProductMouseClicked(evt);
+            }
+        });
+        Card_Home.add(btnNewProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 190, -1));
 
-        jButton4.setBackground(new java.awt.Color(204, 204, 204));
-        jButton4.setText("CONSULTA PROD");
-        Card_Home.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 133, 132));
+        btnSearchProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-icons/search (3).png"))); // NOI18N
+        Card_Home.add(btnSearchProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 190, -1));
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel7.setText("F. Mensal");
-        Card_Home.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, -1, -1));
+        jLabel18.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("BUSCAR PRODUTOS");
+        Card_Home.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 330, 180, -1));
+
+        jLabel17.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("ENTRADA DE PRODUTO");
+        Card_Home.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 200, -1));
+
+        jLabel16.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("NOVO CLIENTE");
+        Card_Home.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 150, -1));
+
+        jLabel15.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("NOVA VENDA");
+        Card_Home.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 140, -1));
 
         jFormattedTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-        Card_Home.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, 100, -1));
+        Card_Home.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, 90, -1));
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel8.setText("Ticket Médio");
-        Card_Home.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 610, -1, -1));
-
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        Card_Home.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 640, 110, -1));
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("F. Mensal");
+        Card_Home.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, 70, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Qtd. Vendas");
         Card_Home.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, -1, -1));
 
-        jTextField2.setBackground(new java.awt.Color(204, 204, 204));
-        Card_Home.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 640, 110, -1));
+        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
+        Card_Home.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 640, 100, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/welcome_Test.png"))); // NOI18N
-        Card_Home.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 339, 53));
+        jTextField2.setBackground(new java.awt.Color(204, 204, 204));
+        Card_Home.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 640, 90, -1));
+
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Ticket Médio");
+        Card_Home.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 610, 80, -1));
+
+        btnHideInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-icons/show-password.png"))); // NOI18N
+        Card_Home.add(btnHideInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 630, 90, 40));
+
+        mainWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/welcome_Test.png"))); // NOI18N
+        Card_Home.add(mainWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 270, 53));
 
         CollectionCard.add(Card_Home, "cardHome");
+
+        Card_Sales.setBackground(new java.awt.Color(255, 255, 255));
+
+        btn_NewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png"))); // NOI18N
+        btn_NewSale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_NewSaleMouseClicked(evt);
+            }
+        });
+
+        btn_SearchSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png"))); // NOI18N
+        btn_SearchSale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_SearchSaleMouseClicked(evt);
+            }
+        });
+
+        btn_CleanSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png"))); // NOI18N
+        btn_CleanSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_CleanSearchMouseClicked(evt);
+            }
+        });
+
+        btn_DeleteSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png"))); // NOI18N
+        btn_DeleteSale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_DeleteSaleMouseClicked(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(108, 81, 233));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("HISTÓRICO DE VENDAS");
+
+        salesTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"", "", "", "", null},
+                {"", "", "", "", null},
+                {"", "", "", "", null},
+                {"", "", "", "", null},
+                {"", "", "", "", null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Código da Venda", "CPF Cliente", "Total", "Vendedor", "Data"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        salesTable.setGridColor(new java.awt.Color(204, 204, 204));
+        jScrollPane2.setViewportView(salesTable);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout Card_SalesLayout = new javax.swing.GroupLayout(Card_Sales);
+        Card_Sales.setLayout(Card_SalesLayout);
+        Card_SalesLayout.setHorizontalGroup(
+            Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Card_SalesLayout.createSequentialGroup()
+                .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Card_SalesLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Card_SalesLayout.createSequentialGroup()
+                                .addComponent(searchSale, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_SearchSale)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_CleanSearch))
+                            .addGroup(Card_SalesLayout.createSequentialGroup()
+                                .addComponent(btn_NewSale)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_DeleteSale))))
+                    .addGroup(Card_SalesLayout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(151, Short.MAX_VALUE))
+        );
+        Card_SalesLayout.setVerticalGroup(
+            Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Card_SalesLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_NewSale)
+                    .addComponent(btn_DeleteSale))
+                .addGap(18, 18, 18)
+                .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_SearchSale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_CleanSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchSale))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+        );
+
+        CollectionCard.add(Card_Sales, "cardSales");
 
         Card_Products.setBackground(new java.awt.Color(255, 255, 255));
         Card_Products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -777,7 +944,7 @@ public class Home extends javax.swing.JFrame {
         table_Employees.setGridColor(new java.awt.Color(204, 204, 204));
         Table_Employees.setViewportView(table_Employees);
 
-        Card_Employees.add(Table_Employees, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 190, 310));
+        Card_Employees.add(Table_Employees, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 190, 320));
 
         btnSaveEmployee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnSaveEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png"))); // NOI18N
@@ -1048,7 +1215,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_CustomersLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addContainerGap(465, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Customers, "cardCustomers");
@@ -1073,147 +1240,10 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_SettingsLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addContainerGap(465, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Settings, "cardSettings");
-
-        Card_Sales.setBackground(new java.awt.Color(255, 255, 255));
-
-        btn_NewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png"))); // NOI18N
-        btn_NewSale.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_NewSaleMouseClicked(evt);
-            }
-        });
-
-        btn_SearchSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png"))); // NOI18N
-        btn_SearchSale.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_SearchSaleMouseClicked(evt);
-            }
-        });
-
-        btn_CleanSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png"))); // NOI18N
-        btn_CleanSearch.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_CleanSearchMouseClicked(evt);
-            }
-        });
-
-        btn_DeleteSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png"))); // NOI18N
-        btn_DeleteSale.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_DeleteSaleMouseClicked(evt);
-            }
-        });
-
-        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(108, 81, 233));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("HISTÓRICO DE VENDAS");
-
-        salesTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"", "", "", "", null},
-                {"", "", "", "", null},
-                {"", "", "", "", null},
-                {"", "", "", "", null},
-                {"", "", "", "", null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Código da Venda", "CPF Cliente", "Total", "Vendedor", "Data"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        salesTable.setGridColor(new java.awt.Color(204, 204, 204));
-        jScrollPane2.setViewportView(salesTable);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout Card_SalesLayout = new javax.swing.GroupLayout(Card_Sales);
-        Card_Sales.setLayout(Card_SalesLayout);
-        Card_SalesLayout.setHorizontalGroup(
-            Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Card_SalesLayout.createSequentialGroup()
-                .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Card_SalesLayout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Card_SalesLayout.createSequentialGroup()
-                                .addComponent(searchSale, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_SearchSale)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_CleanSearch))
-                            .addGroup(Card_SalesLayout.createSequentialGroup()
-                                .addComponent(btn_NewSale)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_DeleteSale))))
-                    .addGroup(Card_SalesLayout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(151, Short.MAX_VALUE))
-        );
-        Card_SalesLayout.setVerticalGroup(
-            Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Card_SalesLayout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_NewSale)
-                    .addComponent(btn_DeleteSale))
-                .addGap(18, 18, 18)
-                .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_SearchSale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_CleanSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchSale))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-
-        CollectionCard.add(Card_Sales, "cardSales");
 
         Body.setRightComponent(CollectionCard);
 
@@ -1448,6 +1478,14 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowGainedFocus
 
+    private void btnNewSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewSaleMouseClicked
+
+    }//GEN-LAST:event_btnNewSaleMouseClicked
+
+    private void btnNewProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewProductMouseClicked
+        new Register_Or_Insert(this, true).setVisible(true);
+    }//GEN-LAST:event_btnNewProductMouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -1515,7 +1553,12 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane Table_Employees;
     private javax.swing.JLabel btnDeleteEmployee;
     private javax.swing.JLabel btnEditEmployee;
+    private javax.swing.JLabel btnHideInfo;
+    private javax.swing.JLabel btnNewClient;
+    private javax.swing.JLabel btnNewProduct;
+    private javax.swing.JLabel btnNewSale;
     private javax.swing.JLabel btnSaveEmployee;
+    private javax.swing.JLabel btnSearchProduct;
     private javax.swing.JLabel btn_CleanSearch;
     private javax.swing.JLabel btn_Close;
     private javax.swing.JLabel btn_DeleteSale;
@@ -1540,18 +1583,17 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel icon_products;
     private javax.swing.JLabel icon_sales;
     private javax.swing.JLabel icon_settings;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1563,6 +1605,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel mainWelcome;
     private javax.swing.JPanel menu_customers;
     private javax.swing.JPanel menu_employees;
     private javax.swing.JPanel menu_home;
