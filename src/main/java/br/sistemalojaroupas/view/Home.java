@@ -597,102 +597,142 @@ public class Home extends javax.swing.JFrame {
         Card_Home.setBackground(new java.awt.Color(255, 255, 255));
         Card_Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setText("982");
-        Card_Home.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 160, -1, -1));
+        Card_Home.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, -1, -1));
 
-        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("R$ 40,21");
-        Card_Home.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 160, -1, -1));
+        Card_Home.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 150, -1, -1));
 
-        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("R$ 9.482,49");
-        Card_Home.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, -1, -1));
+        Card_Home.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
 
-        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("R$ 39.482,49");
-        Card_Home.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
+        Card_Home.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Total de Vendas");
-        Card_Home.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 200, -1, -1));
+        Card_Home.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Ticket Médio");
-        Card_Home.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 200, -1, -1));
+        Card_Home.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 180, -1, -1));
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Receita Líquida");
-        Card_Home.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, -1, -1));
+        Card_Home.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, -1));
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Faturamento");
-        Card_Home.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
+        Card_Home.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_ticket.png"))); // NOI18N
-        Card_Home.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 150, -1, -1));
+        Card_Home.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 150, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo4_home.png"))); // NOI18N
-        Card_Home.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 140, -1, -1));
+        Card_Home.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 140, -1, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_carrinhoDeCompras.png"))); // NOI18N
-        Card_Home.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, -1, -1));
+        Card_Home.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo3_home.png"))); // NOI18N
-        Card_Home.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, -1, -1));
+        Card_Home.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 140, -1, -1));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cifrão.png"))); // NOI18N
-        Card_Home.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
+        Card_Home.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_dinheiro.png"))); // NOI18N
-        Card_Home.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        Card_Home.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo2_home.png"))); // NOI18N
-        Card_Home.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
+        Card_Home.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 140, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo1_home.png"))); // NOI18N
         Card_Home.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProduto.png"))); // NOI18N
-        Card_Home.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, -1, -1));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
+        });
+        Card_Home.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, -1, -1));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoCliente.png"))); // NOI18N
-        Card_Home.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, -1, -1));
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel17MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel17MouseExited(evt);
+            }
+        });
+        Card_Home.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, -1, -1));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarCliente.png"))); // NOI18N
-        Card_Home.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, -1, -1));
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel18MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel18MouseExited(evt);
+            }
+        });
+        Card_Home.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, -1, -1));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png"))); // NOI18N
-        Card_Home.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 400, -1, -1));
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel19MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel19MouseExited(evt);
+            }
+        });
+        Card_Home.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 380, -1, -1));
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVenda.png"))); // NOI18N
-        Card_Home.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel21MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel21MouseExited(evt);
+            }
+        });
+        Card_Home.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 150, -1));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        Card_Home.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 10, 310));
+        Card_Home.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 10, 250));
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        Card_Home.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 10, 310));
+        Card_Home.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 330, 10, 250));
 
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        Card_Home.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 360, 10, 310));
+        Card_Home.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 330, 10, 250));
 
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        Card_Home.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 10, 310));
+        Card_Home.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, 10, 250));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo_botoes_home.png"))); // NOI18N
         Card_Home.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_olhoFechar.png"))); // NOI18N
-        Card_Home.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 80, -1, -1));
+        Card_Home.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(29, 73, 153));
@@ -1685,6 +1725,46 @@ public class Home extends javax.swing.JFrame {
             btn_SearchProductsMouseClicked(null);
         }
     }//GEN-LAST:event_txtProductsSearchFieldKeyPressed
+
+    private void jLabel21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseEntered
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVendaAzul.png")));
+    }//GEN-LAST:event_jLabel21MouseEntered
+
+    private void jLabel21MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseExited
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVenda.png")));
+    }//GEN-LAST:event_jLabel21MouseExited
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+      jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProdutoAzul.png")));
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProduto.png")));
+    }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoClienteAzul.png")));
+    }//GEN-LAST:event_jLabel17MouseEntered
+
+    private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
+       jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoCliente.png")));
+    }//GEN-LAST:event_jLabel17MouseExited
+
+    private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarClienteAzul.png")));
+    }//GEN-LAST:event_jLabel18MouseEntered
+
+    private void jLabel18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseExited
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarCliente.png")));
+    }//GEN-LAST:event_jLabel18MouseExited
+
+    private void jLabel19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseEntered
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVendaAzul.png")));
+    }//GEN-LAST:event_jLabel19MouseEntered
+
+    private void jLabel19MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseExited
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png")));
+    }//GEN-LAST:event_jLabel19MouseExited
 
 
     /**
