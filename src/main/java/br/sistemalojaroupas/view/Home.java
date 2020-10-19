@@ -1348,7 +1348,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_removeProductMouseClicked
 
     private void btn_editProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editProductMouseClicked
-        new Register_New_Products(null, true).setVisible(true);
+        new Edit_Product(this, true).setVisible(true);
     }//GEN-LAST:event_btn_editProductMouseClicked
 
     private void btnSaveEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveEmployeeMouseClicked
