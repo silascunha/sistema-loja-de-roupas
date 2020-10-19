@@ -6,6 +6,7 @@
 package br.sistemalojaroupas.model.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import org.dizitart.no2.IndexType;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
@@ -47,6 +48,31 @@ public class Category implements Serializable{
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 47 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Category other = (Category) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
     
     @Override

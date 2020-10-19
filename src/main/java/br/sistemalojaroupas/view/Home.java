@@ -3,12 +3,14 @@ package br.sistemalojaroupas.view;
 
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.view.util.NodesController;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -28,7 +30,9 @@ public class Home extends javax.swing.JFrame {
     
 
     public Home() {
-        initComponents();       
+        Locale.setDefault(Locale.US);
+        
+        initComponents();  
                
         panelsCardLayout = (CardLayout) CollectionCard.getLayout();
         
@@ -137,8 +141,8 @@ public class Home extends javax.swing.JFrame {
         btn_editProduct = new javax.swing.JLabel();
         btn_removeProduct = new javax.swing.JLabel();
         btn_addProduct = new javax.swing.JLabel();
-        btn_Search = new javax.swing.JLabel();
-        txt_SearchField = new javax.swing.JTextField();
+        btn_SearchProducts = new javax.swing.JLabel();
+        txtProductsSearchField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_Products = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -833,23 +837,28 @@ public class Home extends javax.swing.JFrame {
         });
         Card_Products.add(btn_addProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 98, -1, 38));
 
-        btn_Search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png"))); // NOI18N
-        btn_Search.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_SearchProducts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png"))); // NOI18N
+        btn_SearchProducts.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_SearchMouseClicked(evt);
+                btn_SearchProductsMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_SearchMouseEntered(evt);
+                btn_SearchProductsMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_SearchMouseExited(evt);
+                btn_SearchProductsMouseExited(evt);
             }
         });
-        Card_Products.add(btn_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 98, -1, 38));
+        Card_Products.add(btn_SearchProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 98, -1, 38));
 
-        txt_SearchField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Card_Products.add(txt_SearchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 100, 460, 30));
+        txtProductsSearchField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtProductsSearchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtProductsSearchFieldKeyPressed(evt);
+            }
+        });
+        Card_Products.add(txtProductsSearchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 100, 460, 30));
 
         table_Products.setForeground(new java.awt.Color(0, 0, 51));
         table_Products.setModel(new javax.swing.table.DefaultTableModel(
@@ -1438,7 +1447,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ShowHideMenuMouseClicked
 
     private void btn_addProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseClicked
-        new Register_Or_Insert(this, true).setVisible(true);
+        new Register_New_Products(null, true).setVisible(true);
     }//GEN-LAST:event_btn_addProductMouseClicked
 
     private void btn_removeProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseClicked
@@ -1459,7 +1468,21 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_removeProductMouseClicked
 
     private void btn_editProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editProductMouseClicked
-        new Edit_Product(this, true).setVisible(true);
+        int selectedRow = table_Products.getSelectedRow();
+        
+        if (selectedRow > -1) {
+            
+            DefaultTableModel dtm = (DefaultTableModel) table_Products.getModel();
+            
+            NitriteId id = (NitriteId) dtm.getValueAt(selectedRow, 0);
+            Product p = ProductDao.findById(id);
+            
+            new Edit_Product(this, true, p).setVisible(true);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Você deve selecionar um produto para poder editar.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_editProductMouseClicked
 
     private void btnSaveEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveEmployeeMouseClicked
@@ -1555,19 +1578,21 @@ public class Home extends javax.swing.JFrame {
         btn_removeProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluirClaro.png")));
     }//GEN-LAST:event_btn_removeProductMouseExited
 
-    private void btn_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_SearchMouseClicked
+    private void btn_SearchProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseClicked
+        String str = txtProductsSearchField.getText();
+        
+        NodesController.initializeTable(ProductDao.search(str), table_Products);
+    }//GEN-LAST:event_btn_SearchProductsMouseClicked
 
-    private void btn_SearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchMouseEntered
+    private void btn_SearchProductsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseEntered
         // Trocar para o ícone escuro:
-        btn_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png")));
-    }//GEN-LAST:event_btn_SearchMouseEntered
+        btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png")));
+    }//GEN-LAST:event_btn_SearchProductsMouseEntered
 
-    private void btn_SearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchMouseExited
+    private void btn_SearchProductsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseExited
        // Voltar para o ícone original
-       btn_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
-    }//GEN-LAST:event_btn_SearchMouseExited
+       btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
+    }//GEN-LAST:event_btn_SearchProductsMouseExited
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         if(!DB.isClosed()) DB.close();
@@ -1590,7 +1615,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void btnNewSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewSaleMouseClicked
-
+        
     }//GEN-LAST:event_btnNewSaleMouseClicked
 
     private void btnNewProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewProductMouseClicked
@@ -1611,6 +1636,12 @@ public class Home extends javax.swing.JFrame {
     private void btn_AddcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AddcMouseClicked
         new Register_New_Customer(null, true).setVisible(true);
     }//GEN-LAST:event_btn_AddcMouseClicked
+
+    private void txtProductsSearchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductsSearchFieldKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            btn_SearchProductsMouseClicked(null);
+        }
+    }//GEN-LAST:event_txtProductsSearchFieldKeyPressed
 
 
     /**
@@ -1695,7 +1726,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel btn_Max;
     private javax.swing.JLabel btn_Min;
     private javax.swing.JLabel btn_NewSale;
-    private javax.swing.JLabel btn_Search;
+    private javax.swing.JLabel btn_SearchProducts;
     private javax.swing.JLabel btn_SearchSale;
     private javax.swing.JLabel btn_Searchc;
     private javax.swing.JLabel btn_ShowHideMenu;
@@ -1769,6 +1800,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmployeeNeigh;
     private javax.swing.JTextField txtEmployeePhone;
     private javax.swing.JTextField txtEmployeeState;
-    private javax.swing.JTextField txt_SearchField;
+    private javax.swing.JTextField txtProductsSearchField;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,6 +12,7 @@ import org.dizitart.no2.FindOptions;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.SortOrder;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 
 /**
  *
@@ -31,6 +32,13 @@ public class ProductDao {
    
     public static void update(Product p) {
         repProduct.update(p);
+    }
+    
+    public static List<Product> search(String arg0) {
+        List<Product> list = repProduct.find(ObjectFilters.regex("description", arg0),
+                FindOptions.sort("description", SortOrder.Ascending))
+                .toList();
+        return list;
     }
     
     public static List<Product> findAll() {

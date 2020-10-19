@@ -10,16 +10,11 @@ import br.sistemalojaroupas.model.dao.ColorDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.entities.Category;
 import br.sistemalojaroupas.model.entities.Product;
-import br.sistemalojaroupas.view.util.ComboBoxRenderer;
 import br.sistemalojaroupas.model.entities.Color;
+import br.sistemalojaroupas.view.util.ComboBoxRenderer;
 import br.sistemalojaroupas.view.util.NodesController;
-import java.awt.Component;
-import java.util.List;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+
 
 /**
  *
@@ -27,12 +22,32 @@ import javax.swing.JTextField;
  */
 public class Edit_Product extends javax.swing.JDialog {
 
+    private Product product;
+    
     /**
      * Creates new form Edit_Product
      */
-    public Edit_Product(java.awt.Frame parent, boolean modal) {
+    public Edit_Product(java.awt.Frame parent, boolean modal, Product product) {
         super(parent, modal);
         initComponents();
+        
+        this.product = product;
+        
+        txt_description.setText(product.getDescription());
+        txt_costPrice.setText(product.getCostPrice().toString());
+        txt_salePrice.setText(product.getSalePrice().toString());
+        txt_quantity.setText(String.valueOf(product.getQuantity()));
+        
+        NodesController.initializeComboBox(ColorDao.findAll(), cbColor);
+        NodesController.initializeComboBox(CategoryDao.findAll(), cbCategory);
+        
+        cbCategory.setRenderer(new ComboBoxRenderer());
+        cbColor.setRenderer(new ComboBoxRenderer());
+        cbSize.setRenderer(new ComboBoxRenderer());
+        
+        cbColor.setSelectedItem(product.getColor());
+        cbCategory.setSelectedItem(product.getCategory());
+        cbSize.setSelectedItem(product.getSize());
     }
 
     /**
@@ -273,24 +288,23 @@ public class Edit_Product extends javax.swing.JDialog {
         //verificar se todos campos foram preenchidos
 
         if (NodesController.isAllFieldsFilled(pnl_Background)) {
-            Product p = new Product();
 
             Double costPrice = Double.parseDouble(txt_costPrice.getText().replace(',', '.'));
             Double salePrice = Double.parseDouble(txt_salePrice.getText().replace(',', '.'));
 
-            p.setDescription(txt_description.getText());
-            p.setCategory((Category) cbCategory.getSelectedItem());
-            p.setColor((Color) cbColor.getSelectedItem());
-            p.setQuantity(Integer.parseInt(txt_quantity.getText()));
-            p.setCostPrice(costPrice);
-            p.setSalePrice(salePrice);
-            p.setSize(cbSize.getSelectedItem().toString());
+            product.setDescription(txt_description.getText());
+            product.setCategory((Category) cbCategory.getSelectedItem());
+            product.setColor((Color) cbColor.getSelectedItem());
+            product.setQuantity(Integer.parseInt(txt_quantity.getText()));
+            product.setCostPrice(costPrice);
+            product.setSalePrice(salePrice);
+            product.setSize(cbSize.getSelectedItem().toString());
 
-            ProductDao.insert(p);
-            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!",
+            ProductDao.update(product);
+            JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!",
                 "Atenção", JOptionPane.INFORMATION_MESSAGE);
 
-            NodesController.clearFields(pnl_Background);
+            this.dispose();
         }
         else {
             JOptionPane.showMessageDialog(null, "Você deve preencher todos os campos.",
@@ -347,48 +361,6 @@ public class Edit_Product extends javax.swing.JDialog {
         // Chamar tela de cadastrar CORES
         new New_Color(this, true).setVisible(true);
     }//GEN-LAST:event_btn_addColorMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Edit_Product.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Edit_Product.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Edit_Product.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Edit_Product.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Edit_Product dialog = new Edit_Product(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;

@@ -240,6 +240,7 @@ public class Register_New_Products extends javax.swing.JDialog {
         cbCategory.setBackground(new java.awt.Color(0, 0, 51));
         cbCategory.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbCategory.setForeground(new java.awt.Color(255, 255, 255));
+        cbCategory.setToolTipText("");
         pnl_Background.add(cbCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 180, 30));
 
         btn_addCategory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -327,7 +328,6 @@ public class Register_New_Products extends javax.swing.JDialog {
 
     private void btn_cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelMouseClicked
         this.dispose();
-        this.getOwner().dispose();
     }//GEN-LAST:event_btn_cancelMouseClicked
 
     private void btn_cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelMouseEntered
