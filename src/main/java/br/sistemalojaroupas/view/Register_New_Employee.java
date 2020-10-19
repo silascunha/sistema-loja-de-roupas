@@ -157,47 +157,36 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jPanel12.setName("jdhdd"); // NOI18N
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Nome:");
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("CPF:");
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setText("Data Nasc.:");
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setText("Tel.:");
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("E-mail:");
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
         jLabel27.setText("End.:");
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
         jLabel28.setText("Bairro:");
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(0, 0, 0));
         jLabel29.setText("CEP:");
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(0, 0, 0));
         jLabel30.setText("Cidade:");
 
         eName.setBackground(new java.awt.Color(204, 204, 204));
-        eName.setForeground(new java.awt.Color(0, 0, 0));
         eName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         eEmail.setBackground(new java.awt.Color(204, 204, 204));
-        eEmail.setForeground(new java.awt.Color(0, 0, 0));
         eEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         eEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,25 +195,20 @@ public class Register_New_Employee extends javax.swing.JDialog {
         });
 
         eAddress.setBackground(new java.awt.Color(204, 204, 204));
-        eAddress.setForeground(new java.awt.Color(0, 0, 0));
         eAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         eNeighborhood.setBackground(new java.awt.Color(204, 204, 204));
-        eNeighborhood.setForeground(new java.awt.Color(0, 0, 0));
         eNeighborhood.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         eCEP.setBackground(new java.awt.Color(204, 204, 204));
-        eCEP.setForeground(new java.awt.Color(0, 0, 0));
         eCEP.setText("29090100");
         eCEP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         eCity.setBackground(new java.awt.Color(204, 204, 204));
-        eCity.setForeground(new java.awt.Color(0, 0, 0));
         eCity.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         eCPF.setBackground(new java.awt.Color(204, 204, 204));
         eCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        eCPF.setForeground(new java.awt.Color(0, 0, 0));
         try {
             eCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
@@ -233,7 +217,6 @@ public class Register_New_Employee extends javax.swing.JDialog {
 
         eBirthDate.setBackground(new java.awt.Color(204, 204, 204));
         eBirthDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        eBirthDate.setForeground(new java.awt.Color(0, 0, 0));
         try {
             eBirthDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -247,7 +230,6 @@ public class Register_New_Employee extends javax.swing.JDialog {
 
         ePhone.setBackground(new java.awt.Color(204, 204, 204));
         ePhone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        ePhone.setForeground(new java.awt.Color(0, 0, 0));
         try {
             ePhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
@@ -255,12 +237,10 @@ public class Register_New_Employee extends javax.swing.JDialog {
         }
 
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(0, 0, 0));
         jLabel31.setText("Celular:");
 
         eCell.setBackground(new java.awt.Color(204, 204, 204));
         eCell.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        eCell.setForeground(new java.awt.Color(0, 0, 0));
         try {
             eCell.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
@@ -268,27 +248,21 @@ public class Register_New_Employee extends javax.swing.JDialog {
         }
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setText("UF:");
 
         eState.setBackground(new java.awt.Color(204, 204, 204));
-        eState.setForeground(new java.awt.Color(0, 0, 0));
         eState.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
         jLabel33.setText("Comp.:");
 
         eComplement.setBackground(new java.awt.Color(204, 204, 204));
-        eComplement.setForeground(new java.awt.Color(0, 0, 0));
         eComplement.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         jLabel34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
         jLabel34.setText("N°:");
 
         eNumber.setBackground(new java.awt.Color(204, 204, 204));
-        eNumber.setForeground(new java.awt.Color(0, 0, 0));
         eNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -418,33 +392,26 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jPanel13.setMinimumSize(new java.awt.Dimension(571, 210));
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(0, 0, 0));
         jLabel35.setText("Cargo:");
 
         jLabel36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
         jLabel36.setText("Data de admissão:");
 
         jLabel37.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(0, 0, 0));
         jLabel37.setText("Salário:");
 
         jLabel38.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
         jLabel38.setText("Tipo de acesso:");
 
         eOccupation.setBackground(new java.awt.Color(204, 204, 204));
-        eOccupation.setForeground(new java.awt.Color(0, 0, 0));
         eOccupation.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         eAccessLevel.setBackground(new java.awt.Color(204, 204, 204));
-        eAccessLevel.setForeground(new java.awt.Color(0, 0, 0));
         eAccessLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione nível", "Nível 1", "Nível 2", "Nível 3" }));
         eAccessLevel.setBorder(null);
 
         eAdmissionDate.setBackground(new java.awt.Color(204, 204, 204));
         eAdmissionDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        eAdmissionDate.setForeground(new java.awt.Color(0, 0, 0));
         try {
             eAdmissionDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -452,7 +419,6 @@ public class Register_New_Employee extends javax.swing.JDialog {
         }
 
         eSalary.setBackground(new java.awt.Color(204, 204, 204));
-        eSalary.setForeground(new java.awt.Color(0, 0, 0));
         eSalary.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -515,7 +481,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btn_SaveEmployee)

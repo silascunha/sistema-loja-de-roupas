@@ -179,7 +179,15 @@ public class Home extends javax.swing.JFrame {
         txtEmployeeEmail = new javax.swing.JTextField();
         txtEmployeeNeigh = new javax.swing.JTextField();
         Card_Customers = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        CustomerTable = new javax.swing.JTable();
+        btn_Deletec = new javax.swing.JLabel();
+        btn_CleanSearchc = new javax.swing.JLabel();
+        btn_Searchc = new javax.swing.JLabel();
+        btn_Addc = new javax.swing.JLabel();
+        cSearchCustomer = new javax.swing.JTextField();
         Card_Settings = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -557,12 +565,12 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(menu_customers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(menu_settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
             .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MenusLayout.createSequentialGroup()
                     .addGap(89, 89, 89)
                     .addComponent(menu_home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(535, Short.MAX_VALUE)))
+                    .addContainerGap(537, Short.MAX_VALUE)))
         );
 
         Body.setLeftComponent(Menus);
@@ -595,22 +603,18 @@ public class Home extends javax.swing.JFrame {
         Card_Home.add(btnSearchProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 190, -1));
 
         jLabel18.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("BUSCAR PRODUTOS");
         Card_Home.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 330, 180, -1));
 
         jLabel17.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("ENTRADA DE PRODUTO");
         Card_Home.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 200, -1));
 
         jLabel16.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("NOVO CLIENTE");
         Card_Home.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 150, -1));
 
         jLabel15.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("NOVA VENDA");
         Card_Home.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 140, -1));
 
@@ -619,12 +623,10 @@ public class Home extends javax.swing.JFrame {
         Card_Home.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, 90, -1));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("F. Mensal");
         Card_Home.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, 70, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Qtd. Vendas");
         Card_Home.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, -1, -1));
 
@@ -635,7 +637,6 @@ public class Home extends javax.swing.JFrame {
         Card_Home.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 640, 90, -1));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Ticket Médio");
         Card_Home.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 610, 80, -1));
 
@@ -656,14 +657,14 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        btn_SearchSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png"))); // NOI18N
+        btn_SearchSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png"))); // NOI18N
         btn_SearchSale.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_SearchSaleMouseClicked(evt);
             }
         });
 
-        btn_CleanSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png"))); // NOI18N
+        btn_CleanSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limpar.png"))); // NOI18N
         btn_CleanSearch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_CleanSearchMouseClicked(evt);
@@ -679,7 +680,7 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(108, 81, 233));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("HISTÓRICO DE VENDAS");
@@ -763,7 +764,7 @@ public class Home extends javax.swing.JFrame {
                     .addGroup(Card_SalesLayout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(284, Short.MAX_VALUE))
         );
         Card_SalesLayout.setVerticalGroup(
             Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -777,7 +778,7 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(btn_SearchSale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_CleanSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(searchSale))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
@@ -1197,25 +1198,135 @@ public class Home extends javax.swing.JFrame {
 
         Card_Customers.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("CARD CUSTOMERS");
+        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(108, 81, 233));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("CLIENTES");
+
+        CustomerTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nome", "CPF", "Celular", "E-maill"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        CustomerTable.setGridColor(new java.awt.Color(204, 204, 204));
+        jScrollPane3.setViewportView(CustomerTable);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        btn_Deletec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png"))); // NOI18N
+        btn_Deletec.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_DeletecMouseClicked(evt);
+            }
+        });
+
+        btn_CleanSearchc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limpar.png"))); // NOI18N
+        btn_CleanSearchc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_CleanSearchcMouseClicked(evt);
+            }
+        });
+
+        btn_Searchc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png"))); // NOI18N
+
+        btn_Addc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png"))); // NOI18N
+        btn_Addc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_AddcMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Card_CustomersLayout = new javax.swing.GroupLayout(Card_Customers);
         Card_Customers.setLayout(Card_CustomersLayout);
         Card_CustomersLayout.setHorizontalGroup(
             Card_CustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Card_CustomersLayout.createSequentialGroup()
-                .addGap(333, 333, 333)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(713, Short.MAX_VALUE))
+                .addGap(136, 136, 136)
+                .addGroup(Card_CustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Card_CustomersLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(Card_CustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Card_CustomersLayout.createSequentialGroup()
+                                .addComponent(btn_Addc)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_Deletec))
+                            .addGroup(Card_CustomersLayout.createSequentialGroup()
+                                .addComponent(cSearchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_Searchc)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_CleanSearchc)))))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         Card_CustomersLayout.setVerticalGroup(
             Card_CustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Card_CustomersLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(465, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Card_CustomersLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(Card_CustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_Addc)
+                    .addComponent(btn_Deletec))
+                .addGap(37, 37, 37)
+                .addGroup(Card_CustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Card_CustomersLayout.createSequentialGroup()
+                        .addGroup(Card_CustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cSearchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Searchc))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))
+                    .addGroup(Card_CustomersLayout.createSequentialGroup()
+                        .addComponent(btn_CleanSearchc)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         CollectionCard.add(Card_Customers, "cardCustomers");
@@ -1233,14 +1344,14 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_SettingsLayout.createSequentialGroup()
                 .addGap(333, 333, 333)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(713, Short.MAX_VALUE))
+                .addContainerGap(715, Short.MAX_VALUE))
         );
         Card_SettingsLayout.setVerticalGroup(
             Card_SettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Card_SettingsLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addContainerGap(467, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Settings, "cardSettings");
@@ -1486,6 +1597,21 @@ public class Home extends javax.swing.JFrame {
         new Register_Or_Insert(this, true).setVisible(true);
     }//GEN-LAST:event_btnNewProductMouseClicked
 
+    private void btn_CleanSearchcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CleanSearchcMouseClicked
+        cSearchCustomer.setText("");
+    }//GEN-LAST:event_btn_CleanSearchcMouseClicked
+
+    private void btn_DeletecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeletecMouseClicked
+         int ex;
+        ex = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir registro de venda?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if(ex == 0){
+            }
+    }//GEN-LAST:event_btn_DeletecMouseClicked
+
+    private void btn_AddcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AddcMouseClicked
+        new Register_New_Customer(null, true).setVisible(true);
+    }//GEN-LAST:event_btn_AddcMouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -1538,6 +1664,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Card_Settings;
     private javax.swing.JLabel City;
     private javax.swing.JPanel CollectionCard;
+    private javax.swing.JTable CustomerTable;
     private javax.swing.JLabel Email;
     private javax.swing.JPanel Head;
     private javax.swing.JLabel HouseNumber;
@@ -1559,14 +1686,18 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel btnNewSale;
     private javax.swing.JLabel btnSaveEmployee;
     private javax.swing.JLabel btnSearchProduct;
+    private javax.swing.JLabel btn_Addc;
     private javax.swing.JLabel btn_CleanSearch;
+    private javax.swing.JLabel btn_CleanSearchc;
     private javax.swing.JLabel btn_Close;
     private javax.swing.JLabel btn_DeleteSale;
+    private javax.swing.JLabel btn_Deletec;
     private javax.swing.JLabel btn_Max;
     private javax.swing.JLabel btn_Min;
     private javax.swing.JLabel btn_NewSale;
     private javax.swing.JLabel btn_Search;
     private javax.swing.JLabel btn_SearchSale;
+    private javax.swing.JLabel btn_Searchc;
     private javax.swing.JLabel btn_ShowHideMenu;
     private javax.swing.JLabel btn_addProduct;
     private javax.swing.JLabel btn_customers;
@@ -1577,6 +1708,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel btn_removeProduct;
     private javax.swing.JLabel btn_sales;
     private javax.swing.JLabel btn_settings;
+    private javax.swing.JTextField cSearchCustomer;
     private javax.swing.JLabel icon_customers;
     private javax.swing.JLabel icon_employees;
     private javax.swing.JLabel icon_home;
@@ -1594,13 +1726,15 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
