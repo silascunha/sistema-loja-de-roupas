@@ -58,6 +58,7 @@ public void limpaCampos() {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(59, 44, 150));

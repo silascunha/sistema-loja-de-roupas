@@ -379,6 +379,7 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
                     "Atenção", JOptionPane.INFORMATION_MESSAGE);
 
                 NodesController.clearFields(pnl_Background);
+                product = null;
             }
             else {
                 instantiateProduct(product);

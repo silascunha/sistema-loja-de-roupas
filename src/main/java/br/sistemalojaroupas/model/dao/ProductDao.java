@@ -6,8 +6,11 @@
 package br.sistemalojaroupas.model.dao;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.model.entities.Category;
 import br.sistemalojaroupas.model.entities.Product;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.dizitart.no2.FindOptions;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.SortOrder;
@@ -24,6 +27,10 @@ public class ProductDao {
     
     static {
         repProduct = DB.getDB().getRepository(Product.class);
+    }
+    
+    public static ObjectRepository<Product> getProductRepository() {
+        return repProduct;
     }
     
     public static void insert(Product p) {
@@ -45,6 +52,19 @@ public class ProductDao {
     public static List<Product> findAll() {
         FindOptions fo = FindOptions.sort("description", SortOrder.Ascending);
         List<Product> list = repProduct.find(fo).toList();
+        
+        Map<NitriteId, Category> map = new HashMap<>();
+        
+        list.forEach(p -> {
+            Category c = map.get(p.getCategory().getId());
+            
+            if (c == null) {
+                c = CategoryDao.findById(p.getCategory().getId());
+                map.put(p.getCategory().getId(), c);
+            }
+            p.setCategory(c);
+            ProductDao.update(p);
+        });
         return list;
     }
     

@@ -8,7 +8,9 @@ package br.sistemalojaroupas.model.dao;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.entities.Category;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.dizitart.no2.FindOptions;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.SortOrder;
@@ -41,6 +43,12 @@ public class CategoryDao {
         
         if (c.equals(temp) || temp == null) {
             repCategory.update(c);
+            
+            ProductDao.findAll().stream().filter(p -> p.getCategory().equals(c))
+                    .collect(Collectors.toList()).forEach(p -> {
+                        p.setCategory(c);
+                        ProductDao.update(p);
+                    });
         }
         else {
             throw new DBException("Essa categoria já existe.");
