@@ -53,18 +53,6 @@ public class ProductDao {
         FindOptions fo = FindOptions.sort("description", SortOrder.Ascending);
         List<Product> list = repProduct.find(fo).toList();
         
-        Map<NitriteId, Category> map = new HashMap<>();
-        
-        list.forEach(p -> {
-            Category c = map.get(p.getCategory().getId());
-            
-            if (c == null) {
-                c = CategoryDao.findById(p.getCategory().getId());
-                map.put(p.getCategory().getId(), c);
-            }
-            p.setCategory(c);
-            ProductDao.update(p);
-        });
         return list;
     }
     

@@ -9,6 +9,7 @@ import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.entities.Color;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.dizitart.no2.FindOptions;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.SortOrder;
@@ -36,12 +37,19 @@ public class ColorDao {
         }
     }
     
-    public static void update(Color color) {
-        Color temp = repColor.find(ObjectFilters.eq("name", color.getName()))
+    public static void update(Color c) {
+        Color temp = repColor.find(ObjectFilters.eq("name", c.getName()))
                 .firstOrDefault();
         
-        if (color.equals(temp) || temp == null) {
-            repColor.update(color);
+        if (c.equals(temp) || temp == null) {
+            repColor.update(c);
+            
+            ProductDao.findAll().stream().filter(p -> p.getColor().equals(c))
+                    .collect(Collectors.toList()).forEach(p -> {
+                        p.setColor(c);
+                        ProductDao.update(p);
+                    });
+            
         }
         else {
             throw new DBException("A cor digitada já existe.");
