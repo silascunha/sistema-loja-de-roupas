@@ -104,18 +104,19 @@ public class New_Color extends javax.swing.JDialog {
     private void btn_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_saveMouseClicked
         
         if (!txt_newColor.getText().equals("")){
-            Color c = new Color(txt_newColor.getText());
+            Color c = new Color(txt_newColor.getText().toUpperCase());
             try {
                 ColorDao.insert(c);
                 
                 JOptionPane.showMessageDialog(null, "Cor salva!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-                if (parent instanceof Register_New_Products) {
+                if (parent instanceof Register_And_Edit_Products) {
                     NodesController.initializeComboBox(ColorDao.findAll(),
-                            ((Register_New_Products)parent).getCbColor());
+                            ((Register_And_Edit_Products)parent).getCbColor());
                 }
                 
             } catch (DBException e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Essa cor já está cadastrada.", 
+                        "Erro", JOptionPane.ERROR_MESSAGE);
             }
             this.dispose();
         }
