@@ -40,7 +40,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>br.com.sistemalojaroupas.view.Login</mainClass>
+                            <mainClass>br.sistemalojaroupas.application.App</mainClass>
                         </manifest>
                     </archive>
                     <foo>bar</foo>
