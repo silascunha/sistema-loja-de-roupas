@@ -115,7 +115,7 @@ public class Register_Or_Insert extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_newProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_newProductMouseClicked
-        new Register_New_Products(this, true).setVisible(true);
+        new Register_And_Edit_Products(this, true).setVisible(true);
     }//GEN-LAST:event_btn_newProductMouseClicked
 
     private void btn_newProductMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_newProductMouseEntered

@@ -25,14 +25,14 @@ import javax.swing.JTextField;
  *
  * @author lukas
  */
-public class Register_New_Products extends javax.swing.JDialog {
+public class Register_And_Edit_Products extends javax.swing.JDialog {
     
-    
+    private Product product;
     /**
      * Creates new form Register_Products
      */
     
-    public Register_New_Products(java.awt.Dialog owner, boolean modal) {
+    public Register_And_Edit_Products(java.awt.Dialog owner, boolean modal) {
         super(owner, modal);
         initComponents();   
         
@@ -42,9 +42,37 @@ public class Register_New_Products extends javax.swing.JDialog {
         NodesController.initializeComboBox(CategoryDao.findAll(), cbCategory);
         NodesController.initializeComboBox(ColorDao.findAll(), cbColor);
         
-        cbCategory.setRenderer(new ComboBoxRenderer());
-        cbColor.setRenderer(new ComboBoxRenderer());
-        cbSize.setRenderer(new ComboBoxRenderer());
+        setAllComboBoxRenderer();
+    }
+    
+    public Register_And_Edit_Products(java.awt.Dialog owner, boolean modal, Product product) {
+        super(owner, modal);
+        initComponents();
+        
+        this.setBackground(new java.awt.Color(0,0,0,0));
+        pnl_Background.setBackground(new java.awt.Color(0,0,0,0));
+        
+        this.product = product;
+        
+        txt_description.setText(product.getDescription());
+        txt_costPrice.setText(product.getCostPrice().toString());
+        txt_salePrice.setText(product.getSalePrice().toString());
+        txt_quantity.setText(String.valueOf(product.getQuantity()));
+        title.setText("Editar produto");
+        NodesController.initializeComboBox(ColorDao.findAll(), cbColor);
+        NodesController.initializeComboBox(CategoryDao.findAll(), cbCategory);
+        
+        setAllComboBoxRenderer();
+        
+        cbColor.setSelectedItem(product.getColor());
+        cbCategory.setSelectedItem(product.getCategory());
+        cbSize.setSelectedItem(product.getSize());
+    }
+    
+    private void setAllComboBoxRenderer() {
+        for (Component c : pnl_Background.getComponents()) {
+            if (c instanceof JComboBox) ((JComboBox)c).setRenderer(new ComboBoxRenderer());
+        }
     }
 
     public JComboBox<Object> getCbCategory() {
@@ -53,6 +81,21 @@ public class Register_New_Products extends javax.swing.JDialog {
 
     public JComboBox<Object> getCbColor() {
         return cbColor;
+    }
+    
+    private Product instantiateProduct(Product p) {
+        Double costPrice = Double.parseDouble(txt_costPrice.getText().replace(',', '.'));
+        Double salePrice = Double.parseDouble(txt_salePrice.getText().replace(',', '.'));
+
+        p.setDescription(txt_description.getText().toUpperCase());
+        p.setCategory((Category) cbCategory.getSelectedItem());
+        p.setColor((Color) cbColor.getSelectedItem());
+        p.setQuantity(Integer.parseInt(txt_quantity.getText()));
+        p.setCostPrice(costPrice);
+        p.setSalePrice(salePrice);
+        p.setSize(cbSize.getSelectedItem().toString());
+        
+        return p;
     }
 
     /**
@@ -65,7 +108,7 @@ public class Register_New_Products extends javax.swing.JDialog {
     private void initComponents() {
 
         pnl_Background = new javax.swing.JPanel();
-        Title = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txt_description = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -85,6 +128,8 @@ public class Register_New_Products extends javax.swing.JDialog {
         cbCategory = new javax.swing.JComboBox<>();
         btn_addCategory = new javax.swing.JLabel();
         btn_addColor = new javax.swing.JLabel();
+        btn_editCategory = new javax.swing.JLabel();
+        btn_editColor = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -92,11 +137,11 @@ public class Register_New_Products extends javax.swing.JDialog {
 
         pnl_Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Title.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        Title.setForeground(new java.awt.Color(0, 0, 51));
-        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title.setText("Cadastrar novo produto");
-        pnl_Background.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 613, 40));
+        title.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        title.setForeground(new java.awt.Color(0, 0, 51));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Cadastrar novo produto");
+        pnl_Background.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 613, 40));
 
         jLabel8.setBackground(new java.awt.Color(59, 44, 150));
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -191,6 +236,7 @@ public class Register_New_Products extends javax.swing.JDialog {
         pnl_Background.add(txt_quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 60, 30));
 
         bnt_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
+        bnt_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bnt_save.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bnt_saveMouseClicked(evt);
@@ -202,9 +248,10 @@ public class Register_New_Products extends javax.swing.JDialog {
                 bnt_saveMouseExited(evt);
             }
         });
-        pnl_Background.add(bnt_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
+        pnl_Background.add(bnt_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, 30));
 
         btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png"))); // NOI18N
+        btn_clear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_clear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_clearMouseClicked(evt);
@@ -219,6 +266,7 @@ public class Register_New_Products extends javax.swing.JDialog {
         pnl_Background.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
 
         btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png"))); // NOI18N
+        btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_cancelMouseClicked(evt);
@@ -235,31 +283,77 @@ public class Register_New_Products extends javax.swing.JDialog {
         cbColor.setBackground(new java.awt.Color(0, 0, 51));
         cbColor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbColor.setForeground(new java.awt.Color(255, 255, 255));
-        pnl_Background.add(cbColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 180, 30));
+        pnl_Background.add(cbColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 160, 30));
 
         cbCategory.setBackground(new java.awt.Color(0, 0, 51));
         cbCategory.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbCategory.setForeground(new java.awt.Color(255, 255, 255));
         cbCategory.setToolTipText("");
-        pnl_Background.add(cbCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 180, 30));
+        pnl_Background.add(cbCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 160, 30));
 
         btn_addCategory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_addCategory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais.png"))); // NOI18N
+        btn_addCategory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_addCategory.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_addCategoryMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_addCategoryMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_addCategoryMouseExited(evt);
+            }
         });
-        pnl_Background.add(btn_addCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 30, 30));
+        pnl_Background.add(btn_addCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 30, 30));
 
         btn_addColor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_addColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais.png"))); // NOI18N
+        btn_addColor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_addColor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_addColorMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_addColorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_addColorMouseExited(evt);
+            }
         });
-        pnl_Background.add(btn_addColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 30, 30));
+        pnl_Background.add(btn_addColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 30, 30));
+
+        btn_editCategory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_editCategory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit_19px.png"))); // NOI18N
+        btn_editCategory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_editCategory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_editCategoryMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_editCategoryMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_editCategoryMouseExited(evt);
+            }
+        });
+        pnl_Background.add(btn_editCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 30, 30));
+
+        btn_editColor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_editColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit_19px.png"))); // NOI18N
+        btn_editColor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_editColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_editColorMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_editColorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_editColorMouseExited(evt);
+            }
+        });
+        pnl_Background.add(btn_editColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 30, 30));
 
         Background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tela_cadastro_dark.png"))); // NOI18N
@@ -275,24 +369,24 @@ public class Register_New_Products extends javax.swing.JDialog {
         //verificar se todos campos foram preenchidos
         
         if (NodesController.isAllFieldsFilled(pnl_Background)) {
-            Product p = new Product();
             
-            Double costPrice = Double.parseDouble(txt_costPrice.getText().replace(',', '.'));
-            Double salePrice = Double.parseDouble(txt_salePrice.getText().replace(',', '.'));
-            
-            p.setDescription(txt_description.getText());
-            p.setCategory((Category) cbCategory.getSelectedItem());
-            p.setColor((Color) cbColor.getSelectedItem());
-            p.setQuantity(Integer.parseInt(txt_quantity.getText()));
-            p.setCostPrice(costPrice);
-            p.setSalePrice(salePrice);
-            p.setSize(cbSize.getSelectedItem().toString());
-            
-            ProductDao.insert(p);
-            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!",
-                "Atenção", JOptionPane.INFORMATION_MESSAGE);
-            
-            NodesController.clearFields(pnl_Background);
+            if (product == null) {
+                
+                product = instantiateProduct(new Product());
+                
+                ProductDao.insert(product);
+                JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!",
+                    "Atenção", JOptionPane.INFORMATION_MESSAGE);
+
+                NodesController.clearFields(pnl_Background);
+            }
+            else {
+                instantiateProduct(product);
+                ProductDao.update(product);
+                JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!",
+                    "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            }
         }
         else {
             JOptionPane.showMessageDialog(null, "Você deve preencher todos os campos.",
@@ -350,15 +444,71 @@ public class Register_New_Products extends javax.swing.JDialog {
         new New_Category(this, true).setVisible(true);
     }//GEN-LAST:event_btn_addCategoryMouseClicked
 
+    private void btn_addColorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addColorMouseEntered
+        btn_addColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais_claro.png")));
+    }//GEN-LAST:event_btn_addColorMouseEntered
+
+    private void btn_addColorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addColorMouseExited
+        btn_addColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais.png")));
+    }//GEN-LAST:event_btn_addColorMouseExited
+
+    private void btn_addCategoryMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addCategoryMouseEntered
+        btn_addCategory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais_claro.png")));
+    }//GEN-LAST:event_btn_addCategoryMouseEntered
+
+    private void btn_addCategoryMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addCategoryMouseExited
+        btn_addCategory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais.png")));
+    }//GEN-LAST:event_btn_addCategoryMouseExited
+
+    private void btn_editColorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editColorMouseEntered
+        btn_editColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit_19px_claro.png")));
+    }//GEN-LAST:event_btn_editColorMouseEntered
+
+    private void btn_editColorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editColorMouseExited
+        btn_editColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit_19px.png")));
+    }//GEN-LAST:event_btn_editColorMouseExited
+
+    private void btn_editCategoryMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editCategoryMouseEntered
+        btn_editCategory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit_19px_claro.png")));
+    }//GEN-LAST:event_btn_editCategoryMouseEntered
+
+    private void btn_editCategoryMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editCategoryMouseExited
+        btn_editCategory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit_19px.png")));
+    }//GEN-LAST:event_btn_editCategoryMouseExited
+
+    private void btn_editColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editColorMouseClicked
+        
+        if (cbColor.getSelectedIndex() != 0) {
+            Color c = (Color) cbColor.getSelectedItem();
+            new Edit_Color(this, true, c).setVisible(true);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Você deve selecionar uma cor para poder editar.", 
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_editColorMouseClicked
+
+    private void btn_editCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editCategoryMouseClicked
+        if (cbCategory.getSelectedIndex() != 0) {
+            Category c = (Category) cbCategory.getSelectedItem();
+            new Edit_Category(this, true, c).setVisible(true);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Você deve selecionar uma categoria para poder editar.", 
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_editCategoryMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
-    private javax.swing.JLabel Title;
     private javax.swing.JLabel bnt_save;
     private javax.swing.JLabel btn_addCategory;
     private javax.swing.JLabel btn_addColor;
     private javax.swing.JLabel btn_cancel;
     private javax.swing.JLabel btn_clear;
+    private javax.swing.JLabel btn_editCategory;
+    private javax.swing.JLabel btn_editColor;
     private javax.swing.JComboBox<Object> cbCategory;
     private javax.swing.JComboBox<Object> cbColor;
     private javax.swing.JComboBox<String> cbSize;
@@ -370,6 +520,7 @@ public class Register_New_Products extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel pnl_Background;
+    private javax.swing.JLabel title;
     private javax.swing.JFormattedTextField txt_costPrice;
     private javax.swing.JTextField txt_description;
     private javax.swing.JFormattedTextField txt_quantity;

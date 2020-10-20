@@ -42,7 +42,8 @@ public class Home extends javax.swing.JFrame {
         menuButtonsList.add(menu_sale);
         menuButtonsList.add(menu_settings);
         menuButtonsList.add(menu_employees);
-        menuButtonsList.add(menu_product);        
+        menuButtonsList.add(menu_product);
+        
     }
     
     private void setMenuButtonsColor(JPanel pn1) {
@@ -582,16 +583,17 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(menu_customers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(menu_settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
             .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MenusLayout.createSequentialGroup()
                     .addGap(89, 89, 89)
                     .addComponent(menu_home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(626, Short.MAX_VALUE)))
+                    .addContainerGap(502, Short.MAX_VALUE)))
         );
 
         Body.setLeftComponent(Menus);
 
+        CollectionCard.setPreferredSize(new java.awt.Dimension(1200, 641));
         CollectionCard.setLayout(new java.awt.CardLayout());
 
         Card_Home.setBackground(new java.awt.Color(255, 255, 255));
@@ -859,7 +861,7 @@ public class Home extends javax.swing.JFrame {
                     .addGroup(Card_SalesLayout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addContainerGap(295, Short.MAX_VALUE))
         );
         Card_SalesLayout.setVerticalGroup(
             Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -873,7 +875,7 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(btn_SearchSale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_CleanSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(searchSale))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
@@ -1406,7 +1408,7 @@ public class Home extends javax.swing.JFrame {
                                 .addComponent(btn_Searchc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btn_CleanSearchc)))))
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
         Card_CustomersLayout.setVerticalGroup(
             Card_CustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1421,7 +1423,7 @@ public class Home extends javax.swing.JFrame {
                         .addGroup(Card_CustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cSearchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_Searchc))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43))
                     .addGroup(Card_CustomersLayout.createSequentialGroup()
@@ -1444,14 +1446,14 @@ public class Home extends javax.swing.JFrame {
             .addGroup(Card_SettingsLayout.createSequentialGroup()
                 .addGap(333, 333, 333)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(715, Short.MAX_VALUE))
+                .addContainerGap(718, Short.MAX_VALUE))
         );
         Card_SettingsLayout.setVerticalGroup(
             Card_SettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Card_SettingsLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(556, Short.MAX_VALUE))
+                .addContainerGap(432, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Settings, "cardSettings");
@@ -1538,7 +1540,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ShowHideMenuMouseClicked
 
     private void btn_addProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseClicked
-        new Register_New_Products(null, true).setVisible(true);
+        new Register_And_Edit_Products(null, true).setVisible(true);
     }//GEN-LAST:event_btn_addProductMouseClicked
 
     private void btn_removeProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseClicked
@@ -1568,7 +1570,7 @@ public class Home extends javax.swing.JFrame {
             NitriteId id = (NitriteId) dtm.getValueAt(selectedRow, 0);
             Product p = ProductDao.findById(id);
             
-            new Edit_Product(this, true, p).setVisible(true);
+            new Register_And_Edit_Products(null, true, p).setVisible(true);
         }
         else {
             JOptionPane.showMessageDialog(null, "Você deve selecionar um produto para poder editar.",
