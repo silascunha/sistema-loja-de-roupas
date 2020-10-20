@@ -5,6 +5,7 @@
  */
 package br.sistemalojaroupas.view;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +20,8 @@ public class Register_New_Customer extends javax.swing.JDialog {
     public Register_New_Customer(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setBackground(new Color(0,0,0,0));
+        jPanel1.setBackground(new Color(0,0,0,0));
     }
 public void limpaCampos() {
     cName.setText("");
@@ -41,8 +44,6 @@ public void limpaCampos() {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
         cName = new javax.swing.JTextField();
         cEmail = new javax.swing.JTextField();
         cCPF = new javax.swing.JFormattedTextField();
@@ -50,151 +51,128 @@ public void limpaCampos() {
         btn_Savec = new javax.swing.JLabel();
         btn_Cancelc = new javax.swing.JLabel();
         btn_Cleanc = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 51)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(59, 44, 150));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Nome:");
+        jLabel1.setOpaque(true);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, 30));
 
+        jLabel2.setBackground(new java.awt.Color(59, 44, 150));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CPF:");
+        jLabel2.setOpaque(true);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 80, 30));
 
+        jLabel3.setBackground(new java.awt.Color(59, 44, 150));
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("E-mail:");
+        jLabel3.setOpaque(true);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 80, 30));
 
+        jLabel4.setBackground(new java.awt.Color(59, 44, 150));
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Celular:");
+        jLabel4.setOpaque(true);
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 80, 30));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
+        cName.setBackground(new java.awt.Color(0, 0, 51));
+        cName.setForeground(new java.awt.Color(255, 255, 255));
+        cName.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        jPanel1.add(cName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 329, 30));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(108, 81, 233));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("CADASTRO DE CLIENTE");
+        cEmail.setBackground(new java.awt.Color(0, 0, 51));
+        cEmail.setForeground(new java.awt.Color(255, 255, 255));
+        cEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        jPanel1.add(cEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 329, 30));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-        );
-
-        cName.setBackground(new java.awt.Color(204, 204, 204));
-        cName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-
-        cEmail.setBackground(new java.awt.Color(204, 204, 204));
-        cEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-
-        cCPF.setBackground(new java.awt.Color(204, 204, 204));
-        cCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        cCPF.setBackground(new java.awt.Color(0, 0, 51));
+        cCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        cCPF.setForeground(new java.awt.Color(255, 255, 255));
         try {
             cCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jPanel1.add(cCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 130, 30));
 
-        cCell.setBackground(new java.awt.Color(204, 204, 204));
-        cCell.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        cCell.setBackground(new java.awt.Color(0, 0, 51));
+        cCell.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        cCell.setForeground(new java.awt.Color(255, 255, 255));
         try {
             cCell.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jPanel1.add(cCell, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 130, 30));
 
-        btn_Savec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvar.png"))); // NOI18N
+        btn_Savec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
         btn_Savec.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_SavecMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_SavecMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_SavecMouseExited(evt);
+            }
         });
+        jPanel1.add(btn_Savec, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
 
-        btn_Cancelc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelar.png"))); // NOI18N
+        btn_Cancelc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png"))); // NOI18N
         btn_Cancelc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_CancelcMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_CancelcMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_CancelcMouseExited(evt);
+            }
         });
+        jPanel1.add(btn_Cancelc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
 
-        btn_Cleanc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limpar.png"))); // NOI18N
+        btn_Cleanc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png"))); // NOI18N
         btn_Cleanc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_CleancMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_CleancMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_CleancMouseExited(evt);
+            }
         });
+        jPanel1.add(btn_Cleanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(btn_Savec))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_Cancelc)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_Cleanc))
-                    .addComponent(cCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cCell, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(cEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
-                        .addComponent(cName, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(cName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cCell, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_Cleanc)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_Savec)
-                        .addComponent(btn_Cancelc)))
-                .addGap(33, 33, 33))
-        );
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("CADASTRAR NOVO CLIENTE");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tela_cadastro_dark.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
@@ -205,16 +183,40 @@ public void limpaCampos() {
     }//GEN-LAST:event_btn_CleancMouseClicked
 
     private void btn_CancelcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelcMouseClicked
-         int op;
+        int op;
         op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(op == 0){
-            this.dispose();} 
+            this.dispose();}
     }//GEN-LAST:event_btn_CancelcMouseClicked
 
     private void btn_SavecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SavecMouseClicked
         JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!","Confirmação", JOptionPane.INFORMATION_MESSAGE);
         limpaCampos();
     }//GEN-LAST:event_btn_SavecMouseClicked
+
+    private void btn_CancelcMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelcMouseEntered
+        btn_Cancelc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelar.png")));
+    }//GEN-LAST:event_btn_CancelcMouseEntered
+
+    private void btn_CancelcMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelcMouseExited
+        btn_Cancelc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png")));
+    }//GEN-LAST:event_btn_CancelcMouseExited
+
+    private void btn_SavecMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SavecMouseEntered
+        btn_Savec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvar.png")));
+    }//GEN-LAST:event_btn_SavecMouseEntered
+
+    private void btn_SavecMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SavecMouseExited
+        btn_Savec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png")));
+    }//GEN-LAST:event_btn_SavecMouseExited
+
+    private void btn_CleancMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CleancMouseEntered
+         btn_Cleanc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limpar.png")));
+    }//GEN-LAST:event_btn_CleancMouseEntered
+
+    private void btn_CleancMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CleancMouseExited
+         btn_Cleanc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png")));
+    }//GEN-LAST:event_btn_CleancMouseExited
 
     /**
      * @param args the command line arguments
@@ -271,8 +273,8 @@ public void limpaCampos() {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
