@@ -63,10 +63,7 @@ public class Home extends javax.swing.JFrame {
         pnl.setBackground(new Color(108, 81, 233));
     }
    
-    public void changeSizeMenu(JSplitPane menu, int size){
-        menu.setDividerLocation(size);
-    }
-    public void changeSizeHead(JPanel pnl, Dimension dim){
+    public void changePaneSize(JPanel pnl, Dimension dim){
         pnl.setPreferredSize(dim);
     }
     
@@ -74,9 +71,7 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField9 = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        bgButtonsHome = new javax.swing.JPanel();
+        bgButtonsHome2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         novaVenda1 = new javax.swing.JLabel();
         jSeparator11 = new javax.swing.JSeparator();
@@ -88,38 +83,6 @@ public class Home extends javax.swing.JFrame {
         jSeparator14 = new javax.swing.JSeparator();
         buscarVenda1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        Card_Home3 = new javax.swing.JPanel();
-        totalVendasd1 = new javax.swing.JLabel();
-        ticketMedioValor1 = new javax.swing.JLabel();
-        receitaLiquidaValor1 = new javax.swing.JLabel();
-        faturamentoValor1 = new javax.swing.JLabel();
-        totalVendas1 = new javax.swing.JLabel();
-        ticketMedio1 = new javax.swing.JLabel();
-        receitaLiquida1 = new javax.swing.JLabel();
-        faturamento1 = new javax.swing.JLabel();
-        iconeTicket1 = new javax.swing.JLabel();
-        fundoTicket1 = new javax.swing.JLabel();
-        iconeVendas1 = new javax.swing.JLabel();
-        fundoVendas1 = new javax.swing.JLabel();
-        iconeReceita1 = new javax.swing.JLabel();
-        iconeFaturamento1 = new javax.swing.JLabel();
-        fundoReceita1 = new javax.swing.JLabel();
-        fundoFaturamento1 = new javax.swing.JLabel();
-        iconeOcultar1 = new javax.swing.JLabel();
-        txtBemVindo1 = new javax.swing.JLabel();
-        jSeparator19 = new javax.swing.JSeparator();
-        bgButtonsHome2 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        novaVenda3 = new javax.swing.JLabel();
-        jSeparator20 = new javax.swing.JSeparator();
-        novoProduto3 = new javax.swing.JLabel();
-        jSeparator21 = new javax.swing.JSeparator();
-        novoCliente3 = new javax.swing.JLabel();
-        jSeparator22 = new javax.swing.JSeparator();
-        buscarCliente3 = new javax.swing.JLabel();
-        jSeparator23 = new javax.swing.JSeparator();
-        buscarVenda3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         panelInformacoes = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         faturamento2 = new javax.swing.JLabel();
@@ -155,8 +118,7 @@ public class Home extends javax.swing.JFrame {
         Mid_Header = new javax.swing.JPanel();
         pnl_IconMenu = new javax.swing.JPanel();
         btn_ShowHideMenu = new javax.swing.JLabel();
-        Body = new javax.swing.JSplitPane();
-        Menus = new javax.swing.JPanel();
+        pnMenu = new javax.swing.JPanel();
         menu_sale = new javax.swing.JPanel();
         btn_sales = new javax.swing.JLabel();
         icon_sales = new javax.swing.JLabel();
@@ -176,27 +138,32 @@ public class Home extends javax.swing.JFrame {
         btn_settings = new javax.swing.JLabel();
         icon_settings = new javax.swing.JLabel();
         CollectionCard = new javax.swing.JPanel();
-        Card_Home2 = new javax.swing.JPanel();
-        totalVendasd = new javax.swing.JLabel();
-        ticketMedioValor = new javax.swing.JLabel();
-        receitaLiquidaValor = new javax.swing.JLabel();
-        faturamentoValor = new javax.swing.JLabel();
-        totalVendas = new javax.swing.JLabel();
-        ticketMedio = new javax.swing.JLabel();
-        receitaLiquida = new javax.swing.JLabel();
-        faturamento = new javax.swing.JLabel();
-        iconeTicket = new javax.swing.JLabel();
-        fundoTicket = new javax.swing.JLabel();
-        iconeVendas = new javax.swing.JLabel();
-        fundoVendas = new javax.swing.JLabel();
-        iconeReceita = new javax.swing.JLabel();
-        iconeFaturamento = new javax.swing.JLabel();
-        fundoReceita = new javax.swing.JLabel();
+        Card_Home = new javax.swing.JPanel();
+        iconeOcultar1 = new javax.swing.JLabel();
+        txtBemVindo1 = new javax.swing.JLabel();
+        jSeparator19 = new javax.swing.JSeparator();
+        panelInformacoes1 = new javax.swing.JPanel();
+        pnFaturamento = new javax.swing.JPanel();
+        txtFaturamento = new javax.swing.JLabel();
+        txtFaturamentoValor = new javax.swing.JLabel();
+        iconFaturamento = new javax.swing.JLabel();
         fundoFaturamento = new javax.swing.JLabel();
-        iconeOcultar = new javax.swing.JLabel();
-        txtBemVindo = new javax.swing.JLabel();
-        jSeparator6 = new javax.swing.JSeparator();
-        bgButtonsHome1 = new javax.swing.JPanel();
+        pnReceita = new javax.swing.JPanel();
+        txtReceita = new javax.swing.JLabel();
+        txtReceitaValor = new javax.swing.JLabel();
+        iconReceita = new javax.swing.JLabel();
+        fundoReceita = new javax.swing.JLabel();
+        pnVendas = new javax.swing.JPanel();
+        txtVendas = new javax.swing.JLabel();
+        txtVendasValor = new javax.swing.JLabel();
+        iconVendas = new javax.swing.JLabel();
+        fundoVendas = new javax.swing.JLabel();
+        pnTicket = new javax.swing.JPanel();
+        txtTicket = new javax.swing.JLabel();
+        txtTicketValor = new javax.swing.JLabel();
+        iconTicket = new javax.swing.JLabel();
+        fundoTicket = new javax.swing.JLabel();
+        bgButtonsHome = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         novaVenda2 = new javax.swing.JLabel();
         jSeparator15 = new javax.swing.JSeparator();
@@ -286,14 +253,10 @@ public class Home extends javax.swing.JFrame {
         jLabel35 = new javax.swing.JLabel();
         jSeparator10 = new javax.swing.JSeparator();
 
-        jTextField9.setText("jTextField9");
-
-        jLabel20.setText("jLabel20");
-
-        bgButtonsHome.setBackground(new java.awt.Color(0,0,0,0));
-        bgButtonsHome.setForeground(new java.awt.Color(51, 51, 51));
-        bgButtonsHome.setOpaque(false);
-        bgButtonsHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        bgButtonsHome2.setBackground(new java.awt.Color(0,0,0,0));
+        bgButtonsHome2.setForeground(new java.awt.Color(51, 51, 51));
+        bgButtonsHome2.setOpaque(false);
+        bgButtonsHome2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel5.setBackground(new java.awt.Color(0,0,0,0));
         jPanel5.setOpaque(false);
@@ -372,283 +335,10 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel5.add(buscarVenda1);
 
-        bgButtonsHome.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 280));
+        bgButtonsHome2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 280));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo_botoes_home.png"))); // NOI18N
-        bgButtonsHome.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        Card_Home3.setBackground(new java.awt.Color(255, 255, 255));
-
-        totalVendasd1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        totalVendasd1.setForeground(new java.awt.Color(255, 255, 255));
-        totalVendasd1.setText("982");
-
-        ticketMedioValor1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        ticketMedioValor1.setForeground(new java.awt.Color(255, 255, 255));
-        ticketMedioValor1.setText("R$ 40,21");
-
-        receitaLiquidaValor1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        receitaLiquidaValor1.setForeground(new java.awt.Color(255, 255, 255));
-        receitaLiquidaValor1.setText("R$ 9.482,49");
-
-        faturamentoValor1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        faturamentoValor1.setForeground(new java.awt.Color(255, 255, 255));
-        faturamentoValor1.setText("R$ 39.482,49");
-
-        totalVendas1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        totalVendas1.setForeground(new java.awt.Color(255, 255, 255));
-        totalVendas1.setText("Total de Vendas");
-
-        ticketMedio1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        ticketMedio1.setForeground(new java.awt.Color(255, 255, 255));
-        ticketMedio1.setText("Ticket Médio");
-
-        receitaLiquida1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        receitaLiquida1.setForeground(new java.awt.Color(255, 255, 255));
-        receitaLiquida1.setText("Receita Líquida");
-
-        faturamento1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        faturamento1.setForeground(new java.awt.Color(255, 255, 255));
-        faturamento1.setText("Faturamento");
-
-        iconeTicket1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_ticket.png"))); // NOI18N
-
-        fundoTicket1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo4_home.png"))); // NOI18N
-
-        iconeVendas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_carrinhoDeCompras.png"))); // NOI18N
-
-        fundoVendas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo3_home.png"))); // NOI18N
-
-        iconeReceita1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cifrão.png"))); // NOI18N
-
-        iconeFaturamento1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_dinheiro.png"))); // NOI18N
-
-        fundoReceita1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo2_home.png"))); // NOI18N
-
-        fundoFaturamento1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo1_home.png"))); // NOI18N
-
-        iconeOcultar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_olhoFechar.png"))); // NOI18N
-
-        txtBemVindo1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        txtBemVindo1.setForeground(new java.awt.Color(29, 73, 153));
-        txtBemVindo1.setText("  Olá, bem-vindo!");
-        txtBemVindo1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 0, 0, new java.awt.Color(0, 0, 51)));
-
-        bgButtonsHome2.setBackground(new java.awt.Color(0,0,0,0));
-        bgButtonsHome2.setForeground(new java.awt.Color(51, 51, 51));
-        bgButtonsHome2.setOpaque(false);
-        bgButtonsHome2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel7.setBackground(new java.awt.Color(0,0,0,0));
-        jPanel7.setOpaque(false);
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 50));
-
-        novaVenda3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        novaVenda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVenda.png"))); // NOI18N
-        novaVenda3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        novaVenda3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                novaVenda3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                novaVenda3MouseExited(evt);
-            }
-        });
-        jPanel7.add(novaVenda3);
-
-        jSeparator20.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator20.setPreferredSize(new java.awt.Dimension(3, 180));
-        jPanel7.add(jSeparator20);
-
-        novoProduto3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProduto.png"))); // NOI18N
-        novoProduto3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                novoProduto3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                novoProduto3MouseExited(evt);
-            }
-        });
-        jPanel7.add(novoProduto3);
-
-        jSeparator21.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator21.setPreferredSize(new java.awt.Dimension(3, 180));
-        jPanel7.add(jSeparator21);
-
-        novoCliente3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoCliente.png"))); // NOI18N
-        novoCliente3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                novoCliente3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                novoCliente3MouseExited(evt);
-            }
-        });
-        jPanel7.add(novoCliente3);
-
-        jSeparator22.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator22.setPreferredSize(new java.awt.Dimension(3, 180));
-        jPanel7.add(jSeparator22);
-
-        buscarCliente3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarCliente.png"))); // NOI18N
-        buscarCliente3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                buscarCliente3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                buscarCliente3MouseExited(evt);
-            }
-        });
-        jPanel7.add(buscarCliente3);
-
-        jSeparator23.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator23.setPreferredSize(new java.awt.Dimension(3, 180));
-        jPanel7.add(jSeparator23);
-
-        buscarVenda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png"))); // NOI18N
-        buscarVenda3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                buscarVenda3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                buscarVenda3MouseExited(evt);
-            }
-        });
-        jPanel7.add(buscarVenda3);
-
-        bgButtonsHome2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 280));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo_botoes_home.png"))); // NOI18N
-        bgButtonsHome2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        javax.swing.GroupLayout Card_Home3Layout = new javax.swing.GroupLayout(Card_Home3);
-        Card_Home3.setLayout(Card_Home3Layout);
-        Card_Home3Layout.setHorizontalGroup(
-            Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Card_Home3Layout.createSequentialGroup()
-                .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 1085, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(Card_Home3Layout.createSequentialGroup()
-                            .addGap(50, 50, 50)
-                            .addComponent(txtBemVindo1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(Card_Home3Layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(iconeOcultar1))
-                        .addGroup(Card_Home3Layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(Card_Home3Layout.createSequentialGroup()
-                                    .addGap(100, 100, 100)
-                                    .addComponent(faturamento1))
-                                .addGroup(Card_Home3Layout.createSequentialGroup()
-                                    .addGap(90, 90, 90)
-                                    .addComponent(faturamentoValor1))
-                                .addGroup(Card_Home3Layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(iconeFaturamento1))
-                                .addComponent(fundoFaturamento1))
-                            .addGap(71, 71, 71)
-                            .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(Card_Home3Layout.createSequentialGroup()
-                                    .addGap(14, 14, 14)
-                                    .addComponent(iconeReceita1))
-                                .addGroup(Card_Home3Layout.createSequentialGroup()
-                                    .addGap(94, 94, 94)
-                                    .addComponent(receitaLiquida1))
-                                .addGroup(Card_Home3Layout.createSequentialGroup()
-                                    .addGap(94, 94, 94)
-                                    .addComponent(receitaLiquidaValor1))
-                                .addComponent(fundoReceita1))
-                            .addGap(74, 74, 74)
-                            .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(fundoVendas1)
-                                .addGroup(Card_Home3Layout.createSequentialGroup()
-                                    .addGap(85, 85, 85)
-                                    .addComponent(totalVendas1))
-                                .addGroup(Card_Home3Layout.createSequentialGroup()
-                                    .addGap(125, 125, 125)
-                                    .addComponent(totalVendasd1))
-                                .addGroup(Card_Home3Layout.createSequentialGroup()
-                                    .addGap(15, 15, 15)
-                                    .addComponent(iconeVendas1)))
-                            .addGap(70, 70, 70)
-                            .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(Card_Home3Layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(iconeTicket1))
-                                .addGroup(Card_Home3Layout.createSequentialGroup()
-                                    .addGap(100, 100, 100)
-                                    .addComponent(ticketMedio1))
-                                .addComponent(fundoTicket1)
-                                .addGroup(Card_Home3Layout.createSequentialGroup()
-                                    .addGap(100, 100, 100)
-                                    .addComponent(ticketMedioValor1))))))
-                .addContainerGap())
-            .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Card_Home3Layout.createSequentialGroup()
-                    .addGap(35, 35, 35)
-                    .addComponent(bgButtonsHome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(30, Short.MAX_VALUE)))
-        );
-        Card_Home3Layout.setVerticalGroup(
-            Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Card_Home3Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(txtBemVindo1)
-                .addGap(25, 25, 25)
-                .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(iconeOcultar1)
-                .addGap(24, 24, 24)
-                .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Card_Home3Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(faturamento1))
-                    .addGroup(Card_Home3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(faturamentoValor1))
-                    .addGroup(Card_Home3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(iconeFaturamento1))
-                    .addComponent(fundoFaturamento1)
-                    .addGroup(Card_Home3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(iconeReceita1))
-                    .addGroup(Card_Home3Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(receitaLiquida1))
-                    .addGroup(Card_Home3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(receitaLiquidaValor1))
-                    .addComponent(fundoReceita1)
-                    .addComponent(fundoVendas1)
-                    .addGroup(Card_Home3Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(totalVendas1))
-                    .addGroup(Card_Home3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(totalVendasd1))
-                    .addGroup(Card_Home3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(iconeVendas1))
-                    .addGroup(Card_Home3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(iconeTicket1))
-                    .addGroup(Card_Home3Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(ticketMedio1))
-                    .addComponent(fundoTicket1)
-                    .addGroup(Card_Home3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(ticketMedioValor1)))
-                .addContainerGap())
-            .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Card_Home3Layout.createSequentialGroup()
-                    .addContainerGap(297, Short.MAX_VALUE)
-                    .addComponent(bgButtonsHome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
-        );
+        bgButtonsHome2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         panelInformacoes.setBackground(new java.awt.Color(0,0,0,0));
         panelInformacoes.setOpaque(false);
@@ -900,7 +590,7 @@ public class Home extends javax.swing.JFrame {
         );
         pnl_HeaderMenuLayout.setVerticalGroup(
             pnl_HeaderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -936,7 +626,7 @@ public class Home extends javax.swing.JFrame {
         );
         pnl_IconMenuLayout.setVerticalGroup(
             pnl_IconMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btn_ShowHideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(btn_ShowHideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Mid_Header.add(pnl_IconMenu, java.awt.BorderLayout.LINE_START);
@@ -945,13 +635,9 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(Head, java.awt.BorderLayout.PAGE_START);
 
-        Body.setDividerLocation(200);
-        Body.setDividerSize(0);
-        Body.setLastDividerLocation(200);
-
-        Menus.setBackground(new java.awt.Color(0, 0, 51));
-        Menus.setMinimumSize(new java.awt.Dimension(70, 100));
-        Menus.setPreferredSize(new java.awt.Dimension(200, 650));
+        pnMenu.setBackground(new java.awt.Color(0, 0, 51));
+        pnMenu.setMinimumSize(new java.awt.Dimension(70, 100));
+        pnMenu.setPreferredSize(new java.awt.Dimension(200, 650));
 
         menu_sale.setBackground(new java.awt.Color(0, 0, 51));
         menu_sale.setPreferredSize(new java.awt.Dimension(200, 50));
@@ -1090,21 +776,21 @@ public class Home extends javax.swing.JFrame {
         icon_settings.setPreferredSize(new java.awt.Dimension(70, 50));
         menu_settings.add(icon_settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        javax.swing.GroupLayout MenusLayout = new javax.swing.GroupLayout(Menus);
-        Menus.setLayout(MenusLayout);
-        MenusLayout.setHorizontalGroup(
-            MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
+        pnMenu.setLayout(pnMenuLayout);
+        pnMenuLayout.setHorizontalGroup(
+            pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(menu_sale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(menu_product, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(menu_employees, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(menu_customers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(menu_settings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(menu_home, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        MenusLayout.setVerticalGroup(
-            MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenusLayout.createSequentialGroup()
+        pnMenuLayout.setVerticalGroup(
+            pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMenuLayout.createSequentialGroup()
                 .addGap(157, 157, 157)
                 .addComponent(menu_sale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1115,100 +801,128 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(menu_customers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(menu_settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
-            .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(MenusLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnMenuLayout.createSequentialGroup()
                     .addGap(89, 89, 89)
                     .addComponent(menu_home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(461, Short.MAX_VALUE)))
         );
 
-        Body.setLeftComponent(Menus);
+        getContentPane().add(pnMenu, java.awt.BorderLayout.WEST);
 
-        CollectionCard.setPreferredSize(new java.awt.Dimension(1200, 641));
+        CollectionCard.setMinimumSize(new java.awt.Dimension(1110, 641));
+        CollectionCard.setPreferredSize(new java.awt.Dimension(1110, 641));
         CollectionCard.setLayout(new java.awt.CardLayout());
 
-        Card_Home2.setBackground(new java.awt.Color(255, 255, 255));
-        Card_Home2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Card_Home.setBackground(new java.awt.Color(255, 255, 255));
+        Card_Home.setPreferredSize(new java.awt.Dimension(1110, 583));
 
-        totalVendasd.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        totalVendasd.setForeground(new java.awt.Color(255, 255, 255));
-        totalVendasd.setText("982");
-        Card_Home2.add(totalVendasd, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, -1, -1));
+        iconeOcultar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_olhoFechar.png"))); // NOI18N
 
-        ticketMedioValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        ticketMedioValor.setForeground(new java.awt.Color(255, 255, 255));
-        ticketMedioValor.setText("R$ 40,21");
-        Card_Home2.add(ticketMedioValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 150, -1, -1));
+        txtBemVindo1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        txtBemVindo1.setForeground(new java.awt.Color(29, 73, 153));
+        txtBemVindo1.setText("  Olá, bem-vindo!");
+        txtBemVindo1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 0, 0, new java.awt.Color(0, 0, 51)));
 
-        receitaLiquidaValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        receitaLiquidaValor.setForeground(new java.awt.Color(255, 255, 255));
-        receitaLiquidaValor.setText("R$ 9.482,49");
-        Card_Home2.add(receitaLiquidaValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
+        panelInformacoes1.setBackground(new java.awt.Color(0,0,0,0));
+        panelInformacoes1.setOpaque(false);
+        panelInformacoes1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 50, 5));
 
-        faturamentoValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        faturamentoValor.setForeground(new java.awt.Color(255, 255, 255));
-        faturamentoValor.setText("R$ 39.482,49");
-        Card_Home2.add(faturamentoValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+        pnFaturamento.setBackground(new java.awt.Color(0,0,0,0));
+        pnFaturamento.setOpaque(false);
+        pnFaturamento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        totalVendas.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        totalVendas.setForeground(new java.awt.Color(255, 255, 255));
-        totalVendas.setText("Total de Vendas");
-        Card_Home2.add(totalVendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, -1, -1));
+        txtFaturamento.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        txtFaturamento.setForeground(new java.awt.Color(255, 255, 255));
+        txtFaturamento.setText("Faturamento");
+        pnFaturamento.add(txtFaturamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 20));
 
-        ticketMedio.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        ticketMedio.setForeground(new java.awt.Color(255, 255, 255));
-        ticketMedio.setText("Ticket Médio");
-        Card_Home2.add(ticketMedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 180, -1, -1));
+        txtFaturamentoValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        txtFaturamentoValor.setForeground(new java.awt.Color(255, 255, 255));
+        txtFaturamentoValor.setText("R$ 39.482,49");
+        pnFaturamento.add(txtFaturamentoValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
-        receitaLiquida.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        receitaLiquida.setForeground(new java.awt.Color(255, 255, 255));
-        receitaLiquida.setText("Receita Líquida");
-        Card_Home2.add(receitaLiquida, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, -1));
-
-        faturamento.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        faturamento.setForeground(new java.awt.Color(255, 255, 255));
-        faturamento.setText("Faturamento");
-        Card_Home2.add(faturamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
-
-        iconeTicket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_ticket.png"))); // NOI18N
-        Card_Home2.add(iconeTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 150, -1, -1));
-
-        fundoTicket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo4_home.png"))); // NOI18N
-        Card_Home2.add(fundoTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 140, -1, -1));
-
-        iconeVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_carrinhoDeCompras.png"))); // NOI18N
-        Card_Home2.add(iconeVendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, -1, -1));
-
-        fundoVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo3_home.png"))); // NOI18N
-        Card_Home2.add(fundoVendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 140, -1, -1));
-
-        iconeReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cifrão.png"))); // NOI18N
-        Card_Home2.add(iconeReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
-
-        iconeFaturamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_dinheiro.png"))); // NOI18N
-        Card_Home2.add(iconeFaturamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
-
-        fundoReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo2_home.png"))); // NOI18N
-        Card_Home2.add(fundoReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 140, -1, -1));
+        iconFaturamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_dinheiro.png"))); // NOI18N
+        pnFaturamento.add(iconFaturamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         fundoFaturamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo1_home.png"))); // NOI18N
-        Card_Home2.add(fundoFaturamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        pnFaturamento.add(fundoFaturamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        iconeOcultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_olhoFechar.png"))); // NOI18N
-        Card_Home2.add(iconeOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        panelInformacoes1.add(pnFaturamento);
 
-        txtBemVindo.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        txtBemVindo.setForeground(new java.awt.Color(29, 73, 153));
-        txtBemVindo.setText("  Olá, bem-vindo!");
-        txtBemVindo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 0, 0, new java.awt.Color(0, 0, 51)));
-        Card_Home2.add(txtBemVindo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 180, -1));
-        Card_Home2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1230, 10));
+        pnReceita.setBackground(new java.awt.Color(0,0,0,0));
+        pnReceita.setOpaque(false);
+        pnReceita.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bgButtonsHome1.setBackground(new java.awt.Color(0,0,0,0));
-        bgButtonsHome1.setForeground(new java.awt.Color(51, 51, 51));
-        bgButtonsHome1.setOpaque(false);
-        bgButtonsHome1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        txtReceita.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        txtReceita.setForeground(new java.awt.Color(255, 255, 255));
+        txtReceita.setText("Receita líquida");
+        pnReceita.add(txtReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 20));
+
+        txtReceitaValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        txtReceitaValor.setForeground(new java.awt.Color(255, 255, 255));
+        txtReceitaValor.setText("R$ 3.482,49");
+        pnReceita.add(txtReceitaValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+
+        iconReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cifrão.png"))); // NOI18N
+        pnReceita.add(iconReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        fundoReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo2_home.png"))); // NOI18N
+        pnReceita.add(fundoReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        panelInformacoes1.add(pnReceita);
+
+        pnVendas.setBackground(new java.awt.Color(0,0,0,0));
+        pnVendas.setOpaque(false);
+        pnVendas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtVendas.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        txtVendas.setForeground(new java.awt.Color(255, 255, 255));
+        txtVendas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtVendas.setText("Total de vendas");
+        pnVendas.add(txtVendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 20));
+
+        txtVendasValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        txtVendasValor.setForeground(new java.awt.Color(255, 255, 255));
+        txtVendasValor.setText("986");
+        pnVendas.add(txtVendasValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+
+        iconVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_carrinhoDeCompras.png"))); // NOI18N
+        pnVendas.add(iconVendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        fundoVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo3_home.png"))); // NOI18N
+        pnVendas.add(fundoVendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        panelInformacoes1.add(pnVendas);
+
+        pnTicket.setBackground(new java.awt.Color(0,0,0,0));
+        pnTicket.setOpaque(false);
+        pnTicket.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtTicket.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        txtTicket.setForeground(new java.awt.Color(255, 255, 255));
+        txtTicket.setText("Ticket médio");
+        pnTicket.add(txtTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 20));
+
+        txtTicketValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        txtTicketValor.setForeground(new java.awt.Color(255, 255, 255));
+        txtTicketValor.setText("R$ 482,50");
+        pnTicket.add(txtTicketValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+
+        iconTicket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_ticket.png"))); // NOI18N
+        pnTicket.add(iconTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, -1));
+
+        fundoTicket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo4_home.png"))); // NOI18N
+        pnTicket.add(fundoTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        panelInformacoes1.add(pnTicket);
+
+        bgButtonsHome.setBackground(new java.awt.Color(0,0,0,0));
+        bgButtonsHome.setForeground(new java.awt.Color(51, 51, 51));
+        bgButtonsHome.setMaximumSize(new java.awt.Dimension(1900, 1080));
+        bgButtonsHome.setOpaque(false);
+        bgButtonsHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setBackground(new java.awt.Color(0,0,0,0));
         jPanel6.setOpaque(false);
@@ -1287,14 +1001,46 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel6.add(buscarVenda2);
 
-        bgButtonsHome1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 280));
+        bgButtonsHome.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 280));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo_botoes_home.png"))); // NOI18N
-        bgButtonsHome1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        bgButtonsHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        Card_Home2.add(bgButtonsHome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 297, -1, -1));
+        javax.swing.GroupLayout Card_HomeLayout = new javax.swing.GroupLayout(Card_Home);
+        Card_Home.setLayout(Card_HomeLayout);
+        Card_HomeLayout.setHorizontalGroup(
+            Card_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Card_HomeLayout.createSequentialGroup()
+                .addGroup(Card_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Card_HomeLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(txtBemVindo1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Card_HomeLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(Card_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelInformacoes1, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bgButtonsHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(iconeOcultar1))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Card_HomeLayout.setVerticalGroup(
+            Card_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Card_HomeLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(txtBemVindo1)
+                .addGap(25, 25, 25)
+                .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(iconeOcultar1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelInformacoes1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(bgButtonsHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
-        CollectionCard.add(Card_Home2, "cardHome");
+        CollectionCard.add(Card_Home, "cardHome");
 
         Card_Sales.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2141,11 +1887,9 @@ public class Home extends javax.swing.JFrame {
 
         CollectionCard.add(Card_Settings, "cardSettings");
 
-        Body.setRightComponent(CollectionCard);
+        getContentPane().add(CollectionCard, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(Body, java.awt.BorderLayout.CENTER);
-
-        setSize(new java.awt.Dimension(1208, 650));
+        setSize(new java.awt.Dimension(1310, 650));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -2209,13 +1953,13 @@ public class Home extends javax.swing.JFrame {
 
     private void btn_ShowHideMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ShowHideMenuMouseClicked
         if(bool == true){
-            changeSizeHead(pnl_HeaderMenu, new Dimension(70, pnl_HeaderMenu.getHeight()));
-            changeSizeMenu(Body, 70);
+            changePaneSize(pnl_HeaderMenu, new Dimension(70, pnl_HeaderMenu.getHeight()));
+            changePaneSize(pnMenu, new Dimension(70, pnMenu.getHeight()));
             SwingUtilities.updateComponentTreeUI(this);
             bool = false;
         }else{
-            changeSizeHead(pnl_HeaderMenu, new Dimension(200, pnl_HeaderMenu.getHeight()));
-            changeSizeMenu(Body, 200);
+            changePaneSize(pnl_HeaderMenu, new Dimension(200, pnl_HeaderMenu.getHeight()));
+            changePaneSize(pnMenu, new Dimension(200, pnMenu.getHeight()));
             SwingUtilities.updateComponentTreeUI(this);
             bool = true;
         }
@@ -2559,46 +2303,6 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buscarVenda2MouseExited
 
-    private void novaVenda3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda3MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novaVenda3MouseEntered
-
-    private void novaVenda3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda3MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novaVenda3MouseExited
-
-    private void novoProduto3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto3MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novoProduto3MouseEntered
-
-    private void novoProduto3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto3MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novoProduto3MouseExited
-
-    private void novoCliente3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente3MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novoCliente3MouseEntered
-
-    private void novoCliente3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente3MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novoCliente3MouseExited
-
-    private void buscarCliente3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente3MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarCliente3MouseEntered
-
-    private void buscarCliente3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente3MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarCliente3MouseExited
-
-    private void buscarVenda3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda3MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarVenda3MouseEntered
-
-    private void buscarVenda3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda3MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarVenda3MouseExited
-
 
     /**
      * @param args the command line arguments
@@ -2639,14 +2343,12 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel AdditionalAddress;
     private javax.swing.JLabel Address;
     private javax.swing.JLabel BirthDate;
-    private javax.swing.JSplitPane Body;
     private javax.swing.JLabel CEP;
     private javax.swing.JLabel CPF;
     private javax.swing.JLabel CPFSeparator;
     private javax.swing.JPanel Card_Customers;
     private javax.swing.JPanel Card_Employees;
-    private javax.swing.JPanel Card_Home2;
-    private javax.swing.JPanel Card_Home3;
+    private javax.swing.JPanel Card_Home;
     private javax.swing.JPanel Card_Products;
     private javax.swing.JPanel Card_Sales;
     private javax.swing.JPanel Card_Settings;
@@ -2658,7 +2360,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel HouseNumber;
     private javax.swing.JLabel Job;
     private javax.swing.JPanel MaxMinClose;
-    private javax.swing.JPanel Menus;
     private javax.swing.JPanel Mid_Header;
     private javax.swing.JLabel Name;
     private javax.swing.JLabel Neighbourhood;
@@ -2667,7 +2368,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel State;
     private javax.swing.JScrollPane Table_Employees;
     private javax.swing.JPanel bgButtonsHome;
-    private javax.swing.JPanel bgButtonsHome1;
     private javax.swing.JPanel bgButtonsHome2;
     private javax.swing.JLabel btnDeleteEmployee;
     private javax.swing.JLabel btnEditEmployee;
@@ -2694,60 +2394,44 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel btn_settings;
     private javax.swing.JLabel buscarCliente1;
     private javax.swing.JLabel buscarCliente2;
-    private javax.swing.JLabel buscarCliente3;
     private javax.swing.JLabel buscarVenda1;
     private javax.swing.JLabel buscarVenda2;
-    private javax.swing.JLabel buscarVenda3;
     private javax.swing.JTextField cSearchCustomer;
-    private javax.swing.JLabel faturamento;
-    private javax.swing.JLabel faturamento1;
     private javax.swing.JLabel faturamento2;
     private javax.swing.JLabel faturamento3;
     private javax.swing.JLabel faturamento4;
     private javax.swing.JLabel faturamento5;
-    private javax.swing.JLabel faturamentoValor;
-    private javax.swing.JLabel faturamentoValor1;
     private javax.swing.JLabel faturamentoValor2;
     private javax.swing.JLabel faturamentoValor3;
     private javax.swing.JLabel faturamentoValor4;
     private javax.swing.JLabel faturamentoValor5;
     private javax.swing.JLabel fundoFaturamento;
-    private javax.swing.JLabel fundoFaturamento1;
     private javax.swing.JLabel fundoFaturamento2;
     private javax.swing.JLabel fundoFaturamento6;
     private javax.swing.JLabel fundoFaturamento7;
     private javax.swing.JLabel fundoFaturamento8;
     private javax.swing.JLabel fundoReceita;
-    private javax.swing.JLabel fundoReceita1;
     private javax.swing.JLabel fundoTicket;
-    private javax.swing.JLabel fundoTicket1;
     private javax.swing.JLabel fundoVendas;
-    private javax.swing.JLabel fundoVendas1;
+    private javax.swing.JLabel iconFaturamento;
+    private javax.swing.JLabel iconReceita;
+    private javax.swing.JLabel iconTicket;
+    private javax.swing.JLabel iconVendas;
     private javax.swing.JLabel icon_customers;
     private javax.swing.JLabel icon_employees;
     private javax.swing.JLabel icon_home;
     private javax.swing.JLabel icon_products;
     private javax.swing.JLabel icon_sales;
     private javax.swing.JLabel icon_settings;
-    private javax.swing.JLabel iconeFaturamento;
-    private javax.swing.JLabel iconeFaturamento1;
     private javax.swing.JLabel iconeFaturamento2;
     private javax.swing.JLabel iconeFaturamento3;
     private javax.swing.JLabel iconeFaturamento4;
     private javax.swing.JLabel iconeFaturamento5;
-    private javax.swing.JLabel iconeOcultar;
     private javax.swing.JLabel iconeOcultar1;
-    private javax.swing.JLabel iconeReceita;
-    private javax.swing.JLabel iconeReceita1;
-    private javax.swing.JLabel iconeTicket;
-    private javax.swing.JLabel iconeTicket1;
-    private javax.swing.JLabel iconeVendas;
-    private javax.swing.JLabel iconeVendas1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -2758,7 +2442,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
@@ -2768,7 +2451,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -2784,15 +2466,9 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
-    private javax.swing.JSeparator jSeparator20;
-    private javax.swing.JSeparator jSeparator21;
-    private javax.swing.JSeparator jSeparator22;
-    private javax.swing.JSeparator jSeparator23;
-    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel menu_customers;
     private javax.swing.JPanel menu_employees;
     private javax.swing.JPanel menu_home;
@@ -2801,36 +2477,26 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel menu_settings;
     private javax.swing.JLabel novaVenda1;
     private javax.swing.JLabel novaVenda2;
-    private javax.swing.JLabel novaVenda3;
     private javax.swing.JLabel novoCliente1;
     private javax.swing.JLabel novoCliente2;
-    private javax.swing.JLabel novoCliente3;
     private javax.swing.JLabel novoProduto1;
     private javax.swing.JLabel novoProduto2;
-    private javax.swing.JLabel novoProduto3;
     private javax.swing.JPanel panelInformacoes;
+    private javax.swing.JPanel panelInformacoes1;
+    private javax.swing.JPanel pnFaturamento;
+    private javax.swing.JPanel pnMenu;
+    private javax.swing.JPanel pnReceita;
+    private javax.swing.JPanel pnTicket;
+    private javax.swing.JPanel pnVendas;
     private javax.swing.JPanel pnl_Close;
     private javax.swing.JPanel pnl_HeaderMenu;
     private javax.swing.JPanel pnl_IconMenu;
     private javax.swing.JPanel pnl_Max;
     private javax.swing.JPanel pnl_Min;
-    private javax.swing.JLabel receitaLiquida;
-    private javax.swing.JLabel receitaLiquida1;
-    private javax.swing.JLabel receitaLiquidaValor;
-    private javax.swing.JLabel receitaLiquidaValor1;
     private javax.swing.JTable salesTable;
     private javax.swing.JTextField searchSale;
     private javax.swing.JTable table_Employees;
     private javax.swing.JTable table_Products;
-    private javax.swing.JLabel ticketMedio;
-    private javax.swing.JLabel ticketMedio1;
-    private javax.swing.JLabel ticketMedioValor;
-    private javax.swing.JLabel ticketMedioValor1;
-    private javax.swing.JLabel totalVendas;
-    private javax.swing.JLabel totalVendas1;
-    private javax.swing.JLabel totalVendasd;
-    private javax.swing.JLabel totalVendasd1;
-    private javax.swing.JLabel txtBemVindo;
     private javax.swing.JLabel txtBemVindo1;
     private javax.swing.JTextField txtEmployeeAddAddress;
     private javax.swing.JTextField txtEmployeeAddress;
@@ -2846,6 +2512,14 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmployeeNeigh;
     private javax.swing.JTextField txtEmployeePhone;
     private javax.swing.JTextField txtEmployeeState;
+    private javax.swing.JLabel txtFaturamento;
+    private javax.swing.JLabel txtFaturamentoValor;
     private javax.swing.JTextField txtProductsSearchField;
+    private javax.swing.JLabel txtReceita;
+    private javax.swing.JLabel txtReceitaValor;
+    private javax.swing.JLabel txtTicket;
+    private javax.swing.JLabel txtTicketValor;
+    private javax.swing.JLabel txtVendas;
+    private javax.swing.JLabel txtVendasValor;
     // End of variables declaration//GEN-END:variables
 }
