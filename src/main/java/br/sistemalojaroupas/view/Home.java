@@ -76,6 +76,71 @@ public class Home extends javax.swing.JFrame {
 
         jTextField9 = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
+        bgButtonsHome = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        novaVenda1 = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
+        novoProduto1 = new javax.swing.JLabel();
+        jSeparator12 = new javax.swing.JSeparator();
+        novoCliente1 = new javax.swing.JLabel();
+        jSeparator13 = new javax.swing.JSeparator();
+        buscarCliente1 = new javax.swing.JLabel();
+        jSeparator14 = new javax.swing.JSeparator();
+        buscarVenda1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Card_Home3 = new javax.swing.JPanel();
+        totalVendasd1 = new javax.swing.JLabel();
+        ticketMedioValor1 = new javax.swing.JLabel();
+        receitaLiquidaValor1 = new javax.swing.JLabel();
+        faturamentoValor1 = new javax.swing.JLabel();
+        totalVendas1 = new javax.swing.JLabel();
+        ticketMedio1 = new javax.swing.JLabel();
+        receitaLiquida1 = new javax.swing.JLabel();
+        faturamento1 = new javax.swing.JLabel();
+        iconeTicket1 = new javax.swing.JLabel();
+        fundoTicket1 = new javax.swing.JLabel();
+        iconeVendas1 = new javax.swing.JLabel();
+        fundoVendas1 = new javax.swing.JLabel();
+        iconeReceita1 = new javax.swing.JLabel();
+        iconeFaturamento1 = new javax.swing.JLabel();
+        fundoReceita1 = new javax.swing.JLabel();
+        fundoFaturamento1 = new javax.swing.JLabel();
+        iconeOcultar1 = new javax.swing.JLabel();
+        txtBemVindo1 = new javax.swing.JLabel();
+        jSeparator19 = new javax.swing.JSeparator();
+        bgButtonsHome2 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        novaVenda3 = new javax.swing.JLabel();
+        jSeparator20 = new javax.swing.JSeparator();
+        novoProduto3 = new javax.swing.JLabel();
+        jSeparator21 = new javax.swing.JSeparator();
+        novoCliente3 = new javax.swing.JLabel();
+        jSeparator22 = new javax.swing.JSeparator();
+        buscarCliente3 = new javax.swing.JLabel();
+        jSeparator23 = new javax.swing.JSeparator();
+        buscarVenda3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        panelInformacoes = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        faturamento2 = new javax.swing.JLabel();
+        faturamentoValor2 = new javax.swing.JLabel();
+        iconeFaturamento2 = new javax.swing.JLabel();
+        fundoFaturamento2 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        faturamento3 = new javax.swing.JLabel();
+        faturamentoValor3 = new javax.swing.JLabel();
+        iconeFaturamento3 = new javax.swing.JLabel();
+        fundoFaturamento6 = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        faturamento4 = new javax.swing.JLabel();
+        faturamentoValor4 = new javax.swing.JLabel();
+        iconeFaturamento4 = new javax.swing.JLabel();
+        fundoFaturamento7 = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
+        faturamento5 = new javax.swing.JLabel();
+        faturamentoValor5 = new javax.swing.JLabel();
+        iconeFaturamento5 = new javax.swing.JLabel();
+        fundoFaturamento8 = new javax.swing.JLabel();
         Head = new javax.swing.JPanel();
         MaxMinClose = new javax.swing.JPanel();
         pnl_Max = new javax.swing.JPanel();
@@ -111,36 +176,38 @@ public class Home extends javax.swing.JFrame {
         btn_settings = new javax.swing.JLabel();
         icon_settings = new javax.swing.JLabel();
         CollectionCard = new javax.swing.JPanel();
-        Card_Home = new javax.swing.JPanel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        Card_Home2 = new javax.swing.JPanel();
+        totalVendasd = new javax.swing.JLabel();
+        ticketMedioValor = new javax.swing.JLabel();
+        receitaLiquidaValor = new javax.swing.JLabel();
+        faturamentoValor = new javax.swing.JLabel();
+        totalVendas = new javax.swing.JLabel();
+        ticketMedio = new javax.swing.JLabel();
+        receitaLiquida = new javax.swing.JLabel();
+        faturamento = new javax.swing.JLabel();
+        iconeTicket = new javax.swing.JLabel();
+        fundoTicket = new javax.swing.JLabel();
+        iconeVendas = new javax.swing.JLabel();
+        fundoVendas = new javax.swing.JLabel();
+        iconeReceita = new javax.swing.JLabel();
+        iconeFaturamento = new javax.swing.JLabel();
+        fundoReceita = new javax.swing.JLabel();
+        fundoFaturamento = new javax.swing.JLabel();
+        iconeOcultar = new javax.swing.JLabel();
+        txtBemVindo = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
+        bgButtonsHome1 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        novaVenda2 = new javax.swing.JLabel();
+        jSeparator15 = new javax.swing.JSeparator();
+        novoProduto2 = new javax.swing.JLabel();
+        jSeparator16 = new javax.swing.JSeparator();
+        novoCliente2 = new javax.swing.JLabel();
+        jSeparator17 = new javax.swing.JSeparator();
+        buscarCliente2 = new javax.swing.JLabel();
+        jSeparator18 = new javax.swing.JSeparator();
+        buscarVenda2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         Card_Sales = new javax.swing.JPanel();
         btn_NewSale = new javax.swing.JLabel();
         btn_SearchSale = new javax.swing.JLabel();
@@ -222,6 +289,461 @@ public class Home extends javax.swing.JFrame {
         jTextField9.setText("jTextField9");
 
         jLabel20.setText("jLabel20");
+
+        bgButtonsHome.setBackground(new java.awt.Color(0,0,0,0));
+        bgButtonsHome.setForeground(new java.awt.Color(51, 51, 51));
+        bgButtonsHome.setOpaque(false);
+        bgButtonsHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new java.awt.Color(0,0,0,0));
+        jPanel5.setOpaque(false);
+        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 50));
+
+        novaVenda1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        novaVenda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVenda.png"))); // NOI18N
+        novaVenda1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        novaVenda1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                novaVenda1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                novaVenda1MouseExited(evt);
+            }
+        });
+        jPanel5.add(novaVenda1);
+
+        jSeparator11.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator11.setPreferredSize(new java.awt.Dimension(3, 180));
+        jPanel5.add(jSeparator11);
+
+        novoProduto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProduto.png"))); // NOI18N
+        novoProduto1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                novoProduto1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                novoProduto1MouseExited(evt);
+            }
+        });
+        jPanel5.add(novoProduto1);
+
+        jSeparator12.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator12.setPreferredSize(new java.awt.Dimension(3, 180));
+        jPanel5.add(jSeparator12);
+
+        novoCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoCliente.png"))); // NOI18N
+        novoCliente1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                novoCliente1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                novoCliente1MouseExited(evt);
+            }
+        });
+        jPanel5.add(novoCliente1);
+
+        jSeparator13.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator13.setPreferredSize(new java.awt.Dimension(3, 180));
+        jPanel5.add(jSeparator13);
+
+        buscarCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarCliente.png"))); // NOI18N
+        buscarCliente1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buscarCliente1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buscarCliente1MouseExited(evt);
+            }
+        });
+        jPanel5.add(buscarCliente1);
+
+        jSeparator14.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator14.setPreferredSize(new java.awt.Dimension(3, 180));
+        jPanel5.add(jSeparator14);
+
+        buscarVenda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png"))); // NOI18N
+        buscarVenda1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buscarVenda1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buscarVenda1MouseExited(evt);
+            }
+        });
+        jPanel5.add(buscarVenda1);
+
+        bgButtonsHome.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 280));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo_botoes_home.png"))); // NOI18N
+        bgButtonsHome.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Card_Home3.setBackground(new java.awt.Color(255, 255, 255));
+
+        totalVendasd1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        totalVendasd1.setForeground(new java.awt.Color(255, 255, 255));
+        totalVendasd1.setText("982");
+
+        ticketMedioValor1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        ticketMedioValor1.setForeground(new java.awt.Color(255, 255, 255));
+        ticketMedioValor1.setText("R$ 40,21");
+
+        receitaLiquidaValor1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        receitaLiquidaValor1.setForeground(new java.awt.Color(255, 255, 255));
+        receitaLiquidaValor1.setText("R$ 9.482,49");
+
+        faturamentoValor1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        faturamentoValor1.setForeground(new java.awt.Color(255, 255, 255));
+        faturamentoValor1.setText("R$ 39.482,49");
+
+        totalVendas1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        totalVendas1.setForeground(new java.awt.Color(255, 255, 255));
+        totalVendas1.setText("Total de Vendas");
+
+        ticketMedio1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        ticketMedio1.setForeground(new java.awt.Color(255, 255, 255));
+        ticketMedio1.setText("Ticket Médio");
+
+        receitaLiquida1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        receitaLiquida1.setForeground(new java.awt.Color(255, 255, 255));
+        receitaLiquida1.setText("Receita Líquida");
+
+        faturamento1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        faturamento1.setForeground(new java.awt.Color(255, 255, 255));
+        faturamento1.setText("Faturamento");
+
+        iconeTicket1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_ticket.png"))); // NOI18N
+
+        fundoTicket1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo4_home.png"))); // NOI18N
+
+        iconeVendas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_carrinhoDeCompras.png"))); // NOI18N
+
+        fundoVendas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo3_home.png"))); // NOI18N
+
+        iconeReceita1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cifrão.png"))); // NOI18N
+
+        iconeFaturamento1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_dinheiro.png"))); // NOI18N
+
+        fundoReceita1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo2_home.png"))); // NOI18N
+
+        fundoFaturamento1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo1_home.png"))); // NOI18N
+
+        iconeOcultar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_olhoFechar.png"))); // NOI18N
+
+        txtBemVindo1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        txtBemVindo1.setForeground(new java.awt.Color(29, 73, 153));
+        txtBemVindo1.setText("  Olá, bem-vindo!");
+        txtBemVindo1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 0, 0, new java.awt.Color(0, 0, 51)));
+
+        bgButtonsHome2.setBackground(new java.awt.Color(0,0,0,0));
+        bgButtonsHome2.setForeground(new java.awt.Color(51, 51, 51));
+        bgButtonsHome2.setOpaque(false);
+        bgButtonsHome2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel7.setBackground(new java.awt.Color(0,0,0,0));
+        jPanel7.setOpaque(false);
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 50));
+
+        novaVenda3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        novaVenda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVenda.png"))); // NOI18N
+        novaVenda3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        novaVenda3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                novaVenda3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                novaVenda3MouseExited(evt);
+            }
+        });
+        jPanel7.add(novaVenda3);
+
+        jSeparator20.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator20.setPreferredSize(new java.awt.Dimension(3, 180));
+        jPanel7.add(jSeparator20);
+
+        novoProduto3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProduto.png"))); // NOI18N
+        novoProduto3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                novoProduto3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                novoProduto3MouseExited(evt);
+            }
+        });
+        jPanel7.add(novoProduto3);
+
+        jSeparator21.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator21.setPreferredSize(new java.awt.Dimension(3, 180));
+        jPanel7.add(jSeparator21);
+
+        novoCliente3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoCliente.png"))); // NOI18N
+        novoCliente3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                novoCliente3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                novoCliente3MouseExited(evt);
+            }
+        });
+        jPanel7.add(novoCliente3);
+
+        jSeparator22.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator22.setPreferredSize(new java.awt.Dimension(3, 180));
+        jPanel7.add(jSeparator22);
+
+        buscarCliente3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarCliente.png"))); // NOI18N
+        buscarCliente3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buscarCliente3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buscarCliente3MouseExited(evt);
+            }
+        });
+        jPanel7.add(buscarCliente3);
+
+        jSeparator23.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator23.setPreferredSize(new java.awt.Dimension(3, 180));
+        jPanel7.add(jSeparator23);
+
+        buscarVenda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png"))); // NOI18N
+        buscarVenda3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buscarVenda3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buscarVenda3MouseExited(evt);
+            }
+        });
+        jPanel7.add(buscarVenda3);
+
+        bgButtonsHome2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 280));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo_botoes_home.png"))); // NOI18N
+        bgButtonsHome2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        javax.swing.GroupLayout Card_Home3Layout = new javax.swing.GroupLayout(Card_Home3);
+        Card_Home3.setLayout(Card_Home3Layout);
+        Card_Home3Layout.setHorizontalGroup(
+            Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Card_Home3Layout.createSequentialGroup()
+                .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 1085, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(Card_Home3Layout.createSequentialGroup()
+                            .addGap(50, 50, 50)
+                            .addComponent(txtBemVindo1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(Card_Home3Layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(iconeOcultar1))
+                        .addGroup(Card_Home3Layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(Card_Home3Layout.createSequentialGroup()
+                                    .addGap(100, 100, 100)
+                                    .addComponent(faturamento1))
+                                .addGroup(Card_Home3Layout.createSequentialGroup()
+                                    .addGap(90, 90, 90)
+                                    .addComponent(faturamentoValor1))
+                                .addGroup(Card_Home3Layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(iconeFaturamento1))
+                                .addComponent(fundoFaturamento1))
+                            .addGap(71, 71, 71)
+                            .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(Card_Home3Layout.createSequentialGroup()
+                                    .addGap(14, 14, 14)
+                                    .addComponent(iconeReceita1))
+                                .addGroup(Card_Home3Layout.createSequentialGroup()
+                                    .addGap(94, 94, 94)
+                                    .addComponent(receitaLiquida1))
+                                .addGroup(Card_Home3Layout.createSequentialGroup()
+                                    .addGap(94, 94, 94)
+                                    .addComponent(receitaLiquidaValor1))
+                                .addComponent(fundoReceita1))
+                            .addGap(74, 74, 74)
+                            .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(fundoVendas1)
+                                .addGroup(Card_Home3Layout.createSequentialGroup()
+                                    .addGap(85, 85, 85)
+                                    .addComponent(totalVendas1))
+                                .addGroup(Card_Home3Layout.createSequentialGroup()
+                                    .addGap(125, 125, 125)
+                                    .addComponent(totalVendasd1))
+                                .addGroup(Card_Home3Layout.createSequentialGroup()
+                                    .addGap(15, 15, 15)
+                                    .addComponent(iconeVendas1)))
+                            .addGap(70, 70, 70)
+                            .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(Card_Home3Layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(iconeTicket1))
+                                .addGroup(Card_Home3Layout.createSequentialGroup()
+                                    .addGap(100, 100, 100)
+                                    .addComponent(ticketMedio1))
+                                .addComponent(fundoTicket1)
+                                .addGroup(Card_Home3Layout.createSequentialGroup()
+                                    .addGap(100, 100, 100)
+                                    .addComponent(ticketMedioValor1))))))
+                .addContainerGap())
+            .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Card_Home3Layout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(bgButtonsHome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(30, Short.MAX_VALUE)))
+        );
+        Card_Home3Layout.setVerticalGroup(
+            Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Card_Home3Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(txtBemVindo1)
+                .addGap(25, 25, 25)
+                .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(iconeOcultar1)
+                .addGap(24, 24, 24)
+                .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Card_Home3Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(faturamento1))
+                    .addGroup(Card_Home3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(faturamentoValor1))
+                    .addGroup(Card_Home3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(iconeFaturamento1))
+                    .addComponent(fundoFaturamento1)
+                    .addGroup(Card_Home3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(iconeReceita1))
+                    .addGroup(Card_Home3Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(receitaLiquida1))
+                    .addGroup(Card_Home3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(receitaLiquidaValor1))
+                    .addComponent(fundoReceita1)
+                    .addComponent(fundoVendas1)
+                    .addGroup(Card_Home3Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(totalVendas1))
+                    .addGroup(Card_Home3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(totalVendasd1))
+                    .addGroup(Card_Home3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(iconeVendas1))
+                    .addGroup(Card_Home3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(iconeTicket1))
+                    .addGroup(Card_Home3Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(ticketMedio1))
+                    .addComponent(fundoTicket1)
+                    .addGroup(Card_Home3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(ticketMedioValor1)))
+                .addContainerGap())
+            .addGroup(Card_Home3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Card_Home3Layout.createSequentialGroup()
+                    .addContainerGap(297, Short.MAX_VALUE)
+                    .addComponent(bgButtonsHome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
+        );
+
+        panelInformacoes.setBackground(new java.awt.Color(0,0,0,0));
+        panelInformacoes.setOpaque(false);
+        panelInformacoes.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 50, 5));
+
+        jPanel8.setBackground(new java.awt.Color(0,0,0,0));
+        jPanel8.setOpaque(false);
+        jPanel8.setPreferredSize(new java.awt.Dimension(215, 66));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        faturamento2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        faturamento2.setForeground(new java.awt.Color(255, 255, 255));
+        faturamento2.setText("Faturamento");
+        jPanel8.add(faturamento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, 20));
+
+        faturamentoValor2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        faturamentoValor2.setForeground(new java.awt.Color(255, 255, 255));
+        faturamentoValor2.setText("R$ 39.482,49");
+        jPanel8.add(faturamentoValor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+
+        iconeFaturamento2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_dinheiro.png"))); // NOI18N
+        jPanel8.add(iconeFaturamento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        fundoFaturamento2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo1_home.png"))); // NOI18N
+        jPanel8.add(fundoFaturamento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        panelInformacoes.add(jPanel8);
+
+        jPanel12.setBackground(new java.awt.Color(0,0,0,0));
+        jPanel12.setOpaque(false);
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        faturamento3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        faturamento3.setForeground(new java.awt.Color(255, 255, 255));
+        faturamento3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        faturamento3.setText("Receita líquida");
+        jPanel12.add(faturamento3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 20));
+
+        faturamentoValor3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        faturamentoValor3.setForeground(new java.awt.Color(255, 255, 255));
+        faturamentoValor3.setText("R$ 3.482,49");
+        jPanel12.add(faturamentoValor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+
+        iconeFaturamento3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cifrão.png"))); // NOI18N
+        jPanel12.add(iconeFaturamento3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        fundoFaturamento6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo2_home.png"))); // NOI18N
+        jPanel12.add(fundoFaturamento6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        panelInformacoes.add(jPanel12);
+
+        jPanel13.setBackground(new java.awt.Color(0,0,0,0));
+        jPanel13.setOpaque(false);
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        faturamento4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        faturamento4.setForeground(new java.awt.Color(255, 255, 255));
+        faturamento4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        faturamento4.setText("Total de vendas");
+        jPanel13.add(faturamento4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 20));
+
+        faturamentoValor4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        faturamentoValor4.setForeground(new java.awt.Color(255, 255, 255));
+        faturamentoValor4.setText("986");
+        jPanel13.add(faturamentoValor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+
+        iconeFaturamento4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_carrinhoDeCompras.png"))); // NOI18N
+        jPanel13.add(iconeFaturamento4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        fundoFaturamento7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo3_home.png"))); // NOI18N
+        jPanel13.add(fundoFaturamento7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        panelInformacoes.add(jPanel13);
+
+        jPanel14.setBackground(new java.awt.Color(0,0,0,0));
+        jPanel14.setOpaque(false);
+        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        faturamento5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        faturamento5.setForeground(new java.awt.Color(255, 255, 255));
+        faturamento5.setText("Ticket médio");
+        jPanel14.add(faturamento5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 20));
+
+        faturamentoValor5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        faturamentoValor5.setForeground(new java.awt.Color(255, 255, 255));
+        faturamentoValor5.setText("R$ 482,50");
+        jPanel14.add(faturamentoValor5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+
+        iconeFaturamento5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_ticket.png"))); // NOI18N
+        jPanel14.add(iconeFaturamento5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, -1));
+
+        fundoFaturamento8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo4_home.png"))); // NOI18N
+        jPanel14.add(fundoFaturamento8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        panelInformacoes.add(jPanel14);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -593,12 +1115,12 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(menu_customers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(menu_settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
             .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MenusLayout.createSequentialGroup()
                     .addGap(89, 89, 89)
                     .addComponent(menu_home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(511, Short.MAX_VALUE)))
+                    .addContainerGap(461, Short.MAX_VALUE)))
         );
 
         Body.setLeftComponent(Menus);
@@ -606,154 +1128,173 @@ public class Home extends javax.swing.JFrame {
         CollectionCard.setPreferredSize(new java.awt.Dimension(1200, 641));
         CollectionCard.setLayout(new java.awt.CardLayout());
 
-        Card_Home.setBackground(new java.awt.Color(255, 255, 255));
-        Card_Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Card_Home2.setBackground(new java.awt.Color(255, 255, 255));
+        Card_Home2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("982");
-        Card_Home.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, -1, -1));
+        totalVendasd.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        totalVendasd.setForeground(new java.awt.Color(255, 255, 255));
+        totalVendasd.setText("982");
+        Card_Home2.add(totalVendasd, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, -1, -1));
 
-        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText("R$ 40,21");
-        Card_Home.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 150, -1, -1));
+        ticketMedioValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        ticketMedioValor.setForeground(new java.awt.Color(255, 255, 255));
+        ticketMedioValor.setText("R$ 40,21");
+        Card_Home2.add(ticketMedioValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 150, -1, -1));
 
-        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("R$ 9.482,49");
-        Card_Home.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
+        receitaLiquidaValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        receitaLiquidaValor.setForeground(new java.awt.Color(255, 255, 255));
+        receitaLiquidaValor.setText("R$ 9.482,49");
+        Card_Home2.add(receitaLiquidaValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
 
-        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("R$ 39.482,49");
-        Card_Home.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+        faturamentoValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        faturamentoValor.setForeground(new java.awt.Color(255, 255, 255));
+        faturamentoValor.setText("R$ 39.482,49");
+        Card_Home2.add(faturamentoValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("Total de Vendas");
-        Card_Home.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, -1, -1));
+        totalVendas.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        totalVendas.setForeground(new java.awt.Color(255, 255, 255));
+        totalVendas.setText("Total de Vendas");
+        Card_Home2.add(totalVendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("Ticket Médio");
-        Card_Home.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 180, -1, -1));
+        ticketMedio.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        ticketMedio.setForeground(new java.awt.Color(255, 255, 255));
+        ticketMedio.setText("Ticket Médio");
+        Card_Home2.add(ticketMedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 180, -1, -1));
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("Receita Líquida");
-        Card_Home.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, -1));
+        receitaLiquida.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        receitaLiquida.setForeground(new java.awt.Color(255, 255, 255));
+        receitaLiquida.setText("Receita Líquida");
+        Card_Home2.add(receitaLiquida, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, -1));
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("Faturamento");
-        Card_Home.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
+        faturamento.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        faturamento.setForeground(new java.awt.Color(255, 255, 255));
+        faturamento.setText("Faturamento");
+        Card_Home2.add(faturamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_ticket.png"))); // NOI18N
-        Card_Home.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 150, -1, -1));
+        iconeTicket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_ticket.png"))); // NOI18N
+        Card_Home2.add(iconeTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 150, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo4_home.png"))); // NOI18N
-        Card_Home.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 140, -1, -1));
+        fundoTicket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo4_home.png"))); // NOI18N
+        Card_Home2.add(fundoTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 140, -1, -1));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_carrinhoDeCompras.png"))); // NOI18N
-        Card_Home.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, -1, -1));
+        iconeVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_carrinhoDeCompras.png"))); // NOI18N
+        Card_Home2.add(iconeVendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo3_home.png"))); // NOI18N
-        Card_Home.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 140, -1, -1));
+        fundoVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo3_home.png"))); // NOI18N
+        Card_Home2.add(fundoVendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 140, -1, -1));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cifrão.png"))); // NOI18N
-        Card_Home.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
+        iconeReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cifrão.png"))); // NOI18N
+        Card_Home2.add(iconeReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_dinheiro.png"))); // NOI18N
-        Card_Home.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        iconeFaturamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_dinheiro.png"))); // NOI18N
+        Card_Home2.add(iconeFaturamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo2_home.png"))); // NOI18N
-        Card_Home.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 140, -1, -1));
+        fundoReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo2_home.png"))); // NOI18N
+        Card_Home2.add(fundoReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 140, -1, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo1_home.png"))); // NOI18N
-        Card_Home.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        fundoFaturamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo1_home.png"))); // NOI18N
+        Card_Home2.add(fundoFaturamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProduto.png"))); // NOI18N
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        iconeOcultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_olhoFechar.png"))); // NOI18N
+        Card_Home2.add(iconeOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+
+        txtBemVindo.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        txtBemVindo.setForeground(new java.awt.Color(29, 73, 153));
+        txtBemVindo.setText("  Olá, bem-vindo!");
+        txtBemVindo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 0, 0, new java.awt.Color(0, 0, 51)));
+        Card_Home2.add(txtBemVindo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 180, -1));
+        Card_Home2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1230, 10));
+
+        bgButtonsHome1.setBackground(new java.awt.Color(0,0,0,0));
+        bgButtonsHome1.setForeground(new java.awt.Color(51, 51, 51));
+        bgButtonsHome1.setOpaque(false);
+        bgButtonsHome1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(0,0,0,0));
+        jPanel6.setOpaque(false);
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 50));
+
+        novaVenda2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        novaVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVenda.png"))); // NOI18N
+        novaVenda2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        novaVenda2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel3MouseEntered(evt);
+                novaVenda2MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel3MouseExited(evt);
+                novaVenda2MouseExited(evt);
             }
         });
-        Card_Home.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, -1, -1));
+        jPanel6.add(novaVenda2);
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoCliente.png"))); // NOI18N
-        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+        jSeparator15.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator15.setPreferredSize(new java.awt.Dimension(3, 180));
+        jPanel6.add(jSeparator15);
+
+        novoProduto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProduto.png"))); // NOI18N
+        novoProduto2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel17MouseEntered(evt);
+                novoProduto2MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel17MouseExited(evt);
+                novoProduto2MouseExited(evt);
             }
         });
-        Card_Home.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, -1, -1));
+        jPanel6.add(novoProduto2);
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarCliente.png"))); // NOI18N
-        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+        jSeparator16.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator16.setPreferredSize(new java.awt.Dimension(3, 180));
+        jPanel6.add(jSeparator16);
+
+        novoCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoCliente.png"))); // NOI18N
+        novoCliente2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel18MouseEntered(evt);
+                novoCliente2MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel18MouseExited(evt);
+                novoCliente2MouseExited(evt);
             }
         });
-        Card_Home.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, -1, -1));
+        jPanel6.add(novoCliente2);
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png"))); // NOI18N
-        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+        jSeparator17.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator17.setPreferredSize(new java.awt.Dimension(3, 180));
+        jPanel6.add(jSeparator17);
+
+        buscarCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarCliente.png"))); // NOI18N
+        buscarCliente2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel19MouseEntered(evt);
+                buscarCliente2MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel19MouseExited(evt);
+                buscarCliente2MouseExited(evt);
             }
         });
-        Card_Home.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 380, -1, -1));
+        jPanel6.add(buscarCliente2);
 
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVenda.png"))); // NOI18N
-        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+        jSeparator18.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator18.setPreferredSize(new java.awt.Dimension(3, 180));
+        jPanel6.add(jSeparator18);
+
+        buscarVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png"))); // NOI18N
+        buscarVenda2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel21MouseEntered(evt);
+                buscarVenda2MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel21MouseExited(evt);
+                buscarVenda2MouseExited(evt);
             }
         });
-        Card_Home.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 150, -1));
+        jPanel6.add(buscarVenda2);
 
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        Card_Home.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 10, 250));
+        bgButtonsHome1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 280));
 
-        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        Card_Home.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 330, 10, 250));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo_botoes_home.png"))); // NOI18N
+        bgButtonsHome1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        Card_Home.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 330, 10, 250));
+        Card_Home2.add(bgButtonsHome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 297, -1, -1));
 
-        jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        Card_Home.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, 10, 250));
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo_botoes_home.png"))); // NOI18N
-        Card_Home.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
-
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_olhoFechar.png"))); // NOI18N
-        Card_Home.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
-
-        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(29, 73, 153));
-        jLabel23.setText("  Olá, bem-vindo!");
-        jLabel23.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 0, 0, new java.awt.Color(0, 0, 51)));
-        Card_Home.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 180, -1));
-        Card_Home.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1230, 10));
-
-        CollectionCard.add(Card_Home, "cardHome");
+        CollectionCard.add(Card_Home2, "cardHome");
 
         Card_Sales.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -886,7 +1427,7 @@ public class Home extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btn_SearchSale))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Card_SalesLayout.setVerticalGroup(
             Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -903,7 +1444,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(Card_SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(searchSale, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_SearchSale))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -1525,10 +2066,8 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1060, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Card_CustomersLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Card_CustomersLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
                         .addGroup(Card_CustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(Card_CustomersLayout.createSequentialGroup()
                                 .addComponent(cSearchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1537,7 +2076,7 @@ public class Home extends javax.swing.JFrame {
                                 .addComponent(btn_Addc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btn_Deletec)))))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Card_CustomersLayout.setVerticalGroup(
             Card_CustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1556,7 +2095,7 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(btn_Searchc))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Customers, "cardCustomers");
@@ -1586,7 +2125,7 @@ public class Home extends javax.swing.JFrame {
                         .addGroup(Card_SettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 1060, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel35))))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Card_SettingsLayout.setVerticalGroup(
             Card_SettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1597,7 +2136,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(442, Short.MAX_VALUE))
+                .addContainerGap(392, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Settings, "cardSettings");
@@ -1606,7 +2145,7 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(Body, java.awt.BorderLayout.CENTER);
 
-        pack();
+        setSize(new java.awt.Dimension(1208, 650));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1864,46 +2403,6 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtProductsSearchFieldKeyPressed
 
-    private void jLabel21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseEntered
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVendaAzul.png")));
-    }//GEN-LAST:event_jLabel21MouseEntered
-
-    private void jLabel21MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseExited
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVenda.png")));
-    }//GEN-LAST:event_jLabel21MouseExited
-
-    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
-      jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProdutoAzul.png")));
-    }//GEN-LAST:event_jLabel3MouseEntered
-
-    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProduto.png")));
-    }//GEN-LAST:event_jLabel3MouseExited
-
-    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoClienteAzul.png")));
-    }//GEN-LAST:event_jLabel17MouseEntered
-
-    private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
-       jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoCliente.png")));
-    }//GEN-LAST:event_jLabel17MouseExited
-
-    private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarClienteAzul.png")));
-    }//GEN-LAST:event_jLabel18MouseEntered
-
-    private void jLabel18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseExited
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarCliente.png")));
-    }//GEN-LAST:event_jLabel18MouseExited
-
-    private void jLabel19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseEntered
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVendaAzul.png")));
-    }//GEN-LAST:event_jLabel19MouseEntered
-
-    private void jLabel19MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseExited
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png")));
-    }//GEN-LAST:event_jLabel19MouseExited
-
     private void btn_NewSaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NewSaleMouseEntered
        btn_NewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png")));
     }//GEN-LAST:event_btn_NewSaleMouseEntered
@@ -1980,6 +2479,126 @@ public class Home extends javax.swing.JFrame {
        btn_Searchc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
     }//GEN-LAST:event_btn_SearchcMouseExited
 
+    private void novaVenda1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novaVenda1MouseEntered
+
+    private void novaVenda1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novaVenda1MouseExited
+
+    private void novoProduto1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novoProduto1MouseEntered
+
+    private void novoProduto1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novoProduto1MouseExited
+
+    private void novoCliente1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novoCliente1MouseEntered
+
+    private void novoCliente1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novoCliente1MouseExited
+
+    private void buscarCliente1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarCliente1MouseEntered
+
+    private void buscarCliente1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarCliente1MouseExited
+
+    private void buscarVenda1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarVenda1MouseEntered
+
+    private void buscarVenda1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarVenda1MouseExited
+
+    private void novaVenda2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novaVenda2MouseEntered
+
+    private void novaVenda2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novaVenda2MouseExited
+
+    private void novoProduto2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novoProduto2MouseEntered
+
+    private void novoProduto2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novoProduto2MouseExited
+
+    private void novoCliente2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novoCliente2MouseEntered
+
+    private void novoCliente2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novoCliente2MouseExited
+
+    private void buscarCliente2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarCliente2MouseEntered
+
+    private void buscarCliente2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarCliente2MouseExited
+
+    private void buscarVenda2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarVenda2MouseEntered
+
+    private void buscarVenda2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarVenda2MouseExited
+
+    private void novaVenda3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novaVenda3MouseEntered
+
+    private void novaVenda3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novaVenda3MouseExited
+
+    private void novoProduto3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novoProduto3MouseEntered
+
+    private void novoProduto3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novoProduto3MouseExited
+
+    private void novoCliente3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novoCliente3MouseEntered
+
+    private void novoCliente3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_novoCliente3MouseExited
+
+    private void buscarCliente3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarCliente3MouseEntered
+
+    private void buscarCliente3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarCliente3MouseExited
+
+    private void buscarVenda3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarVenda3MouseEntered
+
+    private void buscarVenda3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarVenda3MouseExited
+
 
     /**
      * @param args the command line arguments
@@ -2026,7 +2645,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel CPFSeparator;
     private javax.swing.JPanel Card_Customers;
     private javax.swing.JPanel Card_Employees;
-    private javax.swing.JPanel Card_Home;
+    private javax.swing.JPanel Card_Home2;
+    private javax.swing.JPanel Card_Home3;
     private javax.swing.JPanel Card_Products;
     private javax.swing.JPanel Card_Sales;
     private javax.swing.JPanel Card_Settings;
@@ -2046,6 +2666,9 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Phone;
     private javax.swing.JLabel State;
     private javax.swing.JScrollPane Table_Employees;
+    private javax.swing.JPanel bgButtonsHome;
+    private javax.swing.JPanel bgButtonsHome1;
+    private javax.swing.JPanel bgButtonsHome2;
     private javax.swing.JLabel btnDeleteEmployee;
     private javax.swing.JLabel btnEditEmployee;
     private javax.swing.JLabel btnSaveEmployee;
@@ -2069,38 +2692,63 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel btn_removeProduct;
     private javax.swing.JLabel btn_sales;
     private javax.swing.JLabel btn_settings;
+    private javax.swing.JLabel buscarCliente1;
+    private javax.swing.JLabel buscarCliente2;
+    private javax.swing.JLabel buscarCliente3;
+    private javax.swing.JLabel buscarVenda1;
+    private javax.swing.JLabel buscarVenda2;
+    private javax.swing.JLabel buscarVenda3;
     private javax.swing.JTextField cSearchCustomer;
+    private javax.swing.JLabel faturamento;
+    private javax.swing.JLabel faturamento1;
+    private javax.swing.JLabel faturamento2;
+    private javax.swing.JLabel faturamento3;
+    private javax.swing.JLabel faturamento4;
+    private javax.swing.JLabel faturamento5;
+    private javax.swing.JLabel faturamentoValor;
+    private javax.swing.JLabel faturamentoValor1;
+    private javax.swing.JLabel faturamentoValor2;
+    private javax.swing.JLabel faturamentoValor3;
+    private javax.swing.JLabel faturamentoValor4;
+    private javax.swing.JLabel faturamentoValor5;
+    private javax.swing.JLabel fundoFaturamento;
+    private javax.swing.JLabel fundoFaturamento1;
+    private javax.swing.JLabel fundoFaturamento2;
+    private javax.swing.JLabel fundoFaturamento6;
+    private javax.swing.JLabel fundoFaturamento7;
+    private javax.swing.JLabel fundoFaturamento8;
+    private javax.swing.JLabel fundoReceita;
+    private javax.swing.JLabel fundoReceita1;
+    private javax.swing.JLabel fundoTicket;
+    private javax.swing.JLabel fundoTicket1;
+    private javax.swing.JLabel fundoVendas;
+    private javax.swing.JLabel fundoVendas1;
     private javax.swing.JLabel icon_customers;
     private javax.swing.JLabel icon_employees;
     private javax.swing.JLabel icon_home;
     private javax.swing.JLabel icon_products;
     private javax.swing.JLabel icon_sales;
     private javax.swing.JLabel icon_settings;
+    private javax.swing.JLabel iconeFaturamento;
+    private javax.swing.JLabel iconeFaturamento1;
+    private javax.swing.JLabel iconeFaturamento2;
+    private javax.swing.JLabel iconeFaturamento3;
+    private javax.swing.JLabel iconeFaturamento4;
+    private javax.swing.JLabel iconeFaturamento5;
+    private javax.swing.JLabel iconeOcultar;
+    private javax.swing.JLabel iconeOcultar1;
+    private javax.swing.JLabel iconeReceita;
+    private javax.swing.JLabel iconeReceita1;
+    private javax.swing.JLabel iconeTicket;
+    private javax.swing.JLabel iconeTicket1;
+    private javax.swing.JLabel iconeVendas;
+    private javax.swing.JLabel iconeVendas1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -2111,21 +2759,35 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
+    private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JSeparator jSeparator17;
+    private javax.swing.JSeparator jSeparator18;
+    private javax.swing.JSeparator jSeparator19;
+    private javax.swing.JSeparator jSeparator20;
+    private javax.swing.JSeparator jSeparator21;
+    private javax.swing.JSeparator jSeparator22;
+    private javax.swing.JSeparator jSeparator23;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
@@ -2137,15 +2799,39 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel menu_product;
     private javax.swing.JPanel menu_sale;
     private javax.swing.JPanel menu_settings;
+    private javax.swing.JLabel novaVenda1;
+    private javax.swing.JLabel novaVenda2;
+    private javax.swing.JLabel novaVenda3;
+    private javax.swing.JLabel novoCliente1;
+    private javax.swing.JLabel novoCliente2;
+    private javax.swing.JLabel novoCliente3;
+    private javax.swing.JLabel novoProduto1;
+    private javax.swing.JLabel novoProduto2;
+    private javax.swing.JLabel novoProduto3;
+    private javax.swing.JPanel panelInformacoes;
     private javax.swing.JPanel pnl_Close;
     private javax.swing.JPanel pnl_HeaderMenu;
     private javax.swing.JPanel pnl_IconMenu;
     private javax.swing.JPanel pnl_Max;
     private javax.swing.JPanel pnl_Min;
+    private javax.swing.JLabel receitaLiquida;
+    private javax.swing.JLabel receitaLiquida1;
+    private javax.swing.JLabel receitaLiquidaValor;
+    private javax.swing.JLabel receitaLiquidaValor1;
     private javax.swing.JTable salesTable;
     private javax.swing.JTextField searchSale;
     private javax.swing.JTable table_Employees;
     private javax.swing.JTable table_Products;
+    private javax.swing.JLabel ticketMedio;
+    private javax.swing.JLabel ticketMedio1;
+    private javax.swing.JLabel ticketMedioValor;
+    private javax.swing.JLabel ticketMedioValor1;
+    private javax.swing.JLabel totalVendas;
+    private javax.swing.JLabel totalVendas1;
+    private javax.swing.JLabel totalVendasd;
+    private javax.swing.JLabel totalVendasd1;
+    private javax.swing.JLabel txtBemVindo;
+    private javax.swing.JLabel txtBemVindo1;
     private javax.swing.JTextField txtEmployeeAddAddress;
     private javax.swing.JTextField txtEmployeeAddress;
     private javax.swing.JTextField txtEmployeeAddressNum;
