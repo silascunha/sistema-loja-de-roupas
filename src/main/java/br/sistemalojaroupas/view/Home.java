@@ -42,6 +42,7 @@ public class Home extends javax.swing.JFrame {
         menuButtonsList.add(menu_employees);
         menuButtonsList.add(menu_product);
         
+        setMenuButtonsColor(menu_home);
     }
     
     private void setMenuButtonsColor(JPanel pn1) {
@@ -1317,9 +1318,33 @@ public class Home extends javax.swing.JFrame {
         table_Products.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(table_Products);
         if (table_Products.getColumnModel().getColumnCount() > 0) {
+            table_Products.getColumnModel().getColumn(0).setMinWidth(25);
+            table_Products.getColumnModel().getColumn(0).setPreferredWidth(50);
+            table_Products.getColumnModel().getColumn(0).setMaxWidth(75);
             table_Products.getColumnModel().getColumn(1).setMinWidth(150);
-            table_Products.getColumnModel().getColumn(1).setPreferredWidth(200);
-            table_Products.getColumnModel().getColumn(1).setMaxWidth(250);
+            table_Products.getColumnModel().getColumn(1).setPreferredWidth(220);
+            table_Products.getColumnModel().getColumn(1).setMaxWidth(300);
+            table_Products.getColumnModel().getColumn(2).setMinWidth(60);
+            table_Products.getColumnModel().getColumn(2).setPreferredWidth(80);
+            table_Products.getColumnModel().getColumn(2).setMaxWidth(100);
+            table_Products.getColumnModel().getColumn(3).setMinWidth(60);
+            table_Products.getColumnModel().getColumn(3).setPreferredWidth(80);
+            table_Products.getColumnModel().getColumn(3).setMaxWidth(100);
+            table_Products.getColumnModel().getColumn(4).setMinWidth(100);
+            table_Products.getColumnModel().getColumn(4).setPreferredWidth(130);
+            table_Products.getColumnModel().getColumn(4).setMaxWidth(180);
+            table_Products.getColumnModel().getColumn(5).setMinWidth(60);
+            table_Products.getColumnModel().getColumn(5).setPreferredWidth(80);
+            table_Products.getColumnModel().getColumn(5).setMaxWidth(100);
+            table_Products.getColumnModel().getColumn(6).setMinWidth(60);
+            table_Products.getColumnModel().getColumn(6).setPreferredWidth(80);
+            table_Products.getColumnModel().getColumn(6).setMaxWidth(100);
+            table_Products.getColumnModel().getColumn(7).setMinWidth(25);
+            table_Products.getColumnModel().getColumn(7).setPreferredWidth(40);
+            table_Products.getColumnModel().getColumn(7).setMaxWidth(60);
+            table_Products.getColumnModel().getColumn(8).setMinWidth(80);
+            table_Products.getColumnModel().getColumn(8).setPreferredWidth(80);
+            table_Products.getColumnModel().getColumn(8).setMaxWidth(100);
         }
 
         jLabel36.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
