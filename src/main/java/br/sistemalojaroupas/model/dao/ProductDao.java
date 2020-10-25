@@ -58,9 +58,21 @@ public class ProductDao {
     
     public static List<Product> search(String arg0) {
         String str = arg0.toUpperCase();
-        List<Product> list = repProduct.find(ObjectFilters.regex("description", str),
+        Long id;
+        
+        try {
+            id = Long.parseLong(arg0);
+        }
+        catch(NumberFormatException e) {
+            id = null;
+        }
+        
+        List<Product> list = repProduct.find(ObjectFilters.or(
+                ObjectFilters.regex("description", str),
+                ObjectFilters.eq("id", id)),
                 FindOptions.sort("description", SortOrder.Ascending))
                 .toList();
+        
         return list;
     }
     

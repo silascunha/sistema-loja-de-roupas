@@ -13,10 +13,8 @@ import java.util.List;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
-import org.dizitart.no2.NitriteId;
 
 /**
  *
