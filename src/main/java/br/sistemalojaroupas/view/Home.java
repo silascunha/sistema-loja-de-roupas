@@ -590,7 +590,7 @@ public class Home extends javax.swing.JFrame {
         );
         pnl_HeaderMenuLayout.setVerticalGroup(
             pnl_HeaderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -626,7 +626,7 @@ public class Home extends javax.swing.JFrame {
         );
         pnl_IconMenuLayout.setVerticalGroup(
             pnl_IconMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btn_ShowHideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btn_ShowHideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         Mid_Header.add(pnl_IconMenu, java.awt.BorderLayout.LINE_START);
@@ -801,12 +801,12 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(menu_customers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(menu_settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
             .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnMenuLayout.createSequentialGroup()
                     .addGap(89, 89, 89)
                     .addComponent(menu_home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(461, Short.MAX_VALUE)))
+                    .addContainerGap(490, Short.MAX_VALUE)))
         );
 
         getContentPane().add(pnMenu, java.awt.BorderLayout.WEST);
@@ -1198,7 +1198,6 @@ public class Home extends javax.swing.JFrame {
         CollectionCard.add(Card_Sales, "cardSales");
 
         Card_Products.setBackground(new java.awt.Color(255, 255, 255));
-        Card_Products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_editProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_editProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_Editar.png"))); // NOI18N
@@ -1213,7 +1212,6 @@ public class Home extends javax.swing.JFrame {
                 btn_editProductMouseExited(evt);
             }
         });
-        Card_Products.add(btn_editProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, 38));
 
         btn_removeProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_removeProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluirClaro.png"))); // NOI18N
@@ -1228,7 +1226,6 @@ public class Home extends javax.swing.JFrame {
                 btn_removeProductMouseExited(evt);
             }
         });
-        Card_Products.add(btn_removeProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, 38));
 
         btn_addProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_addProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarClaro.png"))); // NOI18N
@@ -1243,7 +1240,6 @@ public class Home extends javax.swing.JFrame {
                 btn_addProductMouseExited(evt);
             }
         });
-        Card_Products.add(btn_addProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, 38));
 
         btn_SearchProducts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png"))); // NOI18N
@@ -1258,7 +1254,6 @@ public class Home extends javax.swing.JFrame {
                 btn_SearchProductsMouseExited(evt);
             }
         });
-        Card_Products.add(btn_SearchProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, -1, 38));
 
         txtProductsSearchField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtProductsSearchField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1266,14 +1261,11 @@ public class Home extends javax.swing.JFrame {
                 txtProductsSearchFieldKeyPressed(evt);
             }
         });
-        Card_Products.add(txtProductsSearchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 460, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 51));
         jLabel1.setText(" Produtos");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(108, 81, 233)));
-        Card_Products.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 100, -1));
-        Card_Products.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 1060, 10));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 51));
 
@@ -1341,22 +1333,67 @@ public class Home extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 957, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 978, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        Card_Products.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 990, 420));
+        javax.swing.GroupLayout Card_ProductsLayout = new javax.swing.GroupLayout(Card_Products);
+        Card_Products.setLayout(Card_ProductsLayout);
+        Card_ProductsLayout.setHorizontalGroup(
+            Card_ProductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Card_ProductsLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(Card_ProductsLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1060, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(Card_ProductsLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(btn_addProduct)
+                .addGap(8, 8, 8)
+                .addComponent(btn_editProduct)
+                .addGap(8, 8, 8)
+                .addComponent(btn_removeProduct))
+            .addGroup(Card_ProductsLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(txtProductsSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btn_SearchProducts))
+            .addGroup(Card_ProductsLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        Card_ProductsLayout.setVerticalGroup(
+            Card_ProductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Card_ProductsLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(Card_ProductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_addProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_editProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_removeProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(Card_ProductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtProductsSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_SearchProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(9, 9, 9))
+        );
 
         CollectionCard.add(Card_Products, "cardProducts");
 
@@ -1841,7 +1878,7 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(btn_Searchc))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Customers, "cardCustomers");
@@ -1882,14 +1919,14 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(392, Short.MAX_VALUE))
+                .addContainerGap(421, Short.MAX_VALUE))
         );
 
         CollectionCard.add(Card_Settings, "cardSettings");
 
         getContentPane().add(CollectionCard, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(1310, 650));
+        setSize(new java.awt.Dimension(1310, 679));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
