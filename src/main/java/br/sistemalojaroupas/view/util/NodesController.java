@@ -21,22 +21,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class NodesController {
     
-    public static void initializeTable(List<? extends TableContract> objList, JTable table) {
+    public static void updateTable(List<? extends TableContract> objList, JTable table) {
         DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-        
         dtm.setRowCount(0);
-        
         objList.forEach(obj -> {
             dtm.addRow(obj.tableRowModel());
         });
     }
     
-    public static void initializeComboBox(List<?> list, JComboBox cb) {
+    public static void updateComboBox(List<?> list, JComboBox cb) {
         cb.removeAllItems();
         cb.addItem("Selecione...");
-        for (Object c : list) {
+        list.forEach(c -> {
             cb.addItem(c);
-        }
+        });
     }
     
     public static void clearFields(JPanel pn){

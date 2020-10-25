@@ -8,12 +8,14 @@ package br.sistemalojaroupas.model.dao;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.entities.Category;
 import br.sistemalojaroupas.model.entities.Product;
+import br.sistemalojaroupas.model.entities.util.ProductCode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.dizitart.no2.FindOptions;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.SortOrder;
+import org.dizitart.no2.mapper.NitriteIdModule;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 
@@ -24,9 +26,11 @@ import org.dizitart.no2.objects.filters.ObjectFilters;
 public class ProductDao {
     
     private static ObjectRepository<Product> repProduct;
+    private static ObjectRepository<ProductCode> repCode;
     
     static {
         repProduct = DB.getDB().getRepository(Product.class);
+        repCode = DB.getDB().getRepository(ProductCode.class);
     }
     
     public static ObjectRepository<Product> getProductRepository() {
@@ -34,6 +38,17 @@ public class ProductDao {
     }
     
     public static void insert(Product p) {
+        ProductCode pc = repCode.find().firstOrDefault();
+        
+        if(pc == null) {
+            pc = new ProductCode();
+            repCode.insert(pc);
+        }
+        pc.setLastCode(pc.getLastCode() + 1);
+        
+        p.setId(pc.getLastCode());
+        
+        repCode.update(pc);
         repProduct.insert(p);
     }
    
@@ -56,8 +71,9 @@ public class ProductDao {
         return list;
     }
     
-    public static Product findById(NitriteId id) {
-        Product p = repProduct.getById(id);
+    public static Product findById(Long id) {
+        Product p = repProduct.find(ObjectFilters.eq("id", id))
+                .firstOrDefault();
         return p;
     }
     
@@ -65,7 +81,7 @@ public class ProductDao {
         repProduct.remove(p);
     }
     
-    public static void removeById(NitriteId id) {
+    public static void removeById(Long id) {
         Product p = findById(id);
         remove(p);
     }

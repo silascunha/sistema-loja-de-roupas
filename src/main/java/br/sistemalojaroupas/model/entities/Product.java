@@ -22,7 +22,7 @@ public class Product implements Serializable, TableContract {
     private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
     @Id
-    private NitriteId id;
+    private Long id;
     private String description;
     private Category category;
     private String size;
@@ -31,6 +31,7 @@ public class Product implements Serializable, TableContract {
     private Double salePrice;
     private Date date = new Date();
     private int quantity;
+    
     
     public Product() {}
 
@@ -44,11 +45,11 @@ public class Product implements Serializable, TableContract {
         this.quantity = quantity;
     }
 
-    public NitriteId getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(NitriteId id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -124,7 +125,7 @@ public class Product implements Serializable, TableContract {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -146,6 +147,8 @@ public class Product implements Serializable, TableContract {
         return true;
     }
 
+    
+
     @Override
     public String toString() {
         return "Product{" + "id=" + id + ", description=" + description + ", category=" + category + ", size=" + size + ", color=" + color + ", costPrice=" + costPrice + ", salePrice=" + salePrice + ", date=" + date + ", quantity=" + quantity + '}';
@@ -165,7 +168,5 @@ public class Product implements Serializable, TableContract {
             getFormattedDate()
         };
     }
-
-    
     
 }

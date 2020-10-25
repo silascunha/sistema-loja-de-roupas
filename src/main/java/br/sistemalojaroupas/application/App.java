@@ -6,7 +6,10 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.model.dao.ColorDao;
+import br.sistemalojaroupas.model.entities.Color;
 import br.sistemalojaroupas.view.Home;
+import org.dizitart.no2.NitriteId;
 
 
 
@@ -18,7 +21,7 @@ public class App {
     public static void main(String[] args) {
         DB.start();
         
-        new Home().main(args);
         
+        new Home().main(args);
     }
 }

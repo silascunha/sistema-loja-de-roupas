@@ -121,7 +121,7 @@ public class Edit_Category extends javax.swing.JDialog {
 
     private void btn_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_closeMouseClicked
         if (parent instanceof Register_And_Edit_Products) {
-                NodesController.initializeComboBox(CategoryDao.findAll(),
+                NodesController.updateComboBox(CategoryDao.findAll(),
                         ((Register_And_Edit_Products)parent).getCbCategory());
             }
         this.dispose();
@@ -147,7 +147,7 @@ public class Edit_Category extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "Categoria editada com sucesso!",
                         "Atenção", JOptionPane.INFORMATION_MESSAGE);
                 if (parent instanceof Register_And_Edit_Products) {
-                    NodesController.initializeComboBox(CategoryDao.findAll(),
+                    NodesController.updateComboBox(CategoryDao.findAll(),
                             ((Register_And_Edit_Products)parent).getCbCategory());
                 }
                 this.dispose();

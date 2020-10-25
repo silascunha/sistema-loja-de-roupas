@@ -1975,14 +1975,14 @@ public class Home extends javax.swing.JFrame {
         
         if (row > -1) {
             DefaultTableModel dtm = (DefaultTableModel) table_Products.getModel();
-            NitriteId id = (NitriteId) dtm.getValueAt(row, 0);
+            Long id = (Long) dtm.getValueAt(row, 0);
             
             int op;
             op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esse produto?",
                     "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
             if(op == 0){
                 ProductDao.removeById(id);
-                NodesController.initializeTable(ProductDao.findAll(), table_Products);
+                NodesController.updateTable(ProductDao.findAll(), table_Products);
             } 
         }
     }//GEN-LAST:event_btn_removeProductMouseClicked
@@ -1994,7 +1994,7 @@ public class Home extends javax.swing.JFrame {
             
             DefaultTableModel dtm = (DefaultTableModel) table_Products.getModel();
             
-            NitriteId id = (NitriteId) dtm.getValueAt(selectedRow, 0);
+            Long id = (Long) dtm.getValueAt(selectedRow, 0);
             Product p = ProductDao.findById(id);
             
             new Register_And_Edit_Products(null, true, p).setVisible(true);
@@ -2046,7 +2046,7 @@ public class Home extends javax.swing.JFrame {
         panelsCardLayout.show(CollectionCard, "cardProducts");
         setMenuButtonsColor(menu_product);
         
-        NodesController.initializeTable(ProductDao.findAll(), table_Products);
+        NodesController.updateTable(ProductDao.findAll(), table_Products);
     }//GEN-LAST:event_menu_productMouseClicked
 
     private void menu_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_employeesMouseClicked
@@ -2097,7 +2097,7 @@ public class Home extends javax.swing.JFrame {
     private void btn_SearchProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseClicked
         String str = txtProductsSearchField.getText();
         
-        NodesController.initializeTable(ProductDao.search(str), table_Products);
+        NodesController.updateTable(ProductDao.search(str), table_Products);
     }//GEN-LAST:event_btn_SearchProductsMouseClicked
 
     private void btn_SearchProductsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseEntered
@@ -2117,7 +2117,7 @@ public class Home extends javax.swing.JFrame {
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         //Método para quando um JDialog for fechado a tabela do card aberto ser atualizada
         if (Card_Products.isShowing()) {
-            NodesController.initializeTable(ProductDao.findAll(), table_Products);
+            NodesController.updateTable(ProductDao.findAll(), table_Products);
         }
         if (Card_Employees.isShowing()) {
             System.out.println("Tela funcionarios");

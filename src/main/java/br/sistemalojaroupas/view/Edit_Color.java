@@ -103,7 +103,7 @@ public class Edit_Color extends javax.swing.JDialog {
 
     private void btn_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_closeMouseClicked
         if (parent instanceof Register_And_Edit_Products) {
-                NodesController.initializeComboBox(ColorDao.findAll(),
+                NodesController.updateComboBox(ColorDao.findAll(),
                         ((Register_And_Edit_Products)parent).getCbColor());
             }
         this.dispose();
@@ -119,7 +119,7 @@ public class Edit_Color extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "Cor editada com sucesso!",
                         "Atenção", JOptionPane.INFORMATION_MESSAGE);
                 if (parent instanceof Register_And_Edit_Products) {
-                    NodesController.initializeComboBox(ColorDao.findAll(),
+                    NodesController.updateComboBox(ColorDao.findAll(),
                             ((Register_And_Edit_Products)parent).getCbColor());
                 }
                 

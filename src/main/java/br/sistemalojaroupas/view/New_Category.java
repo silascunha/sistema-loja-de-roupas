@@ -138,7 +138,7 @@ public class New_Category extends javax.swing.JDialog {
                 
                 JOptionPane.showMessageDialog(null, "Categoria salva!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
                 if (parent instanceof Register_And_Edit_Products) {
-                    NodesController.initializeComboBox(CategoryDao.findAll(),
+                    NodesController.updateComboBox(CategoryDao.findAll(),
                             ((Register_And_Edit_Products)parent).getCbCategory());
                 }
                 

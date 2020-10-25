@@ -110,7 +110,7 @@ public class New_Color extends javax.swing.JDialog {
                 
                 JOptionPane.showMessageDialog(null, "Cor salva!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
                 if (parent instanceof Register_And_Edit_Products) {
-                    NodesController.initializeComboBox(ColorDao.findAll(),
+                    NodesController.updateComboBox(ColorDao.findAll(),
                             ((Register_And_Edit_Products)parent).getCbColor());
                 }
                 

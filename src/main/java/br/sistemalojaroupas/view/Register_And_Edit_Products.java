@@ -39,8 +39,8 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         this.setBackground(new java.awt.Color(0,0,0,0));
         pnl_Background.setBackground(new java.awt.Color(0,0,0,0));
         
-        NodesController.initializeComboBox(CategoryDao.findAll(), cbCategory);
-        NodesController.initializeComboBox(ColorDao.findAll(), cbColor);
+        NodesController.updateComboBox(CategoryDao.findAll(), cbCategory);
+        NodesController.updateComboBox(ColorDao.findAll(), cbColor);
         
         setAllComboBoxRenderer();
     }
@@ -59,8 +59,8 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         txt_salePrice.setText(product.getSalePrice().toString());
         txt_quantity.setText(String.valueOf(product.getQuantity()));
         title.setText("Editar produto");
-        NodesController.initializeComboBox(ColorDao.findAll(), cbColor);
-        NodesController.initializeComboBox(CategoryDao.findAll(), cbCategory);
+        NodesController.updateComboBox(ColorDao.findAll(), cbColor);
+        NodesController.updateComboBox(CategoryDao.findAll(), cbCategory);
         
         setAllComboBoxRenderer();
         
