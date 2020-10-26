@@ -8,7 +8,7 @@ package br.sistemalojaroupas.view;
 import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.dao.ColorDao;
 import br.sistemalojaroupas.model.entities.Color;
-import br.sistemalojaroupas.view.util.NodesController;
+import br.sistemalojaroupas.view.util.Utils;
 import javax.swing.JOptionPane;
 
 /**
@@ -110,7 +110,7 @@ public class New_Color extends javax.swing.JDialog {
                 
                 JOptionPane.showMessageDialog(null, "Cor salva!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
                 if (parent instanceof Register_And_Edit_Products) {
-                    NodesController.updateComboBox(ColorDao.findAll(),
+                    Utils.updateComboBox(ColorDao.findAll(),
                             ((Register_And_Edit_Products)parent).getCbColor());
                 }
                 

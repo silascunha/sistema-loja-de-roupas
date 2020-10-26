@@ -12,7 +12,7 @@ import br.sistemalojaroupas.model.entities.Category;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.view.util.ComboBoxRenderer;
 import br.sistemalojaroupas.model.entities.Color;
-import br.sistemalojaroupas.view.util.NodesController;
+import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Component;
 import java.util.List;
 import javax.swing.JComboBox;
@@ -39,8 +39,8 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         this.setBackground(new java.awt.Color(0,0,0,0));
         pnl_Background.setBackground(new java.awt.Color(0,0,0,0));
         
-        NodesController.updateComboBox(CategoryDao.findAll(), cbCategory);
-        NodesController.updateComboBox(ColorDao.findAll(), cbColor);
+        Utils.updateComboBox(CategoryDao.findAll(), cbCategory);
+        Utils.updateComboBox(ColorDao.findAll(), cbColor);
         
         setAllComboBoxRenderer();
     }
@@ -59,8 +59,8 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         txt_salePrice.setText(product.getSalePrice().toString());
         txt_quantity.setText(String.valueOf(product.getQuantity()));
         title.setText("Editar produto");
-        NodesController.updateComboBox(ColorDao.findAll(), cbColor);
-        NodesController.updateComboBox(CategoryDao.findAll(), cbCategory);
+        Utils.updateComboBox(ColorDao.findAll(), cbColor);
+        Utils.updateComboBox(CategoryDao.findAll(), cbCategory);
         
         setAllComboBoxRenderer();
         
@@ -368,7 +368,7 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
     private void bnt_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseClicked
         //verificar se todos campos foram preenchidos
         
-        if (NodesController.isAllFieldsFilled(pnl_Background)) {
+        if (Utils.isAllFieldsFilled(pnl_Background)) {
             
             if (product == null) {
                 
@@ -378,7 +378,7 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!",
                     "Atenção", JOptionPane.INFORMATION_MESSAGE);
 
-                NodesController.clearFields(pnl_Background);
+                Utils.clearFields(pnl_Background);
                 product = null;
             }
             else {
@@ -408,7 +408,7 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
 
     private void btn_clearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clearMouseClicked
         // Limpar todos os campos (criar método depois)
-        NodesController.clearFields(pnl_Background);
+        Utils.clearFields(pnl_Background);
     }//GEN-LAST:event_btn_clearMouseClicked
 
     private void btn_clearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clearMouseEntered

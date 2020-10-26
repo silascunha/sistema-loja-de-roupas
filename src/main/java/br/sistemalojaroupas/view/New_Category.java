@@ -8,7 +8,7 @@ package br.sistemalojaroupas.view;
 import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.dao.CategoryDao;
 import br.sistemalojaroupas.model.entities.Category;
-import br.sistemalojaroupas.view.util.NodesController;
+import br.sistemalojaroupas.view.util.Utils;
 import javax.swing.JOptionPane;
 
 /**
@@ -138,7 +138,7 @@ public class New_Category extends javax.swing.JDialog {
                 
                 JOptionPane.showMessageDialog(null, "Categoria salva!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
                 if (parent instanceof Register_And_Edit_Products) {
-                    NodesController.updateComboBox(CategoryDao.findAll(),
+                    Utils.updateComboBox(CategoryDao.findAll(),
                             ((Register_And_Edit_Products)parent).getCbCategory());
                 }
                 

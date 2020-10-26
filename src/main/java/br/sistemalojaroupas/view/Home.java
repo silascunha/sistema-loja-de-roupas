@@ -4,7 +4,7 @@ package br.sistemalojaroupas.view;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.entities.Product;
-import br.sistemalojaroupas.view.util.NodesController;
+import br.sistemalojaroupas.view.util.Utils;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -2042,7 +2042,7 @@ public class Home extends javax.swing.JFrame {
                     "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
             if(op == 0){
                 ProductDao.removeById(id);
-                NodesController.updateTable(ProductDao.findAll(), table_Products);
+                Utils.updateTable(ProductDao.findAll(), table_Products);
             } 
         }
     }//GEN-LAST:event_btn_removeProductMouseClicked
@@ -2106,7 +2106,7 @@ public class Home extends javax.swing.JFrame {
         panelsCardLayout.show(CollectionCard, "cardProducts");
         setMenuButtonsColor(menu_product);
         
-        NodesController.updateTable(ProductDao.findAll(), table_Products);
+        Utils.updateTable(ProductDao.findAll(), table_Products);
     }//GEN-LAST:event_menu_productMouseClicked
 
     private void menu_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_employeesMouseClicked
@@ -2157,7 +2157,7 @@ public class Home extends javax.swing.JFrame {
     private void btn_SearchProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseClicked
         String str = txtProductsSearchField.getText();
         
-        NodesController.updateTable(ProductDao.search(str), table_Products);
+        Utils.updateTable(ProductDao.search(str), table_Products);
     }//GEN-LAST:event_btn_SearchProductsMouseClicked
 
     private void btn_SearchProductsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseEntered
@@ -2177,7 +2177,7 @@ public class Home extends javax.swing.JFrame {
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         //Método para quando um JDialog for fechado a tabela do card aberto ser atualizada
         if (Card_Products.isShowing()) {
-            NodesController.updateTable(ProductDao.findAll(), table_Products);
+            Utils.updateTable(ProductDao.findAll(), table_Products);
         }
         if (Card_Employees.isShowing()) {
             System.out.println("Tela funcionarios");

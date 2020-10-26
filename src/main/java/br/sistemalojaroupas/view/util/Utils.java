@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author silas
  */
-public class NodesController {
+public class Utils {
     
     public static void updateTable(List<? extends TableContract> objList, JTable table) {
         DefaultTableModel dtm = (DefaultTableModel) table.getModel();
