@@ -1303,7 +1303,7 @@ public class Home extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Descrição", "Cor", "Tamanho", "Categoria", "P. Custo", "P. Venda", "Qtd.", "Data entrada"
+                "Cód.", "Descrição", "Cor", "Tamanho", "Categoria", "P. Custo", "P. Venda", "Qtd.", "Data entrada"
             }
         ) {
             boolean[] canEdit = new boolean [] {

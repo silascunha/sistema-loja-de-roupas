@@ -6,16 +6,11 @@
 package br.sistemalojaroupas.model.dao;
 
 import br.sistemalojaroupas.db.DB;
-import br.sistemalojaroupas.model.entities.Category;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.entities.util.ProductCode;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.dizitart.no2.FindOptions;
-import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.SortOrder;
-import org.dizitart.no2.mapper.NitriteIdModule;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 
