@@ -2040,6 +2040,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Register_And_Edit_Products dialog = new Register_And_Edit_Products(this, true);
         dialog.subscribeDataChangeListener(this);
         dialog.setVisible(true);
+        System.out.println("ROI");
+        System.out.println("HOOOOOOOOOI");
     }//GEN-LAST:event_btn_addProductMouseClicked
 
     private void btn_removeProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseClicked

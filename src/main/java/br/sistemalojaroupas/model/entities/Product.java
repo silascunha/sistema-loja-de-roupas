@@ -162,8 +162,8 @@ public class Product implements Serializable, TableContract {
             getColor(),
             getSize(),
             getCategory(),
-            getCostPrice(),
-            getSalePrice(),
+            String.format("%.2f", getCostPrice()),
+            String.format("%.2f", getSalePrice()),
             getQuantity(),
             getFormattedDate()
         };
