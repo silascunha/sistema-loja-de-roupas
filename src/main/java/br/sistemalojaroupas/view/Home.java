@@ -4,6 +4,8 @@ package br.sistemalojaroupas.view;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.entities.Product;
+import br.sistemalojaroupas.model.entities.TableContract;
+import br.sistemalojaroupas.view.listeners.DataChangeListener;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -13,6 +15,7 @@ import java.util.List;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,13 +23,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author lukas
  */
-public class Home extends javax.swing.JFrame {
+public class Home extends javax.swing.JFrame implements DataChangeListener {
     
     Boolean bool = true;
     private List<JPanel> menuButtonsList = new ArrayList<>();
     private CardLayout panelsCardLayout;
-    
+    private JTable visibleTable;
 
+    
     public Home() {
         Locale.setDefault(Locale.US);
         
@@ -64,6 +68,19 @@ public class Home extends javax.swing.JFrame {
    
     public void changePaneSize(JPanel pnl, Dimension dim){
         pnl.setPreferredSize(dim);
+    }
+    
+    @Override
+    public void onDataChanged(List<? extends TableContract> tableList) {
+        Utils.updateTable(tableList, getVisibleTable());
+    }
+    
+    private JTable getVisibleTable() {
+        return visibleTable;
+    }
+    
+    private void setVisibleTable(JTable table) {
+        this.visibleTable = table;
     }
     
     @SuppressWarnings("unchecked")
@@ -182,7 +199,7 @@ public class Home extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        salesTable = new javax.swing.JTable();
+        tableSales = new javax.swing.JTable();
         jLabel32 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         Card_Products = new javax.swing.JPanel();
@@ -240,7 +257,7 @@ public class Home extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        CustomerTable = new javax.swing.JTable();
+        tableCustomers = new javax.swing.JTable();
         btn_Deletec = new javax.swing.JLabel();
         btn_Searchc = new javax.swing.JLabel();
         btn_Addc = new javax.swing.JLabel();
@@ -436,13 +453,6 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
-            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
-                formWindowGainedFocus(evt);
-            }
-            public void windowLostFocus(java.awt.event.WindowEvent evt) {
-            }
-        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -1089,7 +1099,7 @@ public class Home extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("HISTÓRICO DE VENDAS");
 
-        salesTable.setModel(new javax.swing.table.DefaultTableModel(
+        tableSales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"", "", "", "", null},
                 {"", "", "", "", null},
@@ -1124,8 +1134,8 @@ public class Home extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        salesTable.setGridColor(new java.awt.Color(204, 204, 204));
-        jScrollPane2.setViewportView(salesTable);
+        tableSales.setGridColor(new java.awt.Color(204, 204, 204));
+        jScrollPane2.setViewportView(tableSales);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1760,7 +1770,7 @@ public class Home extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("CLIENTES");
 
-        CustomerTable.setModel(new javax.swing.table.DefaultTableModel(
+        tableCustomers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"", "", "", ""},
                 {"", "", "", ""},
@@ -1795,8 +1805,8 @@ public class Home extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        CustomerTable.setGridColor(new java.awt.Color(204, 204, 204));
-        jScrollPane3.setViewportView(CustomerTable);
+        tableCustomers.setGridColor(new java.awt.Color(204, 204, 204));
+        jScrollPane3.setViewportView(tableCustomers);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -2027,7 +2037,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ShowHideMenuMouseClicked
 
     private void btn_addProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseClicked
-        new Register_And_Edit_Products(null, true).setVisible(true);
+        Register_And_Edit_Products dialog = new Register_And_Edit_Products(this, true);
+        dialog.subscribeDataChangeListener(this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btn_addProductMouseClicked
 
     private void btn_removeProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseClicked
@@ -2057,7 +2069,9 @@ public class Home extends javax.swing.JFrame {
             Long id = (Long) dtm.getValueAt(selectedRow, 0);
             Product p = ProductDao.findById(id);
             
-            new Register_And_Edit_Products(null, true, p).setVisible(true);
+            Register_And_Edit_Products dialog = new Register_And_Edit_Products(null, true, p);
+            dialog.subscribeDataChangeListener(this);
+            dialog.setVisible(true);
         }
         else {
             JOptionPane.showMessageDialog(null, "Você deve selecionar um produto para poder editar.",
@@ -2095,6 +2109,8 @@ public class Home extends javax.swing.JFrame {
     private void menu_saleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_saleMouseClicked
         panelsCardLayout.show(CollectionCard, "cardSales");
         setMenuButtonsColor(menu_sale);
+        
+        setVisibleTable(tableSales);
     }//GEN-LAST:event_menu_saleMouseClicked
   
     private void menu_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_homeMouseClicked
@@ -2106,17 +2122,22 @@ public class Home extends javax.swing.JFrame {
         panelsCardLayout.show(CollectionCard, "cardProducts");
         setMenuButtonsColor(menu_product);
         
+        setVisibleTable(table_Products);
         Utils.updateTable(ProductDao.findAll(), table_Products);
     }//GEN-LAST:event_menu_productMouseClicked
 
     private void menu_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_employeesMouseClicked
         panelsCardLayout.show(CollectionCard, "cardEmployees");
         setMenuButtonsColor(menu_employees);
+        
+        setVisibleTable(table_Employees);
     }//GEN-LAST:event_menu_employeesMouseClicked
 
     private void menu_customersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_customersMouseClicked
         panelsCardLayout.show(CollectionCard, "cardCustomers");
         setMenuButtonsColor(menu_customers);
+        
+        setVisibleTable(tableCustomers);
     }//GEN-LAST:event_menu_customersMouseClicked
 
     private void menu_settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_settingsMouseClicked
@@ -2173,22 +2194,6 @@ public class Home extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         if(!DB.isClosed()) DB.close();
     }//GEN-LAST:event_formWindowClosed
-
-    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        //Método para quando um JDialog for fechado a tabela do card aberto ser atualizada
-        if (Card_Products.isShowing()) {
-            Utils.updateTable(ProductDao.findAll(), table_Products);
-        }
-        if (Card_Employees.isShowing()) {
-            System.out.println("Tela funcionarios");
-        }
-        if (Card_Customers.isShowing()) {
-            System.out.println("Tela clientes");
-        }
-        if (Card_Sales.isShowing()) {
-            System.out.println("Tela vendas");
-        }
-    }//GEN-LAST:event_formWindowGainedFocus
 
     private void btn_DeletecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeletecMouseClicked
          int ex;
@@ -2414,7 +2419,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Card_Settings;
     private javax.swing.JLabel City;
     private javax.swing.JPanel CollectionCard;
-    private javax.swing.JTable CustomerTable;
     private javax.swing.JLabel Email;
     private javax.swing.JPanel Head;
     private javax.swing.JLabel HouseNumber;
@@ -2553,8 +2557,9 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_IconMenu;
     private javax.swing.JPanel pnl_Max;
     private javax.swing.JPanel pnl_Min;
-    private javax.swing.JTable salesTable;
     private javax.swing.JTextField searchSale;
+    private javax.swing.JTable tableCustomers;
+    private javax.swing.JTable tableSales;
     private javax.swing.JTable table_Employees;
     private javax.swing.JTable table_Products;
     private javax.swing.JLabel txtBemVindo1;
@@ -2582,4 +2587,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel txtVendas;
     private javax.swing.JLabel txtVendasValor;
     // End of variables declaration//GEN-END:variables
+
+    
 }

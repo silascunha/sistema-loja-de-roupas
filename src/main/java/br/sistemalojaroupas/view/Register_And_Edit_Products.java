@@ -12,14 +12,14 @@ import br.sistemalojaroupas.model.entities.Category;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.view.util.ComboBoxRenderer;
 import br.sistemalojaroupas.model.entities.Color;
+import br.sistemalojaroupas.view.listeners.DataChangeListener;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Component;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JTable;
 
 /**
  *
@@ -28,12 +28,13 @@ import javax.swing.JTextField;
 public class Register_And_Edit_Products extends javax.swing.JDialog {
     
     private Product product;
+    private List<DataChangeListener> listeners = new ArrayList<>();
     /**
      * Creates new form Register_Products
      */
     
-    public Register_And_Edit_Products(java.awt.Dialog owner, boolean modal) {
-        super(owner, modal);
+    public Register_And_Edit_Products(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();   
         
         this.setBackground(new java.awt.Color(0,0,0,0));
@@ -67,6 +68,16 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         cbColor.setSelectedItem(product.getColor());
         cbCategory.setSelectedItem(product.getCategory());
         cbSize.setSelectedItem(product.getSize());
+    }
+    
+    public void subscribeDataChangeListener(DataChangeListener listener) {
+        listeners.add(listener);
+    }
+    
+    private void notifyDataChangeListeners() {
+        listeners.forEach(listener ->{
+            listener.onDataChanged(ProductDao.findAll());
+        });
     }
     
     private void setAllComboBoxRenderer() {
@@ -388,6 +399,7 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
                     "Atenção", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
             }
+            notifyDataChangeListeners();
         }
         else {
             JOptionPane.showMessageDialog(null, "Você deve preencher todos os campos.",
