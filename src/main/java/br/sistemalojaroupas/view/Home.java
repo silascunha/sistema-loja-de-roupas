@@ -2,6 +2,7 @@
 package br.sistemalojaroupas.view;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.entities.TableContract;
@@ -71,8 +72,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }
     
     @Override
-    public void onDataChanged(List<? extends TableContract> tableList) {
-        Utils.updateTable(tableList, getVisibleTable());
+    public void onDataChanged() {
+        if(visibleTable == table_Products) Utils.updateTable(ProductDao.findAll(), table_Products);
     }
     
     private JTable getVisibleTable() {
@@ -2040,8 +2041,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Register_And_Edit_Products dialog = new Register_And_Edit_Products(this, true);
         dialog.subscribeDataChangeListener(this);
         dialog.setVisible(true);
-        System.out.println("ROI");
-        System.out.println("HOOOOOOOOOI");
     }//GEN-LAST:event_btn_addProductMouseClicked
 
     private void btn_removeProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseClicked
@@ -2589,6 +2588,5 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel txtVendas;
     private javax.swing.JLabel txtVendasValor;
     // End of variables declaration//GEN-END:variables
-
     
 }

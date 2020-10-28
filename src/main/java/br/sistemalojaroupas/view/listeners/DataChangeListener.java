@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface DataChangeListener {
     
-    void onDataChanged(List<? extends TableContract> tableList);
+    void onDataChanged();
     
 }

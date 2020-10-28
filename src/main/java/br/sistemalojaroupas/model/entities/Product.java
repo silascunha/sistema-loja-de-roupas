@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
-import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
 
 /**
@@ -17,7 +16,7 @@ import org.dizitart.no2.objects.Id;
  * @author silas
  */
 public class Product implements Serializable, TableContract {
-    private static long serialVersionUID = 1L;
+    private final static long serialVersionUID = 1L;
     
     private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
@@ -146,8 +145,6 @@ public class Product implements Serializable, TableContract {
         }
         return true;
     }
-
-    
 
     @Override
     public String toString() {

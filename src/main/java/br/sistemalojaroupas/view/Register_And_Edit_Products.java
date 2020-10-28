@@ -76,7 +76,7 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
     
     private void notifyDataChangeListeners() {
         listeners.forEach(listener ->{
-            listener.onDataChanged(ProductDao.findAll());
+            listener.onDataChanged();
         });
     }
     
