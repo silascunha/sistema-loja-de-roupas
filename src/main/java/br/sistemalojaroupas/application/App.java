@@ -6,6 +6,7 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.model.entities.SizePattern;
 import br.sistemalojaroupas.view.Home;
 
 
@@ -18,7 +19,18 @@ public class App {
     public static void main(String[] args) {
         DB.start();
         
-        
+       
         new Home().main(args);
     }
+    
+//    public static void main(String[] args) {
+//        DB.start();
+//        
+//        SizePattern sp = new SizePattern(null, "N1");
+//        sp.addNewSize("18");
+//        sp.addNewSize("20");
+//        sp.addNewSize("22");
+//        
+//        DB.close();
+//    }
 }
