@@ -13,6 +13,7 @@ import br.sistemalojaroupas.model.dao.UserDao;
 import br.sistemalojaroupas.model.entities.Color;
 import br.sistemalojaroupas.model.entities.User;
 import br.sistemalojaroupas.view.Home;
+import javax.swing.JOptionPane;
 import org.dizitart.no2.NitriteId;
 
 
@@ -24,7 +25,11 @@ public class App {
     
     public static void main(String[] args) {
         DB.start();
-        System.out.println(ProductDao.findAll());
+        if(UserDao.verify("Jorg", "123") == true){
+            JOptionPane.showMessageDialog(null, "Bem vindo!");
+        }
+        
+       
         //System.out.println(u);
         //new Home().main(args);
     }

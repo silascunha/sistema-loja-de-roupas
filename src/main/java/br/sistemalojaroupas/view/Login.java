@@ -5,7 +5,7 @@
  */
 package br.sistemalojaroupas.view;
 
-import br.sistemalojaroupas.model.entities.User;
+import br.sistemalojaroupas.model.dao.UserDao;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    User u = new User();
     /**
      * Creates new form Login
      */
@@ -126,10 +125,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_loginMouseExited
 
     private void btn_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseReleased
-        String userName = txt_user.getText();
-        String password = txt_password.getText();
-        
-        
+        //verifica se o login e a senha estão corretos 
+        if(UserDao.verify(txt_user.getText(), txt_password.getText())){
+            
+            //abrir a tela home
+            
+        }
     }//GEN-LAST:event_btn_loginMouseReleased
 
     /**

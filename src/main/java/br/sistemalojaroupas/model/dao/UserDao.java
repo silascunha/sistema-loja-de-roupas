@@ -9,6 +9,7 @@ import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.entities.User;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.dizitart.no2.FindOptions;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.SortOrder;
@@ -30,8 +31,30 @@ public class UserDao {
         return repUser;
     }
     
-    public static void verify(String userName, String password){
+    public static boolean verify(String userName, String password){
+        User u = UserDao.findByUser(userName);
         
+        //Verifica se o usuário deixou algum campo em branco
+        if(!userName.equals("") || !password.equals("")){
+            try{
+                //verifica se o nome ou a senha são diferentes doque foi digitado no campo de texto da tela de login
+                if(u.getUserName().equals(userName) && u.getPassword().equals(password)){
+                    JOptionPane.showMessageDialog(null, "Bem vindo!");
+                    return true;
+            }else{
+                JOptionPane.showMessageDialog(null, "Nome ou senha incorretos.");
+                return false;
+            }
+
+            }
+            catch(Exception ex){
+                //Caso não exista o nome de usuário
+                JOptionPane.showMessageDialog(null, "Nome ou senha incorretos. catch");
+                return false;
+            }
+            //O usuário deixou algum campo em branco
+        }JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            return false;
     }
     
     public static void insert(User u) {
@@ -60,9 +83,11 @@ public class UserDao {
         User u = repUser.getById(id);
         return u;
     }
-
+    
+    //procura o usuário com o userName
     public static User findByUser(String userName) {
-        User u = repUser.find(ObjectFilters.eq(userName, repUser)).firstOrDefault();
+        User u = repUser.find(ObjectFilters.eq("userName", userName)).firstOrDefault();
+        
         return u;
     }
     
