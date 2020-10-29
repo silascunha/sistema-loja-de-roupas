@@ -8,7 +8,6 @@ package br.sistemalojaroupas.model.dao;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.entities.Category;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.dizitart.no2.FindOptions;

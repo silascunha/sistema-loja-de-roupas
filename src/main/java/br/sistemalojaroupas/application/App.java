@@ -10,6 +10,7 @@ import br.sistemalojaroupas.view.Home;
 
 
 
+
 public class App {
     
     /* Apenas realizando testes do banco de dados na classe 
@@ -17,8 +18,8 @@ public class App {
     
     public static void main(String[] args) {
         DB.start();
-        
-        
+       
         new Home().main(args);
     }
+    
 }
