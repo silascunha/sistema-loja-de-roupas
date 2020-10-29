@@ -148,7 +148,26 @@ public class Product implements Serializable, TableContract {
 
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", description=" + description + ", category=" + category + ", size=" + size + ", color=" + color + ", costPrice=" + costPrice + ", salePrice=" + salePrice + ", date=" + date + ", quantity=" + quantity + '}';
+        return "Product{" 
+                + "id=" 
+                + id 
+                + ", description=" 
+                + description 
+                + ", category=" 
+                + category 
+                + ", size=" 
+                + size 
+                + ", color=" 
+                + color 
+                + ", costPrice=" 
+                + costPrice 
+                + ", salePrice=" 
+                + salePrice 
+                + ", date=" 
+                + date 
+                + ", quantity=" 
+                + quantity 
+                + '}';
     }
 
     @Override

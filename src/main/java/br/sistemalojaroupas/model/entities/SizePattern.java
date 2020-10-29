@@ -32,8 +32,7 @@ public class SizePattern implements Serializable {
     
     public SizePattern() {}
 
-    public SizePattern(NitriteId id, String name) {
-        this.id = id;
+    public SizePattern(String name) {
         this.name = name;
     }
 
