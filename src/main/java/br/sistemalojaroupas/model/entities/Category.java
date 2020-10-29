@@ -27,12 +27,18 @@ public class Category implements Serializable{
     private NitriteId id;
     private String category;
     
+    private SizePattern sizePattern;
 
     public Category() {
     }
 
     public Category(String category) {
         this.category = category;
+    }
+    
+    public Category(String category, SizePattern sizePattern) {
+        this(category);
+        this.sizePattern = sizePattern;
     }
 
     public NitriteId getId() {
@@ -51,6 +57,14 @@ public class Category implements Serializable{
         this.category = category;
     }
 
+    public SizePattern getSizePattern() {
+        return sizePattern;
+    }
+
+    public void setSizePattern(SizePattern sizePattern) {
+        this.sizePattern = sizePattern;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;
