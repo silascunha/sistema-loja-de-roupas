@@ -7,7 +7,11 @@ package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.ColorDao;
+import br.sistemalojaroupas.model.dao.EmployeeDao;
+import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.dao.UserDao;
 import br.sistemalojaroupas.model.entities.Color;
+import br.sistemalojaroupas.model.entities.User;
 import br.sistemalojaroupas.view.Home;
 import org.dizitart.no2.NitriteId;
 
@@ -20,8 +24,8 @@ public class App {
     
     public static void main(String[] args) {
         DB.start();
-        
-        
-        new Home().main(args);
+        System.out.println(ProductDao.findAll());
+        //System.out.println(u);
+        //new Home().main(args);
     }
 }

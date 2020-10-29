@@ -5,6 +5,7 @@
  */
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.model.entities.User;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
+    User u = new User();
     /**
      * Creates new form Login
      */
@@ -64,6 +66,9 @@ public class Login extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_loginMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_loginMouseReleased(evt);
             }
         });
         pnl_background.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, -1, -1));
@@ -119,6 +124,13 @@ public class Login extends javax.swing.JFrame {
     private void btn_loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseExited
         btn_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_login.png")));
     }//GEN-LAST:event_btn_loginMouseExited
+
+    private void btn_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseReleased
+        String userName = txt_user.getText();
+        String password = txt_password.getText();
+        
+        
+    }//GEN-LAST:event_btn_loginMouseReleased
 
     /**
      * @param args the command line arguments

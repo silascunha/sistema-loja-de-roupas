@@ -7,8 +7,6 @@ package br.sistemalojaroupas.model.dao;
 
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.db.DBException;
-import static br.sistemalojaroupas.model.dao.EmployeeDao.repEmployee;
-import br.sistemalojaroupas.model.entities.Employee;
 import br.sistemalojaroupas.model.entities.User;
 import java.util.List;
 import org.dizitart.no2.FindOptions;
@@ -30,6 +28,10 @@ public class UserDao {
     
     public static ObjectRepository<User> getProductRepository() {
         return repUser;
+    }
+    
+    public static void verify(String userName, String password){
+        
     }
     
     public static void insert(User u) {
@@ -56,6 +58,11 @@ public class UserDao {
     
     public static User findById(NitriteId id) {
         User u = repUser.getById(id);
+        return u;
+    }
+
+    public static User findByUser(String userName) {
+        User u = repUser.find(ObjectFilters.eq(userName, repUser)).firstOrDefault();
         return u;
     }
     

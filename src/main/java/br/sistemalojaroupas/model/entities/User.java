@@ -28,6 +28,9 @@ public class User implements Serializable {
     private String password;
     private int authentication;
 
+    public User() {
+    }
+
     public User(String userName, String password, int authentication) {
         this.userName = userName;
         this.password = password;
