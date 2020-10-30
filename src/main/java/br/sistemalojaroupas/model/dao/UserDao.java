@@ -7,6 +7,7 @@ package br.sistemalojaroupas.model.dao;
 
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.db.DBException;
+import br.sistemalojaroupas.model.dao.exceptions.LoginException;
 import br.sistemalojaroupas.model.entities.User;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -35,16 +36,12 @@ public class UserDao {
     public static boolean verify(String userName, String password) {
         User u = UserDao.findByUser(userName);
         
-        if (u == null) return false;
-        
-        if (!userName.equals("") || !password.equals("")) {
-                if (u.getUserName().equals(userName) && u.getPassword().equals(password)) {
-                    return true;
-                }
-                return false;
+        if (userName.equals("") || password.equals("")) throw new LoginException("Preencha todos os campos.");
+        if (u == null) throw new LoginException("Usuário ou senha inválidos.");
+        if (!u.getUserName().equals(userName) || !u.getPassword().equals(password)) {
+            throw new LoginException("Usuário ou senha inválidos.");
         }
-        JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-        return false;
+        return true;
     }
 
     public static void insert(User u) {

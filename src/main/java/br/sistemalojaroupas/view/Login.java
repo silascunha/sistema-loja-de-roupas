@@ -6,6 +6,7 @@
 package br.sistemalojaroupas.view;
 
 import br.sistemalojaroupas.model.dao.UserDao;
+import br.sistemalojaroupas.model.dao.exceptions.LoginException;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -126,13 +127,14 @@ public class Login extends javax.swing.JFrame {
 
     private void btn_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseReleased
         //verifica se o login e a senha estão corretos 
-        if(UserDao.verify(txt_user.getText(), new String(txt_password.getPassword()))){
+        try {
+            UserDao.verify(txt_user.getText(), new String(txt_password.getPassword()));
             new Home().main(null);
             this.dispose();
         }
-        else {
-            JOptionPane.showMessageDialog(null, "Nome ou senha inválidos.",
-                    "Falha de autenticação", JOptionPane.INFORMATION_MESSAGE);
+        catch (LoginException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Falha de Autenticação", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btn_loginMouseReleased
 
