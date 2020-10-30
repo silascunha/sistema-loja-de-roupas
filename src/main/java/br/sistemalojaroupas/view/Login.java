@@ -5,6 +5,8 @@
  */
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.model.dao.UserDao;
+import br.sistemalojaroupas.model.dao.exceptions.LoginException;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -65,6 +67,9 @@ public class Login extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_loginMouseExited(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_loginMouseReleased(evt);
+            }
         });
         pnl_background.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, -1, -1));
 
@@ -119,6 +124,19 @@ public class Login extends javax.swing.JFrame {
     private void btn_loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseExited
         btn_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_login.png")));
     }//GEN-LAST:event_btn_loginMouseExited
+
+    private void btn_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseReleased
+        //verifica se o login e a senha estão corretos 
+        try {
+            UserDao.verify(txt_user.getText(), new String(txt_password.getPassword()));
+            new Home().main(null);
+            this.dispose();
+        }
+        catch (LoginException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Falha de Autenticação", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_loginMouseReleased
 
     /**
      * @param args the command line arguments

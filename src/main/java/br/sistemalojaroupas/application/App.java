@@ -6,7 +6,9 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
-import br.sistemalojaroupas.view.Home;
+import br.sistemalojaroupas.model.dao.UserDao;
+import javax.swing.JOptionPane;
+
 
 
 
@@ -18,8 +20,13 @@ public class App {
     
     public static void main(String[] args) {
         DB.start();
-       
-        new Home().main(args);
+        if(UserDao.verify("admin", "12345")){
+            JOptionPane.showMessageDialog(null, "Bem vindo!");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Nome ou senha incorretos.", "Teste", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
     }
     
 }
