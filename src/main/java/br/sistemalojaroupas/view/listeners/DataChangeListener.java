@@ -5,8 +5,6 @@
  */
 package br.sistemalojaroupas.view.listeners;
 
-import br.sistemalojaroupas.model.entities.TableContract;
-import java.util.List;
 
 /**
  *
