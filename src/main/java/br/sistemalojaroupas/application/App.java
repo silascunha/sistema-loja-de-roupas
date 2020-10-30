@@ -6,15 +6,10 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
-import br.sistemalojaroupas.model.dao.ColorDao;
-import br.sistemalojaroupas.model.dao.EmployeeDao;
-import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.dao.UserDao;
-import br.sistemalojaroupas.model.entities.Color;
 import br.sistemalojaroupas.model.entities.User;
-import br.sistemalojaroupas.view.Home;
 import javax.swing.JOptionPane;
-import org.dizitart.no2.NitriteId;
+
 
 
 
@@ -25,12 +20,12 @@ public class App {
     
     public static void main(String[] args) {
         DB.start();
-        if(UserDao.verify("Jorg", "123") == true){
+        if(UserDao.verify("admi", "12345")){
             JOptionPane.showMessageDialog(null, "Bem vindo!");
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Nome ou senha incorretos.", "Teste", JOptionPane.INFORMATION_MESSAGE);
+        }
         
-       
-        //System.out.println(u);
-        //new Home().main(args);
     }
 }

@@ -126,10 +126,13 @@ public class Login extends javax.swing.JFrame {
 
     private void btn_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseReleased
         //verifica se o login e a senha estão corretos 
-        if(UserDao.verify(txt_user.getText(), txt_password.getText())){
-            
-            //abrir a tela home
-            
+        if(UserDao.verify(txt_user.getText(), new String(txt_password.getPassword()))){
+            new Home().main(null);
+            this.dispose();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Nome ou senha inválidos.",
+                    "Falha de autenticação", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btn_loginMouseReleased
 
