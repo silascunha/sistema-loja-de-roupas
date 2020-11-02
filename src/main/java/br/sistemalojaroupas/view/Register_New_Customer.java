@@ -94,11 +94,13 @@ public void limpaCampos() {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 80, 30));
 
         cName.setBackground(new java.awt.Color(0, 0, 51));
+        cName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cName.setForeground(new java.awt.Color(255, 255, 255));
         cName.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         jPanel1.add(cName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 329, 30));
 
         cEmail.setBackground(new java.awt.Color(0, 0, 51));
+        cEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cEmail.setForeground(new java.awt.Color(255, 255, 255));
         cEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         jPanel1.add(cEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 329, 30));
@@ -111,7 +113,8 @@ public void limpaCampos() {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel1.add(cCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 130, 30));
+        cCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(cCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 180, 30));
 
         cCell.setBackground(new java.awt.Color(0, 0, 51));
         cCell.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -121,7 +124,8 @@ public void limpaCampos() {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel1.add(cCell, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 130, 30));
+        cCell.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(cCell, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 180, 30));
 
         btn_Savec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
         btn_Savec.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -166,6 +170,7 @@ public void limpaCampos() {
         jPanel1.add(btn_Cleanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("CADASTRAR NOVO CLIENTE");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 40));
@@ -212,11 +217,11 @@ public void limpaCampos() {
     }//GEN-LAST:event_btn_SavecMouseExited
 
     private void btn_CleancMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CleancMouseEntered
-         btn_Cleanc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limpar.png")));
+        btn_Cleanc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limpar.png")));
     }//GEN-LAST:event_btn_CleancMouseEntered
 
     private void btn_CleancMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CleancMouseExited
-         btn_Cleanc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png")));
+        btn_Cleanc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png")));
     }//GEN-LAST:event_btn_CleancMouseExited
 
     /**
