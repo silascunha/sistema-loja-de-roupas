@@ -6,8 +6,8 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.model.entities.User;
 import br.sistemalojaroupas.model.dao.UserDao;
-import javax.swing.JOptionPane;
 
 
 
@@ -20,12 +20,20 @@ public class App {
     
     public static void main(String[] args) {
         DB.start();
-        if(UserDao.verify("admin", "12345")){
-            JOptionPane.showMessageDialog(null, "Bem vindo!");
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Nome ou senha incorretos.", "Teste", JOptionPane.INFORMATION_MESSAGE);
-        }
+        
+//        User u1 = new User("marcos", "123", 1);
+//        User u2 = new User("jorge", "321", 0);
+//        
+//        UserDao.insert(u1);
+//        UserDao.insert(u2);
+        
+        System.out.println(UserDao.findAll());
+//        if(UserDao.verify("admin", "12345")){
+//            JOptionPane.showMessageDialog(null, "Bem vindo!");
+//        }
+//        else {
+//            JOptionPane.showMessageDialog(null, "Nome ou senha incorretos.", "Teste", JOptionPane.INFORMATION_MESSAGE);
+//        }
         
     }
     

@@ -26,7 +26,7 @@ public class User implements Serializable {
     private NitriteId id;
     private String userName;
     private String password;
-    private int authentication;
+    private static int authentication;
 
     public User() {
     }

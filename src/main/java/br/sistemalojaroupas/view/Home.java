@@ -5,6 +5,7 @@ import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.entities.Product;
+import br.sistemalojaroupas.model.entities.User;
 import br.sistemalojaroupas.model.entities.TableContract;
 import br.sistemalojaroupas.view.listeners.DataChangeListener;
 import br.sistemalojaroupas.view.util.Utils;
@@ -2128,10 +2129,18 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_menu_productMouseClicked
 
     private void menu_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_employeesMouseClicked
-        panelsCardLayout.show(CollectionCard, "cardEmployees");
-        setMenuButtonsColor(menu_employees);
+       
+        User u = new User();
+        int au = u.getAuthentication();
         
-        setVisibleTable(table_Employees);
+        if(au==0){
+            JOptionPane.showMessageDialog(null, "Você não tem permissão para acessar essa página.");
+        }else{ 
+            panelsCardLayout.show(CollectionCard, "cardEmployees");
+            setMenuButtonsColor(menu_employees);
+            setVisibleTable(table_Employees);
+        }
+        
     }//GEN-LAST:event_menu_employeesMouseClicked
 
     private void menu_customersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_customersMouseClicked
