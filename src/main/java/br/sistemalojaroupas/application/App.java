@@ -6,8 +6,9 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
-import br.sistemalojaroupas.model.dao.UserDao;
-import javax.swing.JOptionPane;
+import br.sistemalojaroupas.model.entities.Address;
+import br.sistemalojaroupas.model.services.CepService;
+
 
 
 
@@ -20,13 +21,12 @@ public class App {
     
     public static void main(String[] args) {
         DB.start();
-        if(UserDao.verify("admin", "12345")){
-            JOptionPane.showMessageDialog(null, "Bem vindo!");
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Nome ou senha incorretos.", "Teste", JOptionPane.INFORMATION_MESSAGE);
-        }
         
+        Address addr = CepService.findAddress("29145455");
+        
+        System.out.println(addr);
+        
+        DB.close();
     }
     
 }

@@ -1,4 +1,3 @@
-
 package br.sistemalojaroupas.model.entities;
 
 import java.io.Serializable;
@@ -10,46 +9,49 @@ import org.dizitart.no2.objects.Index;
 import org.dizitart.no2.objects.Indices;
 
 @Indices(
-    @Index(value = "cpf", type = IndexType.Unique)
+        @Index(value = "cpf", type = IndexType.Unique)
 )
 
 public class Employee implements Serializable {
-private static final long serialVersionUID = 1L;
 
-  @Id
-  private NitriteId id;
-  private String nome;
-  private String cpf;
-  private String nascimento;
-  private String telefone;
-  private String email;
-  private String endereco;
-  private String admissao;
-  private String cargo;
-  private String salario;
-  
-  private Employee () {}
+    private static final long serialVersionUID = 1L;
 
-    private Employee(String nome, String cpf, String telefone, String email, String endereco, String cargo, String nascimento, String admissao, String salario) {
-    
+    @Id
+    private NitriteId id;
+    private String nome;
+    private String cpf;
+    private String nascimento;
+    private String telefone;
+    private String email;
+    private String admissao;
+    private String cargo;
+    private String salario;
+
+    private Address address;
+
+    private Employee() {
+    }
+
+    private Employee(String nome, String cpf, String telefone, String email, Address address, String cargo, String nascimento, String admissao, String salario) {
+
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.nascimento = nascimento;
         this.telefone = telefone;
         this.email = email;
-        this.endereco = endereco;
+        this.address = address;
         this.cargo = cargo;
         this.nascimento = nascimento;
         this.admissao = admissao;
         this.salario = salario;
-          
-}
+
+    }
 
     public NitriteId getId() {
         return id;
     }
-    
+
     public void setId(NitriteId id) {
         this.id = id;
     }
@@ -57,7 +59,7 @@ private static final long serialVersionUID = 1L;
     public String getNome() {
         return nome;
     }
-    
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -65,14 +67,23 @@ private static final long serialVersionUID = 1L;
     public String getCpf() {
         return cpf;
     }
-    
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(String nascimento) {
+        this.nascimento = nascimento;
     }
 
     public String getTelefone() {
         return telefone;
     }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
@@ -80,41 +91,41 @@ private static final long serialVersionUID = 1L;
     public String getEmail() {
         return email;
     }
-    
+
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getCargo() {
-        return cargo;
-    }
-    
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public String getNascimento() {
-        return nascimento;
-    }
-    
-    public void setNascimento(String nascimento) {
-        this.nascimento = nascimento;
     }
 
     public String getAdmissao() {
         return admissao;
     }
-    
+
     public void setAdmissao(String admissao) {
         this.admissao = admissao;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public String getSalario() {
         return salario;
     }
-    
+
     public void setSalario(String salario) {
         this.salario = salario;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
@@ -141,10 +152,10 @@ private static final long serialVersionUID = 1L;
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
         return "cadFunc{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", cargo=" + cargo + ", nascimento=" + nascimento + ", admissao=" + admissao + ", salario=" + salario + '}';
     }
-    
+
 }
