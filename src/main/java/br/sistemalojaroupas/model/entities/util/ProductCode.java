@@ -32,5 +32,4 @@ public class ProductCode {
         this.lastCode = lastCode;
     }
     
-    
 }

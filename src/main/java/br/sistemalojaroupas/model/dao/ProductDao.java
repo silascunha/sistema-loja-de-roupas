@@ -7,6 +7,7 @@ package br.sistemalojaroupas.model.dao;
 
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.entities.Product;
+import br.sistemalojaroupas.model.entities.util.CodeGenerator;
 import br.sistemalojaroupas.model.entities.util.ProductCode;
 import java.util.List;
 import org.dizitart.no2.FindOptions;
@@ -21,11 +22,21 @@ import org.dizitart.no2.objects.filters.ObjectFilters;
 public class ProductDao {
     
     private static ObjectRepository<Product> repProduct;
-    private static ObjectRepository<ProductCode> repCode;
+    private static ObjectRepository<CodeGenerator> repCode;
+    private static CodeGenerator codeGenerator;
     
     static {
+        repCode = DB.getDB().getRepository(CodeGenerator.class);
+        
+        if (!DB.getDB().hasRepository(Product.class)) {
+            codeGenerator = new CodeGenerator(Product.class.getSimpleName(), 0L);
+            repCode.insert(codeGenerator);
+        }
+        else {
+            codeGenerator = repCode.find(ObjectFilters.eq("classType", Product.class.getSimpleName()))
+                    .firstOrDefault();
+        }
         repProduct = DB.getDB().getRepository(Product.class);
-        repCode = DB.getDB().getRepository(ProductCode.class);
     }
     
     public static ObjectRepository<Product> getProductRepository() {
@@ -33,18 +44,13 @@ public class ProductDao {
     }
     
     public static void insert(Product p) {
-        ProductCode pc = repCode.find().firstOrDefault();
         
-        if(pc == null) {
-            pc = new ProductCode();
-            repCode.insert(pc);
-        }
-        pc.setLastCode(pc.getLastCode() + 1);
+        codeGenerator.setLastCode(codeGenerator.getLastCode() + 1);
         
-        p.setId(pc.getLastCode());
+        p.setId(codeGenerator.getLastCode());
         
-        repCode.update(pc);
         repProduct.insert(p);
+        repCode.update(codeGenerator);
     }
    
     public static void update(Product p) {

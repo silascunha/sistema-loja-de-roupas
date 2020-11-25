@@ -6,12 +6,6 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
-import br.sistemalojaroupas.model.entities.Address;
-import br.sistemalojaroupas.model.services.CepService;
-
-
-
-
 
 
 public class App {
@@ -21,10 +15,6 @@ public class App {
     
     public static void main(String[] args) {
         DB.start();
-        
-        Address addr = CepService.findAddress("29145455");
-        
-        System.out.println(addr);
         
         DB.close();
     }
