@@ -22,6 +22,10 @@ public class SaleItem implements Serializable {
     
     private Product product;
     private int quantity;
+    
+    public SaleItem() {
+        
+    }
 
     public SaleItem(Product product, int quantity) {
         this.product = product;

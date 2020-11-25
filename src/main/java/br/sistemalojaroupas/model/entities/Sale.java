@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
 
 /**
@@ -57,6 +56,15 @@ public class Sale implements Serializable {
     public Date getMoment() {
         return moment;
     }
+    
+    public Double getTotal() {
+        double sum = 0.0;
+        
+        for (SaleItem element : items) {
+            sum += element.getSubTotal();
+        }
+        return sum;
+    }
 
     @Override
     public int hashCode() {
@@ -85,7 +93,7 @@ public class Sale implements Serializable {
 
     @Override
     public String toString() {
-        return "Sale{" + "id=" + id + ", items=" + items + ", moment=" + moment + '}';
+        return "Sale{" + "id=" + id + ", items=" + items + ", moment=" + moment + "total=" + getTotal() +'}';
     }
-       
+    
 }

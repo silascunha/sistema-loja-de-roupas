@@ -6,6 +6,10 @@
 package br.sistemalojaroupas.application;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.dao.SaleDao;
+import br.sistemalojaroupas.model.entities.Sale;
+import br.sistemalojaroupas.model.entities.SaleItem;
 
 
 public class App {
@@ -15,6 +19,17 @@ public class App {
     
     public static void main(String[] args) {
         DB.start();
+        
+        
+        SaleDao.findAll().forEach(x -> {
+            System.out.println("ID da Venda: " + x.getId());
+            System.out.println("Momento da venda: " + x.getMoment());
+            System.out.println("Produtos: " + x.getItems());
+            System.out.println("Valor total: " + x.getTotal());
+            System.out.println("--------------------------------");
+        });
+        
+        
         
         DB.close();
     }

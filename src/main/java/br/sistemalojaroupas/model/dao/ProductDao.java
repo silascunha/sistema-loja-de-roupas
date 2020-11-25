@@ -8,7 +8,6 @@ package br.sistemalojaroupas.model.dao;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.entities.util.CodeGenerator;
-import br.sistemalojaroupas.model.entities.util.ProductCode;
 import java.util.List;
 import org.dizitart.no2.FindOptions;
 import org.dizitart.no2.SortOrder;

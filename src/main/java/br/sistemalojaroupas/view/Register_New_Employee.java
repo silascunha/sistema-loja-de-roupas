@@ -5,7 +5,10 @@
  */
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,30 +24,11 @@ public class Register_New_Employee extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setBackground(new Color(0,0,0,0));
-        jPanel1.setBackground(new Color(0,0,0,0));
     }
-    
-    
-    public void limpaCampos() {
-    eName.setText("");
-    eCPF.setText("");
-    eBirthDate.setText("");
-    eEmail.setText("");
-    ePhone.setText("");
-    eCell.setText("");
-    eCEP.setText("");
-    eAddress.setText("");
-    eNeighborhood.setText("");
-    eComplement.setText("");
-    eState.setText("");
-    eCity.setText("");
-    eOccupation.setText("");
-    eAdmissionDate.setText("");
-    eSalary.setText("");
-    eNumber.setText("");
-    this.eAccessLevel.setSelectedIndex(0);
-    eName.requestFocus();
- }
+    public void clearFields() {
+        Utils.clearFields(panelPersonalData);
+        Utils.clearFields(panelFunctionalData);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,8 +39,11 @@ public class Register_New_Employee extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
+        bnt_save = new javax.swing.JLabel();
+        btn_clear = new javax.swing.JLabel();
+        btn_cancel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        panelPersonalData = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -68,7 +55,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel30 = new javax.swing.JLabel();
         eName = new javax.swing.JTextField();
         eEmail = new javax.swing.JTextField();
-        eComplement = new javax.swing.JTextField();
+        eAddress = new javax.swing.JTextField();
         eNeighborhood = new javax.swing.JTextField();
         eCEP = new javax.swing.JTextField();
         eCity = new javax.swing.JTextField();
@@ -80,10 +67,10 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel32 = new javax.swing.JLabel();
         eState = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
+        eComplement = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         eNumber = new javax.swing.JTextField();
-        eAddress = new javax.swing.JTextField();
-        jPanel13 = new javax.swing.JPanel();
+        panelFunctionalData = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -92,31 +79,71 @@ public class Register_New_Employee extends javax.swing.JDialog {
         eAccessLevel = new javax.swing.JComboBox<>();
         eAdmissionDate = new javax.swing.JFormattedTextField();
         eSalary = new javax.swing.JTextField();
-        btn_SaveEmployee = new javax.swing.JLabel();
-        btn_CleanEmployee = new javax.swing.JLabel();
-        btn_CancelEmployee = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(573, 551));
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.setToolTipText("");
-        jPanel1.setMaximumSize(new java.awt.Dimension(573, 551));
-        jPanel1.setMinimumSize(new java.awt.Dimension(573, 551));
-        jPanel1.setPreferredSize(new java.awt.Dimension(573, 551));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        bnt_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
+        bnt_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bnt_save.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bnt_saveMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                bnt_saveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                bnt_saveMouseExited(evt);
+            }
+        });
+        getContentPane().add(bnt_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 560, -1, 30));
 
-        jPanel12.setBackground(new java.awt.Color(0, 0, 51));
-        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DADOS PESSOAIS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel12.setToolTipText("");
-        jPanel12.setMaximumSize(new java.awt.Dimension(571, 300));
-        jPanel12.setMinimumSize(new java.awt.Dimension(571, 300));
-        jPanel12.setName("jdhdd"); // NOI18N
+        btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png"))); // NOI18N
+        btn_clear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_clear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_clearMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_clearMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_clearMouseExited(evt);
+            }
+        });
+        getContentPane().add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 560, -1, -1));
+
+        btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png"))); // NOI18N
+        btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_cancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_cancelMouseExited(evt);
+            }
+        });
+        getContentPane().add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 560, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Cadastro de Funcionário");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 610, 40));
+
+        panelPersonalData.setBackground(new java.awt.Color(0, 0, 51));
+        panelPersonalData.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DADOS PESSOAIS", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 12), new java.awt.Color(108, 81, 233))); // NOI18N
+        panelPersonalData.setToolTipText("");
+        panelPersonalData.setMaximumSize(new java.awt.Dimension(571, 300));
+        panelPersonalData.setMinimumSize(new java.awt.Dimension(571, 300));
+        panelPersonalData.setName("jdhdd"); // NOI18N
+        panelPersonalData.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel22.setBackground(new java.awt.Color(59, 44, 150));
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -124,6 +151,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("Nome:");
         jLabel22.setOpaque(true);
+        panelPersonalData.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, 30));
 
         jLabel23.setBackground(new java.awt.Color(59, 44, 150));
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -131,6 +159,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("CPF:");
         jLabel23.setOpaque(true);
+        panelPersonalData.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 80, 30));
 
         jLabel24.setBackground(new java.awt.Color(59, 44, 150));
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -138,6 +167,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("Data Nasc.:");
         jLabel24.setOpaque(true);
+        panelPersonalData.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 80, 30));
 
         jLabel25.setBackground(new java.awt.Color(59, 44, 150));
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -145,6 +175,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel25.setText("Tel.:");
         jLabel25.setOpaque(true);
+        panelPersonalData.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 80, 30));
 
         jLabel26.setBackground(new java.awt.Color(59, 44, 150));
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -152,13 +183,15 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("E-mail:");
         jLabel26.setOpaque(true);
+        panelPersonalData.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 80, 30));
 
         jLabel27.setBackground(new java.awt.Color(59, 44, 150));
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel27.setText("End.:");
+        jLabel27.setText("Logradouro:");
         jLabel27.setOpaque(true);
+        panelPersonalData.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 80, 30));
 
         jLabel28.setBackground(new java.awt.Color(59, 44, 150));
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -166,6 +199,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Bairro:");
         jLabel28.setOpaque(true);
+        panelPersonalData.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 80, 30));
 
         jLabel29.setBackground(new java.awt.Color(59, 44, 150));
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -173,6 +207,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel29.setText("CEP:");
         jLabel29.setOpaque(true);
+        panelPersonalData.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 80, 30));
 
         jLabel30.setBackground(new java.awt.Color(59, 44, 150));
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -180,43 +215,63 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel30.setText("Cidade:");
         jLabel30.setOpaque(true);
+        panelPersonalData.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 70, 30));
 
-        eName.setBackground(new java.awt.Color(0, 0, 51));
+        eName.setBackground(new java.awt.Color(204, 204, 204));
         eName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eName.setForeground(new java.awt.Color(255, 255, 255));
         eName.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eName.setCaretColor(new java.awt.Color(255, 255, 255));
+        eName.setOpaque(false);
+        panelPersonalData.add(eName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 270, 30));
 
-        eEmail.setBackground(new java.awt.Color(0, 0, 51));
+        eEmail.setBackground(new java.awt.Color(204, 204, 204));
         eEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eEmail.setForeground(new java.awt.Color(255, 255, 255));
         eEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eEmail.setCaretColor(new java.awt.Color(255, 255, 255));
+        eEmail.setOpaque(false);
         eEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eEmailActionPerformed(evt);
             }
         });
+        panelPersonalData.add(eEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 270, 30));
 
-        eComplement.setBackground(new java.awt.Color(0, 0, 51));
-        eComplement.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eComplement.setForeground(new java.awt.Color(255, 255, 255));
-        eComplement.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eAddress.setBackground(new java.awt.Color(204, 204, 204));
+        eAddress.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        eAddress.setForeground(new java.awt.Color(255, 255, 255));
+        eAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eAddress.setCaretColor(new java.awt.Color(255, 255, 255));
+        eAddress.setOpaque(false);
+        panelPersonalData.add(eAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 160, 30));
 
-        eNeighborhood.setBackground(new java.awt.Color(0, 0, 51));
+        eNeighborhood.setBackground(new java.awt.Color(204, 204, 204));
         eNeighborhood.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eNeighborhood.setForeground(new java.awt.Color(255, 255, 255));
         eNeighborhood.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eNeighborhood.setCaretColor(new java.awt.Color(255, 255, 255));
+        eNeighborhood.setOpaque(false);
+        panelPersonalData.add(eNeighborhood, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 100, 30));
 
-        eCEP.setBackground(new java.awt.Color(0, 0, 51));
+        eCEP.setBackground(new java.awt.Color(59, 44, 150));
         eCEP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eCEP.setForeground(new java.awt.Color(255, 255, 255));
+        eCEP.setText("29090100");
         eCEP.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eCEP.setCaretColor(new java.awt.Color(255, 255, 255));
+        eCEP.setOpaque(false);
+        panelPersonalData.add(eCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 100, 30));
 
-        eCity.setBackground(new java.awt.Color(0, 0, 51));
+        eCity.setBackground(new java.awt.Color(204, 204, 204));
         eCity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eCity.setForeground(new java.awt.Color(255, 255, 255));
         eCity.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eCity.setCaretColor(new java.awt.Color(255, 255, 255));
+        eCity.setOpaque(false);
+        panelPersonalData.add(eCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 130, 30));
 
-        eCPF.setBackground(new java.awt.Color(0, 0, 51));
+        eCPF.setBackground(new java.awt.Color(204, 204, 204));
         eCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         eCPF.setForeground(new java.awt.Color(255, 255, 255));
         try {
@@ -224,9 +279,12 @@ public class Register_New_Employee extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        eCPF.setCaretColor(new java.awt.Color(255, 255, 255));
         eCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        eCPF.setOpaque(false);
+        panelPersonalData.add(eCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 100, 30));
 
-        eBirthDate.setBackground(new java.awt.Color(0, 0, 51));
+        eBirthDate.setBackground(new java.awt.Color(204, 204, 204));
         eBirthDate.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         eBirthDate.setForeground(new java.awt.Color(255, 255, 255));
         try {
@@ -234,14 +292,17 @@ public class Register_New_Employee extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        eBirthDate.setCaretColor(new java.awt.Color(255, 255, 255));
         eBirthDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        eBirthDate.setOpaque(false);
         eBirthDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eBirthDateActionPerformed(evt);
             }
         });
+        panelPersonalData.add(eBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 100, 30));
 
-        ePhone.setBackground(new java.awt.Color(0, 0, 51));
+        ePhone.setBackground(new java.awt.Color(204, 204, 204));
         ePhone.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         ePhone.setForeground(new java.awt.Color(255, 255, 255));
         try {
@@ -249,7 +310,10 @@ public class Register_New_Employee extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        ePhone.setCaretColor(new java.awt.Color(255, 255, 255));
         ePhone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ePhone.setOpaque(false);
+        panelPersonalData.add(ePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 100, 30));
 
         jLabel31.setBackground(new java.awt.Color(59, 44, 150));
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -257,8 +321,9 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel31.setText("Celular:");
         jLabel31.setOpaque(true);
+        panelPersonalData.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 50, 30));
 
-        eCell.setBackground(new java.awt.Color(0, 0, 51));
+        eCell.setBackground(new java.awt.Color(204, 204, 204));
         eCell.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         eCell.setForeground(new java.awt.Color(255, 255, 255));
         try {
@@ -266,12 +331,10 @@ public class Register_New_Employee extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        eCell.setCaretColor(new java.awt.Color(255, 255, 255));
         eCell.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eCell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eCellActionPerformed(evt);
-            }
-        });
+        eCell.setOpaque(false);
+        panelPersonalData.add(eCell, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 100, 30));
 
         jLabel32.setBackground(new java.awt.Color(59, 44, 150));
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -279,16 +342,15 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setText("UF:");
         jLabel32.setOpaque(true);
+        panelPersonalData.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 80, 30));
 
-        eState.setBackground(new java.awt.Color(0, 0, 51));
+        eState.setBackground(new java.awt.Color(204, 204, 204));
         eState.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eState.setForeground(new java.awt.Color(255, 255, 255));
         eState.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        eState.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eStateActionPerformed(evt);
-            }
-        });
+        eState.setCaretColor(new java.awt.Color(255, 255, 255));
+        eState.setOpaque(false);
+        panelPersonalData.add(eState, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 50, 30));
 
         jLabel33.setBackground(new java.awt.Color(59, 44, 150));
         jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -296,6 +358,15 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("Comp.:");
         jLabel33.setOpaque(true);
+        panelPersonalData.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 80, 30));
+
+        eComplement.setBackground(new java.awt.Color(204, 204, 204));
+        eComplement.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        eComplement.setForeground(new java.awt.Color(255, 255, 255));
+        eComplement.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eComplement.setCaretColor(new java.awt.Color(255, 255, 255));
+        eComplement.setOpaque(false);
+        panelPersonalData.add(eComplement, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 100, 30));
 
         jLabel34.setBackground(new java.awt.Color(59, 44, 150));
         jLabel34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -303,137 +374,24 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setText("N°:");
         jLabel34.setOpaque(true);
+        panelPersonalData.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 30, 30));
 
-        eNumber.setBackground(new java.awt.Color(0, 0, 51));
+        eNumber.setBackground(new java.awt.Color(204, 204, 204));
         eNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eNumber.setForeground(new java.awt.Color(255, 255, 255));
         eNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eNumber.setCaretColor(new java.awt.Color(255, 255, 255));
+        eNumber.setOpaque(false);
+        panelPersonalData.add(eNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 60, 30));
 
-        eAddress.setBackground(new java.awt.Color(0, 0, 51));
-        eAddress.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eAddress.setForeground(new java.awt.Color(255, 255, 255));
-        eAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        getContentPane().add(panelPersonalData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 580, 300));
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(eName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel12Layout.createSequentialGroup()
-                                    .addComponent(eCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(52, 52, 52)
-                                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel12Layout.createSequentialGroup()
-                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(eCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ePhone, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(57, 57, 57)
-                                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(eCell, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                                .addComponent(eBirthDate)))
-                        .addComponent(eEmail)
-                        .addGroup(jPanel12Layout.createSequentialGroup()
-                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel12Layout.createSequentialGroup()
-                                    .addGap(229, 229, 229)
-                                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel12Layout.createSequentialGroup()
-                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(eComplement, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                                        .addComponent(eCity))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(eState, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(eNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(eNeighborhood, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(eAddress)))
-                .addGap(43, 43, 43))
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(eName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(eBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(eCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ePhone, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eCell, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eNeighborhood, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eComplement, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eCity, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eState, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
-        );
-
-        jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 600, -1));
-
-        jPanel13.setBackground(new java.awt.Color(0, 0, 51));
-        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DADOS FUNCIONAIS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel13.setMaximumSize(new java.awt.Dimension(571, 210));
-        jPanel13.setMinimumSize(new java.awt.Dimension(571, 210));
+        panelFunctionalData.setBackground(new java.awt.Color(0, 0, 51));
+        panelFunctionalData.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DADOS FUNCIONAIS", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 12), new java.awt.Color(108, 81, 233))); // NOI18N
+        panelFunctionalData.setForeground(new java.awt.Color(108, 81, 233));
+        panelFunctionalData.setMaximumSize(new java.awt.Dimension(571, 210));
+        panelFunctionalData.setMinimumSize(new java.awt.Dimension(571, 210));
+        panelFunctionalData.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel35.setBackground(new java.awt.Color(59, 44, 150));
         jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -441,6 +399,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel35.setText("Cargo:");
         jLabel35.setOpaque(true);
+        panelFunctionalData.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 120, 30));
 
         jLabel36.setBackground(new java.awt.Color(59, 44, 150));
         jLabel36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -448,6 +407,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel36.setText("Data de admissão:");
         jLabel36.setOpaque(true);
+        panelFunctionalData.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 120, 30));
 
         jLabel37.setBackground(new java.awt.Color(59, 44, 150));
         jLabel37.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -455,26 +415,31 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel37.setText("Salário:");
         jLabel37.setOpaque(true);
+        panelFunctionalData.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 70, 30));
 
         jLabel38.setBackground(new java.awt.Color(59, 44, 150));
         jLabel38.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel38.setText("Tipo de acesso:");
+        jLabel38.setText("Acesso:");
         jLabel38.setOpaque(true);
+        panelFunctionalData.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 70, 30));
 
-        eOccupation.setBackground(new java.awt.Color(0, 0, 51));
+        eOccupation.setBackground(new java.awt.Color(204, 204, 204));
         eOccupation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eOccupation.setForeground(new java.awt.Color(255, 255, 255));
         eOccupation.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eOccupation.setCaretColor(new java.awt.Color(255, 255, 255));
+        eOccupation.setOpaque(false);
+        panelFunctionalData.add(eOccupation, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 180, 30));
 
-        eAccessLevel.setBackground(new java.awt.Color(204, 204, 204));
+        eAccessLevel.setBackground(new java.awt.Color(108, 81, 233));
         eAccessLevel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eAccessLevel.setForeground(new java.awt.Color(255, 255, 255));
         eAccessLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione nível", "Nível 1", "Nível 2", "Nível 3" }));
         eAccessLevel.setBorder(null);
+        panelFunctionalData.add(eAccessLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 160, 30));
 
-        eAdmissionDate.setBackground(new java.awt.Color(0, 0, 51));
+        eAdmissionDate.setBackground(new java.awt.Color(204, 204, 204));
         eAdmissionDate.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         eAdmissionDate.setForeground(new java.awt.Color(255, 255, 255));
         try {
@@ -482,238 +447,84 @@ public class Register_New_Employee extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        eAdmissionDate.setCaretColor(new java.awt.Color(255, 255, 255));
         eAdmissionDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        eAdmissionDate.setOpaque(false);
+        panelFunctionalData.add(eAdmissionDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 180, 30));
 
-        eSalary.setBackground(new java.awt.Color(0, 0, 51));
+        eSalary.setBackground(new java.awt.Color(204, 204, 204));
         eSalary.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eSalary.setForeground(new java.awt.Color(255, 255, 255));
         eSalary.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eSalary.setCaretColor(new java.awt.Color(255, 255, 255));
+        eSalary.setOpaque(false);
+        panelFunctionalData.add(eSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 160, 30));
 
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                        .addComponent(jLabel36)
-                        .addGap(18, 18, 18))
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)))
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(eAdmissionDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(eAccessLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(eOccupation)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(eSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18))
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eAdmissionDate, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eAccessLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(105, 105, 105))
-        );
+        getContentPane().add(panelFunctionalData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 580, 138));
 
-        jPanel1.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 600, 140));
-
-        btn_SaveEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
-        btn_SaveEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_SaveEmployeeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_SaveEmployeeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_SaveEmployeeMouseExited(evt);
-            }
-        });
-        jPanel1.add(btn_SaveEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, -1, -1));
-
-        btn_CleanEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png"))); // NOI18N
-        btn_CleanEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_CleanEmployeeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_CleanEmployeeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_CleanEmployeeMouseExited(evt);
-            }
-        });
-        jPanel1.add(btn_CleanEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 570, -1, -1));
-
-        btn_CancelEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png"))); // NOI18N
-        btn_CancelEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_CancelEmployeeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_CancelEmployeeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_CancelEmployeeMouseExited(evt);
-            }
-        });
-        jPanel1.add(btn_CancelEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 570, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 51));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("CADASTRAR NOVO FUNCIONÁRIO");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 610, 40));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tela_cadastro_funcionario_dark.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tela_cadastro_funcionario_dark.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 632, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_CancelEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelEmployeeMouseClicked
-        
-        int op;
-        op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if(op == 0){
-            this.dispose();}         
-    }//GEN-LAST:event_btn_CancelEmployeeMouseClicked
-      
-    private void btn_CleanEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CleanEmployeeMouseClicked
-       limpaCampos();
-    }//GEN-LAST:event_btn_CleanEmployeeMouseClicked
-
-    private void btn_SaveEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SaveEmployeeMouseClicked
-        JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!","Confirmação", JOptionPane.INFORMATION_MESSAGE);
-        limpaCampos();
-    }//GEN-LAST:event_btn_SaveEmployeeMouseClicked
+    private void eBirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBirthDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eBirthDateActionPerformed
 
     private void eEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eEmailActionPerformed
 
-    private void eBirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBirthDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eBirthDateActionPerformed
+    private void bnt_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseClicked
+       
+    }//GEN-LAST:event_bnt_saveMouseClicked
 
-    private void btn_SaveEmployeeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SaveEmployeeMouseEntered
-        btn_SaveEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvar.png")));
-    }//GEN-LAST:event_btn_SaveEmployeeMouseEntered
+    private void bnt_saveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseEntered
+        // Trocar para ícone escuro
+        bnt_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvar.png")));
+    }//GEN-LAST:event_bnt_saveMouseEntered
 
-    private void btn_SaveEmployeeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SaveEmployeeMouseExited
-        btn_SaveEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png")));
-    }//GEN-LAST:event_btn_SaveEmployeeMouseExited
+    private void bnt_saveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseExited
+        // Voltar para ícone original
+        bnt_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png")));
+    }//GEN-LAST:event_bnt_saveMouseExited
 
-    private void btn_CleanEmployeeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CleanEmployeeMouseEntered
-        btn_CleanEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limpar.png")));
-    }//GEN-LAST:event_btn_CleanEmployeeMouseEntered
+    private void btn_clearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clearMouseClicked
+        // Limpar todos os campos (criar método depois)
+       
+    }//GEN-LAST:event_btn_clearMouseClicked
 
-    private void btn_CleanEmployeeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CleanEmployeeMouseExited
-        btn_CleanEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png")));
-    }//GEN-LAST:event_btn_CleanEmployeeMouseExited
+    private void btn_clearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clearMouseEntered
+        // Trocar para ícone escuro
+        btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limpar.png")));
+    }//GEN-LAST:event_btn_clearMouseEntered
 
-    private void btn_CancelEmployeeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelEmployeeMouseEntered
-        btn_CancelEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelar.png")));
-    }//GEN-LAST:event_btn_CancelEmployeeMouseEntered
+    private void btn_clearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clearMouseExited
+        // Voltar para ícone original
+        btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png")));
+    }//GEN-LAST:event_btn_clearMouseExited
 
-    private void btn_CancelEmployeeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelEmployeeMouseExited
-        btn_CancelEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png")));
-    }//GEN-LAST:event_btn_CancelEmployeeMouseExited
+    private void btn_cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btn_cancelMouseClicked
 
-    private void eStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eStateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eStateActionPerformed
+    private void btn_cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelMouseEntered
+        // Trocar para ícone escuro
+        btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelar.png")));
+    }//GEN-LAST:event_btn_cancelMouseEntered
 
-    private void eCellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eCellActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eCellActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Register_New_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Register_New_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Register_New_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Register_New_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Register_New_Employee dialog = new Register_New_Employee(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void btn_cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelMouseExited
+        // Voltar para ícone original
+        btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png")));
+    }//GEN-LAST:event_btn_cancelMouseExited
+      
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btn_CancelEmployee;
-    private javax.swing.JLabel btn_CleanEmployee;
-    private javax.swing.JLabel btn_SaveEmployee;
+    private javax.swing.JLabel bnt_save;
+    private javax.swing.JLabel btn_cancel;
+    private javax.swing.JLabel btn_clear;
     private javax.swing.JComboBox<String> eAccessLevel;
     private javax.swing.JTextField eAddress;
     private javax.swing.JFormattedTextField eAdmissionDate;
@@ -750,8 +561,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel panelFunctionalData;
+    private javax.swing.JPanel panelPersonalData;
     // End of variables declaration//GEN-END:variables
 }
