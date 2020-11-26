@@ -56,8 +56,8 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         this.product = product;
         
         txt_description.setText(product.getDescription());
-        txt_costPrice.setText(product.getCostPrice().toString());
-        txt_salePrice.setText(product.getSalePrice().toString());
+        txt_costPrice.setText(product.getCostPrice().toString().replace('.', ','));
+        txt_salePrice.setText(product.getSalePrice().toString().replace('.', ','));
         txt_quantity.setText(String.valueOf(product.getQuantity()));
         title.setText("Editar produto");
         Utils.updateComboBox(ColorDao.findAll(), cbColor);

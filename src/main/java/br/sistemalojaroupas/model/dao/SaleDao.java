@@ -49,7 +49,7 @@ public class SaleDao {
     }
     
     public static List<Sale> findAll() {
-        List<Sale> list = repSale.find(FindOptions.sort("moment", SortOrder.Ascending))
+        List<Sale> list = repSale.find(FindOptions.sort("moment", SortOrder.Descending))
                 .toList();
         
         return list;
@@ -71,6 +71,20 @@ public class SaleDao {
     public static void removeById(Long id) {
         Sale sale = findById(id);
         repSale.remove(sale);
+    }
+    
+    public static Long size() {
+        return repSale.size();
+    }
+    
+    public static Double revenues() {
+        Double revenues = 0.0;
+        
+        for (Sale obj : findAll()) {
+            revenues += obj.getTotal();
+        }
+        
+        return revenues;
     }
     
 }

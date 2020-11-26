@@ -4,6 +4,7 @@ package br.sistemalojaroupas.view;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.dao.SaleDao;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.entities.TableContract;
 import br.sistemalojaroupas.view.listeners.DataChangeListener;
@@ -33,7 +34,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
     
     public Home() {
-        Locale.setDefault(Locale.US);
         
         initComponents();  
                
@@ -48,6 +48,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         menuButtonsList.add(menu_product);
         
         setMenuButtonsColor(menu_home);
+        
+        refreshHomeData();
     }
     
     private void setMenuButtonsColor(JPanel pn1) {
@@ -76,12 +78,13 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         if(visibleTable == table_Products) Utils.updateTable(ProductDao.findAll(), table_Products);
     }
     
-    private JTable getVisibleTable() {
-        return visibleTable;
-    }
-    
     private void setVisibleTable(JTable table) {
         this.visibleTable = table;
+    }
+    
+    private void refreshHomeData() {
+        txtTotalSales.setText(SaleDao.size().toString());
+        txtFaturamentoValor.setText(String.format("R$ %.2f", SaleDao.revenues()));
     }
     
     @SuppressWarnings("unchecked")
@@ -136,12 +139,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         pnl_IconMenu = new javax.swing.JPanel();
         btn_ShowHideMenu = new javax.swing.JLabel();
         pnMenu = new javax.swing.JPanel();
-        menu_sale = new javax.swing.JPanel();
-        btn_sales = new javax.swing.JLabel();
-        icon_sales = new javax.swing.JLabel();
         menu_home = new javax.swing.JPanel();
         btn_home = new javax.swing.JLabel();
         icon_home = new javax.swing.JLabel();
+        menu_sale = new javax.swing.JPanel();
+        btn_sales = new javax.swing.JLabel();
+        icon_sales = new javax.swing.JLabel();
         menu_product = new javax.swing.JPanel();
         btn_products = new javax.swing.JLabel();
         icon_products = new javax.swing.JLabel();
@@ -172,7 +175,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         fundoReceita = new javax.swing.JLabel();
         pnVendas = new javax.swing.JPanel();
         txtVendas = new javax.swing.JLabel();
-        txtVendasValor = new javax.swing.JLabel();
+        txtTotalSales = new javax.swing.JLabel();
         iconVendas = new javax.swing.JLabel();
         fundoVendas = new javax.swing.JLabel();
         pnTicket = new javax.swing.JPanel();
@@ -649,6 +652,28 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         pnMenu.setMinimumSize(new java.awt.Dimension(70, 100));
         pnMenu.setPreferredSize(new java.awt.Dimension(200, 650));
 
+        menu_home.setBackground(new java.awt.Color(0, 0, 51));
+        menu_home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_homeMouseClicked(evt);
+            }
+        });
+        menu_home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_home.setBackground(new java.awt.Color(255, 255, 255));
+        btn_home.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_home.setForeground(new java.awt.Color(255, 255, 255));
+        btn_home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_home.setText("Início");
+        menu_home.add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 50));
+
+        icon_home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icon_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_home.png"))); // NOI18N
+        icon_home.setMaximumSize(new java.awt.Dimension(70, 50));
+        icon_home.setMinimumSize(new java.awt.Dimension(70, 50));
+        icon_home.setPreferredSize(new java.awt.Dimension(70, 50));
+        menu_home.add(icon_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         menu_sale.setBackground(new java.awt.Color(0, 0, 51));
         menu_sale.setPreferredSize(new java.awt.Dimension(200, 50));
         menu_sale.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -671,28 +696,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         icon_sales.setMinimumSize(new java.awt.Dimension(70, 50));
         icon_sales.setPreferredSize(new java.awt.Dimension(70, 50));
         menu_sale.add(icon_sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        menu_home.setBackground(new java.awt.Color(0, 0, 51));
-        menu_home.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menu_homeMouseClicked(evt);
-            }
-        });
-        menu_home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btn_home.setBackground(new java.awt.Color(255, 255, 255));
-        btn_home.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_home.setForeground(new java.awt.Color(255, 255, 255));
-        btn_home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_home.setText("Início");
-        menu_home.add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 50));
-
-        icon_home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        icon_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_home.png"))); // NOI18N
-        icon_home.setMaximumSize(new java.awt.Dimension(70, 50));
-        icon_home.setMinimumSize(new java.awt.Dimension(70, 50));
-        icon_home.setPreferredSize(new java.awt.Dimension(70, 50));
-        menu_home.add(icon_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menu_product.setBackground(new java.awt.Color(0, 0, 51));
         menu_product.setPreferredSize(new java.awt.Dimension(200, 50));
@@ -893,10 +896,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         txtVendas.setText("Total de vendas");
         pnVendas.add(txtVendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 20));
 
-        txtVendasValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        txtVendasValor.setForeground(new java.awt.Color(255, 255, 255));
-        txtVendasValor.setText("986");
-        pnVendas.add(txtVendasValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+        txtTotalSales.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        txtTotalSales.setForeground(new java.awt.Color(255, 255, 255));
+        txtTotalSales.setText("986");
+        pnVendas.add(txtTotalSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
         iconVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_carrinhoDeCompras.png"))); // NOI18N
         pnVendas.add(iconVendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -1102,33 +1105,33 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         tableSales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", "", "", "", null},
-                {"", "", "", "", null},
-                {"", "", "", "", null},
-                {"", "", "", "", null},
-                {"", "", "", "", null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {"", "", null},
+                {"", "", null},
+                {"", "", null},
+                {"", "", null},
+                {"", "", null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Código da Venda", "CPF Cliente", "Total", "Vendedor", "Data"
+                "Código da Venda", "Total", "Data"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -2112,11 +2115,15 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         setMenuButtonsColor(menu_sale);
         
         setVisibleTable(tableSales);
+        Utils.updateTable(SaleDao.findAll(), tableSales);
     }//GEN-LAST:event_menu_saleMouseClicked
   
     private void menu_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_homeMouseClicked
         panelsCardLayout.show(CollectionCard, "cardHome");
         setMenuButtonsColor(menu_home);
+        
+        setVisibleTable(null);
+        refreshHomeData();
     }//GEN-LAST:event_menu_homeMouseClicked
 
     private void menu_productMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_productMouseClicked
@@ -2585,8 +2592,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel txtReceitaValor;
     private javax.swing.JLabel txtTicket;
     private javax.swing.JLabel txtTicketValor;
+    private javax.swing.JLabel txtTotalSales;
     private javax.swing.JLabel txtVendas;
-    private javax.swing.JLabel txtVendasValor;
     // End of variables declaration//GEN-END:variables
     
 }

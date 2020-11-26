@@ -6,6 +6,7 @@
 package br.sistemalojaroupas.model.entities;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
@@ -16,16 +17,18 @@ import org.dizitart.no2.objects.Id;
  *
  * @author silas
  */
-public class Sale implements Serializable {
+public class Sale implements Serializable, TableContract {
     private final static long serialVersionUID = 1L;
+    
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss");
     
     @Id
     private Long id;
     
     private Set<SaleItem> items = new HashSet<>();
     
-    //private Employee employee;
-    //private Customer customer;
+    private String employee;
+    private String customer;
     
     private Date moment;
     
@@ -55,6 +58,10 @@ public class Sale implements Serializable {
 
     public Date getMoment() {
         return moment;
+    }
+    
+    public String getFormattedDate() {
+        return sdf.format(moment);
     }
     
     public Double getTotal() {
@@ -94,6 +101,15 @@ public class Sale implements Serializable {
     @Override
     public String toString() {
         return "Sale{" + "id=" + id + ", items=" + items + ", moment=" + moment + "total=" + getTotal() +'}';
+    }
+
+    @Override
+    public Object[] tableRowModel() {
+        return new Object[]{
+            getId(),
+            String.format("%.2f", getTotal()),
+            getFormattedDate()
+        };
     }
     
 }
