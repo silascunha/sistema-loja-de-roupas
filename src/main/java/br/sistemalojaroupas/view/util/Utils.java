@@ -8,6 +8,7 @@ package br.sistemalojaroupas.view.util;
 import br.sistemalojaroupas.model.entities.TableContract;
 import java.awt.Component;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
@@ -22,6 +23,14 @@ import javax.swing.table.DefaultTableModel;
 public class Utils {
     
     public static void updateTable(List<? extends TableContract> objList, JTable table) {
+        DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+        dtm.setRowCount(0);
+        objList.forEach(obj -> {
+            dtm.addRow(obj.tableRowModel());
+        });
+    }
+    
+    public static void updateTable(Set<? extends TableContract> objList, JTable table) {
         DefaultTableModel dtm = (DefaultTableModel) table.getModel();
         dtm.setRowCount(0);
         objList.forEach(obj -> {
@@ -62,5 +71,29 @@ public class Utils {
             }
         }
         return true;
+    }
+    
+    public static Double tryParseToDouble(String arg) {
+        try {
+            return Double.parseDouble(arg);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+    
+    public static Long tryParseToLong(String arg) {
+        try {
+            return Long.parseLong(arg);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+    
+    public static Integer tryParseToInt(String arg) {
+        try {
+            return Integer.parseInt(arg);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 }

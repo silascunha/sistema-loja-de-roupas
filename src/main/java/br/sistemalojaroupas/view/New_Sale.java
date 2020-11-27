@@ -5,17 +5,37 @@
  */
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.entities.Product;
+import br.sistemalojaroupas.model.entities.Sale;
+import br.sistemalojaroupas.model.entities.SaleItem;
+import br.sistemalojaroupas.view.util.Utils;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lukas
  */
 public class New_Sale extends javax.swing.JFrame {
 
+    private Product product;
+    private Sale sale;
+    private SaleItem item;
     /**
      * Creates new form testeVENDAS
      */
     public New_Sale() {
         initComponents();
+        sale = new Sale();
+    }
+    
+    private void clearProductFields() {
+        txt_Code.setText("");
+        txt_amount.setText("0");
+        txt_color.setText("");
+        txt_price.setText("");
+        txt_product.setText("");
+        txt_size.setText("");
     }
 
     /**
@@ -48,15 +68,15 @@ public class New_Sale extends javax.swing.JFrame {
         txt_size = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txt_CPF = new javax.swing.JFormattedTextField();
-        txt_cod = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        txt_Code = new javax.swing.JFormattedTextField();
         txt_SalesTotal = new javax.swing.JTextField();
         btn_searchCod = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
+        txt_amount = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_ShoppingCart = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
-        txt_amount = new javax.swing.JTextField();
         radioBtn_credit = new javax.swing.JRadioButton();
         radioBtn_money = new javax.swing.JRadioButton();
         radioBtn_debit = new javax.swing.JRadioButton();
@@ -117,9 +137,9 @@ public class New_Sale extends javax.swing.JFrame {
         jLabel6.setText("Código :");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 70, 30));
 
+        txt_price.setEditable(false);
         txt_price.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_price.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_price.setText("R$ 124,99");
         txt_price.setBorder(null);
         jPanel1.add(txt_price, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 500, 120, 30));
 
@@ -136,9 +156,9 @@ public class New_Sale extends javax.swing.JFrame {
         jLabel7.setText("Produto :");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 80, 30));
 
+        txt_product.setEditable(false);
         txt_product.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_product.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_product.setText("Camisa gola V");
         txt_product.setBorder(null);
         jPanel1.add(txt_product, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 280, 30));
 
@@ -148,9 +168,9 @@ public class New_Sale extends javax.swing.JFrame {
         jLabel8.setText("Marca :");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 70, 30));
 
+        txt_mark.setEditable(false);
         txt_mark.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_mark.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_mark.setText("Rauph Lauren");
         txt_mark.setBorder(null);
         jPanel1.add(txt_mark, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 280, 30));
 
@@ -160,9 +180,9 @@ public class New_Sale extends javax.swing.JFrame {
         jLabel9.setText("Cor :");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, 50, 30));
 
+        txt_color.setEditable(false);
         txt_color.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_color.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_color.setText("Vermelho escuro");
         txt_color.setBorder(null);
         jPanel1.add(txt_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 160, 30));
 
@@ -172,9 +192,9 @@ public class New_Sale extends javax.swing.JFrame {
         jLabel10.setText("Preço :");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 90, 30));
 
+        txt_size.setEditable(false);
         txt_size.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_size.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_size.setText("G");
         txt_size.setBorder(null);
         jPanel1.add(txt_size, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 60, 30));
 
@@ -195,21 +215,21 @@ public class New_Sale extends javax.swing.JFrame {
         txt_CPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(txt_CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 120, 30));
 
-        txt_cod.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_cod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_cod.setText("123");
-        txt_cod.setBorder(null);
-        jPanel1.add(txt_cod, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 120, 30));
-
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Qtd. :");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 80, 30));
 
+        txt_Code.setBorder(null);
+        txt_Code.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        txt_Code.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_Code.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(txt_Code, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 110, 30));
+
         txt_SalesTotal.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txt_SalesTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_SalesTotal.setText("R$ 249,98");
+        txt_SalesTotal.setText("R$ 0,00");
         txt_SalesTotal.setBorder(null);
         jPanel1.add(txt_SalesTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 590, 210, 50));
 
@@ -218,6 +238,11 @@ public class New_Sale extends javax.swing.JFrame {
         btn_searchCod.setForeground(new java.awt.Color(255, 255, 255));
         btn_searchCod.setText("Pesquisar");
         btn_searchCod.setBorderPainted(false);
+        btn_searchCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_searchCodActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_searchCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 150, 30));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -226,35 +251,70 @@ public class New_Sale extends javax.swing.JFrame {
         jLabel13.setText("Total da Venda");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 530, 150, 40));
 
+        txt_amount.setBorder(null);
+        txt_amount.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        txt_amount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_amount.setText("0");
+        txt_amount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(txt_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 80, 30));
+
         table_ShoppingCart.setForeground(new java.awt.Color(0, 0, 51));
         table_ShoppingCart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"123", "Camisa gola V", "Rauph Lauren", "G", "Vermelho escuro", "124,99", "2", "249,98"},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Produto", "Marca", "Tamanho", "Cor", "Preço", "Quantidade", "Subtotal"
+                "Código", "Produto", "Tamanho", "Cor", "Preço", "Quantidade", "Subtotal"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         table_ShoppingCart.setGridColor(new java.awt.Color(204, 204, 204));
+        table_ShoppingCart.setSelectionBackground(new java.awt.Color(0, 0, 51));
         jScrollPane1.setViewportView(table_ShoppingCart);
+        if (table_ShoppingCart.getColumnModel().getColumnCount() > 0) {
+            table_ShoppingCart.getColumnModel().getColumn(0).setMinWidth(40);
+            table_ShoppingCart.getColumnModel().getColumn(0).setPreferredWidth(80);
+            table_ShoppingCart.getColumnModel().getColumn(0).setMaxWidth(150);
+            table_ShoppingCart.getColumnModel().getColumn(2).setMinWidth(20);
+            table_ShoppingCart.getColumnModel().getColumn(2).setPreferredWidth(60);
+            table_ShoppingCart.getColumnModel().getColumn(2).setMaxWidth(100);
+            table_ShoppingCart.getColumnModel().getColumn(3).setMinWidth(50);
+            table_ShoppingCart.getColumnModel().getColumn(3).setPreferredWidth(100);
+            table_ShoppingCart.getColumnModel().getColumn(3).setMaxWidth(200);
+            table_ShoppingCart.getColumnModel().getColumn(4).setMinWidth(40);
+            table_ShoppingCart.getColumnModel().getColumn(4).setPreferredWidth(60);
+            table_ShoppingCart.getColumnModel().getColumn(4).setMaxWidth(100);
+            table_ShoppingCart.getColumnModel().getColumn(5).setMinWidth(35);
+            table_ShoppingCart.getColumnModel().getColumn(5).setPreferredWidth(80);
+            table_ShoppingCart.getColumnModel().getColumn(5).setMaxWidth(150);
+            table_ShoppingCart.getColumnModel().getColumn(6).setMinWidth(50);
+            table_ShoppingCart.getColumnModel().getColumn(6).setPreferredWidth(80);
+            table_ShoppingCart.getColumnModel().getColumn(6).setMaxWidth(100);
+        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 720, 330));
 
@@ -263,12 +323,6 @@ public class New_Sale extends javax.swing.JFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Dados do Produto");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 410, 40));
-
-        txt_amount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_amount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_amount.setText("2");
-        txt_amount.setBorder(null);
-        jPanel1.add(txt_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, 70, 30));
 
         radioBtn_credit.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(radioBtn_credit);
@@ -299,6 +353,11 @@ public class New_Sale extends javax.swing.JFrame {
         btn_addToCart.setForeground(new java.awt.Color(255, 255, 255));
         btn_addToCart.setText("Adicionar ao Carrinho");
         btn_addToCart.setBorderPainted(false);
+        btn_addToCart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addToCartActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_addToCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 590, 220, 50));
 
         btn_payment.setBackground(new java.awt.Color(0, 176, 80));
@@ -316,6 +375,48 @@ public class New_Sale extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_searchCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchCodActionPerformed
+        product = ProductDao.findById(Utils.tryParseToLong(txt_Code.getText()));
+        
+        if(product != null) {
+
+            txt_product.setText(product.getDescription());
+            txt_size.setText(product.getSize());
+            txt_color.setText(product.getColor().getName());
+            txt_price.setText(String.format("R$ %.2f", product.getSalePrice()));
+            
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Código inválido!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btn_searchCodActionPerformed
+
+    private void btn_addToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addToCartActionPerformed
+        Integer amount = Utils.tryParseToInt(txt_amount.getText());
+        if (amount > 0 && product != null) {
+            try {
+                item = new SaleItem(product, amount);
+                sale.addItem(item);
+                
+                Utils.updateTable(sale.getItems(), table_ShoppingCart);
+                
+                clearProductFields();
+                txt_SalesTotal.setText(String.format("R$ %.2f", sale.getTotal()));
+                
+                product = null;
+            } catch (IllegalArgumentException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this,
+                    "Você deve digitar um código de produto válido"
+                    + " e a quantidade a ser vendida.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_addToCartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,9 +482,9 @@ public class New_Sale extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioBtn_money;
     private javax.swing.JTable table_ShoppingCart;
     private javax.swing.JFormattedTextField txt_CPF;
+    private javax.swing.JFormattedTextField txt_Code;
     private javax.swing.JTextField txt_SalesTotal;
-    private javax.swing.JTextField txt_amount;
-    private javax.swing.JTextField txt_cod;
+    private javax.swing.JFormattedTextField txt_amount;
     private javax.swing.JTextField txt_color;
     private javax.swing.JTextField txt_mark;
     private javax.swing.JTextField txt_name;

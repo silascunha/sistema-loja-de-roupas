@@ -31,6 +31,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private List<JPanel> menuButtonsList = new ArrayList<>();
     private CardLayout panelsCardLayout;
     private JTable visibleTable;
+    
 
     
     public Home() {
@@ -658,7 +659,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         btn_home.setForeground(new java.awt.Color(255, 255, 255));
         btn_home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_home.setText("Início");
-        menu_home.add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 150, 50));
+        menu_home.add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 150, 50));
 
         icon_home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         icon_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_home.png"))); // NOI18N

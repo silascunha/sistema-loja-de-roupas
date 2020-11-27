@@ -27,8 +27,8 @@ public class Sale implements Serializable, TableContract {
     
     private Set<SaleItem> items = new HashSet<>();
     
-    private String employee;
-    private String customer;
+    //private String employee;
+    //private String customer;
     
     private Date moment;
     

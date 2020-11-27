@@ -83,7 +83,7 @@ public class ProductDao {
         return list;
     }
     
-    public static Product findById(Long id) {
+    public static Product findById(Long id) { 
         Product p = repProduct.find(ObjectFilters.eq("id", id))
                 .firstOrDefault();
         return p;

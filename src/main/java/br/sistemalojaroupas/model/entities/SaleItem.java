@@ -14,7 +14,7 @@ import org.dizitart.no2.objects.Id;
  *
  * @author silas
  */
-public class SaleItem implements Serializable {
+public class SaleItem implements Serializable, TableContract {
     private final static long serialVersionUID = 1L;
     
     @Id
@@ -28,8 +28,11 @@ public class SaleItem implements Serializable {
     }
 
     public SaleItem(Product product, int quantity) {
+        if (quantity > product.getQuantity()) throw new IllegalArgumentException("A quantidade excede a do produto em estoque.");
+            
         this.product = product;
         this.quantity = quantity;
+        
     }
 
     public NitriteId getId() {
@@ -76,6 +79,19 @@ public class SaleItem implements Serializable {
     @Override
     public String toString() {
         return "SaleItem{" + "id=" + product.getId() + ", product=" + product + ", quantity=" + quantity + '}';
+    }
+
+    @Override
+    public Object[] tableRowModel() {
+        return new Object[] {
+            product.getId(),
+            product.getDescription(),
+            product.getSize(),
+            product.getColor().getName(),
+            String.format("%.2f", product.getSalePrice()),
+            getQuantity(),
+            String.format("%.2f", getSubTotal())
+        };
     }
     
 }
