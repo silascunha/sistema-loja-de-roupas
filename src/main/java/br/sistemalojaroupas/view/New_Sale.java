@@ -21,6 +21,8 @@ public class New_Sale extends javax.swing.JFrame {
     private Product product;
     private Sale sale;
     private SaleItem item;
+    
+    
     /**
      * Creates new form testeVENDAS
      */
@@ -77,9 +79,6 @@ public class New_Sale extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table_ShoppingCart = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
-        radioBtn_credit = new javax.swing.JRadioButton();
-        radioBtn_money = new javax.swing.JRadioButton();
-        radioBtn_debit = new javax.swing.JRadioButton();
         btn_addToCart = new javax.swing.JButton();
         btn_payment = new javax.swing.JButton();
         background = new javax.swing.JLabel();
@@ -111,7 +110,7 @@ public class New_Sale extends javax.swing.JFrame {
         btn_cancellation.setForeground(new java.awt.Color(255, 255, 255));
         btn_cancellation.setText("Cancelar Venda");
         btn_cancellation.setBorderPainted(false);
-        jPanel1.add(btn_cancellation, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 590, 220, 50));
+        jPanel1.add(btn_cancellation, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 580, 220, 50));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,7 +230,7 @@ public class New_Sale extends javax.swing.JFrame {
         txt_SalesTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_SalesTotal.setText("R$ 0,00");
         txt_SalesTotal.setBorder(null);
-        jPanel1.add(txt_SalesTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 590, 210, 50));
+        jPanel1.add(txt_SalesTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 580, 210, 50));
 
         btn_searchCod.setBackground(new java.awt.Color(108, 81, 233));
         btn_searchCod.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -324,30 +323,6 @@ public class New_Sale extends javax.swing.JFrame {
         jLabel14.setText("Dados do Produto");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 410, 40));
 
-        radioBtn_credit.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(radioBtn_credit);
-        radioBtn_credit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        radioBtn_credit.setForeground(new java.awt.Color(0, 176, 240));
-        radioBtn_credit.setText("   Crédito");
-        radioBtn_credit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(radioBtn_credit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 540, 100, -1));
-
-        radioBtn_money.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(radioBtn_money);
-        radioBtn_money.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        radioBtn_money.setForeground(new java.awt.Color(0, 176, 240));
-        radioBtn_money.setText("   Dinheiro");
-        radioBtn_money.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(radioBtn_money, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 540, 100, -1));
-
-        radioBtn_debit.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(radioBtn_debit);
-        radioBtn_debit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        radioBtn_debit.setForeground(new java.awt.Color(0, 176, 240));
-        radioBtn_debit.setText("   Débito");
-        radioBtn_debit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(radioBtn_debit, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 540, 100, -1));
-
         btn_addToCart.setBackground(new java.awt.Color(108, 81, 233));
         btn_addToCart.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_addToCart.setForeground(new java.awt.Color(255, 255, 255));
@@ -365,7 +340,12 @@ public class New_Sale extends javax.swing.JFrame {
         btn_payment.setForeground(new java.awt.Color(255, 255, 255));
         btn_payment.setText("Pagamento");
         btn_payment.setBorderPainted(false);
-        jPanel1.add(btn_payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 590, 220, 50));
+        btn_payment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_paymentActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 580, 220, 50));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background_VENDAS.png"))); // NOI18N
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
@@ -417,6 +397,10 @@ public class New_Sale extends javax.swing.JFrame {
                     "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_addToCartActionPerformed
+
+    private void btn_paymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paymentActionPerformed
+    new Payment().setVisible(true);
+    }//GEN-LAST:event_btn_paymentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,9 +461,6 @@ public class New_Sale extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JRadioButton radioBtn_credit;
-    private javax.swing.JRadioButton radioBtn_debit;
-    private javax.swing.JRadioButton radioBtn_money;
     private javax.swing.JTable table_ShoppingCart;
     private javax.swing.JFormattedTextField txt_CPF;
     private javax.swing.JFormattedTextField txt_Code;
