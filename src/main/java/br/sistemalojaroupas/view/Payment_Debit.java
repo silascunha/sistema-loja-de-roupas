@@ -23,7 +23,7 @@ public class Payment_Debit extends javax.swing.JDialog {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
         jPanel1.setBackground(new Color(0,0,0,0));
-        sale = ((New_Sale)parent).getSale();
+        sale = ((Payment)parent).getSaleWindow().getSale();
     }
 
     /**

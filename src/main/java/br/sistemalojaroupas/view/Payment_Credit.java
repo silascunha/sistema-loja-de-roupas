@@ -23,6 +23,7 @@ public class Payment_Credit extends javax.swing.JDialog {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
         jPanel1.setBackground(new Color(0,0,0,0));
+        sale = ((Payment)parent).getSaleWindow().getSale();
     }
 
     /**
