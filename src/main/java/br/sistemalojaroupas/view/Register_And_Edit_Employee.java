@@ -8,17 +8,12 @@ package br.sistemalojaroupas.view;
 import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.entities.Address;
 import br.sistemalojaroupas.model.entities.Employee;
-import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.services.CepService;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,6 +24,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
 
     private Address address;
     private Employee employee;
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     /**
      * Creates new form Insert_Employee
      */
@@ -43,10 +39,9 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         initComponents();
         
         this.setBackground(new java.awt.Color(0,0,0,0));
-        jLabelBackground.setBackground(new java.awt.Color(0,0,0,0));
-       
         
         this.employee = employee;
+        this.address = employee.getAddress();
         
         title.setText("Editar funcionário");
         eName.setText(employee.getName());
@@ -55,17 +50,42 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         eEmail.setText(employee.getEmail());
         ePhone.setText(employee.getPhone());
         eOccupation.setText(employee.getOccupation());
-        eCity.setText(employee.getAddress().getCity());
-        eState.setText(employee.getAddress().getState());
-        eAddress.setText(employee.getAddress().getStreet());
-        eNeighborhood.setText(employee.getAddress().getNeighborhood());
-        eNumber.setText(employee.getAddress().getNumber());
-         
+        eCity.setText(address.getCity());
+        eState.setText(address.getState());
+        eAddress.setText(address.getStreet());
+        eNeighborhood.setText(address.getNeighborhood());
+        eNumber.setText(address.getNumber());
+        eBirthDate.setText(employee.getFormattedBirthDate());
+        eAdmissionDate.setText(employee.getFormattedAdmissionDate());
+        eCEP.setText(address.getCep());
+        
     }
 
     public void clearFields() {
         Utils.clearFields(panelPersonalData);
         Utils.clearFields(panelFunctionalData);
+    }
+    
+    private Employee instantiateEmployee(Employee employee) {
+        
+        employee.setName(eName.getText());
+        employee.setEmail(eEmail.getText());
+        employee.setCpf(eCPF.getText());
+        employee.setPhone(ePhone.getText());
+        employee.setSalary(Double.parseDouble(eSalary.getText().replace(',', '.')));
+        
+        try {
+            employee.setBirthDate(sdf.parse(eBirthDate.getText()));
+            employee.setAdmissionDate(sdf.parse(eAdmissionDate.getText()));
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        
+        address.setNumber(eNumber.getText());
+        employee.setAddress(address);
+        employee.setOccupation(eOccupation.getText());
+        
+        return employee;
     }
 
     /**
@@ -521,30 +541,28 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     }//GEN-LAST:event_eEmailActionPerformed
 
     private void bnt_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseClicked
-        Employee employee = new Employee();
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        
-        employee.setName(eName.getText());
-        employee.setEmail(eEmail.getText());
-        employee.setCpf(eCPF.getText());
-        employee.setPhone(ePhone.getText());
-        employee.setSalary(Double.parseDouble(eSalary.getText().replace(',', '.')));
-        
-        try {
-            employee.setBirthDate(sdf.parse(eBirthDate.getText()));
-            employee.setAdmissionDate(sdf.parse(eAdmissionDate.getText()));
-        } catch (ParseException ex) {
-            ex.printStackTrace();
+        if(employee == null) {
+
+            employee = new Employee();
+            
+            employee = instantiateEmployee(employee);
+
+            EmployeeDao.insert(employee);
+            
+            JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso!",
+                    "Atenção", JOptionPane.INFORMATION_MESSAGE);
+
+            clearFields();
         }
-        
-        address.setNumber(eNumber.getText());
-        employee.setAddress(address);
-        employee.setOccupation(eOccupation.getText());
-        
-        EmployeeDao.insert(employee);
-        
-        clearFields();
+        else {
+            instantiateEmployee(employee);
+            
+            EmployeeDao.update(employee);
+            JOptionPane.showMessageDialog(null, "Funcionário atualizado com sucesso!",
+                    "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            
+            this.dispose();
+        }
     }//GEN-LAST:event_bnt_saveMouseClicked
 
     private void bnt_saveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseEntered
@@ -648,7 +666,4 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void subscribeDataChangeListener(Home aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

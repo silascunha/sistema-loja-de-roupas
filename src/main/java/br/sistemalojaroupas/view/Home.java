@@ -1921,7 +1921,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             Employee emp = EmployeeDao.findByCpf(cpf);
             
             Register_And_Edit_Employee dialog = new Register_And_Edit_Employee(null, true, emp);
-            dialog.subscribeDataChangeListener(this);
             dialog.setVisible(true);
         }
         else {
