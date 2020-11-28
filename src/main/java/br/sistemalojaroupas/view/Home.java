@@ -5,6 +5,7 @@ import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.dao.SaleDao;
+import br.sistemalojaroupas.model.entities.Employee;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.view.listeners.DataChangeListener;
 import br.sistemalojaroupas.view.util.Utils;
@@ -260,6 +261,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         jSeparator8 = new javax.swing.JSeparator();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableCustomers = new javax.swing.JTable();
+        btn_Editc = new javax.swing.JLabel();
         Card_Settings = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
@@ -1647,7 +1649,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
                 btn_DeletecMouseExited(evt);
             }
         });
-        Card_Customers.add(btn_Deletec, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 174, -1, -1));
+        Card_Customers.add(btn_Deletec, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, -1, 40));
 
         btn_Searchc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png"))); // NOI18N
         btn_Searchc.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1676,7 +1678,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             }
         });
         Card_Customers.add(btn_Addc, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 174, -1, -1));
-        Card_Customers.add(cSearchCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 174, 622, 30));
+        Card_Customers.add(cSearchCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 174, 410, 30));
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(0, 0, 51));
@@ -1724,6 +1726,20 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         jScrollPane3.setViewportView(tableCustomers);
 
         Card_Customers.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 214, 960, 350));
+
+        btn_Editc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_Editar.png"))); // NOI18N
+        btn_Editc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_EditcMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_EditcMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_EditcMouseExited(evt);
+            }
+        });
+        Card_Customers.add(btn_Editc, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 174, -1, -1));
 
         CollectionCard.add(Card_Customers, "cardCustomers");
 
@@ -1891,11 +1907,26 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_editProductMouseClicked
 
     private void btnSaveEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveEmployeeMouseClicked
-       new Register_New_Employee(this, true).setVisible(true);
+       new Register_And_Edit_Employee(this, true).setVisible(true);
     }//GEN-LAST:event_btnSaveEmployeeMouseClicked
 
     private void btnEditEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditEmployeeMouseClicked
-       
+        int selectedRow = table_Employees.getSelectedRow();
+        
+        if (selectedRow > -1) {
+            
+            DefaultTableModel dtm = (DefaultTableModel) table_Employees.getModel();
+            
+            String cpf = (String) dtm.getValueAt(selectedRow, 0);
+            Employee emp = EmployeeDao.findByCpf(cpf);
+            
+            Register_And_Edit_Employee dialog = new Register_And_Edit_Employee(null, true, emp);
+            dialog.setVisible(true);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Você deve selecionar um funcionário para poder editar.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }       
     }//GEN-LAST:event_btnEditEmployeeMouseClicked
 
     private void btnDeleteEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeMouseClicked
@@ -2003,7 +2034,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_DeletecMouseClicked
 
     private void btn_AddcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AddcMouseClicked
-        new Register_New_Customer(null, true).setVisible(true);
+        new Register_And_Edit_Customer(null, true).setVisible(true);
     }//GEN-LAST:event_btn_AddcMouseClicked
 
     private void txtProductsSearchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductsSearchFieldKeyPressed
@@ -2182,6 +2213,18 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png"))); 
     }//GEN-LAST:event_btn_SearchProductsMouseExited
 
+    private void btn_EditcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EditcMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_EditcMouseClicked
+
+    private void btn_EditcMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EditcMouseEntered
+               btn_Editc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_EditarEscuro.png")));
+    }//GEN-LAST:event_btn_EditcMouseEntered
+
+    private void btn_EditcMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EditcMouseExited
+               btn_Editc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_Editar.png")));
+    }//GEN-LAST:event_btn_EditcMouseExited
+
 
     /**
      * @param args the command line arguments
@@ -2254,6 +2297,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel btn_Close;
     private javax.swing.JLabel btn_DeleteSale;
     private javax.swing.JLabel btn_Deletec;
+    private javax.swing.JLabel btn_Editc;
     private javax.swing.JLabel btn_Max;
     private javax.swing.JLabel btn_Min;
     private javax.swing.JLabel btn_NewSale;

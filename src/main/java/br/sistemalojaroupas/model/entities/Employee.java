@@ -6,6 +6,7 @@
 package br.sistemalojaroupas.model.entities;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 import org.dizitart.no2.objects.Id;
@@ -28,12 +29,10 @@ public class Employee implements Serializable, TableContract {
     
     private Address address;
     
+    private final static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    
     public Employee() {
         
-    }
-    
-    public Employee(String cpf) {
-        this.cpf = cpf;
     }
 
     public Employee(String cpf, String name, String email, String phone, Date birthDate, Date admissionDate, Double salary, Address address) {
@@ -82,6 +81,10 @@ public class Employee implements Serializable, TableContract {
     public Date getBirthDate() {
         return birthDate;
     }
+    
+    public String getFormattedBirthDate() {
+        return sdf.format(birthDate);
+    }
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
@@ -89,6 +92,10 @@ public class Employee implements Serializable, TableContract {
 
     public Date getAdmissionDate() {
         return admissionDate;
+    }
+    
+    public String getFormattedAdmissionDate() {
+        return sdf.format(admissionDate);
     }
 
     public void setAdmissionDate(Date admissionDate) {
@@ -118,8 +125,6 @@ public class Employee implements Serializable, TableContract {
     public void setOccupation(String occupation) {
         this.occupation = occupation;
     }
-    
-    
 
     @Override
     public int hashCode() {
