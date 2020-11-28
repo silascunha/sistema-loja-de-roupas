@@ -1,67 +1,50 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.sistemalojaroupas.model.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
-import org.dizitart.no2.IndexType;
-import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
-import org.dizitart.no2.objects.Index;
-import org.dizitart.no2.objects.Indices;
 
-@Indices(
-        @Index(value = "cpf", type = IndexType.Unique)
-)
-
-public class Employee implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    private NitriteId id;
-    private String nome;
+/**
+ *
+ * @author silas
+ */
+public class Employee implements Serializable, TableContract {
+    
+    @Id 
     private String cpf;
-    private String nascimento;
-    private String telefone;
+    private String name;
     private String email;
-    private String admissao;
-    private String cargo;
-    private String salario;
-
+    private String phone;
+    private String occupation;
+    private Date birthDate;
+    private Date admissionDate;
+    private Double salary;
+    
     private Address address;
-
-    private Employee() {
+    
+    public Employee() {
+        
     }
-
-    private Employee(String nome, String cpf, String telefone, String email, Address address, String cargo, String nascimento, String admissao, String salario) {
-
-        this.nome = nome;
+    
+    public Employee(String cpf) {
         this.cpf = cpf;
-        this.telefone = telefone;
-        this.nascimento = nascimento;
-        this.telefone = telefone;
+    }
+
+    public Employee(String cpf, String name, String email, String phone, Date birthDate, Date admissionDate, Double salary, Address address) {
+        this.cpf = cpf;
+        this.name = name;
         this.email = email;
+        this.phone = phone;
+        this.birthDate = birthDate;
+        this.admissionDate = admissionDate;
+        this.salary = salary;
         this.address = address;
-        this.cargo = cargo;
-        this.nascimento = nascimento;
-        this.admissao = admissao;
-        this.salario = salario;
-
-    }
-
-    public NitriteId getId() {
-        return id;
-    }
-
-    public void setId(NitriteId id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getCpf() {
@@ -72,20 +55,12 @@ public class Employee implements Serializable {
         this.cpf = cpf;
     }
 
-    public String getNascimento() {
-        return nascimento;
+    public String getName() {
+        return name;
     }
 
-    public void setNascimento(String nascimento) {
-        this.nascimento = nascimento;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -96,28 +71,36 @@ public class Employee implements Serializable {
         this.email = email;
     }
 
-    public String getAdmissao() {
-        return admissao;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setAdmissao(String admissao) {
-        this.admissao = admissao;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getCargo() {
-        return cargo;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
-    public String getSalario() {
-        return salario;
+    public Date getAdmissionDate() {
+        return admissionDate;
     }
 
-    public void setSalario(String salario) {
-        this.salario = salario;
+    public void setAdmissionDate(Date admissionDate) {
+        this.admissionDate = admissionDate;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 
     public Address getAddress() {
@@ -128,10 +111,20 @@ public class Employee implements Serializable {
         this.address = address;
     }
 
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+    
+    
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 13 * hash + Objects.hashCode(this.cpf);
         return hash;
     }
 
@@ -147,7 +140,7 @@ public class Employee implements Serializable {
             return false;
         }
         final Employee other = (Employee) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.cpf, other.cpf)) {
             return false;
         }
         return true;
@@ -155,7 +148,15 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "cadFunc{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", cargo=" + cargo + ", nascimento=" + nascimento + ", admissao=" + admissao + ", salario=" + salario + '}';
+        return "Employee{" + "cpf=" + cpf + ", name=" + name + ", email=" + email + ", phone=" + phone + ", birthDate=" + birthDate + ", admissionDate=" + admissionDate + ", salary=" + salary + ", address=" + address + '}';
     }
 
+    @Override
+    public Object[] tableRowModel() {
+        return new Object[] {
+            getCpf(),
+            getName()
+        };
+    }
+    
 }

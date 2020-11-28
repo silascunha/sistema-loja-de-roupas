@@ -5,10 +5,19 @@
  */
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.model.dao.EmployeeDao;
+import br.sistemalojaroupas.model.entities.Address;
+import br.sistemalojaroupas.model.entities.Employee;
+import br.sistemalojaroupas.model.services.CepService;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +26,7 @@ import javax.swing.JOptionPane;
  */
 public class Register_New_Employee extends javax.swing.JDialog {
 
+    private Address address;
     /**
      * Creates new form Insert_Employee
      */
@@ -78,7 +88,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         eOccupation = new javax.swing.JTextField();
         eAccessLevel = new javax.swing.JComboBox<>();
         eAdmissionDate = new javax.swing.JFormattedTextField();
-        eSalary = new javax.swing.JTextField();
+        eSalary = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -217,7 +227,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel30.setOpaque(true);
         panelPersonalData.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 70, 30));
 
-        eName.setBackground(new java.awt.Color(204, 204, 204));
+        eName.setBackground(new java.awt.Color(0, 0, 0));
         eName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eName.setForeground(new java.awt.Color(255, 255, 255));
         eName.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -225,7 +235,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         eName.setOpaque(false);
         panelPersonalData.add(eName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 270, 30));
 
-        eEmail.setBackground(new java.awt.Color(204, 204, 204));
+        eEmail.setBackground(new java.awt.Color(0, 0, 0));
         eEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eEmail.setForeground(new java.awt.Color(255, 255, 255));
         eEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -238,7 +248,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         });
         panelPersonalData.add(eEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 270, 30));
 
-        eAddress.setBackground(new java.awt.Color(204, 204, 204));
+        eAddress.setBackground(new java.awt.Color(0, 0, 0));
         eAddress.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eAddress.setForeground(new java.awt.Color(255, 255, 255));
         eAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -246,7 +256,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         eAddress.setOpaque(false);
         panelPersonalData.add(eAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 160, 30));
 
-        eNeighborhood.setBackground(new java.awt.Color(204, 204, 204));
+        eNeighborhood.setBackground(new java.awt.Color(0, 0, 0));
         eNeighborhood.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eNeighborhood.setForeground(new java.awt.Color(255, 255, 255));
         eNeighborhood.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -254,16 +264,20 @@ public class Register_New_Employee extends javax.swing.JDialog {
         eNeighborhood.setOpaque(false);
         panelPersonalData.add(eNeighborhood, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 100, 30));
 
-        eCEP.setBackground(new java.awt.Color(59, 44, 150));
+        eCEP.setBackground(new java.awt.Color(0, 0, 0));
         eCEP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eCEP.setForeground(new java.awt.Color(255, 255, 255));
-        eCEP.setText("29090100");
         eCEP.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         eCEP.setCaretColor(new java.awt.Color(255, 255, 255));
         eCEP.setOpaque(false);
+        eCEP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                eCEPKeyReleased(evt);
+            }
+        });
         panelPersonalData.add(eCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 100, 30));
 
-        eCity.setBackground(new java.awt.Color(204, 204, 204));
+        eCity.setBackground(new java.awt.Color(0, 0, 0));
         eCity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eCity.setForeground(new java.awt.Color(255, 255, 255));
         eCity.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -271,7 +285,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         eCity.setOpaque(false);
         panelPersonalData.add(eCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 130, 30));
 
-        eCPF.setBackground(new java.awt.Color(204, 204, 204));
+        eCPF.setBackground(new java.awt.Color(0, 0, 0));
         eCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         eCPF.setForeground(new java.awt.Color(255, 255, 255));
         try {
@@ -284,7 +298,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         eCPF.setOpaque(false);
         panelPersonalData.add(eCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 100, 30));
 
-        eBirthDate.setBackground(new java.awt.Color(204, 204, 204));
+        eBirthDate.setBackground(new java.awt.Color(0, 0, 0));
         eBirthDate.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         eBirthDate.setForeground(new java.awt.Color(255, 255, 255));
         try {
@@ -302,7 +316,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         });
         panelPersonalData.add(eBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 100, 30));
 
-        ePhone.setBackground(new java.awt.Color(204, 204, 204));
+        ePhone.setBackground(new java.awt.Color(0, 0, 0));
         ePhone.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         ePhone.setForeground(new java.awt.Color(255, 255, 255));
         try {
@@ -323,7 +337,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel31.setOpaque(true);
         panelPersonalData.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 50, 30));
 
-        eCell.setBackground(new java.awt.Color(204, 204, 204));
+        eCell.setBackground(new java.awt.Color(0, 0, 0));
         eCell.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         eCell.setForeground(new java.awt.Color(255, 255, 255));
         try {
@@ -344,7 +358,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel32.setOpaque(true);
         panelPersonalData.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 80, 30));
 
-        eState.setBackground(new java.awt.Color(204, 204, 204));
+        eState.setBackground(new java.awt.Color(0, 0, 0));
         eState.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eState.setForeground(new java.awt.Color(255, 255, 255));
         eState.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -360,7 +374,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel33.setOpaque(true);
         panelPersonalData.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 80, 30));
 
-        eComplement.setBackground(new java.awt.Color(204, 204, 204));
+        eComplement.setBackground(new java.awt.Color(0, 0, 0));
         eComplement.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eComplement.setForeground(new java.awt.Color(255, 255, 255));
         eComplement.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -376,7 +390,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel34.setOpaque(true);
         panelPersonalData.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 30, 30));
 
-        eNumber.setBackground(new java.awt.Color(204, 204, 204));
+        eNumber.setBackground(new java.awt.Color(0, 0, 0));
         eNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eNumber.setForeground(new java.awt.Color(255, 255, 255));
         eNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -425,7 +439,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         jLabel38.setOpaque(true);
         panelFunctionalData.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 70, 30));
 
-        eOccupation.setBackground(new java.awt.Color(204, 204, 204));
+        eOccupation.setBackground(new java.awt.Color(0, 0, 0));
         eOccupation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eOccupation.setForeground(new java.awt.Color(255, 255, 255));
         eOccupation.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -439,7 +453,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         eAccessLevel.setBorder(null);
         panelFunctionalData.add(eAccessLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 160, 30));
 
-        eAdmissionDate.setBackground(new java.awt.Color(204, 204, 204));
+        eAdmissionDate.setBackground(new java.awt.Color(0, 0, 0));
         eAdmissionDate.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         eAdmissionDate.setForeground(new java.awt.Color(255, 255, 255));
         try {
@@ -452,11 +466,12 @@ public class Register_New_Employee extends javax.swing.JDialog {
         eAdmissionDate.setOpaque(false);
         panelFunctionalData.add(eAdmissionDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 180, 30));
 
-        eSalary.setBackground(new java.awt.Color(204, 204, 204));
-        eSalary.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eSalary.setForeground(new java.awt.Color(255, 255, 255));
+        eSalary.setBackground(new java.awt.Color(0, 0, 0));
         eSalary.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eSalary.setForeground(new java.awt.Color(255, 255, 255));
+        eSalary.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         eSalary.setCaretColor(new java.awt.Color(255, 255, 255));
+        eSalary.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eSalary.setOpaque(false);
         panelFunctionalData.add(eSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 160, 30));
 
@@ -478,7 +493,30 @@ public class Register_New_Employee extends javax.swing.JDialog {
     }//GEN-LAST:event_eEmailActionPerformed
 
     private void bnt_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseClicked
-       
+        Employee employee = new Employee();
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        
+        employee.setName(eName.getText());
+        employee.setEmail(eEmail.getText());
+        employee.setCpf(eCPF.getText());
+        employee.setPhone(ePhone.getText());
+        employee.setSalary(Double.parseDouble(eSalary.getText().replace(',', '.')));
+        
+        try {
+            employee.setBirthDate(sdf.parse(eBirthDate.getText()));
+            employee.setAdmissionDate(sdf.parse(eAdmissionDate.getText()));
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        
+        address.setNumber(eNumber.getText());
+        employee.setAddress(address);
+        employee.setOccupation(eOccupation.getText());
+        
+        EmployeeDao.insert(employee);
+        
+        clearFields();
     }//GEN-LAST:event_bnt_saveMouseClicked
 
     private void bnt_saveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseEntered
@@ -519,6 +557,19 @@ public class Register_New_Employee extends javax.swing.JDialog {
         // Voltar para ícone original
         btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png")));
     }//GEN-LAST:event_btn_cancelMouseExited
+
+    private void eCEPKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eCEPKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String cep = eCEP.getText();
+            
+            address = CepService.findAddress(cep);
+            
+            eCity.setText(address.getCity());
+            eState.setText(address.getState());
+            eAddress.setText(address.getStreet());
+            eNeighborhood.setText(address.getNeighborhood());
+        }
+    }//GEN-LAST:event_eCEPKeyReleased
       
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -540,7 +591,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
     private javax.swing.JTextField eNumber;
     private javax.swing.JTextField eOccupation;
     private javax.swing.JFormattedTextField ePhone;
-    private javax.swing.JTextField eSalary;
+    private javax.swing.JFormattedTextField eSalary;
     private javax.swing.JTextField eState;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

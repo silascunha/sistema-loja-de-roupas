@@ -6,7 +6,6 @@ import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.dao.SaleDao;
 import br.sistemalojaroupas.model.entities.Product;
-import br.sistemalojaroupas.model.entities.TableContract;
 import br.sistemalojaroupas.view.listeners.DataChangeListener;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.CardLayout;
@@ -14,7 +13,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -1595,27 +1593,40 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         table_Employees.setForeground(new java.awt.Color(0, 0, 51));
         table_Employees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Nome"
+                "CPF", "Nome"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         table_Employees.setGridColor(new java.awt.Color(204, 204, 204));
         Table_Employees.setViewportView(table_Employees);
+        if (table_Employees.getColumnModel().getColumnCount() > 0) {
+            table_Employees.getColumnModel().getColumn(0).setMinWidth(0);
+            table_Employees.getColumnModel().getColumn(0).setPreferredWidth(0);
+            table_Employees.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         Card_Employees.add(Table_Employees, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 220, 310));
 
@@ -1935,6 +1946,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         setMenuButtonsColor(menu_employees);
         
         setVisibleTable(table_Employees);
+        Utils.updateTable(EmployeeDao.findAll(), table_Employees);
     }//GEN-LAST:event_menu_employeesMouseClicked
 
     private void menu_customersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_customersMouseClicked

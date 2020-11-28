@@ -1,53 +1,51 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.sistemalojaroupas.model.dao;
 
 import br.sistemalojaroupas.db.DB;
-import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.entities.Employee;
 import java.util.List;
 import org.dizitart.no2.FindOptions;
-import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.SortOrder;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 
+/**
+ *
+ * @author silas
+ */
 public class EmployeeDao {
     
-    public static ObjectRepository<Employee> repEmployee;
+    private static ObjectRepository<Employee> repEmployee;
     
     static {
         repEmployee = DB.getDB().getRepository(Employee.class);
     }
     
-    public static void insert(Employee cf) {
-        repEmployee.insert(cf);
+    public static void insert(Employee emp) {
+        repEmployee.insert(emp);
     }
-   
-    public static void update(Employee cf) {
-                Employee temp = repEmployee.find(ObjectFilters.eq("cpf", cf.getCpf()))
-                .firstOrDefault();
-        
-        if (cf.equals(temp) || temp == null) {
-            repEmployee.update(cf);
-        }
-        else {
-            throw new DBException("Este CPF já está cadastrado.");
-        }
+    
+    public static void update(Employee emp) {
+        repEmployee.update(emp);
     }
     
     public static List<Employee> findAll() {
-        FindOptions fo = FindOptions.sort("nome", SortOrder.Ascending);
+        FindOptions fo = FindOptions.sort("name", SortOrder.Ascending);
         List<Employee> list = repEmployee.find(fo).toList();
+        
         return list;
     }
     
-    public static Employee findById(NitriteId id) {
-        Employee cf = repEmployee.getById(id);
-        return cf;
+    public static Employee findByCpf(String cpf) {
+        Employee emp = repEmployee.find(ObjectFilters.eq("cpf", cpf)).firstOrDefault();
+        return emp;
     }
     
-    public static void remove(Employee cf) {
-        repEmployee.remove(cf);
+    public static void remove(Employee emp) {
+        repEmployee.remove(emp);
     }
-
 }
