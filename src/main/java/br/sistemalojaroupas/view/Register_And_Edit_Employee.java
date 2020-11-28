@@ -8,6 +8,7 @@ package br.sistemalojaroupas.view;
 import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.entities.Address;
 import br.sistemalojaroupas.model.entities.Employee;
+import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.services.CepService;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Color;
@@ -24,17 +25,44 @@ import javax.swing.JOptionPane;
  *
  * @author Mariana
  */
-public class Register_New_Employee extends javax.swing.JDialog {
+public class Register_And_Edit_Employee extends javax.swing.JDialog {
 
     private Address address;
+    private Employee employee;
     /**
      * Creates new form Insert_Employee
      */
-    public Register_New_Employee(java.awt.Frame parent, boolean modal) {
+    public Register_And_Edit_Employee(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setBackground(new Color(0,0,0,0));
     }
+    
+    public Register_And_Edit_Employee(java.awt.Dialog owner, boolean modal, Employee employee) {
+        super(owner, modal);
+        initComponents();
+        
+        this.setBackground(new java.awt.Color(0,0,0,0));
+        jLabelBackground.setBackground(new java.awt.Color(0,0,0,0));
+       
+        
+        this.employee = employee;
+        
+        title.setText("Editar funcionário");
+        eName.setText(employee.getName());
+        eCPF.setText(employee.getCpf());
+        eSalary.setText(employee.getSalary().toString().replace('.', ','));
+        eEmail.setText(employee.getEmail());
+        ePhone.setText(employee.getPhone());
+        eOccupation.setText(employee.getOccupation());
+        eCity.setText(employee.getAddress().getCity());
+        eState.setText(employee.getAddress().getState());
+        eAddress.setText(employee.getAddress().getStreet());
+        eNeighborhood.setText(employee.getAddress().getNeighborhood());
+        eNumber.setText(employee.getAddress().getNumber());
+         
+    }
+
     public void clearFields() {
         Utils.clearFields(panelPersonalData);
         Utils.clearFields(panelFunctionalData);
@@ -52,7 +80,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         bnt_save = new javax.swing.JLabel();
         btn_clear = new javax.swing.JLabel();
         btn_cancel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         panelPersonalData = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -89,7 +117,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         eAccessLevel = new javax.swing.JComboBox<>();
         eAdmissionDate = new javax.swing.JFormattedTextField();
         eSalary = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(573, 551));
@@ -97,7 +125,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bnt_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
-        bnt_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bnt_save.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bnt_save.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bnt_saveMouseClicked(evt);
@@ -112,7 +140,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         getContentPane().add(bnt_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 560, -1, 30));
 
         btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png"))); // NOI18N
-        btn_clear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_clear.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_clear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_clearMouseClicked(evt);
@@ -127,7 +155,7 @@ public class Register_New_Employee extends javax.swing.JDialog {
         getContentPane().add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 560, -1, -1));
 
         btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png"))); // NOI18N
-        btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_cancelMouseClicked(evt);
@@ -141,11 +169,11 @@ public class Register_New_Employee extends javax.swing.JDialog {
         });
         getContentPane().add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 560, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cadastro de Funcionário");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 610, 40));
+        title.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        title.setForeground(new java.awt.Color(0, 0, 51));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Cadastro de Funcionário");
+        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 610, 40));
 
         panelPersonalData.setBackground(new java.awt.Color(0, 0, 51));
         panelPersonalData.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DADOS PESSOAIS", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 12), new java.awt.Color(108, 81, 233))); // NOI18N
@@ -477,8 +505,8 @@ public class Register_New_Employee extends javax.swing.JDialog {
 
         getContentPane().add(panelFunctionalData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 580, 138));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tela_cadastro_funcionario_dark.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 632, -1));
+        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tela_cadastro_funcionario_dark.png"))); // NOI18N
+        getContentPane().add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 632, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -593,8 +621,6 @@ public class Register_New_Employee extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField ePhone;
     private javax.swing.JFormattedTextField eSalary;
     private javax.swing.JTextField eState;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -612,7 +638,17 @@ public class Register_New_Employee extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabelBackground;
     private javax.swing.JPanel panelFunctionalData;
     private javax.swing.JPanel panelPersonalData;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
+
+    private void setAllComboBoxRenderer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void subscribeDataChangeListener(Home aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
