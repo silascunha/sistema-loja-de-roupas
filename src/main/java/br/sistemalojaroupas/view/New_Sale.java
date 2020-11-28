@@ -30,6 +30,10 @@ public class New_Sale extends javax.swing.JFrame {
         initComponents();
         sale = new Sale();
     }
+
+    public Sale getSale() {
+        return sale;
+    }
     
     private void clearProductFields() {
         txt_Code.setText("");
@@ -260,24 +264,7 @@ public class New_Sale extends javax.swing.JFrame {
         table_ShoppingCart.setForeground(new java.awt.Color(0, 0, 51));
         table_ShoppingCart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Produto", "Tamanho", "Cor", "Preço", "Quantidade", "Subtotal"
@@ -298,8 +285,8 @@ public class New_Sale extends javax.swing.JFrame {
             table_ShoppingCart.getColumnModel().getColumn(0).setMinWidth(40);
             table_ShoppingCart.getColumnModel().getColumn(0).setPreferredWidth(80);
             table_ShoppingCart.getColumnModel().getColumn(0).setMaxWidth(150);
-            table_ShoppingCart.getColumnModel().getColumn(2).setMinWidth(20);
-            table_ShoppingCart.getColumnModel().getColumn(2).setPreferredWidth(60);
+            table_ShoppingCart.getColumnModel().getColumn(2).setMinWidth(30);
+            table_ShoppingCart.getColumnModel().getColumn(2).setPreferredWidth(80);
             table_ShoppingCart.getColumnModel().getColumn(2).setMaxWidth(100);
             table_ShoppingCart.getColumnModel().getColumn(3).setMinWidth(50);
             table_ShoppingCart.getColumnModel().getColumn(3).setPreferredWidth(100);
@@ -399,7 +386,13 @@ public class New_Sale extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_addToCartActionPerformed
 
     private void btn_paymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paymentActionPerformed
-    new Payment().setVisible(true);
+        if (sale.getItems().size() > 0) {
+            new Payment(this).setVisible(true);
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Deve haver pelo menos um produto adicionado "
+                    + "à lista antes de prosseguir para o pagamento.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_paymentActionPerformed
 
     /**

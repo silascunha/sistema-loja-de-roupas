@@ -7,6 +7,7 @@ package br.sistemalojaroupas.view.util;
 
 import br.sistemalojaroupas.model.entities.TableContract;
 import java.awt.Component;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import javax.swing.JComboBox;
@@ -22,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Utils {
     
-    public static void updateTable(List<? extends TableContract> objList, JTable table) {
+    public static void updateTable(Collection<? extends TableContract> objList, JTable table) {
         DefaultTableModel dtm = (DefaultTableModel) table.getModel();
         dtm.setRowCount(0);
         objList.forEach(obj -> {
@@ -30,13 +31,13 @@ public class Utils {
         });
     }
     
-    public static void updateTable(Set<? extends TableContract> objList, JTable table) {
-        DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-        dtm.setRowCount(0);
-        objList.forEach(obj -> {
-            dtm.addRow(obj.tableRowModel());
-        });
-    }
+//    public static void updateTable(Set<? extends TableContract> objList, JTable table) {
+//        DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+//        dtm.setRowCount(0);
+//        objList.forEach(obj -> {
+//            dtm.addRow(obj.tableRowModel());
+//        });
+//    }
     
     public static void updateComboBox(List<?> list, JComboBox cb) {
         cb.removeAllItems();

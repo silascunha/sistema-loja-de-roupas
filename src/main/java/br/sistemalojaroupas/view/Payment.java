@@ -13,15 +13,22 @@ import java.awt.Color;
  */
 public class Payment extends javax.swing.JFrame {
 
+    private New_Sale saleWindow;
     /**
      * Creates new form Payment1
      */
-    public Payment() {
+    public Payment(New_Sale saleWindow) {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
         jPanel1.setBackground(new Color(0,0,0,0));
+        
+        this.saleWindow = saleWindow;
     }
 
+    public New_Sale getSaleWindow() {
+        return saleWindow;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,10 +40,10 @@ public class Payment extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btDebit = new javax.swing.JButton();
+        btCredit = new javax.swing.JButton();
+        btCreditAndMoney = new javax.swing.JButton();
+        btMoney = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -51,53 +58,53 @@ public class Payment extends javax.swing.JFrame {
         jLabel2.setText("Forma de Pagamento");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 310, 30));
 
-        jButton1.setBackground(new java.awt.Color(108, 81, 233));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Débito");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btDebit.setBackground(new java.awt.Color(108, 81, 233));
+        btDebit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btDebit.setForeground(new java.awt.Color(255, 255, 255));
+        btDebit.setText("Débito");
+        btDebit.setBorderPainted(false);
+        btDebit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btDebitActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 200, 50));
+        jPanel1.add(btDebit, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 200, 50));
 
-        jButton2.setBackground(new java.awt.Color(108, 81, 233));
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Crédito");
-        jButton2.setBorderPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btCredit.setBackground(new java.awt.Color(108, 81, 233));
+        btCredit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btCredit.setForeground(new java.awt.Color(255, 255, 255));
+        btCredit.setText("Crédito");
+        btCredit.setBorderPainted(false);
+        btCredit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btCreditActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 200, 50));
+        jPanel1.add(btCredit, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 200, 50));
 
-        jButton3.setBackground(new java.awt.Color(108, 81, 233));
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Dinheiro + Crédito");
-        jButton3.setBorderPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btCreditAndMoney.setBackground(new java.awt.Color(108, 81, 233));
+        btCreditAndMoney.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btCreditAndMoney.setForeground(new java.awt.Color(255, 255, 255));
+        btCreditAndMoney.setText("Dinheiro + Crédito");
+        btCreditAndMoney.setBorderPainted(false);
+        btCreditAndMoney.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btCreditAndMoneyActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 200, 50));
+        jPanel1.add(btCreditAndMoney, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 200, 50));
 
-        jButton4.setBackground(new java.awt.Color(108, 81, 233));
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Dinheiro");
-        jButton4.setBorderPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btMoney.setBackground(new java.awt.Color(108, 81, 233));
+        btMoney.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btMoney.setForeground(new java.awt.Color(255, 255, 255));
+        btMoney.setText("Dinheiro");
+        btMoney.setBorderPainted(false);
+        btMoney.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btMoneyActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 200, 50));
+        jPanel1.add(btMoney, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 200, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/close.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,71 +142,36 @@ public class Payment extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMoneyActionPerformed
         this.dispose();
         new Payment_Money(this, true).setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btMoneyActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       this.dispose();
+    private void btDebitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDebitActionPerformed
+        this.dispose();
         new Payment_Debit(this, true).setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btDebitActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btCreditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreditActionPerformed
         this.dispose();
         new Payment_Credit(this, true).setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btCreditActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btCreditAndMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreditAndMoneyActionPerformed
         this.dispose();
         new Payment_MoneyAndCredit(this, true).setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btCreditAndMoneyActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Payment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Payment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Payment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Payment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Payment().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btCredit;
+    private javax.swing.JButton btCreditAndMoney;
+    private javax.swing.JButton btDebit;
+    private javax.swing.JButton btMoney;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

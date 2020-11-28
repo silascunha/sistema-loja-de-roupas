@@ -5,6 +5,7 @@
  */
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.model.entities.Sale;
 import java.awt.Color;
 
 /**
@@ -13,6 +14,7 @@ import java.awt.Color;
  */
 public class Payment_Debit extends javax.swing.JDialog {
 
+    private Sale sale;
     /**
      * Creates new form Payment_Debit
      */
@@ -21,6 +23,7 @@ public class Payment_Debit extends javax.swing.JDialog {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
         jPanel1.setBackground(new Color(0,0,0,0));
+        sale = ((New_Sale)parent).getSale();
     }
 
     /**

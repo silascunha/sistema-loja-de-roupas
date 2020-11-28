@@ -5,6 +5,7 @@
  */
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.model.entities.Sale;
 import java.awt.Color;
 
 /**
@@ -13,6 +14,7 @@ import java.awt.Color;
  */
 public class Payment_Credit extends javax.swing.JDialog {
 
+    private Sale sale;
     /**
      * Creates new form Payment_Money
      */
