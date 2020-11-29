@@ -223,7 +223,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("CPF:");
         jLabel23.setOpaque(true);
-        panelPersonalData.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 80, 30));
+        panelPersonalData.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 80, 30));
 
         jLabel24.setBackground(new java.awt.Color(59, 44, 150));
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -231,7 +231,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("Data Nasc.:");
         jLabel24.setOpaque(true);
-        panelPersonalData.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 80, 30));
+        panelPersonalData.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 80, 30));
 
         jLabel25.setBackground(new java.awt.Color(59, 44, 150));
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -287,7 +287,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         eName.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         eName.setCaretColor(new java.awt.Color(255, 255, 255));
         eName.setOpaque(false);
-        panelPersonalData.add(eName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 270, 30));
+        panelPersonalData.add(eName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 260, 30));
 
         eEmail.setBackground(new java.awt.Color(0, 0, 0));
         eEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -300,7 +300,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
                 eEmailActionPerformed(evt);
             }
         });
-        panelPersonalData.add(eEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 270, 30));
+        panelPersonalData.add(eEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 260, 30));
 
         eStreet.setBackground(new java.awt.Color(0, 0, 0));
         eStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -355,7 +355,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         eCPF.setCaretColor(new java.awt.Color(255, 255, 255));
         eCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eCPF.setOpaque(false);
-        panelPersonalData.add(eCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 100, 30));
+        panelPersonalData.add(eCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 110, 30));
 
         eBirthDate.setBackground(new java.awt.Color(0, 0, 0));
         eBirthDate.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -373,7 +373,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
                 eBirthDateActionPerformed(evt);
             }
         });
-        panelPersonalData.add(eBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 100, 30));
+        panelPersonalData.add(eBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 110, 30));
 
         ePhone.setBackground(new java.awt.Color(0, 0, 0));
         ePhone.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -524,6 +524,14 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     }//GEN-LAST:event_eEmailActionPerformed
 
     private void bnt_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseClicked
+        boolean hasEmptyField = !Utils.isAllFieldsFilled(panelPersonalData) && !Utils
+                .isAllFieldsFilled(panelFunctionalData);
+        
+        if (hasEmptyField) {
+            JOptionPane.showMessageDialog(null, "Você deve preencher todos os campos.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         if(employee == null) {
             
             employee = instantiateEmployee(new Employee());
