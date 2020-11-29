@@ -36,7 +36,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     public Home() {
         
         initComponents();  
-               
+        
         panelsCardLayout = (CardLayout) CollectionCard.getLayout();
         
         //adicionando todos os panels que funcionam como botões no menu principal

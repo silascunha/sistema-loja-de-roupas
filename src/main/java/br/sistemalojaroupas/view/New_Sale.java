@@ -37,7 +37,7 @@ public class New_Sale extends javax.swing.JFrame {
     
     private void clearProductFields() {
         txt_Code.setText("");
-        txt_amount.setText("0");
+        txt_amount.setText("1");
         txt_color.setText("");
         txt_price.setText("");
         txt_product.setText("");
@@ -257,8 +257,13 @@ public class New_Sale extends javax.swing.JFrame {
         txt_amount.setBorder(null);
         txt_amount.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         txt_amount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_amount.setText("0");
+        txt_amount.setText("1");
         txt_amount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_amount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_amountActionPerformed(evt);
+            }
+        });
         jPanel1.add(txt_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 80, 30));
 
         table_ShoppingCart.setForeground(new java.awt.Color(0, 0, 51));
@@ -347,7 +352,11 @@ public class New_Sale extends javax.swing.JFrame {
         product = ProductDao.findById(Utils.tryParseToLong(txt_Code.getText()));
         
         if(product != null) {
-
+            if(product.getQuantity() == 0) {
+                JOptionPane.showMessageDialog(this, "Este produto não possui quantidade em estoque.",
+                        "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             txt_product.setText(product.getDescription());
             txt_size.setText(product.getSize());
             txt_color.setText(product.getColor().getName());
@@ -394,6 +403,10 @@ public class New_Sale extends javax.swing.JFrame {
                     + "à lista antes de prosseguir para o pagamento.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_paymentActionPerformed
+
+    private void txt_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_amountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_amountActionPerformed
 
     /**
      * @param args the command line arguments
