@@ -9,15 +9,23 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+import org.dizitart.no2.IndexType;
+import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
+import org.dizitart.no2.objects.Index;
+import org.dizitart.no2.objects.Indices;
 
 /**
  *
  * @author silas
  */
+@Indices(
+    @Index(value = "cpf", type = IndexType.Unique)
+)
 public class Employee implements Serializable, TableContract {
     
     @Id 
+    private NitriteId id;
     private String cpf;
     private String name;
     private String email;
@@ -46,6 +54,10 @@ public class Employee implements Serializable, TableContract {
         this.address = address;
     }
 
+    public NitriteId getId() {
+        return id;
+    }
+    
     public String getCpf() {
         return cpf;
     }

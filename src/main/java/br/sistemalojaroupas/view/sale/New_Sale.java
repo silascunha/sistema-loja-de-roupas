@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.sistemalojaroupas.view;
+package br.sistemalojaroupas.view.sale;
 
 import br.sistemalojaroupas.model.dao.CustomerDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
@@ -106,9 +106,7 @@ public class New_Sale extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nova Venda");
-        setMaximumSize(new java.awt.Dimension(1260, 730));
         setMinimumSize(new java.awt.Dimension(1260, 730));
-        setPreferredSize(new java.awt.Dimension(1260, 730));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

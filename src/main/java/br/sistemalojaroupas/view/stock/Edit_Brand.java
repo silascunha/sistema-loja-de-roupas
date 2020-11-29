@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.sistemalojaroupas.view;
+package br.sistemalojaroupas.view.stock;
 
 import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.dao.BrandDao;
@@ -15,19 +15,23 @@ import javax.swing.JOptionPane;
  *
  * @author lukas
  */
-public class New_Brand extends javax.swing.JDialog {
-
+public class Edit_Brand extends javax.swing.JDialog {
+    
+    private Brand brand;
     /**
      * Creates new form New_Brand
      */
     private java.awt.Dialog parent;
     
-    public New_Brand(java.awt.Dialog parent, boolean modal) {
+    public Edit_Brand(java.awt.Dialog parent, boolean modal, Brand brand) {
         super(parent, modal);
         this.parent = parent;
+        this.brand = brand;
         initComponents();
         this.setBackground(new java.awt.Color(0,0,0,0));
         jPanel1.setBackground(new java.awt.Color(0,0,0,0));
+        
+        txtBrand.setText(brand.getName());
     }
 
     /**
@@ -41,7 +45,7 @@ public class New_Brand extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txt_newBrand = new javax.swing.JTextField();
+        txtBrand = new javax.swing.JTextField();
         btn_close = new javax.swing.JLabel();
         btn_save = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -53,16 +57,16 @@ public class New_Brand extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 51));
-        jLabel2.setText("Nova marca:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, 30));
+        jLabel2.setText("Editar marca:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 80, 30));
 
-        txt_newBrand.setBackground(new java.awt.Color(108, 81, 233));
-        txt_newBrand.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txt_newBrand.setForeground(new java.awt.Color(0, 0, 51));
-        txt_newBrand.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txt_newBrand.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 51)));
-        txt_newBrand.setOpaque(false);
-        jPanel1.add(txt_newBrand, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 110, 30));
+        txtBrand.setBackground(new java.awt.Color(108, 81, 233));
+        txtBrand.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtBrand.setForeground(new java.awt.Color(0, 0, 51));
+        txtBrand.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtBrand.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 51)));
+        txtBrand.setOpaque(false);
+        jPanel1.add(txtBrand, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 110, 30));
 
         btn_close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_X_Preto.png"))); // NOI18N
@@ -98,27 +102,32 @@ public class New_Brand extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_closeMouseClicked
+        if (parent instanceof Register_And_Edit_Products) {
+                Utils.updateComboBox(BrandDao.findAll(),
+                        ((Register_And_Edit_Products)parent).getCbBrand());
+            }
         this.dispose();
     }//GEN-LAST:event_btn_closeMouseClicked
 
     private void btn_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_saveMouseClicked
         
-        if (!txt_newBrand.getText().equals("")){
-            Brand brand = new Brand(txt_newBrand.getText().toUpperCase());
+        if (!txtBrand.getText().equals("")){
             try {
-                BrandDao.insert(brand);
+                brand.setName(txtBrand.getText().toUpperCase());
+                BrandDao.update(brand);
                 
-                JOptionPane.showMessageDialog(null, "Marca salva!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Marca editada com sucesso!",
+                        "Atenção", JOptionPane.INFORMATION_MESSAGE);
                 if (parent instanceof Register_And_Edit_Products) {
                     Utils.updateComboBox(BrandDao.findAll(),
                             ((Register_And_Edit_Products)parent).getCbBrand());
                 }
                 
+                this.dispose();
             } catch (DBException e) {
-                JOptionPane.showMessageDialog(null, "Essa marca já está cadastrada.", 
-                        "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Essa marca já está cadastrada.", "Erro",
+                        JOptionPane.ERROR_MESSAGE);
             }
-            this.dispose();
         }
         else {
             JOptionPane.showMessageDialog(null, "Você deve preencher o campo para salvar.", "Atenção",
@@ -143,6 +152,6 @@ public class New_Brand extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txt_newBrand;
+    private javax.swing.JTextField txtBrand;
     // End of variables declaration//GEN-END:variables
 }

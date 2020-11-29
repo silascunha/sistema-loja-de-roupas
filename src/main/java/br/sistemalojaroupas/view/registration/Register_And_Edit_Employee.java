@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.sistemalojaroupas.view;
+package br.sistemalojaroupas.view.registration;
 
 import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.entities.Address;
@@ -12,8 +12,11 @@ import br.sistemalojaroupas.model.services.CepService;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,6 +35,8 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setBackground(new Color(0,0,0,0));
+        
+        address = new Address();
     }
     
     public Register_And_Edit_Employee(java.awt.Frame owner, boolean modal, Employee employee) {
@@ -52,7 +57,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         eOccupation.setText(employee.getOccupation());
         eCity.setText(address.getCity());
         eState.setText(address.getState());
-        eAddress.setText(address.getStreet());
+        eStreet.setText(address.getStreet());
         eNeighborhood.setText(address.getNeighborhood());
         eNumber.setText(address.getNumber());
         eBirthDate.setText(employee.getFormattedBirthDate());
@@ -80,7 +85,11 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
-        
+        address.setCep(eCEP.getText());
+        address.setCity(eCity.getText());
+        address.setNeighborhood(eNeighborhood.getText());
+        address.setState(eState.getText());
+        address.setStreet(eStreet.getText());
         address.setNumber(eNumber.getText());
         employee.setAddress(address);
         employee.setOccupation(eOccupation.getText());
@@ -113,21 +122,18 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         jLabel30 = new javax.swing.JLabel();
         eName = new javax.swing.JTextField();
         eEmail = new javax.swing.JTextField();
-        eAddress = new javax.swing.JTextField();
+        eStreet = new javax.swing.JTextField();
         eNeighborhood = new javax.swing.JTextField();
         eCEP = new javax.swing.JTextField();
         eCity = new javax.swing.JTextField();
         eCPF = new javax.swing.JFormattedTextField();
         eBirthDate = new javax.swing.JFormattedTextField();
         ePhone = new javax.swing.JFormattedTextField();
-        jLabel31 = new javax.swing.JLabel();
-        eCell = new javax.swing.JFormattedTextField();
         jLabel32 = new javax.swing.JLabel();
         eState = new javax.swing.JTextField();
-        jLabel33 = new javax.swing.JLabel();
-        eComplement = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         eNumber = new javax.swing.JTextField();
+        btnSearchCEP = new javax.swing.JButton();
         panelFunctionalData = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
@@ -265,7 +271,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel29.setText("CEP:");
         jLabel29.setOpaque(true);
-        panelPersonalData.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 80, 30));
+        panelPersonalData.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 40, 30));
 
         jLabel30.setBackground(new java.awt.Color(59, 44, 150));
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -296,13 +302,13 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         });
         panelPersonalData.add(eEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 270, 30));
 
-        eAddress.setBackground(new java.awt.Color(0, 0, 0));
-        eAddress.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eAddress.setForeground(new java.awt.Color(255, 255, 255));
-        eAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        eAddress.setCaretColor(new java.awt.Color(255, 255, 255));
-        eAddress.setOpaque(false);
-        panelPersonalData.add(eAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 160, 30));
+        eStreet.setBackground(new java.awt.Color(0, 0, 0));
+        eStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        eStreet.setForeground(new java.awt.Color(255, 255, 255));
+        eStreet.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        eStreet.setCaretColor(new java.awt.Color(255, 255, 255));
+        eStreet.setOpaque(false);
+        panelPersonalData.add(eStreet, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 350, 30));
 
         eNeighborhood.setBackground(new java.awt.Color(0, 0, 0));
         eNeighborhood.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -318,12 +324,17 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         eCEP.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         eCEP.setCaretColor(new java.awt.Color(255, 255, 255));
         eCEP.setOpaque(false);
+        eCEP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eCEPActionPerformed(evt);
+            }
+        });
         eCEP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 eCEPKeyReleased(evt);
             }
         });
-        panelPersonalData.add(eCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 100, 30));
+        panelPersonalData.add(eCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 80, 30));
 
         eCity.setBackground(new java.awt.Color(0, 0, 0));
         eCity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -368,7 +379,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         ePhone.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         ePhone.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            ePhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            ePhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -376,27 +387,6 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         ePhone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ePhone.setOpaque(false);
         panelPersonalData.add(ePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 100, 30));
-
-        jLabel31.setBackground(new java.awt.Color(59, 44, 150));
-        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel31.setText("Celular:");
-        jLabel31.setOpaque(true);
-        panelPersonalData.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 50, 30));
-
-        eCell.setBackground(new java.awt.Color(0, 0, 0));
-        eCell.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        eCell.setForeground(new java.awt.Color(255, 255, 255));
-        try {
-            eCell.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        eCell.setCaretColor(new java.awt.Color(255, 255, 255));
-        eCell.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eCell.setOpaque(false);
-        panelPersonalData.add(eCell, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 100, 30));
 
         jLabel32.setBackground(new java.awt.Color(59, 44, 150));
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -414,29 +404,13 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         eState.setOpaque(false);
         panelPersonalData.add(eState, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 50, 30));
 
-        jLabel33.setBackground(new java.awt.Color(59, 44, 150));
-        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setText("Comp.:");
-        jLabel33.setOpaque(true);
-        panelPersonalData.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 80, 30));
-
-        eComplement.setBackground(new java.awt.Color(0, 0, 0));
-        eComplement.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eComplement.setForeground(new java.awt.Color(255, 255, 255));
-        eComplement.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        eComplement.setCaretColor(new java.awt.Color(255, 255, 255));
-        eComplement.setOpaque(false);
-        panelPersonalData.add(eComplement, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 100, 30));
-
         jLabel34.setBackground(new java.awt.Color(59, 44, 150));
         jLabel34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setText("N°:");
         jLabel34.setOpaque(true);
-        panelPersonalData.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 30, 30));
+        panelPersonalData.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 30, 30));
 
         eNumber.setBackground(new java.awt.Color(0, 0, 0));
         eNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -444,7 +418,16 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         eNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         eNumber.setCaretColor(new java.awt.Color(255, 255, 255));
         eNumber.setOpaque(false);
-        panelPersonalData.add(eNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 60, 30));
+        panelPersonalData.add(eNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 70, 30));
+
+        btnSearchCEP.setBackground(new java.awt.Color(108, 81, 233));
+        btnSearchCEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_12px.png"))); // NOI18N
+        btnSearchCEP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchCEPActionPerformed(evt);
+            }
+        });
+        panelPersonalData.add(btnSearchCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 30, 30));
 
         getContentPane().add(panelPersonalData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 580, 300));
 
@@ -542,10 +525,8 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
 
     private void bnt_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseClicked
         if(employee == null) {
-
-            employee = new Employee();
             
-            employee = instantiateEmployee(employee);
+            employee = instantiateEmployee(new Employee());
 
             EmployeeDao.insert(employee);
             
@@ -606,31 +587,41 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
 
     private void eCEPKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eCEPKeyReleased
         if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnSearchCEPActionPerformed(null);
+        }
+    }//GEN-LAST:event_eCEPKeyReleased
+
+    private void btnSearchCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCEPActionPerformed
+        try {
             String cep = eCEP.getText();
             
             address = CepService.findAddress(cep);
             
             eCity.setText(address.getCity());
             eState.setText(address.getState());
-            eAddress.setText(address.getStreet());
+            eStreet.setText(address.getStreet());
             eNeighborhood.setText(address.getNeighborhood());
-        }
-    }//GEN-LAST:event_eCEPKeyReleased
+        } catch (IllegalArgumentException | IOException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        } 
+    }//GEN-LAST:event_btnSearchCEPActionPerformed
+
+    private void eCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eCEPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eCEPActionPerformed
       
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bnt_save;
+    private javax.swing.JButton btnSearchCEP;
     private javax.swing.JLabel btn_cancel;
     private javax.swing.JLabel btn_clear;
     private javax.swing.JComboBox<String> eAccessLevel;
-    private javax.swing.JTextField eAddress;
     private javax.swing.JFormattedTextField eAdmissionDate;
     private javax.swing.JFormattedTextField eBirthDate;
     private javax.swing.JTextField eCEP;
     private javax.swing.JFormattedTextField eCPF;
-    private javax.swing.JFormattedTextField eCell;
     private javax.swing.JTextField eCity;
-    private javax.swing.JTextField eComplement;
     private javax.swing.JTextField eEmail;
     private javax.swing.JTextField eName;
     private javax.swing.JTextField eNeighborhood;
@@ -639,6 +630,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField ePhone;
     private javax.swing.JFormattedTextField eSalary;
     private javax.swing.JTextField eState;
+    private javax.swing.JTextField eStreet;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -648,9 +640,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
@@ -662,8 +652,5 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 
-    private void setAllComboBoxRenderer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

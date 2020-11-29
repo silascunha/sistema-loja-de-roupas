@@ -1,15 +1,17 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * To change this tobjlate file, choose Tools | Tobjlates
+ * and open the tobjlate in the editor.
  */
 package br.sistemalojaroupas.model.dao;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.entities.Customer;
 import java.util.List;
 import org.dizitart.no2.FindOptions;
 import org.dizitart.no2.SortOrder;
+import org.dizitart.no2.exceptions.NitriteException;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 
@@ -19,42 +21,52 @@ import org.dizitart.no2.objects.filters.ObjectFilters;
  */
 public class CustomerDao {
 
-    private static ObjectRepository<Customer> repClient;
+    private static ObjectRepository<Customer> repCustomer;
 
     static {
-        repClient = DB.getDB().getRepository(Customer.class);
+        repCustomer = DB.getDB().getRepository(Customer.class);
     }
 
     public static void insert(Customer obj) {
-        repClient.insert(obj);
-
+        try {
+            repCustomer.insert(obj);
+        } catch (NitriteException e) {
+            throw new DBException("Já existe um cliente com este CPF no sistema.");
+        }
     }
 
     public static void update(Customer obj) {
-        repClient.update(obj);
+        Customer temp = repCustomer.find(ObjectFilters.eq("cpf", obj.getName()))
+                .firstOrDefault();
+        
+        if (obj.equals(temp) || temp == null) {
+            repCustomer.update(obj);          
+        }
+        else {
+            throw new DBException("Já existe um cliente com este CPF no sistema.");
+        }
     }
 
     public static List<Customer> findAll() {
         FindOptions fo = FindOptions.sort("name", SortOrder.Ascending);
-        List<Customer> listClient = repClient.find(fo).toList();
+        List<Customer> listClient = repCustomer.find(fo).toList();
         return listClient;
 
     }
 
     public static Customer findByCpf(String cpf) {
-        Customer emp = repClient.find(ObjectFilters.eq("cpf", cpf)).firstOrDefault();
-        return emp;
-
+        Customer obj = repCustomer.find(ObjectFilters.eq("cpf", cpf)).firstOrDefault();
+        return obj;
     }
 
-    public static void remove(Customer emp) {
-        repClient.remove(emp);
+    public static void remove(Customer obj) {
+        repCustomer.remove(obj);
     }
 
     public static List<Customer> search(String searchClient) {
         String str = searchClient.toUpperCase();
 
-        List<Customer> list = repClient.find(ObjectFilters.or(
+        List<Customer> list = repCustomer.find(ObjectFilters.or(
                 ObjectFilters.regex("name", str),
                 ObjectFilters.eq("cpf", str)),
                 FindOptions.sort("name", SortOrder.Ascending))

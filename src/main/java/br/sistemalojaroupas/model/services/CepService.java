@@ -11,6 +11,7 @@ package br.sistemalojaroupas.model.services;
  */
 import br.sistemalojaroupas.model.entities.Address;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,7 +27,7 @@ public class CepService {
     private final static String SERVICE_URL = "https://brasilapi.com.br/api/cep/v1/";
     private static HttpURLConnection connection;
     
-    public static Address findAddress(String cep) {
+    public static Address findAddress(String cep) throws IOException {
         try {
             connection = (HttpURLConnection) new URL(SERVICE_URL + cep).openConnection();
             connection.setRequestMethod("GET");
@@ -45,8 +46,10 @@ public class CepService {
             
         }
         catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            throw new IOException(e.getMessage());
+        }
+        catch (IllegalStateException | JsonSyntaxException e) {
+            throw new IOException("Digite um CEP para poder pesquisar.");
         }
     }
 }

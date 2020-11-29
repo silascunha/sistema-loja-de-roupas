@@ -7,15 +7,23 @@ package br.sistemalojaroupas.model.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
+import org.dizitart.no2.IndexType;
+import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
+import org.dizitart.no2.objects.Index;
+import org.dizitart.no2.objects.Indices;
 
 /**
  *
  * @author vfdes
  */
+@Indices(
+    @Index(value = "cpf", type = IndexType.Unique)
+)
 public class Customer implements Serializable, TableContract {
 
     @Id
+    private NitriteId id;
     private String cpf;
     private String name;
     private String email;
@@ -32,6 +40,10 @@ public class Customer implements Serializable, TableContract {
         this.phone = celular;
     }
 
+    public NitriteId getId() {
+        return id;
+    }
+    
     public String getCpf() {
         return cpf;
     }

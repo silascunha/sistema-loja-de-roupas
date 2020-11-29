@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.sistemalojaroupas.view;
+package br.sistemalojaroupas.view.registration;
 
 import br.sistemalojaroupas.model.dao.CustomerDao;
 import br.sistemalojaroupas.model.entities.Customer;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -29,15 +28,15 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         this.setBackground(new Color(0, 0, 0, 0));
         pnl_Background.setBackground(new Color(0, 0, 0, 0));
     }
-    
-    public Register_And_Edit_Customer(java.awt.Dialog owner, boolean modal, Customer customer) {
+
+    public Register_And_Edit_Customer(java.awt.Frame owner, boolean modal, Customer customer) {
         super(owner, modal);
         initComponents();
-        
-        this.setBackground(new java.awt.Color(0,0,0,0));
-        
+
+        this.setBackground(new java.awt.Color(0, 0, 0, 0));
+
         this.customer = customer;
-        
+
         title.setText("Editar cliente");
         cName.setText(customer.getName());
         cCPF.setText(customer.getCpf());
@@ -51,18 +50,16 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         cCell.setText("");
         cName.setText("");
     }
-    
-    
-       private Customer instantiateCustomer(Customer customer) {
-        
+
+    private Customer instantiateCustomer(Customer customer) {
+
         customer.setName(cName.getText());
         customer.setEmail(cEmail.getText());
         customer.setCpf(cCPF.getText());
-        customer.setPhone(cCell.getText());        
+        customer.setPhone(cCell.getText());
 
         return customer;
-    
-       }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -231,34 +228,31 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_CancelcMouseClicked
 
     private void btn_SavecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SavecMouseClicked
-         
-   
-         if (Utils.isAllFieldsFilled(pnl_Background)) {
-            
+
+        if (Utils.isAllFieldsFilled(pnl_Background)) {
+
             if (customer == null) {
-                
-                customer = instantiateCustomer(new Customer ());
-                
+
+                customer = instantiateCustomer(new Customer());
+
                 CustomerDao.insert(customer);
                 JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!",
-                    "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                        "Atenção", JOptionPane.INFORMATION_MESSAGE);
 
                 Utils.clearFields(pnl_Background);
                 customer = null;
-            }
-            else {
+            } else {
                 instantiateCustomer(customer);
                 CustomerDao.update(customer);
                 JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!",
-                    "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                        "Atenção", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
             }
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Você deve preencher todos os campos.",
                     "Erro", JOptionPane.ERROR_MESSAGE);
         }
-   
+
     }//GEN-LAST:event_btn_SavecMouseClicked
 
     private void btn_CancelcMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelcMouseEntered
@@ -351,6 +345,4 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 
-
-    
 }

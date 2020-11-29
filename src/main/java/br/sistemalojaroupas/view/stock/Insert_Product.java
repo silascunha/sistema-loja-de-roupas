@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.sistemalojaroupas.view;
+package br.sistemalojaroupas.view.stock;
 
 
 import br.sistemalojaroupas.view.util.ComboBoxRenderer;

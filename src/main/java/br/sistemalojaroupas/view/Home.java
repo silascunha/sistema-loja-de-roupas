@@ -1,5 +1,9 @@
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.view.registration.Register_And_Edit_Employee;
+import br.sistemalojaroupas.view.registration.Register_And_Edit_Customer;
+import br.sistemalojaroupas.view.stock.Register_And_Edit_Products;
+import br.sistemalojaroupas.view.sale.New_Sale;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.CustomerDao;
 import br.sistemalojaroupas.model.dao.EmployeeDao;
