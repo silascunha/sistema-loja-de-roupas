@@ -1165,6 +1165,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             }
         });
         tableSales.setGridColor(new java.awt.Color(204, 204, 204));
+        tableSales.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(tableSales);
         if (tableSales.getColumnModel().getColumnCount() > 0) {
             tableSales.getColumnModel().getColumn(0).setMinWidth(50);
@@ -1654,6 +1655,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             }
         });
         table_Employees.setGridColor(new java.awt.Color(204, 204, 204));
+        table_Employees.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         Table_Employees.setViewportView(table_Employees);
         if (table_Employees.getColumnModel().getColumnCount() > 0) {
             table_Employees.getColumnModel().getColumn(0).setMinWidth(0);
@@ -1760,6 +1762,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             }
         });
         tableCustomers.setGridColor(new java.awt.Color(204, 204, 204));
+        tableCustomers.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(tableCustomers);
 
         Card_Customers.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 214, 960, 350));

@@ -26,19 +26,21 @@ public class New_Sale extends javax.swing.JFrame {
     private Sale sale;
     private SaleItem item;
     private boolean nextSale = true;
+    private boolean hasProduct = false;
     private Customer customer;
-    
+
     /**
      * Creates new form testeVENDAS
      */
     public New_Sale() {
         initComponents();
+        btnDeleteProduct.setVisible(false);
     }
 
     public Sale getSale() {
         return sale;
     }
-    
+
     private void clearProductFields() {
         txt_Code.setText("");
         txt_quantity.setText("1");
@@ -48,17 +50,19 @@ public class New_Sale extends javax.swing.JFrame {
         txt_size.setText("");
         txt_brand.setText("");
     }
-    
+
     public void finishSale() {
         DefaultTableModel dtm = (DefaultTableModel) table_ShoppingCart.getModel();
         dtm.setRowCount(0);
-        
+
         SaleService.confirmSale(sale);
         txt_SalesTotal.setText("R$ 0,00");
         txt_CPF.setValue("");
         txt_name.setText("");
         customer = null;
         nextSale = true;
+        hasProduct = false;
+        btnDeleteProduct.setVisible(false);
     }
 
     /**
@@ -102,6 +106,7 @@ public class New_Sale extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         btn_addToCart = new javax.swing.JButton();
         btn_payment = new javax.swing.JButton();
+        btnDeleteProduct = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -132,6 +137,11 @@ public class New_Sale extends javax.swing.JFrame {
         btn_cancellation.setForeground(new java.awt.Color(255, 255, 255));
         btn_cancellation.setText("Cancelar Venda");
         btn_cancellation.setBorderPainted(false);
+        btn_cancellation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancellationActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_cancellation, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 560, 220, 50));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -306,6 +316,8 @@ public class New_Sale extends javax.swing.JFrame {
         });
         table_ShoppingCart.setGridColor(new java.awt.Color(204, 204, 204));
         table_ShoppingCart.setSelectionBackground(new java.awt.Color(0, 0, 51));
+        table_ShoppingCart.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        table_ShoppingCart.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(table_ShoppingCart);
         if (table_ShoppingCart.getColumnModel().getColumnCount() > 0) {
             table_ShoppingCart.getColumnModel().getColumn(0).setMinWidth(40);
@@ -363,6 +375,15 @@ public class New_Sale extends javax.swing.JFrame {
         });
         jPanel1.add(btn_payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 560, 220, 50));
 
+        btnDeleteProduct.setBackground(new java.awt.Color(246, 20, 20));
+        btnDeleteProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/trash_14px.png"))); // NOI18N
+        btnDeleteProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteProductActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDeleteProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 372, 30, 30));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background_VENDAS.png"))); // NOI18N
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -385,9 +406,9 @@ public class New_Sale extends javax.swing.JFrame {
 
     private void btn_searchCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchCodActionPerformed
         product = ProductDao.findById(Utils.tryParseToLong(txt_Code.getText()));
-        
-        if(product != null) {
-            if(product.getQuantity() == 0) {
+
+        if (product != null) {
+            if (product.getQuantity() == 0) {
                 JOptionPane.showMessageDialog(this, "Este produto não possui quantidade em estoque.",
                         "Atenção", JOptionPane.INFORMATION_MESSAGE);
                 return;
@@ -397,11 +418,10 @@ public class New_Sale extends javax.swing.JFrame {
             txt_color.setText(product.getColor().getName());
             txt_price.setText(String.format("R$ %.2f", product.getSalePrice()));
             txt_brand.setText(product.getBrand().getName());
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "Código inválido!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btn_searchCodActionPerformed
 
     private void btn_addToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addToCartActionPerformed
@@ -412,20 +432,24 @@ public class New_Sale extends javax.swing.JFrame {
         Integer quantity = Utils.tryParseToInt(txt_quantity.getText());
         if (quantity > 0 && product != null) {
             try {
+                if (!hasProduct) {
+                    hasProduct = true;
+                    btnDeleteProduct.setVisible(true);
+                }
+                
                 item = new SaleItem(product, quantity);
                 sale.addItem(item);
-                
+
                 Utils.updateTable(sale.getItems(), table_ShoppingCart);
-                
+
                 clearProductFields();
                 txt_SalesTotal.setText(String.format("R$ %.2f", sale.getTotal()));
-                
+
                 product = null;
             } catch (IllegalArgumentException e) {
                 JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(this,
                     "Você deve digitar um código de produto válido"
                     + " e a quantidade a ser vendida.",
@@ -435,10 +459,11 @@ public class New_Sale extends javax.swing.JFrame {
 
     private void btn_paymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paymentActionPerformed
         if (sale.getItems().size() > 0) {
-            if (customer != null) sale.setCustomer(customer);
+            if (customer != null) {
+                sale.setCustomer(customer);
+            }
             new Payment(this).setVisible(true);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "Deve haver pelo menos um produto adicionado "
                     + "à lista antes de prosseguir para o pagamento.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -454,6 +479,51 @@ public class New_Sale extends javax.swing.JFrame {
             txt_name.setText(customer.getName());
         }
     }//GEN-LAST:event_btn_searchCPFActionPerformed
+
+    private void btn_cancellationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancellationActionPerformed
+        if (nextSale) return;
+        int option = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja cancelar a venda?",
+                "Atenção!", JOptionPane.INFORMATION_MESSAGE);
+        
+        if (option != 0) return;
+        
+        DefaultTableModel dtm = (DefaultTableModel) table_ShoppingCart.getModel();
+        dtm.setRowCount(0);
+
+        clearProductFields();
+
+        txt_SalesTotal.setText("R$ 0,00");
+        txt_CPF.setValue("");
+        txt_name.setText("");
+        product = null;
+        customer = null;
+        nextSale = true;
+        hasProduct = false;
+        btnDeleteProduct.setVisible(false);
+    }//GEN-LAST:event_btn_cancellationActionPerformed
+
+    private void btnDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProductActionPerformed
+        int selectedRow = table_ShoppingCart.getSelectedRow();
+        
+        if (selectedRow > -1) {
+            DefaultTableModel dtm = (DefaultTableModel) table_ShoppingCart.getModel();
+            Long id = (Long) dtm.getValueAt(selectedRow, 0);
+            Product p = ProductDao.findById(id);
+            
+            int option = JOptionPane.showConfirmDialog(this, "Você tem certeza que quer remover o produto "
+                    + "\'" + p.getDescription() + "\'" + " da lista?", "Atenção!", JOptionPane.INFORMATION_MESSAGE);
+                    
+            if (option != 0) return;
+            
+            sale.getItems().removeIf(x -> x.getProduct().equals(p));
+            Utils.updateTable(sale.getItems(), table_ShoppingCart);
+            txt_SalesTotal.setText(String.format("R$ %.2f", sale.getTotal()));
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Você deve selecionar um produto para poder remover da lista.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDeleteProductActionPerformed
 
     /**
      * @param args the command line arguments
@@ -493,6 +563,7 @@ public class New_Sale extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JButton btnDeleteProduct;
     private javax.swing.JButton btn_addToCart;
     private javax.swing.JButton btn_cancellation;
     private javax.swing.JButton btn_payment;
