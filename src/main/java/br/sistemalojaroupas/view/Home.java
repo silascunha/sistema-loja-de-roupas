@@ -1131,33 +1131,33 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         tableSales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", "", null},
-                {"", "", null},
-                {"", "", null},
-                {"", "", null},
-                {"", "", null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {"", "", null, null, null},
+                {"", "", null, null, null},
+                {"", "", null, null, null},
+                {"", "", null, null, null},
+                {"", "", null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Código da Venda", "Total", "Data"
+                "Cód. da Venda", "Total", "Data", "Nome Cliente", "CPF Cliente"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1166,6 +1166,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         });
         tableSales.setGridColor(new java.awt.Color(204, 204, 204));
         jScrollPane2.setViewportView(tableSales);
+        if (tableSales.getColumnModel().getColumnCount() > 0) {
+            tableSales.getColumnModel().getColumn(0).setMinWidth(50);
+            tableSales.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tableSales.getColumnModel().getColumn(0).setMaxWidth(150);
+        }
 
         Card_Sales.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 214, 961, 342));
 

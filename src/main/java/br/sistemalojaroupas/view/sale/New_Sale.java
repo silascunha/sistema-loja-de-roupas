@@ -236,7 +236,6 @@ public class New_Sale extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txt_CPF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_CPF.setText("");
         txt_CPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(txt_CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 120, 30));
 
@@ -436,6 +435,7 @@ public class New_Sale extends javax.swing.JFrame {
 
     private void btn_paymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paymentActionPerformed
         if (sale.getItems().size() > 0) {
+            if (customer != null) sale.setCustomer(customer);
             new Payment(this).setVisible(true);
         }
         else {

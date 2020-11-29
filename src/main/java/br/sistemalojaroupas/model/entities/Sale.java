@@ -27,8 +27,8 @@ public class Sale implements Serializable, TableContract {
     
     private Set<SaleItem> items = new HashSet<>();
     
-    //private String employee;
-    //private String customer;
+    private Employee employee;
+    private Customer customer;
     
     private Date moment;
     
@@ -58,6 +58,22 @@ public class Sale implements Serializable, TableContract {
 
     public Date getMoment() {
         return moment;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
     
     public String getFormattedDate() {
@@ -108,7 +124,9 @@ public class Sale implements Serializable, TableContract {
         return new Object[]{
             getId(),
             String.format("%.2f", getTotal()),
-            getFormattedDate()
+            getFormattedDate(),
+            (customer == null) ? "N/A" : getCustomer().getName(),
+            (customer == null) ? "N/A" : getCustomer().getCpf()
         };
     }
     
