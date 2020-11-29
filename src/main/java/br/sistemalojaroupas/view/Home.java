@@ -2246,7 +2246,23 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_SearchProductsMouseExited
 
     private void btnEditCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditCustomerMouseClicked
-        // TODO add your handling code here:
+
+        int selectedRow = tableCustomers.getSelectedRow();
+
+        if (selectedRow > -1) {
+
+            DefaultTableModel dtm = (DefaultTableModel) tableCustomers.getModel();
+
+            String cpf = (String) dtm.getValueAt(selectedRow, 1);
+            Customer customer = CustomerDao.findByCpf(cpf);
+
+            Register_And_Edit_Customer dialog = new Register_And_Edit_Customer(null, true, customer);
+            dialog.setVisible(true);
+            Utils.updateTable(CustomerDao.findAll(), tableCustomers);
+        } else {
+            JOptionPane.showMessageDialog(null, "Você deve selecionar um cliente para poder editar.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }               
     }//GEN-LAST:event_btnEditCustomerMouseClicked
 
     private void btnEditCustomerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditCustomerMouseEntered
