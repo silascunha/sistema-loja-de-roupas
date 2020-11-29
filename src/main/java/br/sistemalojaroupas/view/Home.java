@@ -1409,27 +1409,27 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         table_Employees.setForeground(new java.awt.Color(0, 0, 51));
         table_Employees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Funcionários"
+                "CPF", "Funcionários"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1438,6 +1438,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         });
         table_Employees.setGridColor(new java.awt.Color(204, 204, 204));
         Table_Employees.setViewportView(table_Employees);
+        if (table_Employees.getColumnModel().getColumnCount() > 0) {
+            table_Employees.getColumnModel().getColumn(0).setMinWidth(0);
+            table_Employees.getColumnModel().getColumn(0).setPreferredWidth(0);
+            table_Employees.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         Panel_Employees.setBackground(new java.awt.Color(0, 0, 51));
         Panel_Employees.setForeground(new java.awt.Color(255, 255, 255));
