@@ -1,16 +1,18 @@
-
 package br.sistemalojaroupas.view;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.model.dao.ClientDao;
 import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.dao.SaleDao;
+import br.sistemalojaroupas.model.entities.Client;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.view.listeners.DataChangeListener;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -18,26 +20,25 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import static jdk.nashorn.internal.runtime.Debug.id;
 
 /**
  *
  * @author lukas
  */
 public class Home extends javax.swing.JFrame implements DataChangeListener {
-    
+
     Boolean bool = true;
     private List<JPanel> menuButtonsList = new ArrayList<>();
     private CardLayout panelsCardLayout;
     private JTable visibleTable;
-    
 
-    
     public Home() {
-        
-        initComponents();  
-               
+
+        initComponents();
+
         panelsCardLayout = (CardLayout) CollectionCard.getLayout();
-        
+
         //adicionando todos os panels que funcionam como botões no menu principal
         menuButtonsList.add(menu_home);
         menuButtonsList.add(menu_customers);
@@ -45,47 +46,51 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         menuButtonsList.add(menu_settings);
         menuButtonsList.add(menu_employees);
         menuButtonsList.add(menu_product);
-        
+
         setMenuButtonsColor(menu_home);
-        
+
         refreshHomeData();
     }
-    
+
     private void setMenuButtonsColor(JPanel pn1) {
-        
+
         pn1.setBackground(new Color(108, 81, 233));
-        
+
         menuButtonsList.forEach(pn2 -> {
-            if (!pn2.equals(pn1)) pn2.setBackground(new Color(0,0,51));
+            if (!pn2.equals(pn1)) {
+                pn2.setBackground(new Color(0, 0, 51));
+            }
         });
     }
-    
-    public void setDefaultColor(JPanel pnl){
+
+    public void setDefaultColor(JPanel pnl) {
         pnl.setBackground(new Color(98, 85, 158));
     }
-    
-    public void resetDefaultColor(JPanel pnl){
+
+    public void resetDefaultColor(JPanel pnl) {
         pnl.setBackground(new Color(108, 81, 233));
     }
-   
-    public void changePaneSize(JPanel pnl, Dimension dim){
+
+    public void changePaneSize(JPanel pnl, Dimension dim) {
         pnl.setPreferredSize(dim);
     }
-    
+
     @Override
     public void onDataChanged() {
-        if(visibleTable == table_Products) Utils.updateTable(ProductDao.findAll(), table_Products);
+        if (visibleTable == table_Products) {
+            Utils.updateTable(ProductDao.findAll(), table_Products);
+        }
     }
-    
+
     private void setVisibleTable(JTable table) {
         this.visibleTable = table;
     }
-    
+
     private void refreshHomeData() {
         txtTotalSales.setText(SaleDao.size().toString());
         txtFaturamentoValor.setText(String.format("R$ %.2f", SaleDao.revenues()));
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1676,6 +1681,15 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             }
         });
         Card_Customers.add(btn_Addc, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 174, -1, -1));
+
+        cSearchCustomer.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cSearchCustomerKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cSearchCustomerKeyReleased(evt);
+            }
+        });
         Card_Customers.add(cSearchCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 174, 622, 30));
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1788,10 +1802,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         // Close
         int op;
         op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if(op == 0){
+        if (op == 0) {
             DB.close();
             System.exit(0);
-        }        
+        }
     }//GEN-LAST:event_btn_CloseMouseClicked
 
     private void btn_MaxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MaxMouseEntered
@@ -1804,9 +1818,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
     private void btn_MaxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MaxMouseClicked
         // Max
-        if(this.getExtendedState() != Home.MAXIMIZED_BOTH){
+        if (this.getExtendedState() != Home.MAXIMIZED_BOTH) {
             this.setExtendedState(Home.MAXIMIZED_BOTH);
-        }else{
+        } else {
             this.setExtendedState(Home.NORMAL);
         }
     }//GEN-LAST:event_btn_MaxMouseClicked
@@ -1833,18 +1847,18 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_ShowHideMenuMouseExited
 
     private void btn_ShowHideMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ShowHideMenuMouseClicked
-        if(bool == true){
+        if (bool == true) {
             changePaneSize(pnl_HeaderMenu, new Dimension(70, pnl_HeaderMenu.getHeight()));
             changePaneSize(pnMenu, new Dimension(70, pnMenu.getHeight()));
             SwingUtilities.updateComponentTreeUI(this);
             bool = false;
-        }else{
+        } else {
             changePaneSize(pnl_HeaderMenu, new Dimension(200, pnl_HeaderMenu.getHeight()));
             changePaneSize(pnMenu, new Dimension(200, pnMenu.getHeight()));
             SwingUtilities.updateComponentTreeUI(this);
             bool = true;
         }
-        
+
     }//GEN-LAST:event_btn_ShowHideMenuMouseClicked
 
     private void btn_addProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseClicked
@@ -1855,47 +1869,46 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
     private void btn_removeProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseClicked
         int row = table_Products.getSelectedRow();
-        
+
         if (row > -1) {
             DefaultTableModel dtm = (DefaultTableModel) table_Products.getModel();
             Long id = (Long) dtm.getValueAt(row, 0);
-            
+
             int op;
             op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esse produto?",
                     "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-            if(op == 0){
+            if (op == 0) {
                 ProductDao.removeById(id);
                 Utils.updateTable(ProductDao.findAll(), table_Products);
-            } 
+            }
         }
     }//GEN-LAST:event_btn_removeProductMouseClicked
 
     private void btn_editProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editProductMouseClicked
         int selectedRow = table_Products.getSelectedRow();
-        
+
         if (selectedRow > -1) {
-            
+
             DefaultTableModel dtm = (DefaultTableModel) table_Products.getModel();
-            
+
             Long id = (Long) dtm.getValueAt(selectedRow, 0);
             Product p = ProductDao.findById(id);
-            
+
             Register_And_Edit_Products dialog = new Register_And_Edit_Products(null, true, p);
             dialog.subscribeDataChangeListener(this);
             dialog.setVisible(true);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Você deve selecionar um produto para poder editar.",
                     "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_editProductMouseClicked
 
     private void btnSaveEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveEmployeeMouseClicked
-       new Register_New_Employee(this, true).setVisible(true);
+        new Register_New_Employee(this, true).setVisible(true);
     }//GEN-LAST:event_btnSaveEmployeeMouseClicked
 
     private void btnEditEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditEmployeeMouseClicked
-       
+
     }//GEN-LAST:event_btnEditEmployeeMouseClicked
 
     private void btnDeleteEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeMouseClicked
@@ -1903,7 +1916,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btnDeleteEmployeeMouseClicked
 
     private void btn_NewSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NewSaleMouseClicked
-    new New_Sale().setVisible(true);
+        new New_Sale().setVisible(true);
     }//GEN-LAST:event_btn_NewSaleMouseClicked
 
     private void btn_SearchSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchSaleMouseClicked
@@ -1913,22 +1926,22 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private void btn_DeleteSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeleteSaleMouseClicked
         int del;
         del = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir registro de venda?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if(del == 0){
-            } 
+        if (del == 0) {
+        }
     }//GEN-LAST:event_btn_DeleteSaleMouseClicked
 
     private void menu_saleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_saleMouseClicked
         panelsCardLayout.show(CollectionCard, "cardSales");
         setMenuButtonsColor(menu_sale);
-        
+
         setVisibleTable(tableSales);
         Utils.updateTable(SaleDao.findAll(), tableSales);
     }//GEN-LAST:event_menu_saleMouseClicked
-  
+
     private void menu_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_homeMouseClicked
         panelsCardLayout.show(CollectionCard, "cardHome");
         setMenuButtonsColor(menu_home);
-        
+
         setVisibleTable(null);
         refreshHomeData();
     }//GEN-LAST:event_menu_homeMouseClicked
@@ -1936,7 +1949,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private void menu_productMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_productMouseClicked
         panelsCardLayout.show(CollectionCard, "cardProducts");
         setMenuButtonsColor(menu_product);
-        
+
         setVisibleTable(table_Products);
         Utils.updateTable(ProductDao.findAll(), table_Products);
     }//GEN-LAST:event_menu_productMouseClicked
@@ -1944,16 +1957,18 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private void menu_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_employeesMouseClicked
         panelsCardLayout.show(CollectionCard, "cardEmployees");
         setMenuButtonsColor(menu_employees);
-        
+
         setVisibleTable(table_Employees);
         Utils.updateTable(EmployeeDao.findAll(), table_Employees);
     }//GEN-LAST:event_menu_employeesMouseClicked
 
     private void menu_customersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_customersMouseClicked
+
         panelsCardLayout.show(CollectionCard, "cardCustomers");
         setMenuButtonsColor(menu_customers);
-        
+
         setVisibleTable(tableCustomers);
+        Utils.updateTable(ClientDao.findAll(), tableCustomers);
     }//GEN-LAST:event_menu_customersMouseClicked
 
     private void menu_settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_settingsMouseClicked
@@ -1973,12 +1988,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
     private void btn_editProductMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editProductMouseEntered
         // Trocar para o ícone escuro
-        btn_editProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_EditarEscuro.png"))); 
+        btn_editProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_EditarEscuro.png")));
     }//GEN-LAST:event_btn_editProductMouseEntered
 
     private void btn_editProductMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editProductMouseExited
         // Voltar para o ícone original
-        btn_editProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_Editar.png"))); 
+        btn_editProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_Editar.png")));
     }//GEN-LAST:event_btn_editProductMouseExited
 
     private void btn_removeProductMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseEntered
@@ -1992,14 +2007,27 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_removeProductMouseExited
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        if(!DB.isClosed()) DB.close();
+        if (!DB.isClosed())
+            DB.close();
     }//GEN-LAST:event_formWindowClosed
 
     private void btn_DeletecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeletecMouseClicked
-         int ex;
-        ex = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir registro de venda?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if(ex == 0){
+
+        int linha = tableCustomers.getSelectedRow();
+
+        if (linha > -1) {
+
+            DefaultTableModel dtm = (DefaultTableModel) tableCustomers.getModel();
+            String id = (String) dtm.getValueAt(linha, 1);
+            Client v = ClientDao.findByCpf(id);
+
+            int ex;
+            ex = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir registro de venda?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (ex == 0) {
+                ClientDao.remove(v);
+                Utils.updateTable(ClientDao.findAll(), tableCustomers);
             }
+        }
     }//GEN-LAST:event_btn_DeletecMouseClicked
 
     private void btn_AddcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AddcMouseClicked
@@ -2013,51 +2041,51 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_txtProductsSearchFieldKeyPressed
 
     private void btn_NewSaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NewSaleMouseEntered
-       btn_NewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png")));
+        btn_NewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png")));
     }//GEN-LAST:event_btn_NewSaleMouseEntered
 
     private void btn_NewSaleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NewSaleMouseExited
-       btn_NewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarClaro.png")));
+        btn_NewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarClaro.png")));
     }//GEN-LAST:event_btn_NewSaleMouseExited
 
     private void btn_DeleteSaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeleteSaleMouseEntered
-       btn_DeleteSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png")));
+        btn_DeleteSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png")));
     }//GEN-LAST:event_btn_DeleteSaleMouseEntered
 
     private void btn_DeleteSaleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeleteSaleMouseExited
-       btn_DeleteSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluirClaro.png")));
+        btn_DeleteSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluirClaro.png")));
     }//GEN-LAST:event_btn_DeleteSaleMouseExited
 
     private void btn_SearchSaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchSaleMouseEntered
-       btn_SearchSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png")));
+        btn_SearchSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png")));
     }//GEN-LAST:event_btn_SearchSaleMouseEntered
 
     private void btn_SearchSaleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchSaleMouseExited
-       btn_SearchSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
+        btn_SearchSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
     }//GEN-LAST:event_btn_SearchSaleMouseExited
 
     private void btnSaveEmployeeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveEmployeeMouseEntered
-       btnSaveEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png")));
+        btnSaveEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarEscuro.png")));
     }//GEN-LAST:event_btnSaveEmployeeMouseEntered
 
     private void btnSaveEmployeeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveEmployeeMouseExited
-       btnSaveEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarClaro.png")));
+        btnSaveEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarClaro.png")));
     }//GEN-LAST:event_btnSaveEmployeeMouseExited
 
     private void btnEditEmployeeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditEmployeeMouseEntered
-       btnEditEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_EditarEscuro.png")));
+        btnEditEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_EditarEscuro.png")));
     }//GEN-LAST:event_btnEditEmployeeMouseEntered
 
     private void btnEditEmployeeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditEmployeeMouseExited
-       btnEditEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_Editar.png")));
+        btnEditEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_Editar.png")));
     }//GEN-LAST:event_btnEditEmployeeMouseExited
 
     private void btnDeleteEmployeeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeMouseEntered
-       btnDeleteEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png")));
+        btnDeleteEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir.png")));
     }//GEN-LAST:event_btnDeleteEmployeeMouseEntered
 
     private void btnDeleteEmployeeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeMouseExited
-       btnDeleteEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluirClaro.png")));
+        btnDeleteEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluirClaro.png")));
     }//GEN-LAST:event_btnDeleteEmployeeMouseExited
 
     private void btn_AddcMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AddcMouseEntered
@@ -2077,7 +2105,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_DeletecMouseExited
 
     private void btn_SearchcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchcMouseClicked
-        
+
+        String pesquisa = cSearchCustomer.getText();
+        Utils.updateTable(ClientDao.search(pesquisa), tableCustomers);
+
     }//GEN-LAST:event_btn_SearchcMouseClicked
 
     private void btn_SearchcMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchcMouseEntered
@@ -2085,7 +2116,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_SearchcMouseEntered
 
     private void btn_SearchcMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchcMouseExited
-       btn_Searchc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
+        btn_Searchc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
     }//GEN-LAST:event_btn_SearchcMouseExited
 
     private void novaVenda1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda1MouseEntered
@@ -2133,11 +2164,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_novaVenda2MouseEntered
 
     private void novaVenda2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda2MouseExited
-       novaVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVenda.png")));
+        novaVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVenda.png")));
     }//GEN-LAST:event_novaVenda2MouseExited
 
     private void novoProduto2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto2MouseEntered
-      novoProduto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProdutoAzul.png")));
+        novoProduto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProdutoAzul.png")));
     }//GEN-LAST:event_novoProduto2MouseEntered
 
     private void novoProduto2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto2MouseExited
@@ -2145,43 +2176,58 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_novoProduto2MouseExited
 
     private void novoCliente2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente2MouseEntered
-      novoCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoClienteAzul.png")));
+        novoCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoClienteAzul.png")));
     }//GEN-LAST:event_novoCliente2MouseEntered
 
     private void novoCliente2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente2MouseExited
-      novoCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoCliente.png")));
+        novoCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoCliente.png")));
     }//GEN-LAST:event_novoCliente2MouseExited
 
     private void buscarCliente2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente2MouseEntered
-      buscarCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarClienteAzul.png")));
+        buscarCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarClienteAzul.png")));
     }//GEN-LAST:event_buscarCliente2MouseEntered
 
     private void buscarCliente2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente2MouseExited
-      buscarCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarCliente.png")));
+        buscarCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarCliente.png")));
     }//GEN-LAST:event_buscarCliente2MouseExited
 
     private void buscarVenda2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda2MouseEntered
-      buscarVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVendaAzul.png"))); 
+        buscarVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVendaAzul.png")));
     }//GEN-LAST:event_buscarVenda2MouseEntered
 
     private void buscarVenda2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda2MouseExited
-      buscarVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png"))); 
+        buscarVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png")));
     }//GEN-LAST:event_buscarVenda2MouseExited
 
     private void btn_SearchProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseClicked
-       String str = txtProductsSearchField.getText();
+        String str = txtProductsSearchField.getText();
 
         Utils.updateTable(ProductDao.search(str), table_Products);
     }//GEN-LAST:event_btn_SearchProductsMouseClicked
 
     private void btn_SearchProductsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseEntered
-        btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png"))); 
+        btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png")));
     }//GEN-LAST:event_btn_SearchProductsMouseEntered
 
     private void btn_SearchProductsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseExited
-        btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png"))); 
+        btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
     }//GEN-LAST:event_btn_SearchProductsMouseExited
 
+    private void cSearchCustomerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cSearchCustomerKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            String str = cSearchCustomer.getText();
+
+            Utils.updateTable(ClientDao.search(str), tableCustomers);
+
+        }
+
+    }//GEN-LAST:event_cSearchCustomerKeyPressed
+
+    private void cSearchCustomerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cSearchCustomerKeyReleased
+
+    }//GEN-LAST:event_cSearchCustomerKeyReleased
 
     /**
      * @param args the command line arguments
@@ -2394,5 +2440,5 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel txtTotalSales;
     private javax.swing.JLabel txtVendas;
     // End of variables declaration//GEN-END:variables
-    
+
 }

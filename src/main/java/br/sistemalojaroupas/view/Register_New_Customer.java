@@ -5,6 +5,8 @@
  */
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.model.dao.ClientDao;
+import br.sistemalojaroupas.model.entities.Client;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -20,16 +22,18 @@ public class Register_New_Customer extends javax.swing.JDialog {
     public Register_New_Customer(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setBackground(new Color(0,0,0,0));
-        jPanel1.setBackground(new Color(0,0,0,0));
+        this.setBackground(new Color(0, 0, 0, 0));
+        jPanel1.setBackground(new Color(0, 0, 0, 0));
     }
-public void limpaCampos() {
-    cName.setText("");
-    cCPF.setText("");
-    cCell.setText("");
-    cEmail.setText("");
-    cName.requestFocus();
- }
+
+    public void limpaCampos() {
+        cEmail.setText("");
+        cCPF.setText("");
+        cCell.setText("");
+        cName.setText("");
+        cEmail.requestFocus();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,8 +48,8 @@ public void limpaCampos() {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        cName = new javax.swing.JTextField();
         cEmail = new javax.swing.JTextField();
+        cName = new javax.swing.JTextField();
         cCPF = new javax.swing.JFormattedTextField();
         cCell = new javax.swing.JFormattedTextField();
         btn_Savec = new javax.swing.JLabel();
@@ -93,17 +97,17 @@ public void limpaCampos() {
         jLabel4.setOpaque(true);
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 80, 30));
 
-        cName.setBackground(new java.awt.Color(0, 0, 51));
-        cName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cName.setForeground(new java.awt.Color(255, 255, 255));
-        cName.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        jPanel1.add(cName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 329, 30));
-
         cEmail.setBackground(new java.awt.Color(0, 0, 51));
         cEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cEmail.setForeground(new java.awt.Color(255, 255, 255));
         cEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        jPanel1.add(cEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 329, 30));
+        jPanel1.add(cEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 329, 30));
+
+        cName.setBackground(new java.awt.Color(0, 0, 51));
+        cName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cName.setForeground(new java.awt.Color(255, 255, 255));
+        cName.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        jPanel1.add(cName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 329, 30));
 
         cCPF.setBackground(new java.awt.Color(0, 0, 51));
         cCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -191,12 +195,22 @@ public void limpaCampos() {
     private void btn_CancelcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelcMouseClicked
         int op;
         op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if(op == 0){
-            this.dispose();}
+        if (op == 0) {
+            this.dispose();
+        }
     }//GEN-LAST:event_btn_CancelcMouseClicked
 
     private void btn_SavecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SavecMouseClicked
-        JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!","Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        Client client = new Client();
+        
+        client.setNome(cName.getText().toUpperCase());
+        client.setCpf(cCPF.getText());
+        client.setEmail(cEmail.getText());
+        client.setCelular(cCell.getText());
+        
+        ClientDao.insert(client);
+                
+        JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
         limpaCampos();
     }//GEN-LAST:event_btn_SavecMouseClicked
 
