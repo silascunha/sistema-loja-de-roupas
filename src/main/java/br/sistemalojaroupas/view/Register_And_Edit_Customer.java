@@ -7,14 +7,18 @@ package br.sistemalojaroupas.view;
 
 import br.sistemalojaroupas.model.dao.CustomerDao;
 import br.sistemalojaroupas.model.entities.Customer;
+import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author Mariana
  */
 public class Register_And_Edit_Customer extends javax.swing.JDialog {
+
+    private Customer customer;
 
     /**
      * Creates new form New_Customer
@@ -23,7 +27,22 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setBackground(new Color(0, 0, 0, 0));
-        jPanel1.setBackground(new Color(0, 0, 0, 0));
+        pnl_Background.setBackground(new Color(0, 0, 0, 0));
+    }
+    
+    public Register_And_Edit_Customer(java.awt.Dialog owner, boolean modal, Customer customer) {
+        super(owner, modal);
+        initComponents();
+        
+        this.setBackground(new java.awt.Color(0,0,0,0));
+        
+        this.customer = customer;
+        
+        title.setText("Editar cliente");
+        cName.setText(customer.getName());
+        cCPF.setText(customer.getCpf());
+        cEmail.setText(customer.getEmail());
+        cCell.setText(customer.getPhone());
     }
 
     public void limpaCampos() {
@@ -33,6 +52,17 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         cName.setText("");
         cEmail.requestFocus();
     }
+    
+    
+       private Customer instantiateCustomer(Customer customer) {
+        
+        customer.setName(cName.getText());
+        customer.setEmail(cEmail.getText());
+        customer.setCpf(cCPF.getText());
+        customer.setPhone(cCell.getText());        
+        return customer;
+    
+       }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,7 +73,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnl_Background = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -55,15 +85,15 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         btn_Savec = new javax.swing.JLabel();
         btn_Cancelc = new javax.swing.JLabel();
         btn_Cleanc = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setOpaque(false);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnl_Background.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_Background.setOpaque(false);
+        pnl_Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(59, 44, 150));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -71,7 +101,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Nome:");
         jLabel1.setOpaque(true);
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, 30));
+        pnl_Background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, 30));
 
         jLabel2.setBackground(new java.awt.Color(59, 44, 150));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -79,7 +109,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CPF:");
         jLabel2.setOpaque(true);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 80, 30));
+        pnl_Background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 80, 30));
 
         jLabel3.setBackground(new java.awt.Color(59, 44, 150));
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -87,7 +117,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("E-mail:");
         jLabel3.setOpaque(true);
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 80, 30));
+        pnl_Background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 80, 30));
 
         jLabel4.setBackground(new java.awt.Color(59, 44, 150));
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -95,19 +125,19 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Celular:");
         jLabel4.setOpaque(true);
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 80, 30));
+        pnl_Background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 80, 30));
 
         cEmail.setBackground(new java.awt.Color(0, 0, 51));
         cEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cEmail.setForeground(new java.awt.Color(255, 255, 255));
         cEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        jPanel1.add(cEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 329, 30));
+        pnl_Background.add(cEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 329, 30));
 
         cName.setBackground(new java.awt.Color(0, 0, 51));
         cName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cName.setForeground(new java.awt.Color(255, 255, 255));
         cName.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        jPanel1.add(cName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 329, 30));
+        pnl_Background.add(cName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 329, 30));
 
         cCPF.setBackground(new java.awt.Color(0, 0, 51));
         cCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -118,7 +148,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         cCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(cCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 180, 30));
+        pnl_Background.add(cCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 180, 30));
 
         cCell.setBackground(new java.awt.Color(0, 0, 51));
         cCell.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -129,7 +159,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         cCell.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(cCell, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 180, 30));
+        pnl_Background.add(cCell, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 180, 30));
 
         btn_Savec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
         btn_Savec.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -143,7 +173,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
                 btn_SavecMouseExited(evt);
             }
         });
-        jPanel1.add(btn_Savec, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
+        pnl_Background.add(btn_Savec, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
 
         btn_Cancelc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png"))); // NOI18N
         btn_Cancelc.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -157,7 +187,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
                 btn_CancelcMouseExited(evt);
             }
         });
-        jPanel1.add(btn_Cancelc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
+        pnl_Background.add(btn_Cancelc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
 
         btn_Cleanc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png"))); // NOI18N
         btn_Cleanc.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -171,18 +201,18 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
                 btn_CleancMouseExited(evt);
             }
         });
-        jPanel1.add(btn_Cleanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
+        pnl_Background.add(btn_Cleanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 51));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("CADASTRAR NOVO CLIENTE");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 40));
+        title.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        title.setForeground(new java.awt.Color(0, 0, 51));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("CADASTRAR NOVO CLIENTE");
+        pnl_Background.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 40));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tela_cadastro_dark.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        pnl_Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(pnl_Background, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
@@ -201,17 +231,34 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_CancelcMouseClicked
 
     private void btn_SavecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SavecMouseClicked
-        Customer client = new Customer();
-        
-        client.setName(cName.getText().toUpperCase());
-        client.setCpf(cCPF.getText());
-        client.setEmail(cEmail.getText());
-        client.setPhone(cCell.getText());
-        
-        CustomerDao.insert(client);
+         
+   
+         if (Utils.isAllFieldsFilled(pnl_Background)) {
+            
+            if (customer == null) {
                 
-        JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
-        limpaCampos();
+                customer = instantiateCustomer(new Customer ());
+                
+                CustomerDao.insert(customer);
+                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!",
+                    "Atenção", JOptionPane.INFORMATION_MESSAGE);
+
+                Utils.clearFields(pnl_Background);
+                customer = null;
+            }
+            else {
+                instantiateCustomer(customer);
+                CustomerDao.update(customer);
+                JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!",
+                    "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Você deve preencher todos os campos.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+   
     }//GEN-LAST:event_btn_SavecMouseClicked
 
     private void btn_CancelcMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelcMouseEntered
@@ -300,7 +347,10 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel pnl_Background;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
+
+
+    
 }
