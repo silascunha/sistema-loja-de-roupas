@@ -2,9 +2,11 @@
 package br.sistemalojaroupas.view;
 
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.model.dao.ClientDao;
 import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.dao.SaleDao;
+import br.sistemalojaroupas.model.entities.Client;
 import br.sistemalojaroupas.model.entities.Employee;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.view.listeners.DataChangeListener;
@@ -12,6 +14,7 @@ import br.sistemalojaroupas.view.util.Utils;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -1678,6 +1681,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             }
         });
         Card_Customers.add(btn_Addc, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 174, -1, -1));
+
+        cSearchCustomer.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cSearchCustomerKeyPressed(evt);
+            }
+        });
         Card_Customers.add(cSearchCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 174, 410, 30));
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1945,7 +1954,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         int del;
         del = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir registro de venda?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if(del == 0){
-            } 
+            
+        } 
     }//GEN-LAST:event_btn_DeleteSaleMouseClicked
 
     private void menu_saleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_saleMouseClicked
@@ -1985,6 +1995,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         setMenuButtonsColor(menu_customers);
         
         setVisibleTable(tableCustomers);
+        Utils.updateTable(ClientDao.findAll(), tableCustomers);
     }//GEN-LAST:event_menu_customersMouseClicked
 
     private void menu_settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_settingsMouseClicked
@@ -2027,10 +2038,21 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_formWindowClosed
 
     private void btn_DeletecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeletecMouseClicked
-         int ex;
-        ex = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir registro de venda?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if(ex == 0){
+        int linha = tableCustomers.getSelectedRow();
+
+        if (linha > -1) {
+
+            DefaultTableModel dtm = (DefaultTableModel) tableCustomers.getModel();
+            String id = (String) dtm.getValueAt(linha, 1);
+            Client v = ClientDao.findByCpf(id);
+
+            int ex;
+            ex = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir registro de venda?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (ex == 0) {
+                ClientDao.remove(v);
+                Utils.updateTable(ClientDao.findAll(), tableCustomers);
             }
+        }
     }//GEN-LAST:event_btn_DeletecMouseClicked
 
     private void btn_AddcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AddcMouseClicked
@@ -2108,7 +2130,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_DeletecMouseExited
 
     private void btn_SearchcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchcMouseClicked
-        
+        String str = cSearchCustomer.getText();
+
+        Utils.updateTable(ClientDao.search(str), tableCustomers);
     }//GEN-LAST:event_btn_SearchcMouseClicked
 
     private void btn_SearchcMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchcMouseEntered
@@ -2224,6 +2248,16 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private void btn_EditcMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EditcMouseExited
                btn_Editc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_Editar.png")));
     }//GEN-LAST:event_btn_EditcMouseExited
+
+    private void cSearchCustomerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cSearchCustomerKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            String str = cSearchCustomer.getText();
+
+            Utils.updateTable(ClientDao.search(str), tableCustomers);
+
+        }
+    }//GEN-LAST:event_cSearchCustomerKeyPressed
 
 
     /**
