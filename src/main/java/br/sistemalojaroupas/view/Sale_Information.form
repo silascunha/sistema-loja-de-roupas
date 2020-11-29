@@ -241,9 +241,10 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="10">
+                  <Table columnCount="8" rowCount="10">
                     <Column editable="false" title="C&#xf3;digo" type="java.lang.Object"/>
                     <Column editable="false" title="Produto" type="java.lang.Object"/>
+                    <Column editable="true" title="Marca" type="java.lang.Object"/>
                     <Column editable="false" title="Tamanho" type="java.lang.Object"/>
                     <Column editable="false" title="Cor" type="java.lang.Object"/>
                     <Column editable="false" title="Pre&#xe7;o Un." type="java.lang.Object"/>
@@ -253,6 +254,11 @@
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>

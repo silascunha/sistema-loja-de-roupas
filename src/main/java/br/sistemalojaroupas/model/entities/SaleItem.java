@@ -86,6 +86,7 @@ public class SaleItem implements Serializable, TableContract {
         return new Object[] {
             product.getId(),
             product.getDescription(),
+            product.getBrand(),
             product.getSize(),
             product.getColor().getName(),
             String.format("%.2f", product.getSalePrice()),

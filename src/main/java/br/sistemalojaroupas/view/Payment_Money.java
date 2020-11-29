@@ -16,6 +16,7 @@ import java.awt.Color;
  */
 public class Payment_Money extends javax.swing.JDialog {
 
+    private New_Sale saleWindow;
     private Sale sale;
     /**
      * Creates new form Payment_Money
@@ -25,7 +26,8 @@ public class Payment_Money extends javax.swing.JDialog {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
         jPanel1.setBackground(new Color(0,0,0,0));
-        sale = ((Payment)parent).getSaleWindow().getSale();
+        saleWindow = ((Payment)parent).getSaleWindow();
+        sale = saleWindow.getSale();
         
         txtSalePrice.setText(String.format("%.2f", sale.getTotal()));
     }
@@ -151,7 +153,7 @@ public class Payment_Money extends javax.swing.JDialog {
     }//GEN-LAST:event_txtAmountReceivedKeyReleased
 
     private void btConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmActionPerformed
-        SaleService.confirmSale(sale);
+        saleWindow.finishSale();
         this.dispose();
     }//GEN-LAST:event_btConfirmActionPerformed
 

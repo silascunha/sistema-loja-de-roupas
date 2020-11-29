@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 
 /**
  *
@@ -201,13 +200,13 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Marca:");
         jLabel6.setOpaque(true);
-        pnl_Background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 80, 30));
+        pnl_Background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 70, 30));
 
         cbSize.setBackground(new java.awt.Color(0, 0, 51));
         cbSize.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbSize.setForeground(new java.awt.Color(255, 255, 255));
-        cbSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "PP", "P", "M", "G", "GG" }));
-        pnl_Background.add(cbSize, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 120, 30));
+        cbSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "PP", "P", "M", "G", "GG", "XG", "XGG", "XGGG", "U", "1", "2", "3", "4", "5", "6", "7", "8", "10", "12", "14", "16", "32", "34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56", "58", "60" }));
+        pnl_Background.add(cbSize, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 140, 30));
 
         jLabel2.setBackground(new java.awt.Color(59, 44, 150));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -223,7 +222,7 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("P. de custo:");
         jLabel4.setOpaque(true);
-        pnl_Background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 100, 30));
+        pnl_Background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 90, 30));
 
         jLabel7.setBackground(new java.awt.Color(59, 44, 150));
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -231,7 +230,7 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("P. de venda:");
         jLabel7.setOpaque(true);
-        pnl_Background.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 110, 30));
+        pnl_Background.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 90, 30));
 
         jLabel5.setBackground(new java.awt.Color(59, 44, 150));
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -239,28 +238,28 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Qtd.:");
         jLabel5.setOpaque(true);
-        pnl_Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, 50, 30));
+        pnl_Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 50, 30));
 
         txt_salePrice.setBackground(new java.awt.Color(0, 0, 51));
         txt_salePrice.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         txt_salePrice.setForeground(new java.awt.Color(255, 255, 255));
         txt_salePrice.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         txt_salePrice.setOpaque(false);
-        pnl_Background.add(txt_salePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 90, 30));
+        pnl_Background.add(txt_salePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 100, 30));
 
         txt_costPrice.setBackground(new java.awt.Color(0, 0, 51));
         txt_costPrice.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         txt_costPrice.setForeground(new java.awt.Color(255, 255, 255));
         txt_costPrice.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         txt_costPrice.setOpaque(false);
-        pnl_Background.add(txt_costPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 90, 30));
+        pnl_Background.add(txt_costPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 100, 30));
 
         txt_quantity.setBackground(new java.awt.Color(0, 0, 51));
         txt_quantity.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         txt_quantity.setForeground(new java.awt.Color(255, 255, 255));
         txt_quantity.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         txt_quantity.setOpaque(false);
-        pnl_Background.add(txt_quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 70, 30));
+        pnl_Background.add(txt_quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 80, 30));
 
         bnt_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
         bnt_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -324,7 +323,7 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Tamanho:");
         jLabel10.setOpaque(true);
-        pnl_Background.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 80, 30));
+        pnl_Background.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 70, 30));
 
         btn_addCategory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_addCategory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais.png"))); // NOI18N
@@ -404,7 +403,7 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
                 btn_addBrandMouseExited(evt);
             }
         });
-        pnl_Background.add(btn_addBrand, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 30, 30));
+        pnl_Background.add(btn_addBrand, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 30, 30));
 
         btn_editBrand.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_editBrand.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit_19px.png"))); // NOI18N
@@ -420,13 +419,13 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
                 btn_editBrandMouseExited(evt);
             }
         });
-        pnl_Background.add(btn_editBrand, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 30, 30));
+        pnl_Background.add(btn_editBrand, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 30, 30));
 
         cbBrand.setBackground(new java.awt.Color(0, 0, 51));
         cbBrand.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbBrand.setForeground(new java.awt.Color(255, 255, 255));
         cbBrand.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "PP", "P", "M", "G", "GG" }));
-        pnl_Background.add(cbBrand, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 120, 30));
+        pnl_Background.add(cbBrand, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 140, 30));
 
         Background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tela_cadastro_dark.png"))); // NOI18N

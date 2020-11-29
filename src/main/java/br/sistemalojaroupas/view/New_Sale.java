@@ -5,12 +5,16 @@
  */
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.model.dao.CustomerDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.entities.Customer;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.entities.Sale;
 import br.sistemalojaroupas.model.entities.SaleItem;
+import br.sistemalojaroupas.model.services.SaleService;
 import br.sistemalojaroupas.view.util.Utils;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,14 +25,14 @@ public class New_Sale extends javax.swing.JFrame {
     private Product product;
     private Sale sale;
     private SaleItem item;
-    
+    private boolean nextSale = true;
+    private Customer customer;
     
     /**
      * Creates new form testeVENDAS
      */
     public New_Sale() {
         initComponents();
-        sale = new Sale();
     }
 
     public Sale getSale() {
@@ -37,11 +41,24 @@ public class New_Sale extends javax.swing.JFrame {
     
     private void clearProductFields() {
         txt_Code.setText("");
-        txt_amount.setText("1");
+        txt_quantity.setText("1");
         txt_color.setText("");
         txt_price.setText("");
         txt_product.setText("");
         txt_size.setText("");
+        txt_brand.setText("");
+    }
+    
+    public void finishSale() {
+        DefaultTableModel dtm = (DefaultTableModel) table_ShoppingCart.getModel();
+        dtm.setRowCount(0);
+        
+        SaleService.confirmSale(sale);
+        txt_SalesTotal.setText("R$ 0,00");
+        txt_CPF.setValue("");
+        txt_name.setText("");
+        customer = null;
+        nextSale = true;
     }
 
     /**
@@ -67,7 +84,7 @@ public class New_Sale extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txt_product = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txt_mark = new javax.swing.JTextField();
+        txt_brand = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txt_color = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -79,7 +96,7 @@ public class New_Sale extends javax.swing.JFrame {
         txt_SalesTotal = new javax.swing.JTextField();
         btn_searchCod = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        txt_amount = new javax.swing.JFormattedTextField();
+        txt_quantity = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_ShoppingCart = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
@@ -124,7 +141,6 @@ public class New_Sale extends javax.swing.JFrame {
 
         txt_name.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_name.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_name.setText("Lucas de Almeida Sarmento");
         txt_name.setBorder(null);
         jPanel1.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 280, 30));
 
@@ -151,6 +167,11 @@ public class New_Sale extends javax.swing.JFrame {
         btn_searchCPF.setForeground(new java.awt.Color(255, 255, 255));
         btn_searchCPF.setText("Pesquisar");
         btn_searchCPF.setBorderPainted(false);
+        btn_searchCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_searchCPFActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_searchCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 150, 30));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -171,11 +192,11 @@ public class New_Sale extends javax.swing.JFrame {
         jLabel8.setText("Marca :");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 70, 30));
 
-        txt_mark.setEditable(false);
-        txt_mark.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_mark.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_mark.setBorder(null);
-        jPanel1.add(txt_mark, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 280, 30));
+        txt_brand.setEditable(false);
+        txt_brand.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_brand.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_brand.setBorder(null);
+        jPanel1.add(txt_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 280, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,7 +235,7 @@ public class New_Sale extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txt_CPF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_CPF.setText("123.456.789-10");
+        txt_CPF.setText("");
         txt_CPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(txt_CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 120, 30));
 
@@ -254,17 +275,17 @@ public class New_Sale extends javax.swing.JFrame {
         jLabel13.setText("Total da Venda");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 530, 150, 40));
 
-        txt_amount.setBorder(null);
-        txt_amount.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        txt_amount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_amount.setText("1");
-        txt_amount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_amount.addActionListener(new java.awt.event.ActionListener() {
+        txt_quantity.setBorder(null);
+        txt_quantity.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        txt_quantity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_quantity.setText("1");
+        txt_quantity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_quantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_amountActionPerformed(evt);
+                txt_quantityActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 80, 30));
+        jPanel1.add(txt_quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 80, 30));
 
         table_ShoppingCart.setForeground(new java.awt.Color(0, 0, 51));
         table_ShoppingCart.setModel(new javax.swing.table.DefaultTableModel(
@@ -272,11 +293,11 @@ public class New_Sale extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Produto", "Tamanho", "Cor", "Preço", "Quantidade", "Subtotal"
+                "Código", "Produto", "Marca", "Tam.", "Cor", "Preço", "Quantidade", "Subtotal"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -292,19 +313,22 @@ public class New_Sale extends javax.swing.JFrame {
             table_ShoppingCart.getColumnModel().getColumn(0).setMaxWidth(150);
             table_ShoppingCart.getColumnModel().getColumn(2).setMinWidth(30);
             table_ShoppingCart.getColumnModel().getColumn(2).setPreferredWidth(80);
-            table_ShoppingCart.getColumnModel().getColumn(2).setMaxWidth(100);
-            table_ShoppingCart.getColumnModel().getColumn(3).setMinWidth(50);
-            table_ShoppingCart.getColumnModel().getColumn(3).setPreferredWidth(100);
-            table_ShoppingCart.getColumnModel().getColumn(3).setMaxWidth(200);
-            table_ShoppingCart.getColumnModel().getColumn(4).setMinWidth(40);
-            table_ShoppingCart.getColumnModel().getColumn(4).setPreferredWidth(60);
-            table_ShoppingCart.getColumnModel().getColumn(4).setMaxWidth(100);
-            table_ShoppingCart.getColumnModel().getColumn(5).setMinWidth(35);
-            table_ShoppingCart.getColumnModel().getColumn(5).setPreferredWidth(80);
-            table_ShoppingCart.getColumnModel().getColumn(5).setMaxWidth(150);
-            table_ShoppingCart.getColumnModel().getColumn(6).setMinWidth(50);
+            table_ShoppingCart.getColumnModel().getColumn(2).setMaxWidth(150);
+            table_ShoppingCart.getColumnModel().getColumn(3).setMinWidth(30);
+            table_ShoppingCart.getColumnModel().getColumn(3).setPreferredWidth(50);
+            table_ShoppingCart.getColumnModel().getColumn(3).setMaxWidth(100);
+            table_ShoppingCart.getColumnModel().getColumn(4).setMinWidth(50);
+            table_ShoppingCart.getColumnModel().getColumn(4).setPreferredWidth(100);
+            table_ShoppingCart.getColumnModel().getColumn(4).setMaxWidth(200);
+            table_ShoppingCart.getColumnModel().getColumn(5).setMinWidth(40);
+            table_ShoppingCart.getColumnModel().getColumn(5).setPreferredWidth(60);
+            table_ShoppingCart.getColumnModel().getColumn(5).setMaxWidth(100);
+            table_ShoppingCart.getColumnModel().getColumn(6).setMinWidth(35);
             table_ShoppingCart.getColumnModel().getColumn(6).setPreferredWidth(80);
-            table_ShoppingCart.getColumnModel().getColumn(6).setMaxWidth(100);
+            table_ShoppingCart.getColumnModel().getColumn(6).setMaxWidth(150);
+            table_ShoppingCart.getColumnModel().getColumn(7).setMinWidth(50);
+            table_ShoppingCart.getColumnModel().getColumn(7).setPreferredWidth(80);
+            table_ShoppingCart.getColumnModel().getColumn(7).setMaxWidth(100);
         }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 720, 330));
@@ -361,7 +385,7 @@ public class New_Sale extends javax.swing.JFrame {
             txt_size.setText(product.getSize());
             txt_color.setText(product.getColor().getName());
             txt_price.setText(String.format("R$ %.2f", product.getSalePrice()));
-            
+            txt_brand.setText(product.getBrand().getName());
         }
         else {
             JOptionPane.showMessageDialog(this, "Código inválido!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
@@ -370,10 +394,14 @@ public class New_Sale extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_searchCodActionPerformed
 
     private void btn_addToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addToCartActionPerformed
-        Integer amount = Utils.tryParseToInt(txt_amount.getText());
-        if (amount > 0 && product != null) {
+        if (nextSale) {
+            sale = new Sale();
+            nextSale = false;
+        }
+        Integer quantity = Utils.tryParseToInt(txt_quantity.getText());
+        if (quantity > 0 && product != null) {
             try {
-                item = new SaleItem(product, amount);
+                item = new SaleItem(product, quantity);
                 sale.addItem(item);
                 
                 Utils.updateTable(sale.getItems(), table_ShoppingCart);
@@ -404,9 +432,16 @@ public class New_Sale extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_paymentActionPerformed
 
-    private void txt_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_amountActionPerformed
+    private void txt_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_amountActionPerformed
+    }//GEN-LAST:event_txt_quantityActionPerformed
+
+    private void btn_searchCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchCPFActionPerformed
+        customer = CustomerDao.findByCpf(txt_CPF.getText());
+        if (customer != null) {
+            txt_name.setText(customer.getName());
+        }
+    }//GEN-LAST:event_btn_searchCPFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -471,12 +506,12 @@ public class New_Sale extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txt_CPF;
     private javax.swing.JFormattedTextField txt_Code;
     private javax.swing.JTextField txt_SalesTotal;
-    private javax.swing.JFormattedTextField txt_amount;
+    private javax.swing.JTextField txt_brand;
     private javax.swing.JTextField txt_color;
-    private javax.swing.JTextField txt_mark;
     private javax.swing.JTextField txt_name;
     private javax.swing.JTextField txt_price;
     private javax.swing.JTextField txt_product;
+    private javax.swing.JFormattedTextField txt_quantity;
     private javax.swing.JTextField txt_size;
     // End of variables declaration//GEN-END:variables
 }

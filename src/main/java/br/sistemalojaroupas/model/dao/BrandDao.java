@@ -37,16 +37,16 @@ public class BrandDao {
         }
     }
     
-    public static void update(Brand c) {
-        Brand temp = repBrand.find(ObjectFilters.eq("name", c.getName()))
+    public static void update(Brand brand) {
+        Brand temp = repBrand.find(ObjectFilters.eq("name", brand.getName()))
                 .firstOrDefault();
         
-        if (c.equals(temp) || temp == null) {
-            repBrand.update(c);
+        if (brand.equals(temp) || temp == null) {
+            repBrand.update(brand);
             
-            ProductDao.findAll().stream().filter(p -> p.getBrand().equals(c))
+            ProductDao.findAll().stream().filter(p -> p.getBrand().equals(brand))
                     .collect(Collectors.toList()).forEach(p -> {
-                        p.setBrand(c);
+                        p.setBrand(brand);
                         ProductDao.update(p);
                     });
             

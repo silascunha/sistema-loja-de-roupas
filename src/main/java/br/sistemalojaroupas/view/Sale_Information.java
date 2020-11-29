@@ -89,23 +89,23 @@ public class Sale_Information extends javax.swing.JFrame {
         SaleTable.setForeground(new java.awt.Color(0, 0, 0));
         SaleTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Produto", "Tamanho", "Cor", "Preço Un.", "Quantidade", "Subtotal"
+                "Código", "Produto", "Marca", "Tamanho", "Cor", "Preço Un.", "Quantidade", "Subtotal"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, true, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -116,12 +116,12 @@ public class Sale_Information extends javax.swing.JFrame {
         SaleTable.setSelectionBackground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setViewportView(SaleTable);
         if (SaleTable.getColumnModel().getColumnCount() > 0) {
-            SaleTable.getColumnModel().getColumn(5).setMinWidth(50);
-            SaleTable.getColumnModel().getColumn(5).setPreferredWidth(100);
-            SaleTable.getColumnModel().getColumn(5).setMaxWidth(150);
             SaleTable.getColumnModel().getColumn(6).setMinWidth(50);
             SaleTable.getColumnModel().getColumn(6).setPreferredWidth(100);
             SaleTable.getColumnModel().getColumn(6).setMaxWidth(150);
+            SaleTable.getColumnModel().getColumn(7).setMinWidth(50);
+            SaleTable.getColumnModel().getColumn(7).setPreferredWidth(100);
+            SaleTable.getColumnModel().getColumn(7).setMaxWidth(150);
         }
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

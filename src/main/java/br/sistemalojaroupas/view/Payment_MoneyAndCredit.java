@@ -6,7 +6,10 @@
 package br.sistemalojaroupas.view;
 
 import br.sistemalojaroupas.model.entities.Sale;
+import br.sistemalojaroupas.model.services.SaleService;
+import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -15,6 +18,9 @@ import java.awt.Color;
 public class Payment_MoneyAndCredit extends javax.swing.JDialog {
 
     private Sale sale;
+    private Double totalValue;
+    private Double moneyToReceive;
+    private New_Sale saleWindow;
     /**
      * Creates new form Payment_Money
      */
@@ -23,7 +29,10 @@ public class Payment_MoneyAndCredit extends javax.swing.JDialog {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
         jPanel1.setBackground(new Color(0,0,0,0));
-        sale = ((Payment)parent).getSaleWindow().getSale();
+        saleWindow = ((Payment)parent).getSaleWindow();
+        sale = saleWindow.getSale();
+        
+        txtSalePrice.setText(String.format("R$ %.2f", sale.getTotal()));
     }
 
     /**
@@ -38,22 +47,22 @@ public class Payment_MoneyAndCredit extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtChange = new javax.swing.JTextField();
+        txtSalePrice = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnContinue = new javax.swing.JButton();
+        btnFinish = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtRemainingValue = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtAmountReceived = new javax.swing.JFormattedTextField();
+        txtInstallments = new javax.swing.JFormattedTextField();
+        txtMoneyValue = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -71,12 +80,7 @@ public class Payment_MoneyAndCredit extends javax.swing.JDialog {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Valor recebido :");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 170, 30));
-
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("100,00");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 120, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 170, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -90,20 +94,20 @@ public class Payment_MoneyAndCredit extends javax.swing.JDialog {
         jLabel6.setText("Troco :");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 170, 30));
 
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setText("50,00");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtChange.setEditable(false);
+        txtChange.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtChange.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtChange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtChangeActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 120, 30));
+        jPanel1.add(txtChange, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 120, 30));
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("150,00");
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 120, 30));
+        txtSalePrice.setEditable(false);
+        txtSalePrice.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtSalePrice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(txtSalePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 120, 30));
 
         jButton1.setBackground(new java.awt.Color(192, 0, 0));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -117,19 +121,29 @@ public class Payment_MoneyAndCredit extends javax.swing.JDialog {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 150, 40));
 
-        jButton2.setBackground(new java.awt.Color(108, 81, 233));
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Continuar");
-        jButton2.setBorderPainted(false);
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 150, 40));
+        btnContinue.setBackground(new java.awt.Color(108, 81, 233));
+        btnContinue.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnContinue.setForeground(new java.awt.Color(255, 255, 255));
+        btnContinue.setText("Continuar");
+        btnContinue.setBorderPainted(false);
+        btnContinue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinueActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnContinue, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 150, 40));
 
-        jButton3.setBackground(new java.awt.Color(0, 176, 80));
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Finalizar Venda");
-        jButton3.setBorderPainted(false);
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 150, 40));
+        btnFinish.setBackground(new java.awt.Color(0, 176, 80));
+        btnFinish.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnFinish.setForeground(new java.awt.Color(255, 255, 255));
+        btnFinish.setText("Finalizar Venda");
+        btnFinish.setBorderPainted(false);
+        btnFinish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinishActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnFinish, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 150, 40));
 
         jSeparator1.setBackground(new java.awt.Color(0, 176, 240));
         jSeparator1.setForeground(new java.awt.Color(0, 176, 240));
@@ -148,10 +162,10 @@ public class Payment_MoneyAndCredit extends javax.swing.JDialog {
         jLabel8.setText("Valor restante :");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 170, 30));
 
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.setText("100,00");
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 120, 30));
+        txtRemainingValue.setEditable(false);
+        txtRemainingValue.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtRemainingValue.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(txtRemainingValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 120, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,21 +173,39 @@ public class Payment_MoneyAndCredit extends javax.swing.JDialog {
         jLabel9.setText("Quantidade de parcelas :");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 190, 30));
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.setText("3");
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 120, 30));
-
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Valor a ser cobrado :");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 170, 30));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 170, 30));
 
-        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField7.setText("50,00");
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 120, 30));
+        txtAmountReceived.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtAmountReceived.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtAmountReceived.setToolTipText("");
+        txtAmountReceived.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtAmountReceived.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAmountReceivedActionPerformed(evt);
+            }
+        });
+        txtAmountReceived.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAmountReceivedKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtAmountReceived, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 120, 30));
+
+        txtInstallments.setEditable(false);
+        txtInstallments.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        txtInstallments.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtInstallments.setText("1");
+        txtInstallments.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(txtInstallments, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 120, 30));
+
+        txtMoneyValue.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtMoneyValue.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMoneyValue.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(txtMoneyValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 120, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background_Pagamento_CreditoComDinheiro.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -188,14 +220,40 @@ public class Payment_MoneyAndCredit extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChangeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtChangeActionPerformed
+
+    private void txtAmountReceivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountReceivedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAmountReceivedActionPerformed
+
+    private void txtAmountReceivedKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAmountReceivedKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Double amountReceived = Utils.tryParseToDouble(txtAmountReceived.getText().replace(',', '.'));
+            moneyToReceive = Utils.tryParseToDouble(txtMoneyValue.getText().replace(',', '.'));
+            Double change = amountReceived - moneyToReceive;
+            
+            txtChange.setText(String.format("%.2f", change));
+        }
+    }//GEN-LAST:event_txtAmountReceivedKeyReleased
+
+    private void btnContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinueActionPerformed
+        totalValue = sale.getTotal() - moneyToReceive;
+        txtRemainingValue.setText(String.format("R$ %.2f", totalValue));
+        
+        txtInstallments.setEditable(true);
+    }//GEN-LAST:event_btnContinueActionPerformed
+
+    private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
+        saleWindow.finishSale();
+        this.dispose();
+    }//GEN-LAST:event_btnFinishActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnContinue;
+    private javax.swing.JButton btnFinish;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
@@ -207,11 +265,11 @@ public class Payment_MoneyAndCredit extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JFormattedTextField txtAmountReceived;
+    private javax.swing.JTextField txtChange;
+    private javax.swing.JFormattedTextField txtInstallments;
+    private javax.swing.JFormattedTextField txtMoneyValue;
+    private javax.swing.JTextField txtRemainingValue;
+    private javax.swing.JTextField txtSalePrice;
     // End of variables declaration//GEN-END:variables
 }

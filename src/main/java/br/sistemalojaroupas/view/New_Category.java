@@ -53,15 +53,20 @@ public class New_Category extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 51));
         jLabel2.setText("Nova categoria:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 110, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 100, 30));
 
         txtCategory.setBackground(new java.awt.Color(108, 81, 233));
         txtCategory.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtCategory.setForeground(new java.awt.Color(0, 0, 51));
-        txtCategory.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtCategory.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCategory.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 51)));
         txtCategory.setOpaque(false);
-        jPanel1.add(txtCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 35, 100, 30));
+        txtCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCategoryActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 110, 30));
 
         btn_close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_X_Preto.png"))); // NOI18N
@@ -153,6 +158,10 @@ public class New_Category extends javax.swing.JDialog {
                     JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btn_saveMouseClicked
+
+    private void txtCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCategoryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

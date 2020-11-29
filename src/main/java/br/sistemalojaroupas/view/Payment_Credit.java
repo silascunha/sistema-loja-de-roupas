@@ -15,6 +15,7 @@ import java.awt.Color;
 public class Payment_Credit extends javax.swing.JDialog {
 
     private Sale sale;
+    private New_Sale saleWindow;
     /**
      * Creates new form Payment_Money
      */
@@ -23,7 +24,8 @@ public class Payment_Credit extends javax.swing.JDialog {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
         jPanel1.setBackground(new Color(0,0,0,0));
-        sale = ((Payment)parent).getSaleWindow().getSale();
+        saleWindow = ((Payment)parent).getSaleWindow();
+        sale = saleWindow.getSale();
     }
 
     /**

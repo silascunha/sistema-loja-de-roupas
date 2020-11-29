@@ -59,7 +59,7 @@ public class New_Color extends javax.swing.JDialog {
         txt_newColor.setBackground(new java.awt.Color(108, 81, 233));
         txt_newColor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_newColor.setForeground(new java.awt.Color(0, 0, 51));
-        txt_newColor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txt_newColor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_newColor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 51)));
         txt_newColor.setOpaque(false);
         jPanel1.add(txt_newColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 120, 30));
