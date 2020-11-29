@@ -951,6 +951,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         novaVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVenda.png"))); // NOI18N
         novaVenda2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         novaVenda2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                novaVenda2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 novaVenda2MouseEntered(evt);
             }
@@ -966,6 +969,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         novoProduto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProduto.png"))); // NOI18N
         novoProduto2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                novoProduto2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 novoProduto2MouseEntered(evt);
             }
@@ -981,6 +987,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         novoCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoCliente.png"))); // NOI18N
         novoCliente2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                novoCliente2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 novoCliente2MouseEntered(evt);
             }
@@ -996,6 +1005,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         buscarCliente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarCliente.png"))); // NOI18N
         buscarCliente2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarCliente2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 buscarCliente2MouseEntered(evt);
             }
@@ -1011,6 +1023,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         buscarVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png"))); // NOI18N
         buscarVenda2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarVenda2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 buscarVenda2MouseEntered(evt);
             }
@@ -2266,7 +2281,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         } else {
             JOptionPane.showMessageDialog(null, "Você deve selecionar um cliente para poder editar.",
                     "Erro", JOptionPane.ERROR_MESSAGE);
-        }               
+        }
     }//GEN-LAST:event_btnEditCustomerMouseClicked
 
     private void btnEditCustomerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditCustomerMouseEntered
@@ -2286,6 +2301,28 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         }
     }//GEN-LAST:event_cSearchCustomerKeyPressed
+
+    private void novaVenda2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda2MouseClicked
+        new New_Sale().setVisible(true);
+    }//GEN-LAST:event_novaVenda2MouseClicked
+
+    private void novoProduto2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto2MouseClicked
+        menu_productMouseClicked(evt);
+        btn_addProductMouseClicked(evt);
+    }//GEN-LAST:event_novoProduto2MouseClicked
+
+    private void novoCliente2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente2MouseClicked
+        menu_customersMouseClicked(evt);
+        btnNewCustomerMouseClicked(evt);
+    }//GEN-LAST:event_novoCliente2MouseClicked
+
+    private void buscarCliente2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente2MouseClicked
+        menu_customersMouseClicked(evt);
+    }//GEN-LAST:event_buscarCliente2MouseClicked
+
+    private void buscarVenda2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda2MouseClicked
+        menu_saleMouseClicked(evt);
+    }//GEN-LAST:event_buscarVenda2MouseClicked
 
     /**
      * @param args the command line arguments

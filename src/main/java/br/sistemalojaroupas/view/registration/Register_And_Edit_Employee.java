@@ -73,7 +73,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     
     private Employee instantiateEmployee(Employee employee) {
         
-        employee.setName(eName.getText());
+        employee.setName(eName.getText().toUpperCase());
         employee.setEmail(eEmail.getText());
         employee.setCpf(eCPF.getText());
         employee.setPhone(ePhone.getText());

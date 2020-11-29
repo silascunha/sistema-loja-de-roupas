@@ -26,6 +26,8 @@ public class Payment_Debit extends javax.swing.JDialog {
         jPanel1.setBackground(new Color(0,0,0,0));
         saleWindow = ((Payment)parent).getSaleWindow();
         sale = saleWindow.getSale();
+        
+        txtSaleValue.setText(String.format("R$ %.2f", sale.getTotal()));
     }
 
     /**
@@ -40,8 +42,8 @@ public class Payment_Debit extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txtSaleValue = new javax.swing.JTextField();
+        btnFinish = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -62,17 +64,23 @@ public class Payment_Debit extends javax.swing.JDialog {
         jLabel5.setText("Valor da venda :");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 170, 30));
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("125,00");
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 120, 30));
+        txtSaleValue.setEditable(false);
+        txtSaleValue.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtSaleValue.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSaleValue.setText("125,00");
+        jPanel1.add(txtSaleValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 120, 30));
 
-        jButton2.setBackground(new java.awt.Color(0, 176, 80));
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Finalizar Venda");
-        jButton2.setBorderPainted(false);
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 150, 40));
+        btnFinish.setBackground(new java.awt.Color(0, 176, 80));
+        btnFinish.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnFinish.setForeground(new java.awt.Color(255, 255, 255));
+        btnFinish.setText("Finalizar Venda");
+        btnFinish.setBorderPainted(false);
+        btnFinish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinishActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnFinish, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 150, 40));
 
         jButton1.setBackground(new java.awt.Color(192, 0, 0));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -99,14 +107,19 @@ public class Payment_Debit extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
+        saleWindow.finishSale();
+        this.dispose();
+    }//GEN-LAST:event_btnFinishActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFinish;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtSaleValue;
     // End of variables declaration//GEN-END:variables
 }

@@ -53,7 +53,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
 
     private Customer instantiateCustomer(Customer customer) {
 
-        customer.setName(cName.getText());
+        customer.setName(cName.getText().toUpperCase());
         customer.setEmail(cEmail.getText());
         customer.setCpf(cCPF.getText());
         customer.setPhone(cCell.getText());
