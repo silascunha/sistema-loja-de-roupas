@@ -226,6 +226,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         btnNewEmployee = new javax.swing.JLabel();
         btnEditEmployee = new javax.swing.JLabel();
         btnDeleteEmployee = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jSeparator9 = new javax.swing.JSeparator();
+        jLabel37 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        Table_Employees = new javax.swing.JScrollPane();
+        table_Employees = new javax.swing.JTable();
         Panel_Employees = new javax.swing.JPanel();
         Name = new javax.swing.JLabel();
         txtEmployeeName = new javax.swing.JTextField();
@@ -255,11 +261,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Email = new javax.swing.JLabel();
         txtEmployeeEmail = new javax.swing.JTextField();
         txtEmployeeNeigh = new javax.swing.JTextField();
-        jLabel34 = new javax.swing.JLabel();
-        jSeparator9 = new javax.swing.JSeparator();
-        jLabel37 = new javax.swing.JLabel();
-        Table_Employees = new javax.swing.JScrollPane();
-        table_Employees = new javax.swing.JTable();
         Card_Customers = new javax.swing.JPanel();
         btnRemoveCustomer = new javax.swing.JLabel();
         btnSearchCustomer = new javax.swing.JLabel();
@@ -1342,6 +1343,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         CollectionCard.add(Card_Products, "cardProducts");
 
         Card_Employees.setBackground(new java.awt.Color(255, 255, 255));
+        Card_Employees.setForeground(new java.awt.Color(0, 0, 0));
         Card_Employees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnNewEmployee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1389,228 +1391,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         });
         Card_Employees.add(btnDeleteEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, 38));
 
-        Panel_Employees.setBackground(new java.awt.Color(255, 255, 255));
-
-        Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Name.setText("NOME");
-
-        txtEmployeeName.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        BirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        BirthDate.setText("DATA NASC.");
-
-        Address.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Address.setText("ENDEREÇO");
-
-        AdditionalAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        AdditionalAddress.setText("COMPLEMENTO");
-
-        Job.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Job.setText("CARGO");
-
-        CPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        CPF.setText("CPF");
-
-        Neighbourhood.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Neighbourhood.setText("BAIRRO");
-
-        txtEmployeeBirthDate.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeBirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        txtEmployeeCPF.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        State.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        State.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        State.setText("UF");
-
-        CEP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        CEP.setText("CEP");
-
-        HouseNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        HouseNumber.setText("Nº");
-
-        txtEmployeeCEP01.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeCEP01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        txtEmployeeCEP02.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeCEP02.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        CPFSeparator.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        CPFSeparator.setText("-");
-
-        txtEmployeeAddress.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        City.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        City.setText("CIDADE");
-
-        txtEmployeeAddAddress.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeAddAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        txtEmployeeCity.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeCity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        txtEmployeeState.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeState.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        txtEmployeeAddressNum.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeAddressNum.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        Phone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Phone.setText("TELEFONE");
-
-        txtEmployeeJob.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeJob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        txtEmployeePhone.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeePhone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Email.setText("E-MAIL");
-
-        txtEmployeeEmail.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        txtEmployeeNeigh.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeNeigh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout Panel_EmployeesLayout = new javax.swing.GroupLayout(Panel_Employees);
-        Panel_Employees.setLayout(Panel_EmployeesLayout);
-        Panel_EmployeesLayout.setHorizontalGroup(
-            Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addComponent(Name)
-                        .addGap(68, 68, 68)
-                        .addComponent(txtEmployeeName))
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addComponent(BirthDate)
-                        .addGap(32, 32, 32)
-                        .addComponent(txtEmployeeBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(CPF)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtEmployeeCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Job)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEmployeeJob))
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addComponent(Phone)
-                        .addGap(46, 46, 46)
-                        .addComponent(txtEmployeePhone, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
-                        .addComponent(Email)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEmployeeEmail))
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addComponent(CEP)
-                        .addGap(85, 85, 85)
-                        .addComponent(txtEmployeeCEP01, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(CPFSeparator)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtEmployeeCEP02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addComponent(Address)
-                        .addGap(40, 40, 40)
-                        .addComponent(txtEmployeeAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(HouseNumber)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEmployeeAddressNum))
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addComponent(AdditionalAddress)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtEmployeeAddAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Neighbourhood)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtEmployeeNeigh, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addComponent(City)
-                        .addGap(60, 60, 60)
-                        .addComponent(txtEmployeeCity, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(State, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtEmployeeState, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 233, Short.MAX_VALUE))
-        );
-        Panel_EmployeesLayout.setVerticalGroup(
-            Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(Name))
-                    .addComponent(txtEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmployeeBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeJob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BirthDate)
-                            .addComponent(CPF)
-                            .addComponent(Job))))
-                .addGap(31, 31, 31)
-                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmployeePhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Phone)
-                            .addComponent(Email))))
-                .addGap(18, 18, 18)
-                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmployeeCEP01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeCEP02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CEP)
-                            .addComponent(CPFSeparator))))
-                .addGap(18, 18, 18)
-                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmployeeAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeAddressNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Address)
-                            .addComponent(HouseNumber))))
-                .addGap(16, 16, 16)
-                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmployeeAddAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeNeigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AdditionalAddress)
-                            .addComponent(Neighbourhood))))
-                .addGap(18, 18, 18)
-                .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmployeeCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Panel_EmployeesLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(Panel_EmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(City)
-                            .addComponent(State))))
-                .addContainerGap(63, Short.MAX_VALUE))
-        );
-
-        Card_Employees.add(Panel_Employees, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 870, 370));
-
         jLabel34.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(0, 0, 51));
         jLabel34.setText(" Funcionários");
@@ -1622,32 +1402,34 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         jLabel37.setForeground(new java.awt.Color(108, 81, 233));
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel37.setText("FUNCIONÁRIOS");
-        Card_Employees.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 190, 47));
+        Card_Employees.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 150, 47));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 61));
 
         table_Employees.setForeground(new java.awt.Color(0, 0, 51));
         table_Employees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "CPF", "Nome"
+                "Funcionários"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1655,15 +1437,186 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             }
         });
         table_Employees.setGridColor(new java.awt.Color(204, 204, 204));
-        table_Employees.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         Table_Employees.setViewportView(table_Employees);
-        if (table_Employees.getColumnModel().getColumnCount() > 0) {
-            table_Employees.getColumnModel().getColumn(0).setMinWidth(0);
-            table_Employees.getColumnModel().getColumn(0).setPreferredWidth(0);
-            table_Employees.getColumnModel().getColumn(0).setMaxWidth(0);
-        }
 
-        Card_Employees.add(Table_Employees, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 220, 310));
+        Panel_Employees.setBackground(new java.awt.Color(0, 0, 51));
+        Panel_Employees.setForeground(new java.awt.Color(255, 255, 255));
+        Panel_Employees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Name.setForeground(new java.awt.Color(255, 255, 255));
+        Name.setText("NOME");
+        Panel_Employees.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+
+        txtEmployeeName.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeName.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmployeeName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmployeeNameActionPerformed(evt);
+            }
+        });
+        Panel_Employees.add(txtEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 540, -1));
+
+        BirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        BirthDate.setForeground(new java.awt.Color(255, 255, 255));
+        BirthDate.setText("DATA NASC.");
+        Panel_Employees.add(BirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+
+        Address.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Address.setForeground(new java.awt.Color(255, 255, 255));
+        Address.setText("LOGRADOURO");
+        Panel_Employees.add(Address, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 201, -1, -1));
+
+        AdditionalAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        AdditionalAddress.setForeground(new java.awt.Color(255, 255, 255));
+        AdditionalAddress.setText("COMP.");
+        Panel_Employees.add(AdditionalAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 249, -1, -1));
+
+        Job.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Job.setForeground(new java.awt.Color(255, 255, 255));
+        Job.setText("CARGO");
+        Panel_Employees.add(Job, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 53, -1, -1));
+
+        CPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CPF.setForeground(new java.awt.Color(255, 255, 255));
+        CPF.setText("CPF");
+        Panel_Employees.add(CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 53, -1, -1));
+
+        Neighbourhood.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Neighbourhood.setForeground(new java.awt.Color(255, 255, 255));
+        Neighbourhood.setText("BAIRRO");
+        Panel_Employees.add(Neighbourhood, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 249, -1, -1));
+
+        txtEmployeeBirthDate.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeBirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeBirthDate.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Employees.add(txtEmployeeBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 94, -1));
+
+        txtEmployeeCPF.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeCPF.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Employees.add(txtEmployeeCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 50, 114, -1));
+
+        State.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        State.setForeground(new java.awt.Color(255, 255, 255));
+        State.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        State.setText("UF");
+        Panel_Employees.add(State, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 293, 24, -1));
+
+        CEP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CEP.setForeground(new java.awt.Color(255, 255, 255));
+        CEP.setText("CEP");
+        Panel_Employees.add(CEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 157, -1, -1));
+
+        HouseNumber.setBackground(new java.awt.Color(255, 255, 255));
+        HouseNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        HouseNumber.setForeground(new java.awt.Color(255, 255, 255));
+        HouseNumber.setText("Nº");
+        Panel_Employees.add(HouseNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 204, -1, -1));
+
+        txtEmployeeCEP01.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeCEP01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeCEP01.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Employees.add(txtEmployeeCEP01, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 154, 46, -1));
+
+        txtEmployeeCEP02.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeCEP02.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeCEP02.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Employees.add(txtEmployeeCEP02, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 154, 34, -1));
+
+        CPFSeparator.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CPFSeparator.setForeground(new java.awt.Color(255, 255, 255));
+        CPFSeparator.setText("-");
+        Panel_Employees.add(CPFSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 157, -1, -1));
+
+        txtEmployeeAddress.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeAddress.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Employees.add(txtEmployeeAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 201, 411, -1));
+
+        City.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        City.setForeground(new java.awt.Color(255, 255, 255));
+        City.setText("CIDADE");
+        Panel_Employees.add(City, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 293, -1, -1));
+
+        txtEmployeeAddAddress.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeAddAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeAddAddress.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Employees.add(txtEmployeeAddAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 246, 180, -1));
+
+        txtEmployeeCity.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeCity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeCity.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Employees.add(txtEmployeeCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 290, 180, -1));
+
+        txtEmployeeState.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeState.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeState.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Employees.add(txtEmployeeState, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 290, 30, -1));
+
+        txtEmployeeAddressNum.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeAddressNum.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeAddressNum.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Employees.add(txtEmployeeAddressNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 198, 60, -1));
+
+        Phone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Phone.setForeground(new java.awt.Color(255, 255, 255));
+        Phone.setText("CELULAR");
+        Panel_Employees.add(Phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 110, -1, -1));
+
+        txtEmployeeJob.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeJob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeJob.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Employees.add(txtEmployeeJob, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 50, 202, -1));
+
+        txtEmployeePhone.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeePhone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeePhone.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmployeePhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmployeePhoneActionPerformed(evt);
+            }
+        });
+        Panel_Employees.add(txtEmployeePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 110, 120, -1));
+
+        Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Email.setForeground(new java.awt.Color(255, 255, 255));
+        Email.setText("E-MAIL");
+        Panel_Employees.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 113, -1, -1));
+
+        txtEmployeeEmail.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeEmail.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Employees.add(txtEmployeeEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 107, 341, -1));
+
+        txtEmployeeNeigh.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeNeigh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmployeeNeigh.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Employees.add(txtEmployeeNeigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 246, 270, -1));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(Table_Employees, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Panel_Employees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Panel_Employees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Table_Employees, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 20, Short.MAX_VALUE))
+        );
+
+        Card_Employees.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 920, 350));
 
         CollectionCard.add(Card_Employees, "cardEmployees");
 
@@ -2332,6 +2285,14 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         menu_saleMouseClicked(evt);
     }//GEN-LAST:event_buscarVenda2MouseClicked
 
+    private void txtEmployeeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmployeeNameActionPerformed
+
+    private void txtEmployeePhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeePhoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmployeePhoneActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2470,6 +2431,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
