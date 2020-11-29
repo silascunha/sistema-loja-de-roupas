@@ -261,6 +261,7 @@ public class New_Sale extends javax.swing.JFrame {
         txt_Code.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(txt_Code, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 110, 30));
 
+        txt_SalesTotal.setEditable(false);
         txt_SalesTotal.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txt_SalesTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_SalesTotal.setText("R$ 0,00");
@@ -458,6 +459,10 @@ public class New_Sale extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_addToCartActionPerformed
 
     private void btn_paymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paymentActionPerformed
+        if (sale == null) {
+            JOptionPane.showMessageDialog(this, "Nenhuma operação da venda foi iniciada.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
         if (sale.getItems().size() > 0) {
             if (customer != null) {
                 sale.setCustomer(customer);
