@@ -50,7 +50,6 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         cCPF.setText("");
         cCell.setText("");
         cName.setText("");
-        cEmail.requestFocus();
     }
     
     
@@ -60,6 +59,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         customer.setEmail(cEmail.getText());
         customer.setCpf(cCPF.getText());
         customer.setPhone(cCell.getText());        
+
         return customer;
     
        }
