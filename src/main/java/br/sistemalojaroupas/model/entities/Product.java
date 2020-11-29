@@ -23,14 +23,15 @@ public class Product implements Serializable, TableContract {
     @Id
     private Long id;
     private String description;
-    private Category category;
     private String size;
-    private Color color;
     private Double costPrice;
     private Double salePrice;
     private Date date = new Date();
     private int quantity;
     
+    private Color color;
+    private Category category;
+    private Brand brand;
     
     public Product() {}
 
@@ -121,6 +122,14 @@ public class Product implements Serializable, TableContract {
         this.quantity = quantity;
     }
 
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -178,6 +187,7 @@ public class Product implements Serializable, TableContract {
             getColor(),
             getSize(),
             getCategory(),
+            getBrand(),
             String.format("%.2f", getCostPrice()),
             String.format("%.2f", getSalePrice()),
             getQuantity(),

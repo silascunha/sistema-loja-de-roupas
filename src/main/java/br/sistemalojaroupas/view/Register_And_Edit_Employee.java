@@ -34,7 +34,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         this.setBackground(new Color(0,0,0,0));
     }
     
-    public Register_And_Edit_Employee(java.awt.Dialog owner, boolean modal, Employee employee) {
+    public Register_And_Edit_Employee(java.awt.Frame owner, boolean modal, Employee employee) {
         super(owner, modal);
         initComponents();
         
