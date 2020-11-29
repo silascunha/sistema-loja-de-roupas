@@ -13,23 +13,23 @@ import org.dizitart.no2.objects.Id;
  *
  * @author vfdes
  */
-public class Client implements Serializable, TableContract {
+public class Customer implements Serializable, TableContract {
 
     @Id
     private String cpf;
-    private String nome;
+    private String name;
     private String email;
-    private String celular;
+    private String phone;
 
-    public Client() {
+    public Customer() {
 
     }
 
-    public Client(String cpf, String nome, String email, String celular) {
+    public Customer(String cpf, String name, String email, String celular) {
         this.cpf = cpf;
-        this.nome = nome;
+        this.name = name;
         this.email = email;
-        this.celular = celular;
+        this.phone = celular;
     }
 
     public String getCpf() {
@@ -40,12 +40,12 @@ public class Client implements Serializable, TableContract {
         this.cpf = cpf;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -56,13 +56,14 @@ public class Client implements Serializable, TableContract {
         this.email = email;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
+    
 
     @Override
     public int hashCode() {
@@ -82,7 +83,7 @@ public class Client implements Serializable, TableContract {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Client other = (Client) obj;
+        final Customer other = (Customer) obj;
         if (!Objects.equals(this.cpf, other.cpf)) {
             return false;
         }
@@ -91,15 +92,15 @@ public class Client implements Serializable, TableContract {
 
     @Override
     public String toString() {
-        return "Client{" + "cpf=" + cpf + ", nome=" + nome + ", email=" + email + ", celular=" + celular + '}';
+        return "Client{" + "cpf=" + cpf + ", nome=" + name + ", email=" + email + ", celular=" + phone + '}';
     }
 
     @Override
     public Object[] tableRowModel() {
         return new Object[]{
-            getNome(),
+            getName(),
             getCpf(),
-            getCelular(),
+            getPhone(),
             getEmail()
         };
     }

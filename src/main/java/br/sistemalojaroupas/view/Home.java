@@ -1,11 +1,11 @@
 package br.sistemalojaroupas.view;
 
 import br.sistemalojaroupas.db.DB;
-import br.sistemalojaroupas.model.dao.ClientDao;
+import br.sistemalojaroupas.model.dao.CustomerDao;
 import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.dao.SaleDao;
-import br.sistemalojaroupas.model.entities.Client;
+import br.sistemalojaroupas.model.entities.Customer;
 import br.sistemalojaroupas.model.entities.Employee;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.view.listeners.DataChangeListener;
@@ -2001,7 +2001,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         setMenuButtonsColor(menu_customers);
 
         setVisibleTable(tableCustomers);
-        Utils.updateTable(ClientDao.findAll(), tableCustomers);
+        Utils.updateTable(CustomerDao.findAll(), tableCustomers);
     }//GEN-LAST:event_menu_customersMouseClicked
 
     private void menu_settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_settingsMouseClicked
@@ -2051,20 +2051,20 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
             DefaultTableModel dtm = (DefaultTableModel) tableCustomers.getModel();
             String id = (String) dtm.getValueAt(linha, 1);
-            Client v = ClientDao.findByCpf(id);
+            Customer v = CustomerDao.findByCpf(id);
 
             int ex;
             ex = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir registro de venda?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             if (ex == 0) {
-                ClientDao.remove(v);
-                Utils.updateTable(ClientDao.findAll(), tableCustomers);
+                CustomerDao.remove(v);
+                Utils.updateTable(CustomerDao.findAll(), tableCustomers);
             }
         }
     }//GEN-LAST:event_btnRemoveCustomerMouseClicked
 
     private void btnNewCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewCustomerMouseClicked
         new Register_And_Edit_Customer(this, true).setVisible(true);
-        Utils.updateTable(ClientDao.findAll(), tableCustomers);
+        Utils.updateTable(CustomerDao.findAll(), tableCustomers);
     }//GEN-LAST:event_btnNewCustomerMouseClicked
 
     private void txtProductsSearchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductsSearchFieldKeyPressed
@@ -2140,7 +2140,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private void btnSearchCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchCustomerMouseClicked
         String str = cSearchCustomer.getText();
 
-        Utils.updateTable(ClientDao.search(str), tableCustomers);
+        Utils.updateTable(CustomerDao.search(str), tableCustomers);
     }//GEN-LAST:event_btnSearchCustomerMouseClicked
 
     private void btnSearchCustomerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchCustomerMouseEntered
@@ -2262,7 +2262,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
             String str = cSearchCustomer.getText();
 
-            Utils.updateTable(ClientDao.search(str), tableCustomers);
+            Utils.updateTable(CustomerDao.search(str), tableCustomers);
 
         }
     }//GEN-LAST:event_cSearchCustomerKeyPressed

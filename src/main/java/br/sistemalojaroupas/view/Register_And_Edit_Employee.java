@@ -72,7 +72,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         employee.setEmail(eEmail.getText());
         employee.setCpf(eCPF.getText());
         employee.setPhone(ePhone.getText());
-        employee.setSalary(Double.parseDouble(eSalary.getText().replace(',', '.')));
+        employee.setSalary(Utils.tryParseToDouble(eSalary.getText().replace(',', '.')));
         
         try {
             employee.setBirthDate(sdf.parse(eBirthDate.getText()));

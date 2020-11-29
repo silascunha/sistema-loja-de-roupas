@@ -5,8 +5,8 @@
  */
 package br.sistemalojaroupas.view;
 
-import br.sistemalojaroupas.model.dao.ClientDao;
-import br.sistemalojaroupas.model.entities.Client;
+import br.sistemalojaroupas.model.dao.CustomerDao;
+import br.sistemalojaroupas.model.entities.Customer;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -201,14 +201,14 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_CancelcMouseClicked
 
     private void btn_SavecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SavecMouseClicked
-        Client client = new Client();
+        Customer client = new Customer();
         
-        client.setNome(cName.getText().toUpperCase());
+        client.setName(cName.getText().toUpperCase());
         client.setCpf(cCPF.getText());
         client.setEmail(cEmail.getText());
-        client.setCelular(cCell.getText());
+        client.setPhone(cCell.getText());
         
-        ClientDao.insert(client);
+        CustomerDao.insert(client);
                 
         JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
         limpaCampos();
