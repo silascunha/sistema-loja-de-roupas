@@ -30,17 +30,16 @@ public class Employee implements Serializable, TableContract {
     private String name;
     private String email;
     private String phone;
-    private String occupation;
     private Date birthDate;
     private Date admissionDate;
     private Double salary;
     
     private Address address;
+    private Office office;
     
     private final static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
     public Employee() {
-        
     }
 
     public Employee(String cpf, String name, String email, String phone, Date birthDate, Date admissionDate, Double salary, Address address) {
@@ -130,14 +129,14 @@ public class Employee implements Serializable, TableContract {
         this.address = address;
     }
 
-    public String getOccupation() {
-        return occupation;
+    public Office getOffice() {
+        return office;
     }
 
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
+    public void setOffice(Office office) {
+        this.office = office;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;

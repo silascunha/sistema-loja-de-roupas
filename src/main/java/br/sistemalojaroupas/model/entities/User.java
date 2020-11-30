@@ -6,6 +6,9 @@
 package br.sistemalojaroupas.model.entities;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import org.dizitart.no2.IndexType;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
@@ -26,15 +29,22 @@ public class User implements Serializable {
     private NitriteId id;
     private String userName;
     private String password;
-    private int authentication;
+    
+    private Employee employee;
+    private Map<String, Boolean> permissions;
 
     public User() {
+        permissions = new HashMap<>();
+        permissions.put("product", true);
+        permissions.put("employee", true);
+        permissions.put("customer", true);
+        permissions.put("sale", true);
+        permissions.put("homeinfo", true);
     }
 
     public User(String userName, String password, int authentication) {
         this.userName = userName;
         this.password = password;
-        this.authentication = authentication;
     }
 
     public NitriteId getId() {
@@ -61,17 +71,57 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public int getAuthentication() {
-        return authentication;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setAuthentication(int authentication) {
-        this.authentication = authentication;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Map<String, Boolean> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(Map<String, Boolean> permissions) {
+        this.permissions = permissions;
+    }
+    
+    public Boolean hasPermission(String key) {
+        return permissions.get(key);
     }
 
     @Override
-    public String toString() {
-        return "User{" + "id=" + id + ", userName=" + userName + ", password=" + password + ", authentication=" + authentication + '}';
+    public int hashCode() {
+        int hash = 3;
+        hash = 17 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final User other = (User) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
     
+    
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", userName=" + userName + ", password=" + password + ", employee=" + employee + '}';
+    }
+    
+
 }

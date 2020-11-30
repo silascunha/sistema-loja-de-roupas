@@ -36,6 +36,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private List<JPanel> menuButtonsList = new ArrayList<>();
     private CardLayout panelsCardLayout;
     private JTable visibleTable;
+    
+    private final String PERMISSION_ERROR = "Você não tem permissão para acessar esta funcionalidade.";
 
     public Home() {
 
@@ -54,6 +56,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         setMenuButtonsColor(menu_home);
 
         refreshHomeData();
+    }
+    
+    private boolean hasPermission(String key) {
+        return Login.getLoggedUser().hasPermission(key);
     }
 
     private void setMenuButtonsColor(JPanel pn1) {
@@ -230,7 +236,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         jSeparator9 = new javax.swing.JSeparator();
         jLabel37 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        Table_Employees = new javax.swing.JScrollPane();
+        pane_Employee = new javax.swing.JScrollPane();
         table_Employees = new javax.swing.JTable();
         Panel_Employees = new javax.swing.JPanel();
         Name = new javax.swing.JLabel();
@@ -1437,7 +1443,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             }
         });
         table_Employees.setGridColor(new java.awt.Color(204, 204, 204));
-        Table_Employees.setViewportView(table_Employees);
+        table_Employees.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_EmployeesMouseClicked(evt);
+            }
+        });
+        pane_Employee.setViewportView(table_Employees);
         if (table_Employees.getColumnModel().getColumnCount() > 0) {
             table_Employees.getColumnModel().getColumn(0).setMinWidth(0);
             table_Employees.getColumnModel().getColumn(0).setPreferredWidth(0);
@@ -1451,7 +1462,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Name.setForeground(new java.awt.Color(255, 255, 255));
         Name.setText("NOME");
-        Panel_Employees.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+        Panel_Employees.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 30));
 
         txtEmployeeName.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1461,22 +1472,22 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
                 txtEmployeeNameActionPerformed(evt);
             }
         });
-        Panel_Employees.add(txtEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 540, -1));
+        Panel_Employees.add(txtEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 540, 30));
 
         BirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         BirthDate.setForeground(new java.awt.Color(255, 255, 255));
         BirthDate.setText("DATA NASC.");
-        Panel_Employees.add(BirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+        Panel_Employees.add(BirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 30));
 
         Address.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Address.setForeground(new java.awt.Color(255, 255, 255));
         Address.setText("LOGRADOURO");
-        Panel_Employees.add(Address, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 201, -1, -1));
+        Panel_Employees.add(Address, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         AdditionalAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         AdditionalAddress.setForeground(new java.awt.Color(255, 255, 255));
         AdditionalAddress.setText("COMP.");
-        Panel_Employees.add(AdditionalAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 249, -1, -1));
+        Panel_Employees.add(AdditionalAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
         Job.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Job.setForeground(new java.awt.Color(255, 255, 255));
@@ -1496,7 +1507,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         txtEmployeeBirthDate.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeBirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeBirthDate.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 94, -1));
+        Panel_Employees.add(txtEmployeeBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 94, 30));
 
         txtEmployeeCPF.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1512,7 +1523,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         CEP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CEP.setForeground(new java.awt.Color(255, 255, 255));
         CEP.setText("CEP");
-        Panel_Employees.add(CEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 157, -1, -1));
+        Panel_Employees.add(CEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, 30));
 
         HouseNumber.setBackground(new java.awt.Color(255, 255, 255));
         HouseNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1523,27 +1534,28 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         txtEmployeeCEP01.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCEP01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeCEP01.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeCEP01, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 154, 46, -1));
+        Panel_Employees.add(txtEmployeeCEP01, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 46, 30));
 
         txtEmployeeCEP02.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCEP02.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeCEP02.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeCEP02, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 154, 34, -1));
+        Panel_Employees.add(txtEmployeeCEP02, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 34, 30));
 
         CPFSeparator.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CPFSeparator.setForeground(new java.awt.Color(255, 255, 255));
+        CPFSeparator.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CPFSeparator.setText("-");
-        Panel_Employees.add(CPFSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 157, -1, -1));
+        Panel_Employees.add(CPFSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 20, 30));
 
         txtEmployeeAddress.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeAddress.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 201, 411, -1));
+        Panel_Employees.add(txtEmployeeAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 197, 411, 30));
 
         City.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         City.setForeground(new java.awt.Color(255, 255, 255));
         City.setText("CIDADE");
-        Panel_Employees.add(City, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 293, -1, -1));
+        Panel_Employees.add(City, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
         txtEmployeeAddAddress.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeAddAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1568,12 +1580,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Phone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Phone.setForeground(new java.awt.Color(255, 255, 255));
         Phone.setText("CELULAR");
-        Panel_Employees.add(Phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 110, -1, -1));
+        Panel_Employees.add(Phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 30));
 
         txtEmployeeJob.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeJob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeJob.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeJob, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 50, 202, -1));
+        Panel_Employees.add(txtEmployeeJob, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 50, 210, -1));
 
         txtEmployeePhone.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeePhone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1583,17 +1595,17 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
                 txtEmployeePhoneActionPerformed(evt);
             }
         });
-        Panel_Employees.add(txtEmployeePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 110, 120, -1));
+        Panel_Employees.add(txtEmployeePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 120, 30));
 
         Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Email.setForeground(new java.awt.Color(255, 255, 255));
         Email.setText("E-MAIL");
-        Panel_Employees.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 113, -1, -1));
+        Panel_Employees.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, 30));
 
         txtEmployeeEmail.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeEmail.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 107, 341, -1));
+        Panel_Employees.add(txtEmployeeEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 103, 350, 30));
 
         txtEmployeeNeigh.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeNeigh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1606,10 +1618,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(Table_Employees, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pane_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Panel_Employees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1617,8 +1629,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Panel_Employees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Table_Employees, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 20, Short.MAX_VALUE))
+                    .addComponent(pane_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         Card_Employees.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 920, 350));
@@ -1862,6 +1874,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_ShowHideMenuMouseClicked
 
     private void btn_addProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseClicked
+        if (!hasPermission("product")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         Register_And_Edit_Products dialog = new Register_And_Edit_Products(this, true);
         dialog.subscribeDataChangeListener(this);
         dialog.setVisible(true);
@@ -1869,6 +1886,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_addProductMouseClicked
 
     private void btn_removeProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_removeProductMouseClicked
+        if (!hasPermission("product")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         int row = table_Products.getSelectedRow();
 
         if (row > -1) {
@@ -1886,6 +1907,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_removeProductMouseClicked
 
     private void btn_editProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editProductMouseClicked
+        if (!hasPermission("product")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         int selectedRow = table_Products.getSelectedRow();
 
         if (selectedRow > -1) {
@@ -1906,11 +1931,19 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_editProductMouseClicked
 
     private void btnNewEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewEmployeeMouseClicked
+        if (!hasPermission("employee")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         new Register_And_Edit_Employee(this, true).setVisible(true);
         Utils.updateTable(EmployeeDao.findAll(), table_Employees);
     }//GEN-LAST:event_btnNewEmployeeMouseClicked
 
     private void btnEditEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditEmployeeMouseClicked
+        if (!hasPermission("employee")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         int selectedRow = table_Employees.getSelectedRow();
 
         if (selectedRow > -1) {
@@ -1930,11 +1963,34 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btnEditEmployeeMouseClicked
 
     private void btnDeleteEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeMouseClicked
-        // TODO add your handling code here:
+        if (!hasPermission("employee")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int selectedRow = table_Employees.getSelectedRow();
+        
+        if (selectedRow > -1) {
+            int option = JOptionPane.showConfirmDialog(this, "Você tem certeza que quer remover este funcionário?", 
+                    "Atenção!", JOptionPane.INFORMATION_MESSAGE);
+            
+            if (option != 0) return;
+            
+            DefaultTableModel dtm = (DefaultTableModel) table_Employees.getModel();
+            
+            String cpf = (String) dtm.getValueAt(selectedRow, 0);
+            
+            EmployeeDao.removeByCpf(cpf);
+            Utils.updateTable(EmployeeDao.findAll(), table_Employees);
+        }
     }//GEN-LAST:event_btnDeleteEmployeeMouseClicked
 
     private void btn_NewSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NewSaleMouseClicked
-        new New_Sale().setVisible(true);
+        if (hasPermission("sale")) {
+            new New_Sale().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Você não tem permissão para acessar esta função.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_NewSaleMouseClicked
 
     private void btn_SearchSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchSaleMouseClicked
@@ -2030,6 +2086,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_formWindowClosed
 
     private void btnRemoveCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveCustomerMouseClicked
+        if (!hasPermission("customer")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         int linha = tableCustomers.getSelectedRow();
 
         if (linha > -1) {
@@ -2048,6 +2108,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btnRemoveCustomerMouseClicked
 
     private void btnNewCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewCustomerMouseClicked
+        if (!hasPermission("customer")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         new Register_And_Edit_Customer(this, true).setVisible(true);
         Utils.updateTable(CustomerDao.findAll(), tableCustomers);
     }//GEN-LAST:event_btnNewCustomerMouseClicked
@@ -2231,7 +2295,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_SearchProductsMouseExited
 
     private void btnEditCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditCustomerMouseClicked
-
+        if (!hasPermission("customer")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         int selectedRow = tableCustomers.getSelectedRow();
 
         if (selectedRow > -1) {
@@ -2269,6 +2336,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_cSearchCustomerKeyPressed
 
     private void novaVenda2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda2MouseClicked
+        if (!hasPermission("sale")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         new New_Sale().setVisible(true);
     }//GEN-LAST:event_novaVenda2MouseClicked
 
@@ -2290,13 +2361,26 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         menu_saleMouseClicked(evt);
     }//GEN-LAST:event_buscarVenda2MouseClicked
 
-    private void txtEmployeeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmployeeNameActionPerformed
+    private void table_EmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_EmployeesMouseClicked
+        int selectedRow = table_Employees.getSelectedRow();
+        
+        if (selectedRow > -1) {
+            DefaultTableModel dtm = (DefaultTableModel) table_Employees.getModel();
+            
+            String cpf = (String) dtm.getValueAt(selectedRow, 0);
+            Employee emp = EmployeeDao.findByCpf(cpf);
+            
+            
+        }
+    }//GEN-LAST:event_table_EmployeesMouseClicked
 
     private void txtEmployeePhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeePhoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmployeePhoneActionPerformed
+
+    private void txtEmployeeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmployeeNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2359,7 +2443,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JPanel Panel_Employees;
     private javax.swing.JLabel Phone;
     private javax.swing.JLabel State;
-    private javax.swing.JScrollPane Table_Employees;
     private javax.swing.JPanel bgButtonsHome;
     private javax.swing.JPanel bgButtonsHome2;
     private javax.swing.JLabel btnDeleteEmployee;
@@ -2469,6 +2552,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel novoCliente2;
     private javax.swing.JLabel novoProduto1;
     private javax.swing.JLabel novoProduto2;
+    private javax.swing.JScrollPane pane_Employee;
     private javax.swing.JPanel panelInformacoes;
     private javax.swing.JPanel panelInformacoes1;
     private javax.swing.JPanel pnFaturamento;

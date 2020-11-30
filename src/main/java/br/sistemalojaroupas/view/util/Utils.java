@@ -88,4 +88,15 @@ public class Utils {
             return null;
         }
     }
+    
+    public static String formatCpf(String cpf) {
+        String[] dividedCpf = cpf.replace('.', ',').replace('-', ',').split(",");
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0; i < dividedCpf.length; i++) {
+            sb.append(dividedCpf[i]);
+        }
+        
+        return sb.toString();
+    }
 }

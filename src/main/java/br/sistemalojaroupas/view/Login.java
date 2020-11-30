@@ -7,6 +7,7 @@ package br.sistemalojaroupas.view;
 
 import br.sistemalojaroupas.model.dao.UserDao;
 import br.sistemalojaroupas.model.dao.exceptions.LoginException;
+import br.sistemalojaroupas.model.entities.User;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
+    private static User user;
     /**
      * Creates new form Login
      */
@@ -23,6 +25,10 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
         pnl_background.setBackground(new Color(0,0,0,0));
+    }
+    
+    public static User getLoggedUser() {
+        return user;
     }
 
     /**
@@ -85,13 +91,11 @@ public class Login extends javax.swing.JFrame {
         pnl_background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
 
         txt_user.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txt_user.setText("lukas.barcee@gmail.com");
         txt_user.setBorder(null);
         txt_user.setOpaque(false);
         pnl_background.add(txt_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 212, 290, 30));
 
         txt_password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_password.setText("jPasswordField1");
         txt_password.setBorder(null);
         txt_password.setOpaque(false);
         pnl_background.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 309, 300, 30));
@@ -128,7 +132,7 @@ public class Login extends javax.swing.JFrame {
     private void btn_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseReleased
         //verifica se o login e a senha estão corretos 
         try {
-            UserDao.verify(txt_user.getText(), new String(txt_password.getPassword()));
+            user = UserDao.verify(txt_user.getText(), new String(txt_password.getPassword()));
             new Home().main(null);
             this.dispose();
         }

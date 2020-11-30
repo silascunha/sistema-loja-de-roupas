@@ -26,14 +26,19 @@ public class UserDao {
     public static ObjectRepository<User> repUser;
 
     static {
+        if (!DB.getDB().hasRepository(User.class)) {
+            repUser = DB.getDB().getRepository(User.class);
+            
+            User u = new User();
+            u.setUserName("admin");
+            u.setPassword("admin");
+            
+            repUser.insert(u);
+        }
         repUser = DB.getDB().getRepository(User.class);
     }
 
-    public static ObjectRepository<User> getProductRepository() {
-        return repUser;
-    }
-
-    public static boolean verify(String userName, String password) {
+    public static User verify(String userName, String password) {
         User u = UserDao.findByUser(userName);
         
         if (userName.equals("") || password.equals("")) throw new LoginException("Preencha todos os campos.");
@@ -41,7 +46,7 @@ public class UserDao {
         if (!u.getUserName().equals(userName) || !u.getPassword().equals(password)) {
             throw new LoginException("Usuário ou senha inválidos.");
         }
-        return true;
+        return u;
     }
 
     public static void insert(User u) {

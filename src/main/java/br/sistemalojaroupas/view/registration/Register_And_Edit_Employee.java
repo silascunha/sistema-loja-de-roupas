@@ -6,17 +6,20 @@
 package br.sistemalojaroupas.view.registration;
 
 import br.sistemalojaroupas.model.dao.EmployeeDao;
+import br.sistemalojaroupas.model.dao.OfficeDao;
+import br.sistemalojaroupas.model.dao.UserDao;
 import br.sistemalojaroupas.model.entities.Address;
 import br.sistemalojaroupas.model.entities.Employee;
+import br.sistemalojaroupas.model.entities.Office;
+import br.sistemalojaroupas.model.entities.User;
 import br.sistemalojaroupas.model.services.CepService;
+import br.sistemalojaroupas.view.util.ComboBoxRenderer;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,6 +40,9 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         this.setBackground(new Color(0,0,0,0));
         
         address = new Address();
+        
+        cbOffice.setRenderer(new ComboBoxRenderer());
+        Utils.updateComboBox(OfficeDao.findAll(), cbOffice);
     }
     
     public Register_And_Edit_Employee(java.awt.Frame owner, boolean modal, Employee employee) {
@@ -48,13 +54,16 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         this.employee = employee;
         this.address = employee.getAddress();
         
+        cbOffice.setRenderer(new ComboBoxRenderer());
+        Utils.updateComboBox(OfficeDao.findAll(), cbOffice);
+        
         title.setText("Editar funcionário");
         eName.setText(employee.getName());
         eCPF.setText(employee.getCpf());
         eSalary.setText(employee.getSalary().toString().replace('.', ','));
         eEmail.setText(employee.getEmail());
         ePhone.setText(employee.getPhone());
-        eOccupation.setText(employee.getOccupation());
+        cbOffice.setSelectedItem(employee.getOffice());
         eCity.setText(address.getCity());
         eState.setText(address.getState());
         eStreet.setText(address.getStreet());
@@ -92,7 +101,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         address.setStreet(eStreet.getText());
         address.setNumber(eNumber.getText());
         employee.setAddress(address);
-        employee.setOccupation(eOccupation.getText());
+        employee.setOffice((Office) cbOffice.getSelectedItem());
         
         return employee;
     }
@@ -138,11 +147,11 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        eOccupation = new javax.swing.JTextField();
-        eAccessLevel = new javax.swing.JComboBox<>();
         eAdmissionDate = new javax.swing.JFormattedTextField();
         eSalary = new javax.swing.JFormattedTextField();
+        btn_addOffice = new javax.swing.JLabel();
+        btn_editOffice = new javax.swing.JLabel();
+        cbOffice = new javax.swing.JComboBox<>();
         jLabelBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -460,29 +469,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel37.setText("Salário:");
         jLabel37.setOpaque(true);
-        panelFunctionalData.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 70, 30));
-
-        jLabel38.setBackground(new java.awt.Color(59, 44, 150));
-        jLabel38.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel38.setText("Acesso:");
-        jLabel38.setOpaque(true);
-        panelFunctionalData.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 70, 30));
-
-        eOccupation.setBackground(new java.awt.Color(0, 0, 0));
-        eOccupation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eOccupation.setForeground(new java.awt.Color(255, 255, 255));
-        eOccupation.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        eOccupation.setCaretColor(new java.awt.Color(255, 255, 255));
-        eOccupation.setOpaque(false);
-        panelFunctionalData.add(eOccupation, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 180, 30));
-
-        eAccessLevel.setBackground(new java.awt.Color(108, 81, 233));
-        eAccessLevel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eAccessLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione nível", "Nível 1", "Nível 2", "Nível 3" }));
-        eAccessLevel.setBorder(null);
-        panelFunctionalData.add(eAccessLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 160, 30));
+        panelFunctionalData.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 70, 30));
 
         eAdmissionDate.setBackground(new java.awt.Color(0, 0, 0));
         eAdmissionDate.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -504,7 +491,42 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         eSalary.setCaretColor(new java.awt.Color(255, 255, 255));
         eSalary.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         eSalary.setOpaque(false);
-        panelFunctionalData.add(eSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 160, 30));
+        panelFunctionalData.add(eSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 160, 30));
+
+        btn_addOffice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_addOffice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais.png"))); // NOI18N
+        btn_addOffice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_addOffice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_addOfficeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_addOfficeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_addOfficeMouseExited(evt);
+            }
+        });
+        panelFunctionalData.add(btn_addOffice, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 30, 30));
+
+        btn_editOffice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_editOffice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit_19px.png"))); // NOI18N
+        btn_editOffice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_editOffice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_editOfficeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_editOfficeMouseExited(evt);
+            }
+        });
+        panelFunctionalData.add(btn_editOffice, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 30, 30));
+
+        cbOffice.setBackground(new java.awt.Color(0, 0, 51));
+        cbOffice.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbOffice.setForeground(new java.awt.Color(255, 255, 255));
+        cbOffice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "PP", "P", "M", "G", "GG" }));
+        panelFunctionalData.add(cbOffice, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 180, 30));
 
         getContentPane().add(panelFunctionalData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 580, 138));
 
@@ -535,9 +557,16 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         if(employee == null) {
             
             employee = instantiateEmployee(new Employee());
+            String cpf = Utils.formatCpf(employee.getCpf());
 
             EmployeeDao.insert(employee);
+            User user = new User();
+            user.setEmployee(employee);
+            user.setUserName(Utils.formatCpf(employee.getCpf()));
+            user.setPassword(cpf.substring(0, 6));
+            user.setPermissions(employee.getOffice().getPermissions());
             
+            UserDao.insert(user);
             JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso!",
                     "Atenção", JOptionPane.INFORMATION_MESSAGE);
 
@@ -617,14 +646,37 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     private void eCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eCEPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eCEPActionPerformed
+
+    private void btn_addOfficeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addOfficeMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_addOfficeMouseExited
+
+    private void btn_editOfficeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editOfficeMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_editOfficeMouseEntered
+
+    private void btn_editOfficeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editOfficeMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_editOfficeMouseExited
+
+    private void btn_addOfficeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addOfficeMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_addOfficeMouseEntered
+
+    private void btn_addOfficeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addOfficeMouseClicked
+        new OfficeRegistration(this, true).setVisible(true);
+        Utils.updateComboBox(OfficeDao.findAll(), cbOffice);
+    }//GEN-LAST:event_btn_addOfficeMouseClicked
       
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bnt_save;
     private javax.swing.JButton btnSearchCEP;
+    private javax.swing.JLabel btn_addOffice;
     private javax.swing.JLabel btn_cancel;
     private javax.swing.JLabel btn_clear;
-    private javax.swing.JComboBox<String> eAccessLevel;
+    private javax.swing.JLabel btn_editOffice;
+    private javax.swing.JComboBox<Object> cbOffice;
     private javax.swing.JFormattedTextField eAdmissionDate;
     private javax.swing.JFormattedTextField eBirthDate;
     private javax.swing.JTextField eCEP;
@@ -634,7 +686,6 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     private javax.swing.JTextField eName;
     private javax.swing.JTextField eNeighborhood;
     private javax.swing.JTextField eNumber;
-    private javax.swing.JTextField eOccupation;
     private javax.swing.JFormattedTextField ePhone;
     private javax.swing.JFormattedTextField eSalary;
     private javax.swing.JTextField eState;
@@ -653,7 +704,6 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JPanel panelFunctionalData;
     private javax.swing.JPanel panelPersonalData;
