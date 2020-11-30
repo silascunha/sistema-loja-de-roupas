@@ -8,6 +8,7 @@ package br.sistemalojaroupas.model.dao;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.entities.Employee;
+import br.sistemalojaroupas.model.entities.User;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.dizitart.no2.FindOptions;
@@ -38,11 +39,22 @@ public class EmployeeDao {
     
     public static void update(Employee employee) {
         
-        Employee temp = repEmployee.find(ObjectFilters.eq("cpf", employee.getName()))
+        Employee temp = repEmployee.find(ObjectFilters.eq("cpf", employee.getCpf()))
                 .firstOrDefault();
         
         if (employee.equals(temp) || temp == null) {
-            repEmployee.update(employee);          
+            repEmployee.update(employee);
+            
+            if (!temp.getOffice().equals(employee.getOffice())) {
+                User u = UserDao.findByUser(temp.getEmail());
+                u.setPermissions(employee.getOffice().getPermissions());
+                UserDao.update(u);
+            }
+            if (!temp.getEmail().equals(employee.getEmail())) {
+                User u = UserDao.findByUser(temp.getEmail());
+                u.setUserName(employee.getEmail());
+                UserDao.update(u);
+            }
         }
         else {
             throw new DBException("Já existe um funcionário com este CPF no sistema.");
@@ -62,7 +74,11 @@ public class EmployeeDao {
     }
     
     public static void remove(Employee emp) {
-        repEmployee.remove(emp);
+        if (emp != null) {
+            User u = UserDao.findByUser(emp.getEmail());
+            if (u != null) UserDao.remove(u);
+            repEmployee.remove(emp);
+        }
     }
     
     public static void removeByCpf(String cpf) {

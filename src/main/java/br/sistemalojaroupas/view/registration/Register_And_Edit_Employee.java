@@ -562,8 +562,8 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
             EmployeeDao.insert(employee);
             User user = new User();
             user.setEmployee(employee);
-            user.setUserName(Utils.formatCpf(employee.getCpf()));
-            user.setPassword(cpf.substring(0, 6));
+            user.setUserName(employee.getEmail());
+            user.setPassword(cpf);
             user.setPermissions(employee.getOffice().getPermissions());
             
             UserDao.insert(user);

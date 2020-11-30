@@ -81,9 +81,5 @@ public class Address {
     public String toString() {
         return "Address{" + "cep=" + cep + ", state=" + state + ", city=" + city + ", neighborhood=" + neighborhood + ", street=" + street + ", number=" + number + '}';
     }
-
-    public String getAddress() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

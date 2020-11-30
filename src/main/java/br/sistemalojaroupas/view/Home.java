@@ -243,7 +243,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         txtEmployeeName = new javax.swing.JTextField();
         BirthDate = new javax.swing.JLabel();
         Address = new javax.swing.JLabel();
-        AdditionalAddress = new javax.swing.JLabel();
         Job = new javax.swing.JLabel();
         CPF = new javax.swing.JLabel();
         Neighbourhood = new javax.swing.JLabel();
@@ -257,7 +256,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         CPFSeparator = new javax.swing.JLabel();
         txtEmployeeAddress = new javax.swing.JTextField();
         City = new javax.swing.JLabel();
-        txtEmployeeAddAddress = new javax.swing.JTextField();
         txtEmployeeCity = new javax.swing.JTextField();
         txtEmployeeState = new javax.swing.JTextField();
         txtEmployeeAddressNum = new javax.swing.JTextField();
@@ -1464,6 +1462,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Name.setText("NOME");
         Panel_Employees.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 30));
 
+        txtEmployeeName.setEditable(false);
         txtEmployeeName.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeName.setForeground(new java.awt.Color(0, 0, 0));
@@ -1484,11 +1483,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Address.setText("LOGRADOURO");
         Panel_Employees.add(Address, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
-        AdditionalAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        AdditionalAddress.setForeground(new java.awt.Color(255, 255, 255));
-        AdditionalAddress.setText("COMP.");
-        Panel_Employees.add(AdditionalAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
-
         Job.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Job.setForeground(new java.awt.Color(255, 255, 255));
         Job.setText("CARGO");
@@ -1502,13 +1496,15 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Neighbourhood.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Neighbourhood.setForeground(new java.awt.Color(255, 255, 255));
         Neighbourhood.setText("BAIRRO");
-        Panel_Employees.add(Neighbourhood, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 249, -1, -1));
+        Panel_Employees.add(Neighbourhood, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, 30));
 
+        txtEmployeeBirthDate.setEditable(false);
         txtEmployeeBirthDate.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeBirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeBirthDate.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 94, 30));
 
+        txtEmployeeCPF.setEditable(false);
         txtEmployeeCPF.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeCPF.setForeground(new java.awt.Color(0, 0, 0));
@@ -1518,7 +1514,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         State.setForeground(new java.awt.Color(255, 255, 255));
         State.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         State.setText("UF");
-        Panel_Employees.add(State, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 293, 24, -1));
+        Panel_Employees.add(State, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 24, -1));
 
         CEP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CEP.setForeground(new java.awt.Color(255, 255, 255));
@@ -1529,64 +1525,67 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         HouseNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         HouseNumber.setForeground(new java.awt.Color(255, 255, 255));
         HouseNumber.setText("Nº");
-        Panel_Employees.add(HouseNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 204, -1, -1));
+        Panel_Employees.add(HouseNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
 
+        txtEmployeeCEP01.setEditable(false);
         txtEmployeeCEP01.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCEP01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeCEP01.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeCEP01, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 46, 30));
+        Panel_Employees.add(txtEmployeeCEP01, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 60, 30));
 
+        txtEmployeeCEP02.setEditable(false);
         txtEmployeeCEP02.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCEP02.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeCEP02.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeCEP02, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 34, 30));
+        Panel_Employees.add(txtEmployeeCEP02, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 40, 30));
 
         CPFSeparator.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CPFSeparator.setForeground(new java.awt.Color(255, 255, 255));
         CPFSeparator.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CPFSeparator.setText("-");
-        Panel_Employees.add(CPFSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 20, 30));
+        Panel_Employees.add(CPFSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 20, 30));
 
+        txtEmployeeAddress.setEditable(false);
         txtEmployeeAddress.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeAddress.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 197, 411, 30));
+        Panel_Employees.add(txtEmployeeAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 430, 30));
 
         City.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         City.setForeground(new java.awt.Color(255, 255, 255));
         City.setText("CIDADE");
-        Panel_Employees.add(City, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
+        Panel_Employees.add(City, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
 
-        txtEmployeeAddAddress.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmployeeAddAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeAddAddress.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeAddAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 246, 180, -1));
-
+        txtEmployeeCity.setEditable(false);
         txtEmployeeCity.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeCity.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 290, 180, -1));
+        Panel_Employees.add(txtEmployeeCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 180, -1));
 
+        txtEmployeeState.setEditable(false);
         txtEmployeeState.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeState.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeState.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeState, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 290, 30, -1));
+        Panel_Employees.add(txtEmployeeState, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 30, -1));
 
+        txtEmployeeAddressNum.setEditable(false);
         txtEmployeeAddressNum.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeAddressNum.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeAddressNum.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeAddressNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 198, 60, -1));
+        Panel_Employees.add(txtEmployeeAddressNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 60, -1));
 
         Phone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Phone.setForeground(new java.awt.Color(255, 255, 255));
         Phone.setText("CELULAR");
         Panel_Employees.add(Phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 30));
 
+        txtEmployeeJob.setEditable(false);
         txtEmployeeJob.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeJob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeJob.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeJob, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 50, 210, -1));
 
+        txtEmployeePhone.setEditable(false);
         txtEmployeePhone.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeePhone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeePhone.setForeground(new java.awt.Color(0, 0, 0));
@@ -1602,15 +1601,17 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Email.setText("E-MAIL");
         Panel_Employees.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, 30));
 
+        txtEmployeeEmail.setEditable(false);
         txtEmployeeEmail.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeEmail.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 103, 350, 30));
 
+        txtEmployeeNeigh.setEditable(false);
         txtEmployeeNeigh.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeNeigh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeNeigh.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Employees.add(txtEmployeeNeigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 246, 270, -1));
+        Panel_Employees.add(txtEmployeeNeigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 270, -1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1630,7 +1631,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Panel_Employees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pane_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         Card_Employees.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 920, 350));
@@ -1937,6 +1938,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         }
         new Register_And_Edit_Employee(this, true).setVisible(true);
         Utils.updateTable(EmployeeDao.findAll(), table_Employees);
+        Utils.clearFields(Panel_Employees);
     }//GEN-LAST:event_btnNewEmployeeMouseClicked
 
     private void btnEditEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditEmployeeMouseClicked
@@ -1956,6 +1958,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             Register_And_Edit_Employee dialog = new Register_And_Edit_Employee(this, true, emp);
             dialog.setVisible(true);
             Utils.updateTable(EmployeeDao.findAll(), table_Employees);
+            Utils.clearFields(Panel_Employees);
         } else {
             JOptionPane.showMessageDialog(null, "Você deve selecionar um funcionário para poder editar.",
                     "Erro", JOptionPane.ERROR_MESSAGE);
@@ -1981,6 +1984,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             
             EmployeeDao.removeByCpf(cpf);
             Utils.updateTable(EmployeeDao.findAll(), table_Employees);
+            Utils.clearFields(Panel_Employees);
         }
     }//GEN-LAST:event_btnDeleteEmployeeMouseClicked
 
@@ -2362,6 +2366,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_buscarVenda2MouseClicked
 
     private void table_EmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_EmployeesMouseClicked
+        if (!hasPermission("employee")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         int selectedRow = table_Employees.getSelectedRow();
         
         if (selectedRow > -1) {
@@ -2369,8 +2378,21 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             
             String cpf = (String) dtm.getValueAt(selectedRow, 0);
             Employee emp = EmployeeDao.findByCpf(cpf);
+            String cep = emp.getAddress().getCep();
             
-            
+            txtEmployeeName.setText(emp.getName());
+            txtEmployeeCPF.setText(emp.getCpf());
+            txtEmployeeCEP01.setText(cep.substring(0, 5));
+            txtEmployeeCEP02.setText(cep.substring(5));
+            txtEmployeeBirthDate.setText(emp.getFormattedBirthDate());
+            txtEmployeePhone.setText(emp.getPhone());
+            txtEmployeeJob.setText(emp.getOffice().getName());
+            txtEmployeeAddress.setText(emp.getAddress().getStreet());
+            txtEmployeeState.setText(emp.getAddress().getState());
+            txtEmployeeAddressNum.setText(emp.getAddress().getNumber());
+            txtEmployeeEmail.setText(emp.getEmail());
+            txtEmployeeNeigh.setText(emp.getAddress().getNeighborhood());
+            txtEmployeeCity.setText(emp.getAddress().getCity());
         }
     }//GEN-LAST:event_table_EmployeesMouseClicked
 
@@ -2418,7 +2440,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AdditionalAddress;
     private javax.swing.JLabel Address;
     private javax.swing.JLabel BirthDate;
     private javax.swing.JLabel CEP;
@@ -2571,7 +2592,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JTable table_Employees;
     private javax.swing.JTable table_Products;
     private javax.swing.JLabel txtBemVindo1;
-    private javax.swing.JTextField txtEmployeeAddAddress;
     private javax.swing.JTextField txtEmployeeAddress;
     private javax.swing.JTextField txtEmployeeAddressNum;
     private javax.swing.JTextField txtEmployeeBirthDate;
