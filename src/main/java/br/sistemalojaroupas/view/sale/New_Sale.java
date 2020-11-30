@@ -412,6 +412,7 @@ public class New_Sale extends javax.swing.JFrame {
             if (product.getQuantity() == 0) {
                 JOptionPane.showMessageDialog(this, "Este produto não possui quantidade em estoque.",
                         "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                product = null;
                 return;
             }
             txt_product.setText(product.getDescription());
@@ -433,16 +434,15 @@ public class New_Sale extends javax.swing.JFrame {
         Integer quantity = Utils.tryParseToInt(txt_quantity.getText());
         if (quantity > 0 && product != null) {
             try {
-                if (!hasProduct) {
-                    hasProduct = true;
-                    btnDeleteProduct.setVisible(true);
-                }
-                
                 item = new SaleItem(product, quantity);
                 sale.addItem(item);
 
                 Utils.updateTable(sale.getItems(), table_ShoppingCart);
-
+                
+                if (!hasProduct) {
+                    hasProduct = true;
+                    btnDeleteProduct.setVisible(true);
+                }
                 clearProductFields();
                 txt_SalesTotal.setText(String.format("R$ %.2f", sale.getTotal()));
 
@@ -462,6 +462,7 @@ public class New_Sale extends javax.swing.JFrame {
         if (sale == null) {
             JOptionPane.showMessageDialog(this, "Nenhuma operação da venda foi iniciada.",
                     "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         if (sale.getItems().size() > 0) {
             if (customer != null) {

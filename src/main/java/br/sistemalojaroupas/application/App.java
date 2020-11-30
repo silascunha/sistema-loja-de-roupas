@@ -5,15 +5,7 @@
  */
 package br.sistemalojaroupas.application;
 
-import br.sistemalojaroupas.db.DB;
-import br.sistemalojaroupas.model.dao.EmployeeDao;
-import br.sistemalojaroupas.model.entities.Employee;
-import br.sistemalojaroupas.model.services.CepService;
-import br.sistemalojaroupas.view.Home;
 import br.sistemalojaroupas.view.Login;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class App {
@@ -21,7 +13,7 @@ public class App {
     /* Apenas realizando testes do banco de dados na classe 
     enquanto não há interação com a interface grafica */
     
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
         new Login().main(args);
     }
     
