@@ -13,6 +13,7 @@ import br.sistemalojaroupas.model.entities.Sale;
 import br.sistemalojaroupas.model.entities.SaleItem;
 import br.sistemalojaroupas.model.services.SaleService;
 import br.sistemalojaroupas.view.util.Utils;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -54,13 +55,14 @@ public class New_Sale extends javax.swing.JFrame {
     public void finishSale() {
         DefaultTableModel dtm = (DefaultTableModel) table_ShoppingCart.getModel();
         dtm.setRowCount(0);
-
+        sale.setMoment(new Date());
         SaleService.confirmSale(sale);
         txt_SalesTotal.setText("R$ 0,00");
         txt_CPF.setValue("");
         txt_name.setText("");
         customer = null;
         nextSale = true;
+        sale = null;
         hasProduct = false;
         btnDeleteProduct.setVisible(false);
     }
@@ -459,7 +461,7 @@ public class New_Sale extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_addToCartActionPerformed
 
     private void btn_paymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paymentActionPerformed
-        if (sale == null) {
+        if (sale == null || nextSale) {
             JOptionPane.showMessageDialog(this, "Nenhuma operação da venda foi iniciada.",
                     "Erro", JOptionPane.ERROR_MESSAGE);
             return;
@@ -505,6 +507,7 @@ public class New_Sale extends javax.swing.JFrame {
         customer = null;
         nextSale = true;
         hasProduct = false;
+        sale = null;
         btnDeleteProduct.setVisible(false);
     }//GEN-LAST:event_btn_cancellationActionPerformed
 

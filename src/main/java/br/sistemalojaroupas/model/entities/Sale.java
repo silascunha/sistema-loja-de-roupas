@@ -48,16 +48,20 @@ public class Sale implements Serializable, TableContract {
         return items;
     }
     
+    public Date getMoment() {
+        return moment;
+    }
+    
+    public void setMoment(Date moment) {
+        this.moment = moment;
+    }
+    
     public void addItem(SaleItem item) {
         items.add(item);
     }
     
     public void removeItem(SaleItem item) {
         items.remove(item);
-    }
-
-    public Date getMoment() {
-        return moment;
     }
 
     public Employee getEmployee() {
