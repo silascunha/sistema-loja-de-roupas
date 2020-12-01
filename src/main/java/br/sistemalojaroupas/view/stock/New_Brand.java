@@ -104,7 +104,7 @@ public class New_Brand extends javax.swing.JDialog {
     private void btn_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_saveMouseClicked
         
         if (!txt_newBrand.getText().equals("")){
-            Brand brand = new Brand(txt_newBrand.getText().toUpperCase());
+            Brand brand = new Brand(txt_newBrand.getText());
             try {
                 BrandDao.insert(brand);
                 
