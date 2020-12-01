@@ -1552,7 +1552,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Panel_Employees.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 30));
 
         txtEmployeeName.setEditable(false);
-        txtEmployeeName.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeName.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeeName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1587,12 +1587,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Panel_Employees.add(Neighbourhood, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, 30));
 
         txtEmployeeBirthDate.setEditable(false);
-        txtEmployeeBirthDate.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeBirthDate.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeBirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Panel_Employees.add(txtEmployeeBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 94, 30));
 
         txtEmployeeCPF.setEditable(false);
-        txtEmployeeCPF.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeCPF.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Panel_Employees.add(txtEmployeeCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 50, 114, -1));
 
@@ -1614,12 +1614,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Panel_Employees.add(HouseNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
 
         txtEmployeeCEP01.setEditable(false);
-        txtEmployeeCEP01.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeCEP01.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeCEP01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Panel_Employees.add(txtEmployeeCEP01, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 60, 30));
 
         txtEmployeeCEP02.setEditable(false);
-        txtEmployeeCEP02.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeCEP02.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeCEP02.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Panel_Employees.add(txtEmployeeCEP02, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 40, 30));
 
@@ -1630,7 +1630,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Panel_Employees.add(CPFSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 20, 30));
 
         txtEmployeeAddress.setEditable(false);
-        txtEmployeeAddress.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeAddress.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Panel_Employees.add(txtEmployeeAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 430, 30));
 
@@ -1640,17 +1640,17 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Panel_Employees.add(City, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
 
         txtEmployeeCity.setEditable(false);
-        txtEmployeeCity.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeCity.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeCity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Panel_Employees.add(txtEmployeeCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 180, -1));
 
         txtEmployeeState.setEditable(false);
-        txtEmployeeState.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeState.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeState.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Panel_Employees.add(txtEmployeeState, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 30, -1));
 
         txtEmployeeAddressNum.setEditable(false);
-        txtEmployeeAddressNum.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeAddressNum.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeAddressNum.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Panel_Employees.add(txtEmployeeAddressNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 60, -1));
 
@@ -1660,12 +1660,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Panel_Employees.add(Phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 30));
 
         txtEmployeeJob.setEditable(false);
-        txtEmployeeJob.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeJob.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeJob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Panel_Employees.add(txtEmployeeJob, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 50, 210, -1));
 
         txtEmployeePhone.setEditable(false);
-        txtEmployeePhone.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeePhone.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeePhone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmployeePhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1680,12 +1680,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Panel_Employees.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, 30));
 
         txtEmployeeEmail.setEditable(false);
-        txtEmployeeEmail.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeEmail.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Panel_Employees.add(txtEmployeeEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 103, 350, 30));
 
         txtEmployeeNeigh.setEditable(false);
-        txtEmployeeNeigh.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmployeeNeigh.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeNeigh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Panel_Employees.add(txtEmployeeNeigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 270, -1));
 

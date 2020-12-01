@@ -530,7 +530,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
 
         getContentPane().add(panelFunctionalData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 580, 138));
 
-        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tela_cadastro_funcionario_dark.png"))); // NOI18N
+        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tela_cadastro_funcionario_dark2.png"))); // NOI18N
         getContentPane().add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 632, -1));
 
         pack();

@@ -964,7 +964,7 @@
     <Component class="javax.swing.JLabel" name="jLabelBackground">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/tela_cadastro_funcionario_dark.png"/>
+          <Image iconType="3" name="/img/tela_cadastro_funcionario_dark2.png"/>
         </Property>
       </Properties>
       <Constraints>
