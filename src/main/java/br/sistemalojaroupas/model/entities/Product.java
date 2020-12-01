@@ -166,6 +166,8 @@ public class Product implements Serializable, TableContract {
                 + category 
                 + ", size=" 
                 + size 
+                + ", brand=" 
+                + brand
                 + ", color=" 
                 + color 
                 + ", costPrice=" 

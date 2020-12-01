@@ -74,6 +74,11 @@ public class ColorDao {
         return c;
     }
     
+    public static Color findByName(String name) {
+        Color color = repColor.find(ObjectFilters.eq("name", name)).firstOrDefault();
+        return color;
+    }
+    
     public static void remove(Color color) {
         repColor.remove(color);
     }
