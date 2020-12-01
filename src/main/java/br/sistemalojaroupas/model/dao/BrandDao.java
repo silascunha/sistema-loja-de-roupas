@@ -74,6 +74,11 @@ public class BrandDao {
         return c;
     }
     
+    public static Brand findByName(String name) {
+        Brand brand = repBrand.find(ObjectFilters.eq("name", name)).firstOrDefault();
+        return brand;
+    }
+    
     public static void remove(Brand brand) {
         repBrand.remove(brand);
     }

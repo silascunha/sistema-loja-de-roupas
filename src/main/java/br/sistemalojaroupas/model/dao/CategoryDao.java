@@ -65,6 +65,11 @@ public class CategoryDao {
         return c;
     }
     
+    public static Category findByName(String name) {
+        Category category = repCategory.find(ObjectFilters.eq("category", name)).firstOrDefault();
+        return category;
+    }
+    
     public static List<Category> search(String arg0) {
         List<Category> list = repCategory.find(ObjectFilters.regex("category", arg0),
                 FindOptions.sort("category", SortOrder.Ascending)).toList();

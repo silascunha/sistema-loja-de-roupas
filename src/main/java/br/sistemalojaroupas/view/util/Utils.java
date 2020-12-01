@@ -5,10 +5,16 @@
  */
 package br.sistemalojaroupas.view.util;
 
+import br.sistemalojaroupas.model.entities.Brand;
+import br.sistemalojaroupas.model.entities.Category;
+import br.sistemalojaroupas.model.entities.Color;
+import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.entities.TableContract;
 import java.awt.Component;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
@@ -99,4 +105,24 @@ public class Utils {
         
         return sb.toString();
     }
+    
+    public static Set<Product> productFilters(Collection<Product> product, Category category, Brand brand, Color color, String size) {
+        Set<Product> list = new HashSet<>();
+        list.addAll(product);
+        
+        if (category != null) {
+            list.removeIf(p -> !p.getCategory().equals(category));
+        }
+        if (brand != null) {
+            list.removeIf(p -> !p.getBrand().equals(brand));
+        }
+        if (color != null) {
+            list.removeIf(p -> !p.getColor().equals(color));
+        }
+        if (size != null) {
+            list.removeIf(p -> !p.getSize().equals(size));
+        }
+        
+        return list;
+    } 
 }
