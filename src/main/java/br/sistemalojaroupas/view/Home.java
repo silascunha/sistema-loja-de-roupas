@@ -219,6 +219,13 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableSales = new javax.swing.JTable();
         Card_Products = new javax.swing.JPanel();
+        Filter_btn_Cancel = new javax.swing.JLabel();
+        Filter_btn_Apply = new javax.swing.JLabel();
+        Filter_cb_Color = new javax.swing.JComboBox<>();
+        Filter_cb_Size = new javax.swing.JComboBox<>();
+        Filter_cb_Mark = new javax.swing.JComboBox<>();
+        Filter_cb_Category = new javax.swing.JComboBox<>();
+        Filter_Background = new javax.swing.JLabel();
         btn_editProduct = new javax.swing.JLabel();
         btn_removeProduct = new javax.swing.JLabel();
         btn_addProduct = new javax.swing.JLabel();
@@ -227,6 +234,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_Products = new javax.swing.JTable();
+        btn_Filter = new javax.swing.JLabel();
         btn_SearchProducts = new javax.swing.JLabel();
         Card_Employees = new javax.swing.JPanel();
         btnNewEmployee = new javax.swing.JLabel();
@@ -1185,6 +1193,63 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Card_Products.setBackground(new java.awt.Color(255, 255, 255));
         Card_Products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Filter_btn_Cancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Filter_btn_Cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltro.png"))); // NOI18N
+        Filter_btn_Cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Filter_btn_CancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Filter_btn_CancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Filter_btn_CancelMouseExited(evt);
+            }
+        });
+        Card_Products.add(Filter_btn_Cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 120, -1, 25));
+
+        Filter_btn_Apply.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Filter_btn_Apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltro.png"))); // NOI18N
+        Filter_btn_Apply.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Filter_btn_ApplyMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Filter_btn_ApplyMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Filter_btn_ApplyMouseExited(evt);
+            }
+        });
+        Card_Products.add(Filter_btn_Apply, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 120, -1, 25));
+
+        Filter_cb_Color.setBackground(new java.awt.Color(204, 204, 204));
+        Filter_cb_Color.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        Filter_cb_Color.setForeground(new java.awt.Color(102, 102, 102));
+        Filter_cb_Color.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cor..", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Card_Products.add(Filter_cb_Color, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, 100, -1));
+
+        Filter_cb_Size.setBackground(new java.awt.Color(204, 204, 204));
+        Filter_cb_Size.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        Filter_cb_Size.setForeground(new java.awt.Color(102, 102, 102));
+        Filter_cb_Size.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tamanho..", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Card_Products.add(Filter_cb_Size, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 80, 100, -1));
+
+        Filter_cb_Mark.setBackground(new java.awt.Color(204, 204, 204));
+        Filter_cb_Mark.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        Filter_cb_Mark.setForeground(new java.awt.Color(102, 102, 102));
+        Filter_cb_Mark.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marca..", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Card_Products.add(Filter_cb_Mark, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 40, 100, -1));
+
+        Filter_cb_Category.setBackground(new java.awt.Color(204, 204, 204));
+        Filter_cb_Category.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        Filter_cb_Category.setForeground(new java.awt.Color(102, 102, 102));
+        Filter_cb_Category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria..", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Card_Products.add(Filter_cb_Category, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 40, 100, -1));
+
+        Filter_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background_FiltroAplicado.png"))); // NOI18N
+        Card_Products.add(Filter_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
+
         btn_editProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_editProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_Editar.png"))); // NOI18N
         btn_editProduct.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1329,6 +1394,21 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         Card_Products.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 214, 983, 338));
 
+        btn_Filter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_Filter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_filtrar.png"))); // NOI18N
+        btn_Filter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_FilterMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_FilterMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_FilterMouseExited(evt);
+            }
+        });
+        Card_Products.add(btn_Filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, -1, -1));
+
         btn_SearchProducts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png"))); // NOI18N
         btn_SearchProducts.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1347,7 +1427,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         CollectionCard.add(Card_Products, "cardProducts");
 
         Card_Employees.setBackground(new java.awt.Color(255, 255, 255));
-        Card_Employees.setForeground(new java.awt.Color(0, 0, 0));
         Card_Employees.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnNewEmployee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1465,7 +1544,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         txtEmployeeName.setEditable(false);
         txtEmployeeName.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeName.setForeground(new java.awt.Color(0, 0, 0));
         txtEmployeeName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmployeeNameActionPerformed(evt);
@@ -1501,13 +1579,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         txtEmployeeBirthDate.setEditable(false);
         txtEmployeeBirthDate.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeBirthDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeBirthDate.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 94, 30));
 
         txtEmployeeCPF.setEditable(false);
         txtEmployeeCPF.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeCPF.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 50, 114, -1));
 
         State.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1530,13 +1606,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         txtEmployeeCEP01.setEditable(false);
         txtEmployeeCEP01.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCEP01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeCEP01.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeCEP01, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 60, 30));
 
         txtEmployeeCEP02.setEditable(false);
         txtEmployeeCEP02.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCEP02.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeCEP02.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeCEP02, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 40, 30));
 
         CPFSeparator.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1548,7 +1622,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         txtEmployeeAddress.setEditable(false);
         txtEmployeeAddress.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeAddress.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 430, 30));
 
         City.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1559,19 +1632,16 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         txtEmployeeCity.setEditable(false);
         txtEmployeeCity.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeCity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeCity.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 180, -1));
 
         txtEmployeeState.setEditable(false);
         txtEmployeeState.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeState.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeState.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeState, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 30, -1));
 
         txtEmployeeAddressNum.setEditable(false);
         txtEmployeeAddressNum.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeAddressNum.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeAddressNum.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeAddressNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 60, -1));
 
         Phone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1582,13 +1652,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         txtEmployeeJob.setEditable(false);
         txtEmployeeJob.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeJob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeJob.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeJob, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 50, 210, -1));
 
         txtEmployeePhone.setEditable(false);
         txtEmployeePhone.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeePhone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeePhone.setForeground(new java.awt.Color(0, 0, 0));
         txtEmployeePhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmployeePhoneActionPerformed(evt);
@@ -1604,13 +1672,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         txtEmployeeEmail.setEditable(false);
         txtEmployeeEmail.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeEmail.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 103, 350, 30));
 
         txtEmployeeNeigh.setEditable(false);
         txtEmployeeNeigh.setBackground(new java.awt.Color(204, 204, 204));
         txtEmployeeNeigh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmployeeNeigh.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Employees.add(txtEmployeeNeigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 270, -1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -2031,6 +2097,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         setVisibleTable(table_Products);
         Utils.updateTable(ProductDao.findAll(), table_Products);
+        
+        Filter_Background.setVisible(false); Filter_btn_Cancel.setVisible(false); Filter_cb_Category.setVisible(false);
+        Filter_cb_Color.setVisible(false); Filter_cb_Mark.setVisible(false); Filter_cb_Size.setVisible(false); Filter_btn_Apply.setVisible(false);
     }//GEN-LAST:event_menu_productMouseClicked
 
     private void menu_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_employeesMouseClicked
@@ -2284,19 +2353,24 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         buscarVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png")));
     }//GEN-LAST:event_buscarVenda2MouseExited
 
-    private void btn_SearchProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseClicked
-        String str = txtProductsSearchField.getText();
+    private void btn_FilterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_FilterMouseClicked
+        Filter_Background.setVisible(true);
+        Filter_btn_Cancel.setVisible(true);        
+        Filter_cb_Category.setVisible(true);
+        Filter_cb_Color.setVisible(true);
+        Filter_cb_Mark.setVisible(true);
+        Filter_cb_Size.setVisible(true);
+        Filter_btn_Apply.setVisible(true);
+       
+    }//GEN-LAST:event_btn_FilterMouseClicked
 
-        Utils.updateTable(ProductDao.search(str), table_Products);
-    }//GEN-LAST:event_btn_SearchProductsMouseClicked
+    private void btn_FilterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_FilterMouseEntered
+        
+    }//GEN-LAST:event_btn_FilterMouseEntered
 
-    private void btn_SearchProductsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseEntered
-        btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png")));
-    }//GEN-LAST:event_btn_SearchProductsMouseEntered
-
-    private void btn_SearchProductsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseExited
-        btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
-    }//GEN-LAST:event_btn_SearchProductsMouseExited
+    private void btn_FilterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_FilterMouseExited
+        
+    }//GEN-LAST:event_btn_FilterMouseExited
 
     private void btnEditCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditCustomerMouseClicked
         if (!hasPermission("customer")) {
@@ -2404,6 +2478,45 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmployeeNameActionPerformed
 
+    private void btn_SearchProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseClicked
+        String str = txtProductsSearchField.getText();
+
+        Utils.updateTable(CustomerDao.search(str), table_Products);
+    }//GEN-LAST:event_btn_SearchProductsMouseClicked
+
+    private void btn_SearchProductsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseEntered
+       btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisar.png")));
+    }//GEN-LAST:event_btn_SearchProductsMouseEntered
+
+    private void btn_SearchProductsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseExited
+        btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
+    }//GEN-LAST:event_btn_SearchProductsMouseExited
+
+    private void Filter_btn_CancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_btn_CancelMouseClicked
+        Filter_Background.setVisible(false); Filter_btn_Cancel.setVisible(false); Filter_cb_Category.setVisible(false);
+        Filter_cb_Color.setVisible(false); Filter_cb_Mark.setVisible(false); Filter_cb_Size.setVisible(false); Filter_btn_Apply.setVisible(false);
+    }//GEN-LAST:event_Filter_btn_CancelMouseClicked
+
+    private void Filter_btn_CancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_btn_CancelMouseEntered
+    Filter_btn_Cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltroEscuro.png")));
+    }//GEN-LAST:event_Filter_btn_CancelMouseEntered
+
+    private void Filter_btn_CancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_btn_CancelMouseExited
+    Filter_btn_Cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltro.png")));
+    }//GEN-LAST:event_Filter_btn_CancelMouseExited
+
+    private void Filter_btn_ApplyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_btn_ApplyMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Filter_btn_ApplyMouseClicked
+
+    private void Filter_btn_ApplyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_btn_ApplyMouseEntered
+    Filter_btn_Apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltroEscuro.png"))); 
+    }//GEN-LAST:event_Filter_btn_ApplyMouseEntered
+
+    private void Filter_btn_ApplyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_btn_ApplyMouseExited
+    Filter_btn_Apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltro.png"))); 
+    }//GEN-LAST:event_Filter_btn_ApplyMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -2454,6 +2567,13 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel City;
     private javax.swing.JPanel CollectionCard;
     private javax.swing.JLabel Email;
+    private javax.swing.JLabel Filter_Background;
+    private javax.swing.JLabel Filter_btn_Apply;
+    private javax.swing.JLabel Filter_btn_Cancel;
+    private javax.swing.JComboBox<String> Filter_cb_Category;
+    private javax.swing.JComboBox<String> Filter_cb_Color;
+    private javax.swing.JComboBox<String> Filter_cb_Mark;
+    private javax.swing.JComboBox<String> Filter_cb_Size;
     private javax.swing.JPanel Head;
     private javax.swing.JLabel HouseNumber;
     private javax.swing.JLabel Job;
@@ -2475,6 +2595,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel btnSearchCustomer;
     private javax.swing.JLabel btn_Close;
     private javax.swing.JLabel btn_DeleteSale;
+    private javax.swing.JLabel btn_Filter;
     private javax.swing.JLabel btn_Max;
     private javax.swing.JLabel btn_Min;
     private javax.swing.JLabel btn_NewSale;
