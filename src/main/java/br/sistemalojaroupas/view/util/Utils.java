@@ -11,6 +11,7 @@ import br.sistemalojaroupas.model.entities.Color;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.entities.TableContract;
 import java.awt.Component;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -39,6 +40,14 @@ public class Utils {
     public static void updateComboBox(List<?> list, JComboBox cb) {
         cb.removeAllItems();
         cb.addItem("Selecione...");
+        list.forEach(c -> {
+            cb.addItem(c);
+        });
+    }
+    
+    public static void updateComboBox(List<?> list, JComboBox cb, String firstOption) {
+        cb.removeAllItems();
+        cb.addItem(firstOption);
         list.forEach(c -> {
             cb.addItem(c);
         });
@@ -106,8 +115,8 @@ public class Utils {
         return sb.toString();
     }
     
-    public static Set<Product> productFilters(Collection<Product> product, Category category, Brand brand, Color color, String size) {
-        Set<Product> list = new HashSet<>();
+    public static List<Product> productFilters(Collection<Product> product, Category category, Brand brand, Color color, String size) {
+        List<Product> list = new ArrayList<>();
         list.addAll(product);
         
         if (category != null) {

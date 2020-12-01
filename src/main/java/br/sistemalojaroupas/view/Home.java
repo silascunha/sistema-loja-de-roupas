@@ -5,21 +5,29 @@ import br.sistemalojaroupas.view.registration.Register_And_Edit_Customer;
 import br.sistemalojaroupas.view.stock.Register_And_Edit_Products;
 import br.sistemalojaroupas.view.sale.New_Sale;
 import br.sistemalojaroupas.db.DB;
+import br.sistemalojaroupas.model.dao.BrandDao;
+import br.sistemalojaroupas.model.dao.CategoryDao;
+import br.sistemalojaroupas.model.dao.ColorDao;
 import br.sistemalojaroupas.model.dao.CustomerDao;
 import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.dao.SaleDao;
+import br.sistemalojaroupas.model.entities.Brand;
+import br.sistemalojaroupas.model.entities.Category;
+import br.sistemalojaroupas.model.entities.Color;
 import br.sistemalojaroupas.model.entities.Customer;
 import br.sistemalojaroupas.model.entities.Employee;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.view.listeners.DataChangeListener;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -32,10 +40,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Home extends javax.swing.JFrame implements DataChangeListener {
 
-    Boolean bool = true;
+    private Boolean isMenuHided = true;
     private List<JPanel> menuButtonsList = new ArrayList<>();
     private CardLayout panelsCardLayout;
     private JTable visibleTable;
+    private Boolean productFilterVisibility = false;
+    private Map<String, Object> productSelectedFilters = new HashMap<>();
     
     private final String PERMISSION_ERROR = "Você não tem permissão para acessar esta funcionalidade.";
 
@@ -64,21 +74,21 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
     private void setMenuButtonsColor(JPanel pn1) {
 
-        pn1.setBackground(new Color(108, 81, 233));
+        pn1.setBackground(new java.awt.Color(108, 81, 233));
 
         menuButtonsList.forEach(pn2 -> {
             if (!pn2.equals(pn1)) {
-                pn2.setBackground(new Color(0, 0, 51));
+                pn2.setBackground(new java.awt.Color(0, 0, 51));
             }
         });
     }
 
     public void setDefaultColor(JPanel pnl) {
-        pnl.setBackground(new Color(98, 85, 158));
+        pnl.setBackground(new java.awt.Color(98, 85, 158));
     }
 
     public void resetDefaultColor(JPanel pnl) {
-        pnl.setBackground(new Color(108, 81, 233));
+        pnl.setBackground(new java.awt.Color(108, 81, 233));
     }
 
     public void changePaneSize(JPanel pnl, Dimension dim) {
@@ -219,12 +229,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableSales = new javax.swing.JTable();
         Card_Products = new javax.swing.JPanel();
-        Filter_btn_Cancel = new javax.swing.JLabel();
-        Filter_btn_Apply = new javax.swing.JLabel();
-        Filter_cb_Color = new javax.swing.JComboBox<>();
-        Filter_cb_Size = new javax.swing.JComboBox<>();
-        Filter_cb_Mark = new javax.swing.JComboBox<>();
-        Filter_cb_Category = new javax.swing.JComboBox<>();
+        filter_btn_Cancel = new javax.swing.JLabel();
+        filter_btn_Apply = new javax.swing.JLabel();
+        filter_cb_Color = new javax.swing.JComboBox<>();
+        filter_cb_Size = new javax.swing.JComboBox<>();
+        filter_cb_Brand = new javax.swing.JComboBox<>();
+        filter_cb_Category = new javax.swing.JComboBox<>();
         Filter_Background = new javax.swing.JLabel();
         btn_editProduct = new javax.swing.JLabel();
         btn_removeProduct = new javax.swing.JLabel();
@@ -1193,59 +1203,59 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Card_Products.setBackground(new java.awt.Color(255, 255, 255));
         Card_Products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Filter_btn_Cancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Filter_btn_Cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltro.png"))); // NOI18N
-        Filter_btn_Cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+        filter_btn_Cancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        filter_btn_Cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltro.png"))); // NOI18N
+        filter_btn_Cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Filter_btn_CancelMouseClicked(evt);
+                filter_btn_CancelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Filter_btn_CancelMouseEntered(evt);
+                filter_btn_CancelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                Filter_btn_CancelMouseExited(evt);
+                filter_btn_CancelMouseExited(evt);
             }
         });
-        Card_Products.add(Filter_btn_Cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 120, -1, 25));
+        Card_Products.add(filter_btn_Cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 120, -1, 25));
 
-        Filter_btn_Apply.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Filter_btn_Apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltro.png"))); // NOI18N
-        Filter_btn_Apply.addMouseListener(new java.awt.event.MouseAdapter() {
+        filter_btn_Apply.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        filter_btn_Apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltro.png"))); // NOI18N
+        filter_btn_Apply.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Filter_btn_ApplyMouseClicked(evt);
+                filter_btn_ApplyMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Filter_btn_ApplyMouseEntered(evt);
+                filter_btn_ApplyMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                Filter_btn_ApplyMouseExited(evt);
+                filter_btn_ApplyMouseExited(evt);
             }
         });
-        Card_Products.add(Filter_btn_Apply, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 120, -1, 25));
+        Card_Products.add(filter_btn_Apply, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 120, -1, 25));
 
-        Filter_cb_Color.setBackground(new java.awt.Color(204, 204, 204));
-        Filter_cb_Color.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        Filter_cb_Color.setForeground(new java.awt.Color(102, 102, 102));
-        Filter_cb_Color.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cor..", "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Card_Products.add(Filter_cb_Color, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, 100, -1));
+        filter_cb_Color.setBackground(new java.awt.Color(204, 204, 204));
+        filter_cb_Color.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        filter_cb_Color.setForeground(new java.awt.Color(102, 102, 102));
+        filter_cb_Color.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cor..", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Card_Products.add(filter_cb_Color, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, 100, -1));
 
-        Filter_cb_Size.setBackground(new java.awt.Color(204, 204, 204));
-        Filter_cb_Size.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        Filter_cb_Size.setForeground(new java.awt.Color(102, 102, 102));
-        Filter_cb_Size.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tamanho..", "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Card_Products.add(Filter_cb_Size, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 80, 100, -1));
+        filter_cb_Size.setBackground(new java.awt.Color(204, 204, 204));
+        filter_cb_Size.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        filter_cb_Size.setForeground(new java.awt.Color(102, 102, 102));
+        filter_cb_Size.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tamanho...", "PP", "P", "M", "G", "GG", "XG", "XGG", "XGGG", "U", "1", "2", "3", "4", "5", "6", "7", "8", "10", "12", "14", "16", "32", "34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56", "58", "60" }));
+        Card_Products.add(filter_cb_Size, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 80, 100, -1));
 
-        Filter_cb_Mark.setBackground(new java.awt.Color(204, 204, 204));
-        Filter_cb_Mark.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        Filter_cb_Mark.setForeground(new java.awt.Color(102, 102, 102));
-        Filter_cb_Mark.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marca..", "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Card_Products.add(Filter_cb_Mark, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 40, 100, -1));
+        filter_cb_Brand.setBackground(new java.awt.Color(204, 204, 204));
+        filter_cb_Brand.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        filter_cb_Brand.setForeground(new java.awt.Color(102, 102, 102));
+        filter_cb_Brand.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marca..", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Card_Products.add(filter_cb_Brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 40, 100, -1));
 
-        Filter_cb_Category.setBackground(new java.awt.Color(204, 204, 204));
-        Filter_cb_Category.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        Filter_cb_Category.setForeground(new java.awt.Color(102, 102, 102));
-        Filter_cb_Category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria..", "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Card_Products.add(Filter_cb_Category, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 40, 100, -1));
+        filter_cb_Category.setBackground(new java.awt.Color(204, 204, 204));
+        filter_cb_Category.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        filter_cb_Category.setForeground(new java.awt.Color(102, 102, 102));
+        filter_cb_Category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria..", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Card_Products.add(filter_cb_Category, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 40, 100, -1));
 
         Filter_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background_FiltroAplicado.png"))); // NOI18N
         Card_Products.add(Filter_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
@@ -1869,7 +1879,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
     private void btn_CloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CloseMouseEntered
         // color red
-        pnl_Close.setBackground(new Color(232, 17, 35));
+        pnl_Close.setBackground(new java.awt.Color(232, 17, 35));
     }//GEN-LAST:event_btn_CloseMouseEntered
 
     private void btn_CloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CloseMouseExited
@@ -1926,16 +1936,16 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_ShowHideMenuMouseExited
 
     private void btn_ShowHideMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ShowHideMenuMouseClicked
-        if (bool == true) {
+        if (isMenuHided == true) {
             changePaneSize(pnl_HeaderMenu, new Dimension(70, pnl_HeaderMenu.getHeight()));
             changePaneSize(pnMenu, new Dimension(70, pnMenu.getHeight()));
             SwingUtilities.updateComponentTreeUI(this);
-            bool = false;
+            isMenuHided = false;
         } else {
             changePaneSize(pnl_HeaderMenu, new Dimension(200, pnl_HeaderMenu.getHeight()));
             changePaneSize(pnMenu, new Dimension(200, pnMenu.getHeight()));
             SwingUtilities.updateComponentTreeUI(this);
-            bool = true;
+            isMenuHided = true;
         }
 
     }//GEN-LAST:event_btn_ShowHideMenuMouseClicked
@@ -1945,6 +1955,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        productSelectedFilters.clear();
         
         Register_And_Edit_Products dialog = new Register_And_Edit_Products(this, true);
         dialog.subscribeDataChangeListener(this);
@@ -1979,7 +1991,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             return;
         }
         int selectedRow = table_Products.getSelectedRow();
-
+        productSelectedFilters.clear();
         if (selectedRow > -1) {
 
             DefaultTableModel dtm = (DefaultTableModel) table_Products.getModel();
@@ -2097,9 +2109,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         setVisibleTable(table_Products);
         Utils.updateTable(ProductDao.findAll(), table_Products);
+        productSelectedFilters.clear();
         
-        Filter_Background.setVisible(false); Filter_btn_Cancel.setVisible(false); Filter_cb_Category.setVisible(false);
-        Filter_cb_Color.setVisible(false); Filter_cb_Mark.setVisible(false); Filter_cb_Size.setVisible(false); Filter_btn_Apply.setVisible(false);
+        Filter_Background.setVisible(false); filter_btn_Cancel.setVisible(false); filter_cb_Category.setVisible(false);
+        filter_cb_Color.setVisible(false); filter_cb_Brand.setVisible(false); filter_cb_Size.setVisible(false); filter_btn_Apply.setVisible(false);
     }//GEN-LAST:event_menu_productMouseClicked
 
     private void menu_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_employeesMouseClicked
@@ -2354,14 +2367,19 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_buscarVenda2MouseExited
 
     private void btn_FilterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_FilterMouseClicked
-        Filter_Background.setVisible(true);
-        Filter_btn_Cancel.setVisible(true);        
-        Filter_cb_Category.setVisible(true);
-        Filter_cb_Color.setVisible(true);
-        Filter_cb_Mark.setVisible(true);
-        Filter_cb_Size.setVisible(true);
-        Filter_btn_Apply.setVisible(true);
-       
+        productFilterVisibility = !productFilterVisibility;
+        
+        Filter_Background.setVisible(productFilterVisibility);
+        filter_btn_Cancel.setVisible(productFilterVisibility);        
+        filter_cb_Category.setVisible(productFilterVisibility);
+        filter_cb_Color.setVisible(productFilterVisibility);
+        filter_cb_Brand.setVisible(productFilterVisibility);
+        filter_cb_Size.setVisible(productFilterVisibility);
+        filter_btn_Apply.setVisible(productFilterVisibility);
+        
+        Utils.updateComboBox(CategoryDao.findAll(), filter_cb_Category, "Categoria...");
+        Utils.updateComboBox(BrandDao.findAll(), filter_cb_Brand, "Marca...");
+        Utils.updateComboBox(ColorDao.findAll(), filter_cb_Color, "Cor...");
     }//GEN-LAST:event_btn_FilterMouseClicked
 
     private void btn_FilterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_FilterMouseEntered
@@ -2480,8 +2498,18 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
     private void btn_SearchProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseClicked
         String str = txtProductsSearchField.getText();
-
-        Utils.updateTable(CustomerDao.search(str), table_Products);
+        
+        if (productSelectedFilters.size() > 0) {
+            Category cat = (Category) productSelectedFilters.get("category");
+            Brand brand = (Brand) productSelectedFilters.get("brand");
+            Color color = (Color) productSelectedFilters.get("color");
+            String size = (String) productSelectedFilters.get("size");
+            
+            Utils.updateTable(Utils.productFilters(ProductDao.search(str), cat, brand, color, size), table_Products);
+        }
+        else {
+            Utils.updateTable(ProductDao.search(str), table_Products);
+        }
     }//GEN-LAST:event_btn_SearchProductsMouseClicked
 
     private void btn_SearchProductsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SearchProductsMouseEntered
@@ -2492,30 +2520,53 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         btn_SearchProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
     }//GEN-LAST:event_btn_SearchProductsMouseExited
 
-    private void Filter_btn_CancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_btn_CancelMouseClicked
-        Filter_Background.setVisible(false); Filter_btn_Cancel.setVisible(false); Filter_cb_Category.setVisible(false);
-        Filter_cb_Color.setVisible(false); Filter_cb_Mark.setVisible(false); Filter_cb_Size.setVisible(false); Filter_btn_Apply.setVisible(false);
-    }//GEN-LAST:event_Filter_btn_CancelMouseClicked
+    private void filter_btn_CancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_CancelMouseClicked
+        filter_cb_Brand.setSelectedIndex(0);
+        filter_cb_Category.setSelectedIndex(0);
+        filter_cb_Color.setSelectedIndex(0);
+        filter_cb_Size.setSelectedIndex(0);
+        
+        productSelectedFilters.clear();
+        
+        Utils.updateTable(ProductDao.findAll(), table_Products);
+    }//GEN-LAST:event_filter_btn_CancelMouseClicked
 
-    private void Filter_btn_CancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_btn_CancelMouseEntered
-    Filter_btn_Cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltroEscuro.png")));
-    }//GEN-LAST:event_Filter_btn_CancelMouseEntered
+    private void filter_btn_CancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_CancelMouseEntered
+    filter_btn_Cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltroEscuro.png")));
+    }//GEN-LAST:event_filter_btn_CancelMouseEntered
 
-    private void Filter_btn_CancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_btn_CancelMouseExited
-    Filter_btn_Cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltro.png")));
-    }//GEN-LAST:event_Filter_btn_CancelMouseExited
+    private void filter_btn_CancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_CancelMouseExited
+    filter_btn_Cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltro.png")));
+    }//GEN-LAST:event_filter_btn_CancelMouseExited
 
-    private void Filter_btn_ApplyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_btn_ApplyMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Filter_btn_ApplyMouseClicked
+    private void filter_btn_ApplyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_ApplyMouseClicked
+        int selectedCategory = filter_cb_Category.getSelectedIndex();
+        int selectedBrand = filter_cb_Brand.getSelectedIndex();
+        int selectedColor = filter_cb_Color.getSelectedIndex();
+        int selectedSize = filter_cb_Size.getSelectedIndex();
+        
+        Category cat = (selectedCategory > 0) ? (Category) filter_cb_Category.getSelectedItem() : null;
+        Brand brand = (selectedBrand > 0) ? (Brand) filter_cb_Brand.getSelectedItem() : null;
+        Color color = (selectedColor > 0) ? (Color) filter_cb_Color.getSelectedItem() : null;
+        String size = (selectedSize > 0) ? (String) filter_cb_Size.getSelectedItem() : null;
+        
+        productSelectedFilters.put("category", cat);
+        productSelectedFilters.put("brand", brand);
+        productSelectedFilters.put("color", size);
+        productSelectedFilters.put("category", cat);
+        
+        List<Product> products = Utils.productFilters(ProductDao.findAll(), cat, brand, color, size);
+        products.sort((p1, p2) -> p1.getDescription().compareTo(p2.getDescription()));
+        Utils.updateTable(products, table_Products);
+    }//GEN-LAST:event_filter_btn_ApplyMouseClicked
 
-    private void Filter_btn_ApplyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_btn_ApplyMouseEntered
-    Filter_btn_Apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltroEscuro.png"))); 
-    }//GEN-LAST:event_Filter_btn_ApplyMouseEntered
+    private void filter_btn_ApplyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_ApplyMouseEntered
+        filter_btn_Apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltroEscuro.png"))); 
+    }//GEN-LAST:event_filter_btn_ApplyMouseEntered
 
-    private void Filter_btn_ApplyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_btn_ApplyMouseExited
-    Filter_btn_Apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltro.png"))); 
-    }//GEN-LAST:event_Filter_btn_ApplyMouseExited
+    private void filter_btn_ApplyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_ApplyMouseExited
+    filter_btn_Apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltro.png"))); 
+    }//GEN-LAST:event_filter_btn_ApplyMouseExited
 
     /**
      * @param args the command line arguments
@@ -2568,12 +2619,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JPanel CollectionCard;
     private javax.swing.JLabel Email;
     private javax.swing.JLabel Filter_Background;
-    private javax.swing.JLabel Filter_btn_Apply;
-    private javax.swing.JLabel Filter_btn_Cancel;
-    private javax.swing.JComboBox<String> Filter_cb_Category;
-    private javax.swing.JComboBox<String> Filter_cb_Color;
-    private javax.swing.JComboBox<String> Filter_cb_Mark;
-    private javax.swing.JComboBox<String> Filter_cb_Size;
     private javax.swing.JPanel Head;
     private javax.swing.JLabel HouseNumber;
     private javax.swing.JLabel Job;
@@ -2624,6 +2669,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel faturamentoValor3;
     private javax.swing.JLabel faturamentoValor4;
     private javax.swing.JLabel faturamentoValor5;
+    private javax.swing.JLabel filter_btn_Apply;
+    private javax.swing.JLabel filter_btn_Cancel;
+    private javax.swing.JComboBox<Object> filter_cb_Brand;
+    private javax.swing.JComboBox<Object> filter_cb_Category;
+    private javax.swing.JComboBox<Object> filter_cb_Color;
+    private javax.swing.JComboBox<String> filter_cb_Size;
     private javax.swing.JLabel fundoFaturamento;
     private javax.swing.JLabel fundoFaturamento2;
     private javax.swing.JLabel fundoFaturamento6;
