@@ -9,13 +9,12 @@ import br.sistemalojaroupas.model.entities.Brand;
 import br.sistemalojaroupas.model.entities.Category;
 import br.sistemalojaroupas.model.entities.Color;
 import br.sistemalojaroupas.model.entities.Product;
+import br.sistemalojaroupas.model.entities.Sale;
 import br.sistemalojaroupas.model.entities.TableContract;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
@@ -133,5 +132,6 @@ public class Utils {
         }
         
         return list;
-    } 
+    }
+
 }

@@ -8,6 +8,9 @@ package br.sistemalojaroupas.model.dao;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.entities.Sale;
 import br.sistemalojaroupas.model.entities.util.CodeGenerator;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.dizitart.no2.FindOptions;
 import org.dizitart.no2.SortOrder;
@@ -87,4 +90,15 @@ public class SaleDao {
         return revenues;
     }
     
+    public static List<Sale> filterByPeriod(String startPeriod, String endPeriod) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss");
+        Date start = sdf.parse(startPeriod + " 24:00:00");
+        Date end = sdf.parse(endPeriod + " 23:59:59");
+        
+        List<Sale> sales = repSale.find(ObjectFilters.and(ObjectFilters.gte("moment", start),
+                ObjectFilters.lte("moment", end)),
+                FindOptions.sort("moment", SortOrder.Descending)).toList();
+        
+        return sales;
+    }
 }

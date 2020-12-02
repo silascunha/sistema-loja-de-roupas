@@ -5,26 +5,25 @@
  */
 package br.sistemalojaroupas.application;
 
-import br.sistemalojaroupas.model.dao.BrandDao;
-import br.sistemalojaroupas.model.dao.CategoryDao;
-import br.sistemalojaroupas.model.dao.ProductDao;
-import br.sistemalojaroupas.model.entities.Brand;
-import br.sistemalojaroupas.model.entities.Category;
-import br.sistemalojaroupas.model.entities.Color;
-import br.sistemalojaroupas.model.entities.Product;
-import br.sistemalojaroupas.view.util.Utils;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
+import br.sistemalojaroupas.model.dao.SaleDao;
+import br.sistemalojaroupas.model.entities.Sale;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
+
+
 
 /**
  *
  * @author silas
  */
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         
     }
     
