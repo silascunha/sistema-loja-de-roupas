@@ -10,6 +10,7 @@ import br.sistemalojaroupas.model.entities.Sale;
 import br.sistemalojaroupas.model.entities.util.CodeGenerator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.dizitart.no2.FindOptions;
@@ -80,10 +81,16 @@ public class SaleDao {
         return repSale.size();
     }
     
-    public static Double revenues() {
+    public static Double revenues(Integer lastDays) {
         Double revenues = 0.0;
+        Date d = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        cal.add(Calendar.DAY_OF_MONTH, -lastDays);
         
-        for (Sale obj : findAll()) {
+        List<Sale> sales = repSale.find(ObjectFilters.gte("moment", cal.getTime())).toList();
+        
+        for (Sale obj : sales) {
             revenues += obj.getTotal();
         }
         

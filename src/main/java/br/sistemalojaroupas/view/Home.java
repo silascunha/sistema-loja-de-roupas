@@ -108,7 +108,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
     private void refreshHomeData() {
         txtTotalSales.setText(SaleDao.size().toString());
-        txtFaturamentoValor.setText(String.format("R$ %.2f", SaleDao.revenues()));
+        txtFaturamentoValor.setText(String.format("R$ %.2f", SaleDao.revenues(30)));
     }
 
     @SuppressWarnings("unchecked")
@@ -2552,8 +2552,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         
         productSelectedFilters.put("category", cat);
         productSelectedFilters.put("brand", brand);
-        productSelectedFilters.put("color", size);
-        productSelectedFilters.put("category", cat);
+        productSelectedFilters.put("color", color);
+        productSelectedFilters.put("size", size);
         
         List<Product> products = Utils.productFilters(ProductDao.findAll(), cat, brand, color, size);
         products.sort((p1, p2) -> p1.getDescription().compareTo(p2.getDescription()));
