@@ -63,7 +63,7 @@ public class Edit_Brand extends javax.swing.JDialog {
         txtBrand.setBackground(new java.awt.Color(108, 81, 233));
         txtBrand.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtBrand.setForeground(new java.awt.Color(0, 0, 51));
-        txtBrand.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtBrand.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBrand.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 51)));
         txtBrand.setOpaque(false);
         jPanel1.add(txtBrand, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 110, 30));
@@ -113,7 +113,7 @@ public class Edit_Brand extends javax.swing.JDialog {
         
         if (!txtBrand.getText().equals("")){
             try {
-                brand.setName(txtBrand.getText().toUpperCase());
+                brand.setName(txtBrand.getText());
                 BrandDao.update(brand);
                 
                 JOptionPane.showMessageDialog(null, "Marca editada com sucesso!",

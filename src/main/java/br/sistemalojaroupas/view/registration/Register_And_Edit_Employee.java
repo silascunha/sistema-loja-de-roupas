@@ -280,7 +280,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel29.setText("CEP:");
         jLabel29.setOpaque(true);
-        panelPersonalData.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 40, 30));
+        panelPersonalData.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 40, 30));
 
         jLabel30.setBackground(new java.awt.Color(59, 44, 150));
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -343,7 +343,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
                 eCEPKeyReleased(evt);
             }
         });
-        panelPersonalData.add(eCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 80, 30));
+        panelPersonalData.add(eCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 80, 30));
 
         eCity.setBackground(new java.awt.Color(0, 0, 0));
         eCity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -395,7 +395,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         ePhone.setCaretColor(new java.awt.Color(255, 255, 255));
         ePhone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ePhone.setOpaque(false);
-        panelPersonalData.add(ePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 100, 30));
+        panelPersonalData.add(ePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 110, 30));
 
         jLabel32.setBackground(new java.awt.Color(59, 44, 150));
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -436,7 +436,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
                 btnSearchCEPActionPerformed(evt);
             }
         });
-        panelPersonalData.add(btnSearchCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 30, 30));
+        panelPersonalData.add(btnSearchCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 30, 30));
 
         getContentPane().add(panelPersonalData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 580, 300));
 

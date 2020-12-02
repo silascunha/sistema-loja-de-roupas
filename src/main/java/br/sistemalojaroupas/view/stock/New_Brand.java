@@ -59,7 +59,7 @@ public class New_Brand extends javax.swing.JDialog {
         txt_newBrand.setBackground(new java.awt.Color(108, 81, 233));
         txt_newBrand.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_newBrand.setForeground(new java.awt.Color(0, 0, 51));
-        txt_newBrand.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txt_newBrand.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_newBrand.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 51)));
         txt_newBrand.setOpaque(false);
         jPanel1.add(txt_newBrand, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 110, 30));
