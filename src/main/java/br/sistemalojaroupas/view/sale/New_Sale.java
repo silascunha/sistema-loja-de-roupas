@@ -489,7 +489,11 @@ public class New_Sale extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_searchCPFActionPerformed
 
     private void btn_cancellationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancellationActionPerformed
-        if (nextSale) return;
+        if (nextSale || !hasProduct) {
+            JOptionPane.showMessageDialog(this, "Nenhuma operação da venda foi iniciada.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         int option = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja cancelar a venda?",
                 "Atenção!", JOptionPane.INFORMATION_MESSAGE);
         
@@ -527,6 +531,11 @@ public class New_Sale extends javax.swing.JFrame {
             sale.getItems().removeIf(x -> x.getProduct().equals(p));
             Utils.updateTable(sale.getItems(), table_ShoppingCart);
             txt_SalesTotal.setText(String.format("R$ %.2f", sale.getTotal()));
+            
+            if (sale.getItems().size() == 0) {
+                btnDeleteProduct.setVisible(false);
+                hasProduct = false;
+            }
         }
         else {
             JOptionPane.showMessageDialog(this, "Você deve selecionar um produto para poder remover da lista.",

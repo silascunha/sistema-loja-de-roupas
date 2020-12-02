@@ -69,11 +69,11 @@ public class Utils {
             }
             if (c instanceof JTextField) {
                 String s = ((JTextField)c).getText();
-                if (s.equals("")) return false;
+                if (s.trim().equals("")) return false;
             }
             if (c instanceof JFormattedTextField) {
                 String s = ((JFormattedTextField)c).getText();
-                if (s.equals("")) return false;
+                if (s.trim().equals("")) return false;
             }
         }
         return true;

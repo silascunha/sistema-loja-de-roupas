@@ -170,7 +170,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
                 btn_SavecMouseExited(evt);
             }
         });
-        pnl_Background.add(btn_Savec, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
+        pnl_Background.add(btn_Savec, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, -1));
 
         btn_Cancelc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png"))); // NOI18N
         btn_Cancelc.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -184,7 +184,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
                 btn_CancelcMouseExited(evt);
             }
         });
-        pnl_Background.add(btn_Cancelc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
+        pnl_Background.add(btn_Cancelc, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, -1, -1));
 
         btn_Cleanc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_limparClaro.png"))); // NOI18N
         btn_Cleanc.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -198,7 +198,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
                 btn_CleancMouseExited(evt);
             }
         });
-        pnl_Background.add(btn_Cleanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
+        pnl_Background.add(btn_Cleanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, -1, -1));
 
         title.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         title.setForeground(new java.awt.Color(0, 0, 51));

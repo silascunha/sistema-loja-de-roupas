@@ -98,6 +98,11 @@ public class Login extends javax.swing.JFrame {
         txt_password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_password.setBorder(null);
         txt_password.setOpaque(false);
+        txt_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_passwordKeyPressed(evt);
+            }
+        });
         pnl_background.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 309, 300, 30));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/telaLogin.png"))); // NOI18N
@@ -141,6 +146,12 @@ public class Login extends javax.swing.JFrame {
                     "Falha de Autenticação", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btn_loginMouseReleased
+
+    private void txt_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            btn_loginMouseReleased(null);
+        }
+    }//GEN-LAST:event_txt_passwordKeyPressed
 
     /**
      * @param args the command line arguments

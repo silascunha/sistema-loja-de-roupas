@@ -546,7 +546,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     }//GEN-LAST:event_eEmailActionPerformed
 
     private void bnt_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseClicked
-        boolean hasEmptyField = !Utils.isAllFieldsFilled(panelPersonalData) && !Utils
+        boolean hasEmptyField = !Utils.isAllFieldsFilled(panelPersonalData) || !Utils
                 .isAllFieldsFilled(panelFunctionalData);
         
         if (hasEmptyField) {
