@@ -1201,6 +1201,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         CollectionCard.add(Card_Sales, "cardSales");
 
         Card_Products.setBackground(new java.awt.Color(255, 255, 255));
+        Card_Products.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Card_ProductsMouseClicked(evt);
+            }
+        });
         Card_Products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         filter_btn_Cancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2380,8 +2385,25 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Utils.updateComboBox(CategoryDao.findAll(), filter_cb_Category, "Categoria...");
         Utils.updateComboBox(BrandDao.findAll(), filter_cb_Brand, "Marca...");
         Utils.updateComboBox(ColorDao.findAll(), filter_cb_Color, "Cor...");
+        
+        if (productFilterVisibility && productSelectedFilters.size() > 0) {
+            setSelectedProductFilterOrNull("color", filter_cb_Color);
+            setSelectedProductFilterOrNull("category", filter_cb_Category);
+            setSelectedProductFilterOrNull("brand", filter_cb_Brand);
+            setSelectedProductFilterOrNull("size", filter_cb_Size);
+        }
     }//GEN-LAST:event_btn_FilterMouseClicked
 
+    private void setSelectedProductFilterOrNull(String key, javax.swing.JComboBox comboBox) {
+        Object obj = productSelectedFilters.get(key);
+        if (obj == null) {
+            comboBox.setSelectedIndex(0);  
+        }
+        else {
+            comboBox.setSelectedItem(obj);
+        }
+    }
+    
     private void btn_FilterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_FilterMouseEntered
         
     }//GEN-LAST:event_btn_FilterMouseEntered
@@ -2567,6 +2589,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private void filter_btn_ApplyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_ApplyMouseExited
     filter_btn_Apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltro.png"))); 
     }//GEN-LAST:event_filter_btn_ApplyMouseExited
+
+    private void Card_ProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Card_ProductsMouseClicked
+        if (productFilterVisibility) {
+            btn_FilterMouseClicked(evt);
+        }
+    }//GEN-LAST:event_Card_ProductsMouseClicked
 
     /**
      * @param args the command line arguments
