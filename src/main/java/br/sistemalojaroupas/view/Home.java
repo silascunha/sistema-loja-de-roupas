@@ -69,7 +69,13 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }
     
     private boolean hasPermission(String key) {
-        return Login.getLoggedUser().hasPermission(key);
+        // TODO Condicional apenas para testes na Home, não estará na versão final
+        if (Login.getLoggedUser() == null) {
+            return true;
+        }
+        else {
+            return Login.getLoggedUser().hasPermission(key);
+        }
     }
 
     private void setMenuButtonsColor(JPanel pn1) {
