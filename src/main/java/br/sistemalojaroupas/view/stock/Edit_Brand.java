@@ -66,6 +66,11 @@ public class Edit_Brand extends javax.swing.JDialog {
         txtBrand.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBrand.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 51)));
         txtBrand.setOpaque(false);
+        txtBrand.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBrandKeyPressed(evt);
+            }
+        });
         jPanel1.add(txtBrand, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 110, 30));
 
         btn_close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -144,6 +149,12 @@ public class Edit_Brand extends javax.swing.JDialog {
         // Voltar ao ícone original
         btn_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png")));
     }//GEN-LAST:event_btn_saveMouseExited
+
+    private void txtBrandKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBrandKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            btn_saveMouseClicked(null);
+        }
+    }//GEN-LAST:event_txtBrandKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

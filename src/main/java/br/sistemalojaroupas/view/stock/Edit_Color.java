@@ -66,6 +66,11 @@ public class Edit_Color extends javax.swing.JDialog {
         txtColor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtColor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 51)));
         txtColor.setOpaque(false);
+        txtColor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtColorKeyPressed(evt);
+            }
+        });
         jPanel1.add(txtColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 120, 30));
 
         btn_close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -144,6 +149,12 @@ public class Edit_Color extends javax.swing.JDialog {
         // Voltar ao ícone original
         btn_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png")));
     }//GEN-LAST:event_btn_saveMouseExited
+
+    private void txtColorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtColorKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            btn_saveMouseClicked(null);
+        }
+    }//GEN-LAST:event_txtColorKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
