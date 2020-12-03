@@ -43,18 +43,14 @@ public class EmployeeDao {
                 .firstOrDefault();
         
         if (employee.equals(temp) || temp == null) {
-            repEmployee.update(employee);
             
-            if (!temp.getOffice().equals(employee.getOffice())) {
-                User u = UserDao.findByUser(temp.getEmail());
-                u.setPermissions(employee.getOffice().getPermissions());
-                UserDao.update(u);
-            }
-            if (!temp.getEmail().equals(employee.getEmail())) {
-                User u = UserDao.findByUser(temp.getEmail());
-                u.setUserName(employee.getEmail());
-                UserDao.update(u);
-            }
+            User u = UserDao.findByEmployee(employee);
+                    
+            u.setUserName(employee.getEmail());
+                
+            repEmployee.update(employee);
+            u.setEmployee(employee);
+            UserDao.update(u);
         }
         else {
             throw new DBException("Já existe um funcionário com este CPF no sistema.");

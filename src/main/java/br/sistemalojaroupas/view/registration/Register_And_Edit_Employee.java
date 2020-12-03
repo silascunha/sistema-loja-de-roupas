@@ -517,6 +517,9 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         btn_editOffice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit_19px.png"))); // NOI18N
         btn_editOffice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_editOffice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_editOfficeMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_editOfficeMouseEntered(evt);
             }
@@ -678,6 +681,18 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         new OfficeRegistration(this, true).setVisible(true);
         Utils.updateComboBox(OfficeDao.findAll(), cbOffice);
     }//GEN-LAST:event_btn_addOfficeMouseClicked
+
+    private void btn_editOfficeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editOfficeMouseClicked
+        if (cbOffice.getSelectedIndex() != 0) {
+            Office ofc = (Office) cbOffice.getSelectedItem();
+            new OfficeRegistration(this, true, ofc).setVisible(true);
+            Utils.updateComboBox(OfficeDao.findAll(), cbOffice);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Você deve selecionar uma cargo para poder editar.", 
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_editOfficeMouseClicked
       
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

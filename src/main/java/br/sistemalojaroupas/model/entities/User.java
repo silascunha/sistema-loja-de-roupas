@@ -80,7 +80,12 @@ public class User implements Serializable {
     }
 
     public Map<String, Boolean> getPermissions() {
-        return permissions;
+        if (employee == null) {
+            return permissions;
+        }
+        else {
+            return employee.getOffice().getPermissions();
+        }
     }
 
     public void setPermissions(Map<String, Boolean> permissions) {
@@ -88,7 +93,7 @@ public class User implements Serializable {
     }
     
     public Boolean hasPermission(String key) {
-        return permissions.get(key);
+        return getPermissions().get(key);
     }
 
     @Override

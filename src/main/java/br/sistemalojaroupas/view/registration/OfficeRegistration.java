@@ -5,6 +5,7 @@
  */
 package br.sistemalojaroupas.view.registration;
 
+import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.dao.OfficeDao;
 import br.sistemalojaroupas.model.entities.Office;
 import javax.swing.JOptionPane;
@@ -14,13 +15,32 @@ import javax.swing.JOptionPane;
  * @author silas
  */
 public class OfficeRegistration extends javax.swing.JDialog {
-
+    
+    private Office office;
+    private boolean isEditing;
     /**
      * Creates new form OfficeRegistration
      */
     public OfficeRegistration(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        isEditing = false;
+    }
+    
+    public OfficeRegistration(java.awt.Dialog parent, boolean modal, Office office) {
+        super(parent, modal);
+        initComponents();
+        this.office = office;
+        
+        chkHome.setSelected(this.office.getPermissions().get("homeinfo"));
+        chkSale.setSelected(this.office.getPermissions().get("sale"));
+        chkProduct.setSelected(this.office.getPermissions().get("product"));
+        chkCustomer.setSelected(this.office.getPermissions().get("customer"));
+        chkEmployee.setSelected(this.office.getPermissions().get("employee"));
+        
+        title.setText("Editar Cargo");
+        txtOffice.setText(this.office.getName());
+        isEditing = true;
     }
 
     /**
@@ -208,19 +228,39 @@ public class OfficeRegistration extends javax.swing.JDialog {
             return;
         }
         
-        Office office = new Office();
+        try {
+            if (!isEditing) {
+                Office office = instantiateOffice(new Office());
+                
+                OfficeDao.insert(office);
+                JOptionPane.showMessageDialog(null, "Cargo cadastrado com sucesso.", "Atenção!",
+                    JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            } else {
+                instantiateOffice(this.office);
+                
+                OfficeDao.update(this.office);
+                JOptionPane.showMessageDialog(null, "Cargo atualizado com sucesso.", "Atenção!",
+                    JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            }
+        } catch (DBException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bnt_saveMouseClicked
+
+    private Office instantiateOffice(Office office) {
         office.setName(txtOffice.getText().toUpperCase());
-        
+
         office.putPermission("product", chkProduct.isSelected());
         office.putPermission("employee", chkEmployee.isSelected());
         office.putPermission("homeinfo", chkHome.isSelected());
         office.putPermission("sale", chkSale.isSelected());
         office.putPermission("customer", chkCustomer.isSelected());
         
-        OfficeDao.insert(office);
-        this.dispose();
-    }//GEN-LAST:event_bnt_saveMouseClicked
-
+        return office;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bnt_save;
