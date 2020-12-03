@@ -20,10 +20,12 @@ import br.sistemalojaroupas.model.entities.Employee;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.view.listeners.DataChangeListener;
 import br.sistemalojaroupas.view.util.Utils;
+import com.google.gson.annotations.Until;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +35,8 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.Utilities;
+import jdk.jshell.execution.Util;
 
 /**
  *
@@ -45,6 +49,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private CardLayout panelsCardLayout;
     private JTable visibleTable;
     private Boolean productFilterVisibility = false;
+    private Boolean saleFilterVisibility = false;
     private Map<String, Object> productSelectedFilters = new HashMap<>();
     
     private final String PERMISSION_ERROR = "Você não tem permissão para acessar esta funcionalidade.";
@@ -226,6 +231,14 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         buscarVenda2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Card_Sales = new javax.swing.JPanel();
+        lbl_FinalDate = new javax.swing.JLabel();
+        lbl_InitialDate = new javax.swing.JLabel();
+        DC_Final_Date = new com.toedter.calendar.JDateChooser();
+        DC_Initial_Date = new com.toedter.calendar.JDateChooser();
+        filter_btn_Cancel_Sale = new javax.swing.JLabel();
+        filter_btn_Apply_Sale = new javax.swing.JLabel();
+        btn_Filter_Sale = new javax.swing.JLabel();
+        Filter_BackgroundSale = new javax.swing.JLabel();
         btn_NewSale = new javax.swing.JLabel();
         btn_SearchSale = new javax.swing.JLabel();
         searchSale = new javax.swing.JTextField();
@@ -1107,6 +1120,81 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         Card_Sales.setBackground(new java.awt.Color(255, 255, 255));
         Card_Sales.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_FinalDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbl_FinalDate.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_FinalDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_FinalDate.setText("Data final :");
+        Card_Sales.add(lbl_FinalDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, 80, 30));
+
+        lbl_InitialDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbl_InitialDate.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_InitialDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_InitialDate.setText("Data inicial :");
+        Card_Sales.add(lbl_InitialDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(737, 30, 80, 30));
+
+        DC_Final_Date.setBackground(new java.awt.Color(242, 242, 242));
+        DC_Final_Date.setForeground(new java.awt.Color(102, 102, 102));
+        DC_Final_Date.setDateFormatString("dd'/'MM'/'y");
+        Card_Sales.add(DC_Final_Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, 120, 30));
+
+        DC_Initial_Date.setBackground(new java.awt.Color(242, 242, 242));
+        DC_Initial_Date.setForeground(new java.awt.Color(102, 102, 102));
+        DC_Initial_Date.setDateFormatString("dd'/'MM'/'y");
+        Card_Sales.add(DC_Initial_Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 120, 30));
+
+        filter_btn_Cancel_Sale.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        filter_btn_Cancel_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltro.png"))); // NOI18N
+        filter_btn_Cancel_Sale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                filter_btn_Cancel_SaleMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                filter_btn_Cancel_SaleMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                filter_btn_Cancel_SaleMouseExited(evt);
+            }
+        });
+        Card_Sales.add(filter_btn_Cancel_Sale, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, -1, 25));
+
+        filter_btn_Apply_Sale.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        filter_btn_Apply_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltro.png"))); // NOI18N
+        filter_btn_Apply_Sale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                filter_btn_Apply_SaleMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                filter_btn_Apply_SaleMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                filter_btn_Apply_SaleMouseExited(evt);
+            }
+        });
+        Card_Sales.add(filter_btn_Apply_Sale, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 120, -1, 25));
+
+        btn_Filter_Sale.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_Filter_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_filtrar.png"))); // NOI18N
+        btn_Filter_Sale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_Filter_SaleMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_Filter_SaleMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_Filter_SaleMouseExited(evt);
+            }
+        });
+        Card_Sales.add(btn_Filter_Sale, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, -1, -1));
+
+        Filter_BackgroundSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background_FiltroAplicado.png"))); // NOI18N
+        Filter_BackgroundSale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Filter_BackgroundSaleMouseClicked(evt);
+            }
+        });
+        Card_Sales.add(Filter_BackgroundSale, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
 
         btn_NewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarClaro.png"))); // NOI18N
         btn_NewSale.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2109,6 +2197,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         setVisibleTable(tableSales);
         Utils.updateTable(SaleDao.findAll(), tableSales);
+        
+        Filter_BackgroundSale.setVisible(false); filter_btn_Cancel_Sale.setVisible(false); DC_Final_Date.setVisible(false);
+        DC_Initial_Date.setVisible(false); lbl_FinalDate.setVisible(false); lbl_InitialDate.setVisible(false); filter_btn_Apply_Sale.setVisible(false);  
+        
     }//GEN-LAST:event_menu_saleMouseClicked
 
     private void menu_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_homeMouseClicked
@@ -2612,6 +2704,63 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Filter_Background.requestFocusInWindow();
     }//GEN-LAST:event_Filter_BackgroundMouseClicked
 
+    private void btn_Filter_SaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Filter_SaleMouseClicked
+        saleFilterVisibility = !saleFilterVisibility;
+        
+        Filter_BackgroundSale.setVisible(saleFilterVisibility);
+        filter_btn_Cancel_Sale.setVisible(saleFilterVisibility);        
+        filter_btn_Apply_Sale.setVisible(saleFilterVisibility);        
+        DC_Final_Date.setVisible(saleFilterVisibility);
+        DC_Initial_Date.setVisible(saleFilterVisibility);
+        lbl_FinalDate.setVisible(saleFilterVisibility);
+        lbl_InitialDate.setVisible(saleFilterVisibility);  
+        
+        if(DC_Final_Date != null || DC_Initial_Date != null){
+            DC_Initial_Date.setDate(null);
+            DC_Final_Date.setDate(null);
+        }
+        
+        
+    }//GEN-LAST:event_btn_Filter_SaleMouseClicked
+
+    private void btn_Filter_SaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Filter_SaleMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Filter_SaleMouseEntered
+
+    private void btn_Filter_SaleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Filter_SaleMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Filter_SaleMouseExited
+
+    private void Filter_BackgroundSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_BackgroundSaleMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Filter_BackgroundSaleMouseClicked
+
+    private void filter_btn_Cancel_SaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_Cancel_SaleMouseClicked
+        // TODO add your handling code here:
+        DC_Initial_Date.setDate(null);
+        DC_Final_Date.setDate(null);
+    }//GEN-LAST:event_filter_btn_Cancel_SaleMouseClicked
+
+    private void filter_btn_Cancel_SaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_Cancel_SaleMouseEntered
+        filter_btn_Cancel_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltroEscuro.png")));
+    }//GEN-LAST:event_filter_btn_Cancel_SaleMouseEntered
+
+    private void filter_btn_Cancel_SaleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_Cancel_SaleMouseExited
+        filter_btn_Cancel_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltro.png")));
+    }//GEN-LAST:event_filter_btn_Cancel_SaleMouseExited
+
+    private void filter_btn_Apply_SaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_Apply_SaleMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filter_btn_Apply_SaleMouseClicked
+
+    private void filter_btn_Apply_SaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_Apply_SaleMouseEntered
+    filter_btn_Apply_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltroEscuro.png")));
+    }//GEN-LAST:event_filter_btn_Apply_SaleMouseEntered
+
+    private void filter_btn_Apply_SaleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_Apply_SaleMouseExited
+    filter_btn_Apply_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltro.png")));
+    }//GEN-LAST:event_filter_btn_Apply_SaleMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -2661,8 +2810,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JPanel Card_Settings;
     private javax.swing.JLabel City;
     private javax.swing.JPanel CollectionCard;
+    private com.toedter.calendar.JDateChooser DC_Final_Date;
+    private com.toedter.calendar.JDateChooser DC_Initial_Date;
     private javax.swing.JLabel Email;
     private javax.swing.JLabel Filter_Background;
+    private javax.swing.JLabel Filter_BackgroundSale;
     private javax.swing.JPanel Head;
     private javax.swing.JLabel HouseNumber;
     private javax.swing.JLabel Job;
@@ -2685,6 +2837,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel btn_Close;
     private javax.swing.JLabel btn_DeleteSale;
     private javax.swing.JLabel btn_Filter;
+    private javax.swing.JLabel btn_Filter_Sale;
     private javax.swing.JLabel btn_Max;
     private javax.swing.JLabel btn_Min;
     private javax.swing.JLabel btn_NewSale;
@@ -2714,7 +2867,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel faturamentoValor4;
     private javax.swing.JLabel faturamentoValor5;
     private javax.swing.JLabel filter_btn_Apply;
+    private javax.swing.JLabel filter_btn_Apply_Sale;
     private javax.swing.JLabel filter_btn_Cancel;
+    private javax.swing.JLabel filter_btn_Cancel_Sale;
     private javax.swing.JComboBox<Object> filter_cb_Brand;
     private javax.swing.JComboBox<Object> filter_cb_Category;
     private javax.swing.JComboBox<Object> filter_cb_Color;
@@ -2777,6 +2932,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JLabel lbl_FinalDate;
+    private javax.swing.JLabel lbl_InitialDate;
     private javax.swing.JPanel menu_customers;
     private javax.swing.JPanel menu_employees;
     private javax.swing.JPanel menu_home;
