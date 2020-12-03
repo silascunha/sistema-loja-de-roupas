@@ -19,16 +19,12 @@ public class NewJFrame extends javax.swing.JFrame {
     /** Creates new form NewJFrame */
     public NewJFrame() {
         initComponents();
-        JSpinner.DateEditor editor = new JSpinner.DateEditor(jSpinner1, "dd/MM/yyyy");
-        DateFormatter formatter = (DateFormatter) editor.getTextField().getFormatter();
-        formatter.setAllowsInvalid(true); // this makes what you want
-        formatter.setOverwriteMode(true);
-        jSpinner1.setEditor(editor);
+        
     }
     
-    public Date testDate() {
-        Date date = (Date) jSpinner1.getValue();
-        return date;
+    public String testDate() {
+        String str = (String) jFormattedTextField1.getText();
+        return str;
     }
 
     /** This method is called from within the constructor to
@@ -40,12 +36,10 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSpinner1 = new javax.swing.JSpinner();
         btnConfirmar = new javax.swing.JButton();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jSpinner1.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), new java.util.Date(-286664400000L), new java.util.Date(), java.util.Calendar.DAY_OF_MONTH));
 
         btnConfirmar.setText("Confirmar");
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -54,35 +48,41 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
-                .addComponent(btnConfirmar)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 61, Short.MAX_VALUE)
+                        .addComponent(btnConfirmar))
+                    .addComponent(jFormattedTextField1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(btnConfirmar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        Date date = testDate();
-        System.out.println(date);
+        String str = testDate();
+        System.out.println(str);
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**
@@ -122,7 +122,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     // End of variables declaration//GEN-END:variables
 
 }

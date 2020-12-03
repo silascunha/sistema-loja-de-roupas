@@ -508,7 +508,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="eCPF">
+        <Component class="javax.swing.JFormattedTextField" name="txtfCpf">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -540,7 +540,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="eBirthDate">
+        <Component class="javax.swing.JFormattedTextField" name="txtfBirthDate">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -567,7 +567,7 @@
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eBirthDateActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfBirthDateActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -575,7 +575,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="ePhone">
+        <Component class="javax.swing.JFormattedTextField" name="txtfPhone">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -823,7 +823,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="eAdmissionDate">
+        <Component class="javax.swing.JFormattedTextField" name="txtfAdmissionDate">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -855,7 +855,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="eSalary">
+        <Component class="javax.swing.JFormattedTextField" name="txtfSalary">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>

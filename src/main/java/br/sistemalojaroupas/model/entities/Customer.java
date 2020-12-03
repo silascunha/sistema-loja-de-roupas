@@ -75,12 +75,11 @@ public class Customer implements Serializable, TableContract {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.cpf);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -96,7 +95,7 @@ public class Customer implements Serializable, TableContract {
             return false;
         }
         final Customer other = (Customer) obj;
-        if (!Objects.equals(this.cpf, other.cpf)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;

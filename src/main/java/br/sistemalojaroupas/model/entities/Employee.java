@@ -136,11 +136,11 @@ public class Employee implements Serializable, TableContract {
     public void setOffice(Office office) {
         this.office = office;
     }
-    
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.cpf);
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -156,7 +156,7 @@ public class Employee implements Serializable, TableContract {
             return false;
         }
         final Employee other = (Employee) obj;
-        if (!Objects.equals(this.cpf, other.cpf)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;

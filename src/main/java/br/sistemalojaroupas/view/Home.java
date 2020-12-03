@@ -1269,6 +1269,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Card_Products.add(filter_cb_Category, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 40, 100, -1));
 
         Filter_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background_FiltroAplicado.png"))); // NOI18N
+        Filter_Background.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Filter_BackgroundMouseClicked(evt);
+            }
+        });
         Card_Products.add(Filter_Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
 
         btn_editProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2601,6 +2606,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             btn_FilterMouseClicked(evt);
         }
     }//GEN-LAST:event_Card_ProductsMouseClicked
+
+    private void Filter_BackgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Filter_BackgroundMouseClicked
+        //Este evento serve para evitar que a tela de filtro de produto feche ao clicar com o mouse nele mesmo
+        Filter_Background.requestFocusInWindow();
+    }//GEN-LAST:event_Filter_BackgroundMouseClicked
 
     /**
      * @param args the command line arguments

@@ -12,6 +12,7 @@ import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.entities.Sale;
 import br.sistemalojaroupas.model.entities.TableContract;
 import java.awt.Component;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -72,8 +73,15 @@ public class Utils {
                 if (s.trim().equals("")) return false;
             }
             if (c instanceof JFormattedTextField) {
-                String s = ((JFormattedTextField)c).getText();
-                if (s.trim().equals("")) return false;
+                try {
+                    ((JFormattedTextField)c).commitEdit();
+                } catch (ParseException e) {
+                    return false;
+                }
+                Object obj = ((JFormattedTextField)c).getValue();
+                if (obj == null) {
+                    return false;
+                }
             }
         }
         return true;

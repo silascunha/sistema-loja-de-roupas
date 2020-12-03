@@ -55,9 +55,9 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         this.product = product;
         
         txt_description.setText(product.getDescription());
-        txt_costPrice.setText(product.getCostPrice().toString().replace('.', ','));
-        txt_salePrice.setText(product.getSalePrice().toString().replace('.', ','));
-        txt_quantity.setText(String.valueOf(product.getQuantity()));
+        txtf_costPrice.setValue(product.getCostPrice());
+        txtf_salePrice.setValue(product.getSalePrice());
+        txtf_quantity.setValue(product.getQuantity());
         title.setText("Editar produto");
         
         setAllComboBoxRenderer();
@@ -105,16 +105,16 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
     }
     
     private Product instantiateProduct(Product p) {
-        Double costPrice = Double.parseDouble(txt_costPrice.getText().replace(',', '.'));
-        Double salePrice = Double.parseDouble(txt_salePrice.getText().replace(',', '.'));
-
+        Double costPrice = Utils.tryParseToDouble(txtf_costPrice.getText().replace(',', '.'));
+        Double salePrice = Utils.tryParseToDouble(txtf_salePrice.getText().replace(',', '.'));
+        
         p.setDescription(txt_description.getText().toUpperCase());
         p.setCategory((Category) cbCategory.getSelectedItem());
         p.setColor((Color) cbColor.getSelectedItem());
-        p.setQuantity(Integer.parseInt(txt_quantity.getText()));
+        p.setQuantity(Utils.tryParseToInt(txtf_quantity.getText()));
         p.setCostPrice(costPrice);
         p.setSalePrice(salePrice);
-        p.setSize(cbSize.getSelectedItem().toString());
+        p.setSize((String) cbSize.getSelectedItem());
         p.setBrand((Brand) cbBrand.getSelectedItem());
         
         return p;
@@ -140,9 +140,9 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txt_salePrice = new javax.swing.JFormattedTextField();
-        txt_costPrice = new javax.swing.JFormattedTextField();
-        txt_quantity = new javax.swing.JFormattedTextField();
+        txtf_salePrice = new javax.swing.JFormattedTextField();
+        txtf_costPrice = new javax.swing.JFormattedTextField();
+        txtf_quantity = new javax.swing.JFormattedTextField();
         bnt_save = new javax.swing.JLabel();
         btn_clear = new javax.swing.JLabel();
         btn_cancel = new javax.swing.JLabel();
@@ -161,6 +161,11 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
+        pnl_Background.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnl_BackgroundMouseClicked(evt);
+            }
+        });
         pnl_Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         title.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -240,26 +245,26 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         jLabel5.setOpaque(true);
         pnl_Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 50, 30));
 
-        txt_salePrice.setBackground(new java.awt.Color(0, 0, 51));
-        txt_salePrice.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        txt_salePrice.setForeground(new java.awt.Color(255, 255, 255));
-        txt_salePrice.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        txt_salePrice.setOpaque(false);
-        pnl_Background.add(txt_salePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 100, 30));
+        txtf_salePrice.setBackground(new java.awt.Color(0, 0, 51));
+        txtf_salePrice.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txtf_salePrice.setForeground(new java.awt.Color(255, 255, 255));
+        txtf_salePrice.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtf_salePrice.setOpaque(false);
+        pnl_Background.add(txtf_salePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 100, 30));
 
-        txt_costPrice.setBackground(new java.awt.Color(0, 0, 51));
-        txt_costPrice.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        txt_costPrice.setForeground(new java.awt.Color(255, 255, 255));
-        txt_costPrice.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        txt_costPrice.setOpaque(false);
-        pnl_Background.add(txt_costPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 100, 30));
+        txtf_costPrice.setBackground(new java.awt.Color(0, 0, 51));
+        txtf_costPrice.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txtf_costPrice.setForeground(new java.awt.Color(255, 255, 255));
+        txtf_costPrice.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtf_costPrice.setOpaque(false);
+        pnl_Background.add(txtf_costPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 100, 30));
 
-        txt_quantity.setBackground(new java.awt.Color(0, 0, 51));
-        txt_quantity.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        txt_quantity.setForeground(new java.awt.Color(255, 255, 255));
-        txt_quantity.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        txt_quantity.setOpaque(false);
-        pnl_Background.add(txt_quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 80, 30));
+        txtf_quantity.setBackground(new java.awt.Color(0, 0, 51));
+        txtf_quantity.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txtf_quantity.setForeground(new java.awt.Color(255, 255, 255));
+        txtf_quantity.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        txtf_quantity.setOpaque(false);
+        pnl_Background.add(txtf_quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 80, 30));
 
         bnt_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
         bnt_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -439,7 +444,8 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
 
     private void bnt_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseClicked
         //verificar se todos campos foram preenchidos
-        
+        bnt_save.requestFocusInWindow();
+
         if (Utils.isAllFieldsFilled(pnl_Background)) {
             
             if (product == null) {
@@ -603,6 +609,10 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_editBrandMouseExited
 
+    private void pnl_BackgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_BackgroundMouseClicked
+        pnl_Background.requestFocusInWindow();
+    }//GEN-LAST:event_pnl_BackgroundMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
@@ -629,9 +639,9 @@ public class Register_And_Edit_Products extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel pnl_Background;
     private javax.swing.JLabel title;
-    private javax.swing.JFormattedTextField txt_costPrice;
     private javax.swing.JTextField txt_description;
-    private javax.swing.JFormattedTextField txt_quantity;
-    private javax.swing.JFormattedTextField txt_salePrice;
+    private javax.swing.JFormattedTextField txtf_costPrice;
+    private javax.swing.JFormattedTextField txtf_quantity;
+    private javax.swing.JFormattedTextField txtf_salePrice;
     // End of variables declaration//GEN-END:variables
 }

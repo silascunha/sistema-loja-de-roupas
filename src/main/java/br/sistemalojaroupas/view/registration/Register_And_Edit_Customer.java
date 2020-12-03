@@ -5,6 +5,7 @@
  */
 package br.sistemalojaroupas.view.registration;
 
+import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.dao.CustomerDao;
 import br.sistemalojaroupas.model.entities.Customer;
 import br.sistemalojaroupas.view.util.Utils;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 public class Register_And_Edit_Customer extends javax.swing.JDialog {
 
     private Customer customer;
+    private boolean isRegistering;
 
     /**
      * Creates new form New_Customer
@@ -27,6 +29,7 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         initComponents();
         this.setBackground(new Color(0, 0, 0, 0));
         pnl_Background.setBackground(new Color(0, 0, 0, 0));
+        isRegistering = true;
     }
 
     public Register_And_Edit_Customer(java.awt.Frame owner, boolean modal, Customer customer) {
@@ -36,18 +39,19 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         this.setBackground(new java.awt.Color(0, 0, 0, 0));
 
         this.customer = customer;
+        isRegistering = false;
 
         title.setText("Editar cliente");
         cName.setText(customer.getName());
-        cCPF.setText(customer.getCpf());
+        txtfCpf.setValue(customer.getCpf());
         cEmail.setText(customer.getEmail());
-        cCell.setText(customer.getPhone());
+        txtfPhone.setValue(customer.getPhone());
     }
 
     public void limpaCampos() {
         cEmail.setText("");
-        cCPF.setText("");
-        cCell.setText("");
+        txtfCpf.setText("");
+        txtfPhone.setText("");
         cName.setText("");
     }
 
@@ -55,8 +59,8 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
 
         customer.setName(cName.getText().toUpperCase());
         customer.setEmail(cEmail.getText());
-        customer.setCpf(cCPF.getText());
-        customer.setPhone(cCell.getText());
+        customer.setCpf(txtfCpf.getText());
+        customer.setPhone(txtfPhone.getText());
 
         return customer;
     }
@@ -77,8 +81,8 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         cEmail = new javax.swing.JTextField();
         cName = new javax.swing.JTextField();
-        cCPF = new javax.swing.JFormattedTextField();
-        cCell = new javax.swing.JFormattedTextField();
+        txtfCpf = new javax.swing.JFormattedTextField();
+        txtfPhone = new javax.swing.JFormattedTextField();
         btn_Savec = new javax.swing.JLabel();
         btn_Cancelc = new javax.swing.JLabel();
         btn_Cleanc = new javax.swing.JLabel();
@@ -136,27 +140,27 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
         cName.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         pnl_Background.add(cName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 329, 30));
 
-        cCPF.setBackground(new java.awt.Color(0, 0, 51));
-        cCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        cCPF.setForeground(new java.awt.Color(255, 255, 255));
+        txtfCpf.setBackground(new java.awt.Color(0, 0, 51));
+        txtfCpf.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txtfCpf.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            cCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            txtfCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        cCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        pnl_Background.add(cCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 180, 30));
+        txtfCpf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pnl_Background.add(txtfCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 180, 30));
 
-        cCell.setBackground(new java.awt.Color(0, 0, 51));
-        cCell.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        cCell.setForeground(new java.awt.Color(255, 255, 255));
+        txtfPhone.setBackground(new java.awt.Color(0, 0, 51));
+        txtfPhone.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txtfPhone.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            cCell.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            txtfPhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        cCell.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        pnl_Background.add(cCell, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 180, 30));
+        txtfPhone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pnl_Background.add(txtfPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 180, 30));
 
         btn_Savec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
         btn_Savec.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -224,29 +228,34 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_CancelcMouseClicked
 
     private void btn_SavecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SavecMouseClicked
-
-        if (Utils.isAllFieldsFilled(pnl_Background)) {
-
-            if (customer == null) {
-
-                customer = instantiateCustomer(new Customer());
-
-                CustomerDao.insert(customer);
-                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!",
-                        "Atenção", JOptionPane.INFORMATION_MESSAGE);
-
-                Utils.clearFields(pnl_Background);
-                customer = null;
+        btn_Savec.requestFocusInWindow();
+        try {
+            if (Utils.isAllFieldsFilled(pnl_Background)) {
+                
+                if (customer == null || isRegistering) {
+                    
+                    customer = instantiateCustomer(new Customer());
+                    
+                    CustomerDao.insert(customer);
+                    JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!",
+                            "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    Utils.clearFields(pnl_Background);
+                    customer = null;
+                } else {
+                    instantiateCustomer(customer);
+                    CustomerDao.update(customer);
+                    JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!",
+                            "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                    this.dispose();
+                }
             } else {
-                instantiateCustomer(customer);
-                CustomerDao.update(customer);
-                JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!",
-                        "Atenção", JOptionPane.INFORMATION_MESSAGE);
-                this.dispose();
+                JOptionPane.showMessageDialog(null, "Você deve preencher todos os campos.",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Você deve preencher todos os campos.",
-                    "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (DBException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                        "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_btn_SavecMouseClicked
@@ -280,8 +289,6 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
     private javax.swing.JLabel btn_Cancelc;
     private javax.swing.JLabel btn_Cleanc;
     private javax.swing.JLabel btn_Savec;
-    private javax.swing.JFormattedTextField cCPF;
-    private javax.swing.JFormattedTextField cCell;
     private javax.swing.JTextField cEmail;
     private javax.swing.JTextField cName;
     private javax.swing.JLabel jLabel1;
@@ -291,6 +298,8 @@ public class Register_And_Edit_Customer extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel pnl_Background;
     private javax.swing.JLabel title;
+    private javax.swing.JFormattedTextField txtfCpf;
+    private javax.swing.JFormattedTextField txtfPhone;
     // End of variables declaration//GEN-END:variables
 
 }

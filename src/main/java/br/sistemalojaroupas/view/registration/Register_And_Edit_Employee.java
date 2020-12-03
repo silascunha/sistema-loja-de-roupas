@@ -5,6 +5,7 @@
  */
 package br.sistemalojaroupas.view.registration;
 
+import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.dao.EmployeeDao;
 import br.sistemalojaroupas.model.dao.OfficeDao;
 import br.sistemalojaroupas.model.dao.UserDao;
@@ -31,6 +32,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     private Address address;
     private Employee employee;
     private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private Boolean isRegistering;
     /**
      * Creates new form Insert_Employee
      */
@@ -43,6 +45,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         
         cbOffice.setRenderer(new ComboBoxRenderer());
         Utils.updateComboBox(OfficeDao.findAll(), cbOffice);
+        isRegistering = true;
     }
     
     public Register_And_Edit_Employee(java.awt.Frame owner, boolean modal, Employee employee) {
@@ -53,24 +56,25 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         
         this.employee = employee;
         this.address = employee.getAddress();
+        isRegistering = false;
         
         cbOffice.setRenderer(new ComboBoxRenderer());
         Utils.updateComboBox(OfficeDao.findAll(), cbOffice);
         
         title.setText("Editar funcionário");
         eName.setText(employee.getName());
-        eCPF.setText(employee.getCpf());
-        eSalary.setText(employee.getSalary().toString().replace('.', ','));
+        txtfCpf.setValue(employee.getCpf());
+        txtfSalary.setValue(employee.getSalary());
         eEmail.setText(employee.getEmail());
-        ePhone.setText(employee.getPhone());
+        txtfPhone.setValue(employee.getPhone());
         cbOffice.setSelectedItem(employee.getOffice());
         eCity.setText(address.getCity());
         eState.setText(address.getState());
         eStreet.setText(address.getStreet());
         eNeighborhood.setText(address.getNeighborhood());
         eNumber.setText(address.getNumber());
-        eBirthDate.setText(employee.getFormattedBirthDate());
-        eAdmissionDate.setText(employee.getFormattedAdmissionDate());
+        txtfBirthDate.setValue(employee.getFormattedBirthDate());
+        txtfAdmissionDate.setValue(employee.getFormattedAdmissionDate());
         eCEP.setText(address.getCep());
         
     }
@@ -84,13 +88,13 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         
         employee.setName(eName.getText().toUpperCase());
         employee.setEmail(eEmail.getText());
-        employee.setCpf(eCPF.getText());
-        employee.setPhone(ePhone.getText());
-        employee.setSalary(Utils.tryParseToDouble(eSalary.getText().replace(',', '.')));
+        employee.setCpf(txtfCpf.getText());
+        employee.setPhone(txtfPhone.getText());
+        employee.setSalary(Utils.tryParseToDouble(txtfSalary.getText().replace(',', '.')));
         
         try {
-            employee.setBirthDate(sdf.parse(eBirthDate.getText()));
-            employee.setAdmissionDate(sdf.parse(eAdmissionDate.getText()));
+            employee.setBirthDate(sdf.parse(txtfBirthDate.getText()));
+            employee.setAdmissionDate(sdf.parse(txtfAdmissionDate.getText()));
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
@@ -135,9 +139,9 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         eNeighborhood = new javax.swing.JTextField();
         eCEP = new javax.swing.JTextField();
         eCity = new javax.swing.JTextField();
-        eCPF = new javax.swing.JFormattedTextField();
-        eBirthDate = new javax.swing.JFormattedTextField();
-        ePhone = new javax.swing.JFormattedTextField();
+        txtfCpf = new javax.swing.JFormattedTextField();
+        txtfBirthDate = new javax.swing.JFormattedTextField();
+        txtfPhone = new javax.swing.JFormattedTextField();
         jLabel32 = new javax.swing.JLabel();
         eState = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
@@ -147,8 +151,8 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        eAdmissionDate = new javax.swing.JFormattedTextField();
-        eSalary = new javax.swing.JFormattedTextField();
+        txtfAdmissionDate = new javax.swing.JFormattedTextField();
+        txtfSalary = new javax.swing.JFormattedTextField();
         btn_addOffice = new javax.swing.JLabel();
         btn_editOffice = new javax.swing.JLabel();
         cbOffice = new javax.swing.JComboBox<>();
@@ -353,49 +357,49 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         eCity.setOpaque(false);
         panelPersonalData.add(eCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 130, 30));
 
-        eCPF.setBackground(new java.awt.Color(0, 0, 0));
-        eCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        eCPF.setForeground(new java.awt.Color(255, 255, 255));
+        txtfCpf.setBackground(new java.awt.Color(0, 0, 0));
+        txtfCpf.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txtfCpf.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            eCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            txtfCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        eCPF.setCaretColor(new java.awt.Color(255, 255, 255));
-        eCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eCPF.setOpaque(false);
-        panelPersonalData.add(eCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 110, 30));
+        txtfCpf.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtfCpf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtfCpf.setOpaque(false);
+        panelPersonalData.add(txtfCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 110, 30));
 
-        eBirthDate.setBackground(new java.awt.Color(0, 0, 0));
-        eBirthDate.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        eBirthDate.setForeground(new java.awt.Color(255, 255, 255));
+        txtfBirthDate.setBackground(new java.awt.Color(0, 0, 0));
+        txtfBirthDate.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txtfBirthDate.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            eBirthDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            txtfBirthDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        eBirthDate.setCaretColor(new java.awt.Color(255, 255, 255));
-        eBirthDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eBirthDate.setOpaque(false);
-        eBirthDate.addActionListener(new java.awt.event.ActionListener() {
+        txtfBirthDate.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtfBirthDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtfBirthDate.setOpaque(false);
+        txtfBirthDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eBirthDateActionPerformed(evt);
+                txtfBirthDateActionPerformed(evt);
             }
         });
-        panelPersonalData.add(eBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 110, 30));
+        panelPersonalData.add(txtfBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 110, 30));
 
-        ePhone.setBackground(new java.awt.Color(0, 0, 0));
-        ePhone.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        ePhone.setForeground(new java.awt.Color(255, 255, 255));
+        txtfPhone.setBackground(new java.awt.Color(0, 0, 0));
+        txtfPhone.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txtfPhone.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            ePhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+            txtfPhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ePhone.setCaretColor(new java.awt.Color(255, 255, 255));
-        ePhone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ePhone.setOpaque(false);
-        panelPersonalData.add(ePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 110, 30));
+        txtfPhone.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtfPhone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtfPhone.setOpaque(false);
+        panelPersonalData.add(txtfPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 110, 30));
 
         jLabel32.setBackground(new java.awt.Color(59, 44, 150));
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -471,27 +475,27 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         jLabel37.setOpaque(true);
         panelFunctionalData.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 70, 30));
 
-        eAdmissionDate.setBackground(new java.awt.Color(0, 0, 0));
-        eAdmissionDate.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        eAdmissionDate.setForeground(new java.awt.Color(255, 255, 255));
+        txtfAdmissionDate.setBackground(new java.awt.Color(0, 0, 0));
+        txtfAdmissionDate.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txtfAdmissionDate.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            eAdmissionDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            txtfAdmissionDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        eAdmissionDate.setCaretColor(new java.awt.Color(255, 255, 255));
-        eAdmissionDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eAdmissionDate.setOpaque(false);
-        panelFunctionalData.add(eAdmissionDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 180, 30));
+        txtfAdmissionDate.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtfAdmissionDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtfAdmissionDate.setOpaque(false);
+        panelFunctionalData.add(txtfAdmissionDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 180, 30));
 
-        eSalary.setBackground(new java.awt.Color(0, 0, 0));
-        eSalary.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        eSalary.setForeground(new java.awt.Color(255, 255, 255));
-        eSalary.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        eSalary.setCaretColor(new java.awt.Color(255, 255, 255));
-        eSalary.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eSalary.setOpaque(false);
-        panelFunctionalData.add(eSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 160, 30));
+        txtfSalary.setBackground(new java.awt.Color(0, 0, 0));
+        txtfSalary.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        txtfSalary.setForeground(new java.awt.Color(255, 255, 255));
+        txtfSalary.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtfSalary.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtfSalary.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtfSalary.setOpaque(false);
+        panelFunctionalData.add(txtfSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 160, 30));
 
         btn_addOffice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_addOffice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais.png"))); // NOI18N
@@ -537,15 +541,16 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void eBirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eBirthDateActionPerformed
+    private void txtfBirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfBirthDateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_eBirthDateActionPerformed
+    }//GEN-LAST:event_txtfBirthDateActionPerformed
 
     private void eEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eEmailActionPerformed
 
     private void bnt_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseClicked
+        bnt_save.requestFocusInWindow();
         boolean hasEmptyField = !Utils.isAllFieldsFilled(panelPersonalData) || !Utils
                 .isAllFieldsFilled(panelFunctionalData);
         
@@ -554,32 +559,38 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
                     "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if(employee == null) {
-            
-            employee = instantiateEmployee(new Employee());
-            String cpf = Utils.formatCpf(employee.getCpf());
-
-            EmployeeDao.insert(employee);
-            User user = new User();
-            user.setEmployee(employee);
-            user.setUserName(employee.getEmail());
-            user.setPassword(cpf);
-            user.setPermissions(employee.getOffice().getPermissions());
-            
-            UserDao.insert(user);
-            JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso!",
-                    "Atenção", JOptionPane.INFORMATION_MESSAGE);
-
-            clearFields();
-        }
-        else {
-            instantiateEmployee(employee);
-            
-            EmployeeDao.update(employee);
-            JOptionPane.showMessageDialog(null, "Funcionário atualizado com sucesso!",
-                    "Atenção", JOptionPane.INFORMATION_MESSAGE);
-            
-            this.dispose();
+        
+        try {
+            if (employee == null || isRegistering) {
+                
+                employee = instantiateEmployee(new Employee());
+                String cpf = Utils.formatCpf(employee.getCpf());
+                
+                EmployeeDao.insert(employee);
+                User user = new User();
+                user.setEmployee(employee);
+                user.setUserName(employee.getEmail());
+                user.setPassword(cpf);
+                user.setPermissions(employee.getOffice().getPermissions());
+                
+                UserDao.insert(user);
+                JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso!",
+                        "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                
+                clearFields();
+                employee = null;
+            } else {
+                instantiateEmployee(employee);
+                
+                EmployeeDao.update(employee);
+                JOptionPane.showMessageDialog(null, "Funcionário atualizado com sucesso!",
+                        "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                
+                this.dispose();
+            }
+        } catch (DBException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_bnt_saveMouseClicked
 
@@ -677,17 +688,12 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     private javax.swing.JLabel btn_clear;
     private javax.swing.JLabel btn_editOffice;
     private javax.swing.JComboBox<Object> cbOffice;
-    private javax.swing.JFormattedTextField eAdmissionDate;
-    private javax.swing.JFormattedTextField eBirthDate;
     private javax.swing.JTextField eCEP;
-    private javax.swing.JFormattedTextField eCPF;
     private javax.swing.JTextField eCity;
     private javax.swing.JTextField eEmail;
     private javax.swing.JTextField eName;
     private javax.swing.JTextField eNeighborhood;
     private javax.swing.JTextField eNumber;
-    private javax.swing.JFormattedTextField ePhone;
-    private javax.swing.JFormattedTextField eSalary;
     private javax.swing.JTextField eState;
     private javax.swing.JTextField eStreet;
     private javax.swing.JLabel jLabel22;
@@ -708,6 +714,11 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     private javax.swing.JPanel panelFunctionalData;
     private javax.swing.JPanel panelPersonalData;
     private javax.swing.JLabel title;
+    private javax.swing.JFormattedTextField txtfAdmissionDate;
+    private javax.swing.JFormattedTextField txtfBirthDate;
+    private javax.swing.JFormattedTextField txtfCpf;
+    private javax.swing.JFormattedTextField txtfPhone;
+    private javax.swing.JFormattedTextField txtfSalary;
     // End of variables declaration//GEN-END:variables
 
 
