@@ -33,7 +33,7 @@ public class OfficeDao {
         try {
             repOffice.insert(office);
         } catch (NitriteException e) {
-            throw new DBException(e.getMessage());
+            throw new DBException("Já existe um cargo com este nome.");
         }
     }
     
@@ -49,14 +49,9 @@ public class OfficeDao {
                         x.setOffice(c);
                         EmployeeDao.update(x);
                     });
-            UserDao.findAll().stream().filter(x -> x.getEmployee().getOffice().equals(c))
-                    .collect(Collectors.toList()).forEach(x -> {
-                        x.setPermissions(c.getPermissions());
-                        UserDao.update(x);
-                    });
         }
         else {
-            throw new DBException("O cargo digitado já existe.");
+            throw new DBException("Já existe um cargo com este nome.");
         }
     }
     

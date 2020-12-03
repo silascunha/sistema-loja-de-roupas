@@ -8,6 +8,7 @@ package br.sistemalojaroupas.model.dao;
 import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.db.DBException;
 import br.sistemalojaroupas.model.dao.exceptions.LoginException;
+import br.sistemalojaroupas.model.entities.Employee;
 import br.sistemalojaroupas.model.entities.User;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -60,7 +61,7 @@ public class UserDao {
         if (u.equals(temp) || temp == null) {
             repUser.update(u);
         } else {
-            throw new DBException("Nome de usuário já cadastrado.");
+            throw new DBException("Nome de usuário já existe.");
         }
     }
 
@@ -80,6 +81,12 @@ public class UserDao {
         User u = repUser.find(ObjectFilters.eq("userName", userName)).firstOrDefault();
 
         return u;
+    }
+    
+    public static User findByEmployee(Employee employee) {
+        User user = repUser.find(ObjectFilters.eq("employee.id", employee.getId())).firstOrDefault();
+        
+        return user;
     }
 
     public static void remove(User u) {
