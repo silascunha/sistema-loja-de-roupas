@@ -16,11 +16,14 @@ import br.sistemalojaroupas.model.entities.User;
 import br.sistemalojaroupas.model.services.CepService;
 import br.sistemalojaroupas.view.util.ComboBoxRenderer;
 import br.sistemalojaroupas.view.util.Utils;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,6 +48,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         
         cbOffice.setRenderer(new ComboBoxRenderer());
         Utils.updateComboBox(OfficeDao.findAll(), cbOffice);
+        initializeDateConfig();
         isRegistering = true;
     }
     
@@ -60,6 +64,8 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         
         cbOffice.setRenderer(new ComboBoxRenderer());
         Utils.updateComboBox(OfficeDao.findAll(), cbOffice);
+
+        initializeDateConfig();
         
         title.setText("Editar funcionário");
         eName.setText(employee.getName());
@@ -73,8 +79,8 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         eStreet.setText(address.getStreet());
         eNeighborhood.setText(address.getNeighborhood());
         eNumber.setText(address.getNumber());
-        txtfBirthDate.setValue(employee.getFormattedBirthDate());
-        txtfAdmissionDate.setValue(employee.getFormattedAdmissionDate());
+        dcAdmissionDate.setDate(employee.getAdmissionDate());
+        dcBirthDate.setDate(employee.getBirthDate());
         eCEP.setText(address.getCep());
         
     }
@@ -82,6 +88,36 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     public void clearFields() {
         Utils.clearFields(panelPersonalData);
         Utils.clearFields(panelFunctionalData);
+    }
+    
+    private void dateChooserStyle(JDateChooser dc) {
+        java.awt.Color bg = new java.awt.Color(0,0,0);
+        java.awt.Color fg = new java.awt.Color(255,255,255);
+        java.awt.Color buttonsBg = new java.awt.Color(59,44,150);
+        
+        dc.getCalendarButton().setBackground(buttonsBg);
+        dc.getCalendarButton().setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/calendarWhite_14px.png")));
+        dc.getDateEditor().getUiComponent().setBackground(bg);
+        dc.getDateEditor().getUiComponent().setForeground(fg);
+        dc.getDateEditor().setNormalColor(fg);
+
+        dc.getDateEditor().getUiComponent().setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+       
+    }
+    
+    private void initializeDateConfig() {
+        Date max = new Date();
+        dcAdmissionDate.setMaxSelectableDate(max);
+        dcBirthDate.setMaxSelectableDate(max);
+        
+        try {
+            dcAdmissionDate.setMinSelectableDate(sdf.parse("01/01/1970"));
+            dcBirthDate.setMinSelectableDate(sdf.parse("01/01/1960"));
+        } catch (ParseException ex) {
+            
+        }
+        dateChooserStyle(dcAdmissionDate);
+        dateChooserStyle(dcBirthDate);
     }
     
     private Employee instantiateEmployee(Employee employee) {
@@ -92,12 +128,9 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         employee.setPhone(txtfPhone.getText());
         employee.setSalary(Utils.tryParseToDouble(txtfSalary.getText().replace(',', '.')));
         
-        try {
-            employee.setBirthDate(sdf.parse(txtfBirthDate.getText()));
-            employee.setAdmissionDate(sdf.parse(txtfAdmissionDate.getText()));
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
+        employee.setBirthDate(dcBirthDate.getDate());
+        employee.setAdmissionDate(dcAdmissionDate.getDate());
+        
         address.setCep(eCEP.getText());
         address.setCity(eCity.getText());
         address.setNeighborhood(eNeighborhood.getText());
@@ -140,22 +173,22 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         eCEP = new javax.swing.JTextField();
         eCity = new javax.swing.JTextField();
         txtfCpf = new javax.swing.JFormattedTextField();
-        txtfBirthDate = new javax.swing.JFormattedTextField();
         txtfPhone = new javax.swing.JFormattedTextField();
         jLabel32 = new javax.swing.JLabel();
         eState = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         eNumber = new javax.swing.JTextField();
         btnSearchCEP = new javax.swing.JButton();
+        dcBirthDate = new com.toedter.calendar.JDateChooser();
         panelFunctionalData = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        txtfAdmissionDate = new javax.swing.JFormattedTextField();
         txtfSalary = new javax.swing.JFormattedTextField();
         btn_addOffice = new javax.swing.JLabel();
         btn_editOffice = new javax.swing.JLabel();
         cbOffice = new javax.swing.JComboBox<>();
+        dcAdmissionDate = new com.toedter.calendar.JDateChooser();
         jLabelBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -370,24 +403,6 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         txtfCpf.setOpaque(false);
         panelPersonalData.add(txtfCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 110, 30));
 
-        txtfBirthDate.setBackground(new java.awt.Color(0, 0, 0));
-        txtfBirthDate.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        txtfBirthDate.setForeground(new java.awt.Color(255, 255, 255));
-        try {
-            txtfBirthDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfBirthDate.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtfBirthDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtfBirthDate.setOpaque(false);
-        txtfBirthDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfBirthDateActionPerformed(evt);
-            }
-        });
-        panelPersonalData.add(txtfBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 110, 30));
-
         txtfPhone.setBackground(new java.awt.Color(0, 0, 0));
         txtfPhone.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
         txtfPhone.setForeground(new java.awt.Color(255, 255, 255));
@@ -442,6 +457,12 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         });
         panelPersonalData.add(btnSearchCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 30, 30));
 
+        dcBirthDate.setBackground(new java.awt.Color(0, 0, 0));
+        dcBirthDate.setForeground(new java.awt.Color(255, 255, 255));
+        dcBirthDate.setDateFormatString("dd/MM/yyyy");
+        dcBirthDate.setOpaque(false);
+        panelPersonalData.add(dcBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 110, 30));
+
         getContentPane().add(panelPersonalData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 580, 300));
 
         panelFunctionalData.setBackground(new java.awt.Color(0, 0, 51));
@@ -474,19 +495,6 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         jLabel37.setText("Salário:");
         jLabel37.setOpaque(true);
         panelFunctionalData.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 70, 30));
-
-        txtfAdmissionDate.setBackground(new java.awt.Color(0, 0, 0));
-        txtfAdmissionDate.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        txtfAdmissionDate.setForeground(new java.awt.Color(255, 255, 255));
-        try {
-            txtfAdmissionDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfAdmissionDate.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtfAdmissionDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtfAdmissionDate.setOpaque(false);
-        panelFunctionalData.add(txtfAdmissionDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 180, 30));
 
         txtfSalary.setBackground(new java.awt.Color(0, 0, 0));
         txtfSalary.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
@@ -535,6 +543,12 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         cbOffice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "PP", "P", "M", "G", "GG" }));
         panelFunctionalData.add(cbOffice, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 180, 30));
 
+        dcAdmissionDate.setBackground(new java.awt.Color(0, 0, 0));
+        dcAdmissionDate.setForeground(new java.awt.Color(255, 255, 255));
+        dcAdmissionDate.setDateFormatString("dd/MM/yyyy");
+        dcAdmissionDate.setOpaque(false);
+        panelFunctionalData.add(dcAdmissionDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 180, 30));
+
         getContentPane().add(panelFunctionalData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 580, 138));
 
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tela_cadastro_funcionario_dark2.png"))); // NOI18N
@@ -543,10 +557,6 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtfBirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfBirthDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfBirthDateActionPerformed
 
     private void eEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eEmailActionPerformed
         // TODO add your handling code here:
@@ -609,7 +619,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
 
     private void btn_clearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clearMouseClicked
         // Limpar todos os campos (criar método depois)
-       
+        clearFields();
     }//GEN-LAST:event_btn_clearMouseClicked
 
     private void btn_clearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clearMouseEntered
@@ -693,7 +703,7 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
                     "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_editOfficeMouseClicked
-      
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bnt_save;
@@ -703,6 +713,8 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     private javax.swing.JLabel btn_clear;
     private javax.swing.JLabel btn_editOffice;
     private javax.swing.JComboBox<Object> cbOffice;
+    private com.toedter.calendar.JDateChooser dcAdmissionDate;
+    private com.toedter.calendar.JDateChooser dcBirthDate;
     private javax.swing.JTextField eCEP;
     private javax.swing.JTextField eCity;
     private javax.swing.JTextField eEmail;
@@ -729,8 +741,6 @@ public class Register_And_Edit_Employee extends javax.swing.JDialog {
     private javax.swing.JPanel panelFunctionalData;
     private javax.swing.JPanel panelPersonalData;
     private javax.swing.JLabel title;
-    private javax.swing.JFormattedTextField txtfAdmissionDate;
-    private javax.swing.JFormattedTextField txtfBirthDate;
     private javax.swing.JFormattedTextField txtfCpf;
     private javax.swing.JFormattedTextField txtfPhone;
     private javax.swing.JFormattedTextField txtfSalary;

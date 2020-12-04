@@ -9,12 +9,13 @@ import br.sistemalojaroupas.model.entities.Brand;
 import br.sistemalojaroupas.model.entities.Category;
 import br.sistemalojaroupas.model.entities.Color;
 import br.sistemalojaroupas.model.entities.Product;
-import br.sistemalojaroupas.model.entities.Sale;
 import br.sistemalojaroupas.model.entities.TableContract;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Component;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -58,6 +59,7 @@ public class Utils {
             if (c instanceof JComboBox) ((JComboBox)c).setSelectedIndex(0);
             if (c instanceof JTextField) ((JTextField)c).setText("");
             if (c instanceof JFormattedTextField) ((JFormattedTextField)c).setText("");
+            if (c instanceof JDateChooser) ((JDateChooser)c).setDate(null);
         }
     } 
     
@@ -80,6 +82,15 @@ public class Utils {
                 }
                 Object obj = ((JFormattedTextField)c).getValue();
                 if (obj == null) {
+                    return false;
+                }
+            }
+            if (c instanceof JDateChooser) {
+                JDateChooser dc = (JDateChooser) c;
+                if (dc.getDate() == null) {
+                    return false;
+                }
+                if (dc.getDate().before(dc.getMinSelectableDate()) || dc.getDate().after(dc.getMaxSelectableDate())) {
                     return false;
                 }
             }
