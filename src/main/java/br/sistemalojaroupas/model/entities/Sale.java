@@ -20,7 +20,7 @@ import org.dizitart.no2.objects.Id;
 public class Sale implements Serializable, TableContract {
     private final static long serialVersionUID = 1L;
     
-    private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss");
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     
     @Id
     private Long id;
@@ -33,7 +33,6 @@ public class Sale implements Serializable, TableContract {
     private Date moment;
     
     public Sale() {
-        this.moment = new Date();
     }
 
     public Long getId() {

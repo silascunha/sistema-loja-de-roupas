@@ -9,6 +9,7 @@ import br.sistemalojaroupas.model.dao.ProductDao;
 import br.sistemalojaroupas.model.dao.SaleDao;
 import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.entities.Sale;
+import java.util.Date;
 
 /**
  *
@@ -22,6 +23,7 @@ public class SaleService {
             product.setQuantity(product.getQuantity() - x.getQuantity());
             ProductDao.update(product);
         });
+        sale.setMoment(new Date());
         SaleDao.insert(sale);
     }
 }

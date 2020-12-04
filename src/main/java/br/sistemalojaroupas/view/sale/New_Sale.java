@@ -55,7 +55,6 @@ public class New_Sale extends javax.swing.JFrame {
     public void finishSale() {
         DefaultTableModel dtm = (DefaultTableModel) table_ShoppingCart.getModel();
         dtm.setRowCount(0);
-        sale.setMoment(new Date());
         SaleService.confirmSale(sale);
         txt_SalesTotal.setText("R$ 0,00");
         txt_CPF.setValue("");

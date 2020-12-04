@@ -24,12 +24,16 @@ import com.google.gson.annotations.Until;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -50,6 +54,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private JTable visibleTable;
     private Boolean productFilterVisibility = false;
     private Boolean saleFilterVisibility = false;
+    
     private Map<String, Object> productSelectedFilters = new HashMap<>();
     
     private final String PERMISSION_ERROR = "Você não tem permissão para acessar esta funcionalidade.";
@@ -233,8 +238,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Card_Sales = new javax.swing.JPanel();
         lbl_FinalDate = new javax.swing.JLabel();
         lbl_InitialDate = new javax.swing.JLabel();
-        DC_Final_Date = new com.toedter.calendar.JDateChooser();
-        DC_Initial_Date = new com.toedter.calendar.JDateChooser();
+        dateEnd = new com.toedter.calendar.JDateChooser();
+        dateStart = new com.toedter.calendar.JDateChooser();
         filter_btn_Cancel_Sale = new javax.swing.JLabel();
         filter_btn_Apply_Sale = new javax.swing.JLabel();
         btn_Filter_Sale = new javax.swing.JLabel();
@@ -1133,15 +1138,15 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         lbl_InitialDate.setText("Data inicial :");
         Card_Sales.add(lbl_InitialDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(737, 30, 80, 30));
 
-        DC_Final_Date.setBackground(new java.awt.Color(242, 242, 242));
-        DC_Final_Date.setForeground(new java.awt.Color(102, 102, 102));
-        DC_Final_Date.setDateFormatString("dd'/'MM'/'y");
-        Card_Sales.add(DC_Final_Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, 120, 30));
+        dateEnd.setBackground(new java.awt.Color(242, 242, 242));
+        dateEnd.setForeground(new java.awt.Color(102, 102, 102));
+        dateEnd.setDateFormatString("dd'/'MM'/'y");
+        Card_Sales.add(dateEnd, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, 120, 30));
 
-        DC_Initial_Date.setBackground(new java.awt.Color(242, 242, 242));
-        DC_Initial_Date.setForeground(new java.awt.Color(102, 102, 102));
-        DC_Initial_Date.setDateFormatString("dd'/'MM'/'y");
-        Card_Sales.add(DC_Initial_Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 120, 30));
+        dateStart.setBackground(new java.awt.Color(242, 242, 242));
+        dateStart.setForeground(new java.awt.Color(102, 102, 102));
+        dateStart.setDateFormatString("dd'/'MM'/'y");
+        Card_Sales.add(dateStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 120, 30));
 
         filter_btn_Cancel_Sale.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         filter_btn_Cancel_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltro.png"))); // NOI18N
@@ -2198,8 +2203,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         setVisibleTable(tableSales);
         Utils.updateTable(SaleDao.findAll(), tableSales);
         
-        Filter_BackgroundSale.setVisible(false); filter_btn_Cancel_Sale.setVisible(false); DC_Final_Date.setVisible(false);
-        DC_Initial_Date.setVisible(false); lbl_FinalDate.setVisible(false); lbl_InitialDate.setVisible(false); filter_btn_Apply_Sale.setVisible(false);  
+        Filter_BackgroundSale.setVisible(false); filter_btn_Cancel_Sale.setVisible(false); dateEnd.setVisible(false);
+        dateStart.setVisible(false); lbl_FinalDate.setVisible(false); lbl_InitialDate.setVisible(false); filter_btn_Apply_Sale.setVisible(false);  
         
     }//GEN-LAST:event_menu_saleMouseClicked
 
@@ -2710,17 +2715,26 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Filter_BackgroundSale.setVisible(saleFilterVisibility);
         filter_btn_Cancel_Sale.setVisible(saleFilterVisibility);        
         filter_btn_Apply_Sale.setVisible(saleFilterVisibility);        
-        DC_Final_Date.setVisible(saleFilterVisibility);
-        DC_Initial_Date.setVisible(saleFilterVisibility);
+        dateEnd.setVisible(saleFilterVisibility);
+        dateStart.setVisible(saleFilterVisibility);
         lbl_FinalDate.setVisible(saleFilterVisibility);
         lbl_InitialDate.setVisible(saleFilterVisibility);  
         
-        if(DC_Final_Date != null || DC_Initial_Date != null){
-            DC_Initial_Date.setDate(null);
-            DC_Final_Date.setDate(null);
+        if(dateEnd != null || dateStart != null){
+            dateStart.setDate(null);
+            dateEnd.setDate(null);
         }
         
-        
+        if (saleFilterVisibility) {
+            try {
+                dateStart.setMinSelectableDate(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2019"));
+                dateEnd.setMinSelectableDate(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2019"));
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+            dateEnd.setMaxSelectableDate(new Date());
+            dateStart.setMaxSelectableDate(new Date());
+        }
     }//GEN-LAST:event_btn_Filter_SaleMouseClicked
 
     private void btn_Filter_SaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Filter_SaleMouseEntered
@@ -2737,8 +2751,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
     private void filter_btn_Cancel_SaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_Cancel_SaleMouseClicked
         // TODO add your handling code here:
-        DC_Initial_Date.setDate(null);
-        DC_Final_Date.setDate(null);
+        dateStart.setDate(null);
+        dateEnd.setDate(null);
+        Utils.updateTable(SaleDao.findAll(), tableSales);
     }//GEN-LAST:event_filter_btn_Cancel_SaleMouseClicked
 
     private void filter_btn_Cancel_SaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_Cancel_SaleMouseEntered
@@ -2750,7 +2765,14 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_filter_btn_Cancel_SaleMouseExited
 
     private void filter_btn_Apply_SaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_Apply_SaleMouseClicked
-        // TODO add your handling code here:
+        Date start = dateStart.getDate();
+        Date end = dateEnd.getDate();
+        
+        try {
+            Utils.updateTable(SaleDao.filterByPeriod(start, end), tableSales);
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_filter_btn_Apply_SaleMouseClicked
 
     private void filter_btn_Apply_SaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_Apply_SaleMouseEntered
@@ -2810,8 +2832,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JPanel Card_Settings;
     private javax.swing.JLabel City;
     private javax.swing.JPanel CollectionCard;
-    private com.toedter.calendar.JDateChooser DC_Final_Date;
-    private com.toedter.calendar.JDateChooser DC_Initial_Date;
     private javax.swing.JLabel Email;
     private javax.swing.JLabel Filter_Background;
     private javax.swing.JLabel Filter_BackgroundSale;
@@ -2858,6 +2878,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel buscarVenda1;
     private javax.swing.JLabel buscarVenda2;
     private javax.swing.JTextField cSearchCustomer;
+    private com.toedter.calendar.JDateChooser dateEnd;
+    private com.toedter.calendar.JDateChooser dateStart;
     private javax.swing.JLabel faturamento2;
     private javax.swing.JLabel faturamento3;
     private javax.swing.JLabel faturamento4;

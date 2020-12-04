@@ -97,10 +97,21 @@ public class SaleDao {
         return revenues;
     }
     
-    public static List<Sale> filterByPeriod(String startPeriod, String endPeriod) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss");
-        Date start = sdf.parse(startPeriod + " 24:00:00");
-        Date end = sdf.parse(endPeriod + " 23:59:59");
+    public static List<Sale> filterByPeriod(Date start, Date end) {
+        
+        if (start == null || end == null) {
+            throw new IllegalArgumentException("As datas não podem ser nulas.");
+        }
+        if (start.compareTo(end) > 0) {
+            throw new IllegalArgumentException("A data inicial não pode ser depois da data final.");
+        }
+        
+        Calendar calEnd = Calendar.getInstance();
+        calEnd.setTime(end);
+        calEnd.set(Calendar.HOUR_OF_DAY, 23);
+        calEnd.set(Calendar.MINUTE, 59);
+        calEnd.set(Calendar.SECOND, 59);
+        end = calEnd.getTime();
         
         List<Sale> sales = repSale.find(ObjectFilters.and(ObjectFilters.gte("moment", start),
                 ObjectFilters.lte("moment", end)),
