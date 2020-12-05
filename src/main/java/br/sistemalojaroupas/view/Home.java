@@ -1168,7 +1168,15 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         lbl_InitialDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_InitialDate.setText("Data inicial :");
         Card_Sales.add(lbl_InitialDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(737, 30, 80, 30));
+
+        dateEnd.setBackground(new java.awt.Color(242, 242, 242));
+        dateEnd.setForeground(new java.awt.Color(102, 102, 102));
+        dateEnd.setDateFormatString("dd/MM/yyyy");
         Card_Sales.add(dateEnd, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, 120, 30));
+
+        dateStart.setBackground(new java.awt.Color(242, 242, 242));
+        dateStart.setForeground(new java.awt.Color(102, 102, 102));
+        dateStart.setDateFormatString("dd/MM/yyyy");
         Card_Sales.add(dateStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 32, 120, 30));
 
         filter_btn_Cancel_Sale.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
