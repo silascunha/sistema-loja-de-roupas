@@ -716,7 +716,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/icon_github.png"/>
+                  <Image iconType="3" name="/img/logo_unisales.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -1296,6 +1296,9 @@
                   <Image iconType="3" name="/img/icon_olhoFechar.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconeOcultar1MouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="txtBemVindo1">
               <Properties>
@@ -1367,6 +1370,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
                         <Property name="text" type="java.lang.String" value="R$ 39.482,49"/>
                       </Properties>
                       <Constraints>
@@ -1421,11 +1425,12 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
                         <Property name="text" type="java.lang.String" value="Receita l&#xed;quida"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="90" y="40" width="-1" height="20"/>
+                          <AbsoluteConstraints x="90" y="40" width="110" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1437,11 +1442,12 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
                         <Property name="text" type="java.lang.String" value="R$ 3.482,49"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="90" y="10" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="90" y="10" width="110" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -2109,6 +2115,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableSalesMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

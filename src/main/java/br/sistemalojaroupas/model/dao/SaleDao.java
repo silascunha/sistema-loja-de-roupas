@@ -82,13 +82,21 @@ public class SaleDao {
     }
     
     public static Double revenues(Integer lastDays) {
+        
         Double revenues = 0.0;
         Date d = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(d);
-        cal.add(Calendar.DAY_OF_MONTH, -lastDays);
         
-        List<Sale> sales = repSale.find(ObjectFilters.gte("moment", cal.getTime())).toList();
+        List<Sale> sales;
+        
+        if(lastDays == 0) {
+            sales = findAll();
+        }
+        else {
+            cal.add(Calendar.DAY_OF_MONTH, - lastDays);
+            sales = repSale.find(ObjectFilters.gte("moment", cal.getTime())).toList();
+        }
         
         for (Sale obj : sales) {
             revenues += obj.getTotal();

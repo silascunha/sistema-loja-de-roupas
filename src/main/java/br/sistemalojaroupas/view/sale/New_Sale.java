@@ -12,8 +12,11 @@ import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.entities.Sale;
 import br.sistemalojaroupas.model.entities.SaleItem;
 import br.sistemalojaroupas.model.services.SaleService;
+import br.sistemalojaroupas.view.listeners.DataChangeListener;
 import br.sistemalojaroupas.view.util.Utils;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,15 +32,27 @@ public class New_Sale extends javax.swing.JFrame {
     private boolean nextSale = true;
     private boolean hasProduct = false;
     private Customer customer;
+    
+    private Set<DataChangeListener> listeners = new HashSet<>();
 
     /**
-     * Creates new form testeVENDAS
+     * Creates new form New_Sale
      */
     public New_Sale() {
         initComponents();
         btnDeleteProduct.setVisible(false);
     }
-
+    
+    public void subscribeDataChangeListener(DataChangeListener listener) {
+        listeners.add(listener);
+    }
+    
+    private void notifyListeners() {
+        listeners.forEach(x -> {
+            x.onDataChanged();
+        });
+    }
+    
     public Sale getSale() {
         return sale;
     }
@@ -64,6 +79,8 @@ public class New_Sale extends javax.swing.JFrame {
         sale = null;
         hasProduct = false;
         btnDeleteProduct.setVisible(false);
+        
+        notifyListeners();
     }
 
     /**
@@ -542,41 +559,6 @@ public class New_Sale extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDeleteProductActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(New_Sale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(New_Sale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(New_Sale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(New_Sale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new New_Sale().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;

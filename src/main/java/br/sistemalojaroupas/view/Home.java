@@ -18,7 +18,10 @@ import br.sistemalojaroupas.model.entities.Color;
 import br.sistemalojaroupas.model.entities.Customer;
 import br.sistemalojaroupas.model.entities.Employee;
 import br.sistemalojaroupas.model.entities.Product;
+import br.sistemalojaroupas.model.entities.Sale;
+import br.sistemalojaroupas.model.services.SaleService;
 import br.sistemalojaroupas.view.listeners.DataChangeListener;
+import br.sistemalojaroupas.view.sale.SaleInfo;
 import br.sistemalojaroupas.view.util.Utils;
 import com.google.gson.annotations.Until;
 import java.awt.CardLayout;
@@ -54,6 +57,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private JTable visibleTable;
     private Boolean productFilterVisibility = false;
     private Boolean saleFilterVisibility = false;
+    private Boolean homeInfoVisibility = false;
     
     private Map<String, Object> productSelectedFilters = new HashMap<>();
     
@@ -113,9 +117,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
     @Override
     public void onDataChanged() {
-        if (visibleTable == table_Products) {
-            Utils.updateTable(ProductDao.findAll(), table_Products);
-        }
+        refreshHomeData();
     }
 
     private void setVisibleTable(JTable table) {
@@ -123,9 +125,21 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }
 
     private void refreshHomeData() {
-        txtTotalSales.setText(SaleDao.size().toString());
-        txtFaturamentoValor.setText(String.format("R$ %.2f", SaleDao.revenues(30)));
+        
+        if (homeInfoVisibility) {
+            txtTotalSales.setText(SaleDao.size().toString());
+            txtFaturamentoValor.setText(String.format("R$ %.2f", SaleDao.revenues(30)));
+            txtTicketValor.setText(String.format("R$ %.2f", SaleService.ticketMedio()));
+            txtReceitaValor.setText(String.format("R$ %.2f", SaleService.receitaLiquida()));
+        }
+        else {
+            txtTotalSales.setText("---");
+            txtFaturamentoValor.setText("R$ -,--");
+            txtTicketValor.setText("R$ -,--");
+            txtReceitaValor.setText("R$ -,--");
+        }
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -636,7 +650,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         pnl_HeaderMenu.setBackground(new java.awt.Color(108, 81, 233));
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_github.png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo_unisales.png"))); // NOI18N
 
         jLabel14.setText("Backoffice");
 
@@ -881,6 +895,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Card_Home.setPreferredSize(new java.awt.Dimension(1110, 583));
 
         iconeOcultar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_olhoFechar.png"))); // NOI18N
+        iconeOcultar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconeOcultar1MouseClicked(evt);
+            }
+        });
 
         txtBemVindo1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         txtBemVindo1.setForeground(new java.awt.Color(29, 73, 153));
@@ -903,6 +922,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         txtFaturamentoValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         txtFaturamentoValor.setForeground(new java.awt.Color(255, 255, 255));
+        txtFaturamentoValor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtFaturamentoValor.setText("R$ 39.482,49");
         pnFaturamento.add(txtFaturamentoValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
@@ -920,13 +940,15 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         txtReceita.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txtReceita.setForeground(new java.awt.Color(255, 255, 255));
+        txtReceita.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtReceita.setText("Receita líquida");
-        pnReceita.add(txtReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 20));
+        pnReceita.add(txtReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 110, 20));
 
         txtReceitaValor.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         txtReceitaValor.setForeground(new java.awt.Color(255, 255, 255));
+        txtReceitaValor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtReceitaValor.setText("R$ 3.482,49");
-        pnReceita.add(txtReceitaValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+        pnReceita.add(txtReceitaValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 110, -1));
 
         iconReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cifrão.png"))); // NOI18N
         pnReceita.add(iconReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -1288,6 +1310,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         });
         tableSales.setGridColor(new java.awt.Color(204, 204, 204));
         tableSales.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tableSales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableSalesMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tableSales);
         if (tableSales.getColumnModel().getColumnCount() > 0) {
             tableSales.getColumnModel().getColumn(0).setMinWidth(50);
@@ -2566,7 +2593,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        new New_Sale().setVisible(true);
+        New_Sale frame = new New_Sale();
+        frame.subscribeDataChangeListener(this);
+        frame.setVisible(true);
     }//GEN-LAST:event_novaVenda2MouseClicked
 
     private void novoProduto2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto2MouseClicked
@@ -2776,12 +2805,35 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_filter_btn_Apply_SaleMouseClicked
 
     private void filter_btn_Apply_SaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_Apply_SaleMouseEntered
-    filter_btn_Apply_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltroEscuro.png")));
+        filter_btn_Apply_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltroEscuro.png")));
     }//GEN-LAST:event_filter_btn_Apply_SaleMouseEntered
 
     private void filter_btn_Apply_SaleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filter_btn_Apply_SaleMouseExited
-    filter_btn_Apply_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltro.png")));
+        filter_btn_Apply_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_AplicarFiltro.png")));
     }//GEN-LAST:event_filter_btn_Apply_SaleMouseExited
+
+    private void tableSalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSalesMouseClicked
+        JTable table =(JTable) evt.getSource();
+        java.awt.Point point = evt.getPoint();
+        int row = table.rowAtPoint(point);
+        if (evt.getClickCount() == 2 && row != -1 && SwingUtilities.isLeftMouseButton(evt)) {
+            DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+            Long id = (Long) dtm.getValueAt(row, 0);
+            Sale sale = SaleDao.findById(id);
+            
+            SaleInfo dialog = new SaleInfo(this, true, sale);
+            dialog.setVisible(true);
+        }
+    }//GEN-LAST:event_tableSalesMouseClicked
+
+    private void iconeOcultar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconeOcultar1MouseClicked
+        if (!hasPermission("homeinfo")) {
+            JOptionPane.showMessageDialog(null, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        homeInfoVisibility = !homeInfoVisibility;
+        refreshHomeData();
+    }//GEN-LAST:event_iconeOcultar1MouseClicked
 
     /**
      * @param args the command line arguments
