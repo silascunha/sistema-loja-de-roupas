@@ -66,6 +66,15 @@ public class Sale implements Serializable, TableContract {
     public Employee getEmployee() {
         return employee;
     }
+    
+    public String getEmployeeName() {
+        if (employee == null) {
+            return "N/A";
+        }
+        else {
+            return employee.getName();
+        }
+    }
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
@@ -73,6 +82,24 @@ public class Sale implements Serializable, TableContract {
 
     public Customer getCustomer() {
         return customer;
+    }
+    
+    public String getCustomerName() {
+        if (customer == null) {
+            return "N/A";
+        }
+        else {
+            return customer.getName();
+        }
+    }
+    
+    public String getCustomerCpf() {
+        if (customer == null) {
+            return "N/A";
+        }
+        else {
+            return customer.getCpf();
+        }
     }
 
     public void setCustomer(Customer customer) {
