@@ -252,6 +252,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Card_Sales = new javax.swing.JPanel();
         lbl_FinalDate = new javax.swing.JLabel();
         lbl_InitialDate = new javax.swing.JLabel();
+        dateEnd = new com.toedter.calendar.JDateChooser();
+        dateStart = new com.toedter.calendar.JDateChooser();
         filter_btn_Cancel_Sale = new javax.swing.JLabel();
         filter_btn_Apply_Sale = new javax.swing.JLabel();
         btn_Filter_Sale = new javax.swing.JLabel();
@@ -1166,6 +1168,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         lbl_InitialDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_InitialDate.setText("Data inicial :");
         Card_Sales.add(lbl_InitialDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(737, 30, 80, 30));
+        Card_Sales.add(dateEnd, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, 120, 30));
+        Card_Sales.add(dateStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 32, 120, 30));
 
         filter_btn_Cancel_Sale.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         filter_btn_Cancel_Sale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_CancelarFiltro.png"))); // NOI18N
@@ -3015,6 +3019,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel buscarVenda1;
     private javax.swing.JLabel buscarVenda2;
     private javax.swing.JTextField cSearchCustomer;
+    private com.toedter.calendar.JDateChooser dateEnd;
+    private com.toedter.calendar.JDateChooser dateStart;
     private javax.swing.JLabel faturamento2;
     private javax.swing.JLabel faturamento3;
     private javax.swing.JLabel faturamento4;
