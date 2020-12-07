@@ -36,7 +36,10 @@ public class SaleService {
         Long totalSales = SaleDao.size();
         Double revenues = SaleDao.revenues(0);
         
-        return revenues / totalSales;
+        Double result = 0.0;
+        result = revenues / totalSales;
+        
+        return (totalSales != 0) ? result : 0.0;
     }
     
     public static Double receitaLiquida() {
