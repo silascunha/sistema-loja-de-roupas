@@ -120,6 +120,7 @@ public class Payment_Credit extends javax.swing.JDialog {
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
         saleWindow.finishSale();
+        
         this.dispose();
     }//GEN-LAST:event_btnFinishActionPerformed
 
