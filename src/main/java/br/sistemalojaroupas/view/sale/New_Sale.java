@@ -505,7 +505,7 @@ public class New_Sale extends javax.swing.JFrame {
     private void btn_searchCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchCPFActionPerformed
         customer = CustomerDao.findByCpf(txt_CPF.getText());
         if (customer == null) {
-            JOptionPane.showMessageDialog(null, "Esse CPF não está cadastrado no sistema.", 
+            JOptionPane.showMessageDialog(null, "Este CPF não está cadastrado no sistema.", 
                     "CPF inválido", JOptionPane.ERROR_MESSAGE);
             return;
         }
