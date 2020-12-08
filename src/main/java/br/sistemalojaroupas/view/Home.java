@@ -118,6 +118,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     @Override
     public void onDataChanged() {
         refreshHomeData();
+        Utils.updateTable(SaleDao.findAll(), tableSales);
     }
 
     private void setVisibleTable(JTable table) {

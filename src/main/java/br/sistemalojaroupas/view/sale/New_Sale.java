@@ -213,6 +213,11 @@ public class New_Sale extends javax.swing.JFrame {
         txt_product.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_product.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_product.setBorder(null);
+        txt_product.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_productActionPerformed(evt);
+            }
+        });
         jPanel1.add(txt_product, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 280, 30));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -499,9 +504,12 @@ public class New_Sale extends javax.swing.JFrame {
 
     private void btn_searchCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchCPFActionPerformed
         customer = CustomerDao.findByCpf(txt_CPF.getText());
-        if (customer != null) {
-            txt_name.setText(customer.getName());
+        if (customer == null) {
+            JOptionPane.showMessageDialog(null, "Este CPF não está cadastrado no sistema.", 
+                    "CPF inválido", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+        txt_name.setText(customer.getName());
     }//GEN-LAST:event_btn_searchCPFActionPerformed
 
     private void btn_cancellationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancellationActionPerformed
@@ -558,6 +566,10 @@ public class New_Sale extends javax.swing.JFrame {
                     "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnDeleteProductActionPerformed
+
+    private void txt_productActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_productActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_productActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
