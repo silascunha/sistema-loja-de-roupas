@@ -2148,10 +2148,26 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_SearchSaleMouseClicked
 
     private void btn_DeleteSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DeleteSaleMouseClicked
-        int del;
-        del = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir registro de venda?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (del == 0) {
+        if (!hasPermission("sale")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int row = tableSales.getSelectedRow();
 
+        if (row > -1) {
+            DefaultTableModel dtm = (DefaultTableModel) tableSales.getModel();
+            Long id = (Long) dtm.getValueAt(row, 0);
+
+            int op;
+            op = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir?",
+                    "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (op == 0) {
+                SaleDao.removeById(id);
+                Utils.updateTable(SaleDao.findAll(), tableSales);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Você deve selecionar uma venda para poder excluir.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_DeleteSaleMouseClicked
 
