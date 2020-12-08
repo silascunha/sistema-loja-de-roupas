@@ -9,6 +9,7 @@ import br.sistemalojaroupas.model.entities.Sale;
 import br.sistemalojaroupas.model.services.SaleService;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,8 +29,10 @@ public class Payment_Money extends javax.swing.JDialog {
         jPanel1.setBackground(new Color(0,0,0,0));
         saleWindow = ((Payment)parent).getSaleWindow();
         sale = saleWindow.getSale();
+        txtAmountReceived.requestFocusInWindow();
         
         txtSalePrice.setText(String.format("%.2f", sale.getTotal()));
+        btConfirm.setEnabled(false);
     }
 
     /**
@@ -86,8 +89,8 @@ public class Payment_Money extends javax.swing.JDialog {
         txtAmountReceived.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         txtAmountReceived.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtAmountReceived.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtAmountReceivedKeyReleased(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAmountReceivedKeyPressed(evt);
             }
         });
         jPanel1.add(txtAmountReceived, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 122, 120, 30));
@@ -143,19 +146,31 @@ public class Payment_Money extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btCancelActionPerformed
 
-    private void txtAmountReceivedKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAmountReceivedKeyReleased
+    private void btConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmActionPerformed
+        if (txtAmountReceived.getText().equals("") || txtAmountReceived.getText().equals("0,00")) {
+            JOptionPane.showMessageDialog(this, "Digite um valor para poder finalizar", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        saleWindow.finishSale();
+        this.dispose();
+    }//GEN-LAST:event_btConfirmActionPerformed
+
+    private void txtAmountReceivedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAmountReceivedKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
             Double amountReceived = Utils.tryParseToDouble(txtAmountReceived.getText().replace(',', '.'));
             Double change = amountReceived - sale.getTotal();
             
+            if (change < 0) {
+                JOptionPane.showMessageDialog(this, "O valor recebido não pode ser menor que o valor cobrado", "Erro", JOptionPane.ERROR_MESSAGE);
+                txtAmountReceived.setText("0,00");
+                btConfirm.setEnabled(false);
+                return;
+            }
+            
             txtChange.setText(String.format("%.2f", change));
+            btConfirm.setEnabled(true);
         }
-    }//GEN-LAST:event_txtAmountReceivedKeyReleased
-
-    private void btConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmActionPerformed
-        saleWindow.finishSale();
-        this.dispose();
-    }//GEN-LAST:event_btConfirmActionPerformed
+    }//GEN-LAST:event_txtAmountReceivedKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

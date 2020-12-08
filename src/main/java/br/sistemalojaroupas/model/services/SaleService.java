@@ -11,10 +11,8 @@ import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.entities.Sale;
 import br.sistemalojaroupas.model.entities.SaleItem;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /**
  *

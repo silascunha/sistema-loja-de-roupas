@@ -5,6 +5,7 @@
  */
 package br.sistemalojaroupas.view.sale;
 
+import br.sistemalojaroupas.model.entities.Sale;
 import java.awt.Color;
 
 /**
@@ -143,6 +144,8 @@ public class Payment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMoneyActionPerformed
+        saleWindow.getSale().setPayment(Sale.MONEY);
+        
         this.dispose();
         new Payment_Money(this, true).setVisible(true);
     }//GEN-LAST:event_btMoneyActionPerformed
@@ -152,16 +155,22 @@ public class Payment extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void btDebitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDebitActionPerformed
+        saleWindow.getSale().setPayment(Sale.DEBIT);
+        
         this.dispose();
         new Payment_Debit(this, true).setVisible(true);
     }//GEN-LAST:event_btDebitActionPerformed
 
     private void btCreditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreditActionPerformed
+        saleWindow.getSale().setPayment(Sale.CREDIT);
+        
         this.dispose();
         new Payment_Credit(this, true).setVisible(true);
     }//GEN-LAST:event_btCreditActionPerformed
 
     private void btCreditAndMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreditAndMoneyActionPerformed
+        saleWindow.getSale().setPayment(Sale.MONEY_CREDIT);
+        
         this.dispose();
         new Payment_MoneyAndCredit(this, true).setVisible(true);
     }//GEN-LAST:event_btCreditAndMoneyActionPerformed

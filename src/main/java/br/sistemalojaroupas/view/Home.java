@@ -2131,7 +2131,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
     private void btn_NewSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NewSaleMouseClicked
         if (hasPermission("sale")) {
-            new New_Sale().setVisible(true);
+            New_Sale frame = new New_Sale();
+            frame.subscribeDataChangeListener(this);
+            frame.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Você não tem permissão para acessar esta função.",
                     "Erro", JOptionPane.ERROR_MESSAGE);

@@ -71,6 +71,9 @@ public class New_Sale extends javax.swing.JFrame {
         DefaultTableModel dtm = (DefaultTableModel) table_ShoppingCart.getModel();
         dtm.setRowCount(0);
         SaleService.confirmSale(sale);
+        
+        JOptionPane.showMessageDialog(null, "Venda realizada com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+        
         txt_SalesTotal.setText("R$ 0,00");
         txt_CPF.setValue("");
         txt_name.setText("");

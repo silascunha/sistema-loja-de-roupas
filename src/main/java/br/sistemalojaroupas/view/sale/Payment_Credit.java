@@ -6,7 +6,9 @@
 package br.sistemalojaroupas.view.sale;
 
 import br.sistemalojaroupas.model.entities.Sale;
+import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,6 +58,7 @@ public class Payment_Credit extends javax.swing.JDialog {
 
         txtInstallments.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         txtInstallments.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtInstallments.setText("1");
         jPanel1.add(txtInstallments, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 122, 120, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -119,6 +122,13 @@ public class Payment_Credit extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
+        Integer installments = Utils.tryParseToInt(txtInstallments.getText());
+        if (installments < 1) {
+            JOptionPane.showMessageDialog(this, "Número inválido de parcelas.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        sale.setInstallments(installments);
         saleWindow.finishSale();
         
         this.dispose();

@@ -33,6 +33,8 @@ public class SaleInfo extends javax.swing.JDialog {
         txtEmployee.setText(sale.getEmployeeName());
         txtTotal.setText(String.format("R$ %.2f", sale.getTotal()));
         txtMoment.setValue(sale.getMoment());
+        txtInstallments.setText(sale.getInstallments().toString());
+        txtPayment.setText(sale.getPaymentName());
     }
 
     /**
@@ -57,12 +59,12 @@ public class SaleInfo extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
         txtCustomer = new javax.swing.JTextField();
+        txtCustomerCpf = new javax.swing.JTextField();
         txtTotal = new javax.swing.JTextField();
         txtEmployee = new javax.swing.JTextField();
         txtPayment = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtMoment = new javax.swing.JFormattedTextField();
-        txtCustomerCpf = new javax.swing.JFormattedTextField();
         txtInstallments = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -166,6 +168,15 @@ public class SaleInfo extends javax.swing.JDialog {
         txtCustomer.setBackground(new java.awt.Color(204, 204, 204));
         txtCustomer.setForeground(new java.awt.Color(0, 0, 0));
 
+        txtCustomerCpf.setEditable(false);
+        txtCustomerCpf.setBackground(new java.awt.Color(204, 204, 204));
+        txtCustomerCpf.setForeground(new java.awt.Color(0, 0, 0));
+        txtCustomerCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCustomerCpfActionPerformed(evt);
+            }
+        });
+
         txtTotal.setEditable(false);
         txtTotal.setBackground(new java.awt.Color(204, 204, 204));
         txtTotal.setForeground(new java.awt.Color(0, 0, 0));
@@ -187,15 +198,6 @@ public class SaleInfo extends javax.swing.JDialog {
         txtMoment.setBackground(new java.awt.Color(204, 204, 204));
         txtMoment.setForeground(new java.awt.Color(0, 0, 0));
         txtMoment.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss"))));
-
-        txtCustomerCpf.setEditable(false);
-        txtCustomerCpf.setBackground(new java.awt.Color(204, 204, 204));
-        txtCustomerCpf.setForeground(new java.awt.Color(0, 0, 0));
-        try {
-            txtCustomerCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
 
         txtInstallments.setEditable(false);
         txtInstallments.setBackground(new java.awt.Color(204, 204, 204));
@@ -245,10 +247,9 @@ public class SaleInfo extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtTotal, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtCustomerCpf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))))
+                                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCustomerCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,12 +267,14 @@ public class SaleInfo extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtInstallments, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtPayment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
+                            .addComponent(txtInstallments)
+                            .addComponent(txtPayment, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(txtMoment))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtCode, txtCustomerCpf});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -291,9 +294,9 @@ public class SaleInfo extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtCustomerCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(txtPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCustomerCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -328,6 +331,10 @@ public class SaleInfo extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btn_MinInformationMouseClicked
 
+    private void txtCustomerCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCustomerCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCustomerCpfActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_MinInformation;
@@ -348,7 +355,7 @@ public class SaleInfo extends javax.swing.JDialog {
     private javax.swing.JTable saleItemsTable;
     private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtCustomer;
-    private javax.swing.JFormattedTextField txtCustomerCpf;
+    private javax.swing.JTextField txtCustomerCpf;
     private javax.swing.JTextField txtEmployee;
     private javax.swing.JTextField txtInstallments;
     private javax.swing.JFormattedTextField txtMoment;

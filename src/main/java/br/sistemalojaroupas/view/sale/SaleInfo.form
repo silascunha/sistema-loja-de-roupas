@@ -72,11 +72,9 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtCustomer" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
-                                      <Component id="txtCode" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="txtTotal" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtCustomerCpf" alignment="0" pref="142" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="txtTotal" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
+                                      <Component id="txtCode" linkSize="1" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                                      <Component id="txtCustomerCpf" linkSize="1" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jLabel8" min="-2" pref="55" max="-2" attributes="0"/>
@@ -103,10 +101,8 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtEmployee" alignment="0" pref="200" max="32767" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtInstallments" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtPayment" alignment="0" pref="134" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="txtInstallments" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtPayment" alignment="0" pref="200" max="32767" attributes="0"/>
                               <Component id="txtMoment" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -136,9 +132,9 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCustomerCpf" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtPayment" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCustomerCpf" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -353,6 +349,20 @@
             </Property>
           </Properties>
         </Component>
+        <Component class="javax.swing.JTextField" name="txtCustomerCpf">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCustomerCpfActionPerformed"/>
+          </Events>
+        </Component>
         <Component class="javax.swing.JTextField" name="txtTotal">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
@@ -409,20 +419,6 @@
             </Property>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
               <Format format="dd/MM/yyyy HH:mm:ss" subtype="-1" type="1"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtCustomerCpf">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="###.###.###-##" subtype="-1" type="5"/>
             </Property>
           </Properties>
         </Component>

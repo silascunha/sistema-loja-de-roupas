@@ -66,6 +66,13 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
+    
+    public String getEmployeeName() {
+        if(employee != null) {
+            return employee.getName();
+        }
+        return userName;
+    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -121,12 +128,8 @@ public class User implements Serializable {
         return true;
     }
     
-    
-
     @Override
     public String toString() {
         return "User{" + "id=" + id + ", userName=" + userName + ", password=" + password + ", employee=" + employee + '}';
     }
-    
-
 }

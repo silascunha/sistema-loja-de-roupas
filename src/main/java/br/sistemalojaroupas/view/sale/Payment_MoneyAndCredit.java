@@ -10,6 +10,7 @@ import br.sistemalojaroupas.model.services.SaleService;
 import br.sistemalojaroupas.view.util.Utils;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +34,7 @@ public class Payment_MoneyAndCredit extends javax.swing.JDialog {
         sale = saleWindow.getSale();
         
         txtSalePrice.setText(String.format("R$ %.2f", sale.getTotal()));
+        btnFinish.setEnabled(false);
     }
 
     /**
@@ -234,18 +236,40 @@ public class Payment_MoneyAndCredit extends javax.swing.JDialog {
             moneyToReceive = Utils.tryParseToDouble(txtMoneyValue.getText().replace(',', '.'));
             Double change = amountReceived - moneyToReceive;
             
+            if (change < 0) {
+                change = null;
+                moneyToReceive = null;
+                JOptionPane.showMessageDialog(this, "O valor recebido não pode ser menor que o valor cobrado", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
             txtChange.setText(String.format("%.2f", change));
         }
     }//GEN-LAST:event_txtAmountReceivedKeyReleased
 
     private void btnContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinueActionPerformed
+        
+        if (moneyToReceive == null) {
+            JOptionPane.showMessageDialog(this, "Digite o valor em dinheiro antes de continuar", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         totalValue = sale.getTotal() - moneyToReceive;
         txtRemainingValue.setText(String.format("R$ %.2f", totalValue));
         
         txtInstallments.setEditable(true);
+        btnFinish.setEnabled(true);
     }//GEN-LAST:event_btnContinueActionPerformed
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
+        Integer installments = Utils.tryParseToInt(txtInstallments.getText());
+        if (installments < 1) {
+            JOptionPane.showMessageDialog(this, "Número inválido de parcelas.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        sale.setInstallments(installments);
+        
         saleWindow.finishSale();
         this.dispose();
     }//GEN-LAST:event_btnFinishActionPerformed

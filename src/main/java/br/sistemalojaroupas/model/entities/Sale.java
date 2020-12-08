@@ -29,10 +29,18 @@ public class Sale implements Serializable, TableContract {
     
     private Employee employee;
     private Customer customer;
+    private Integer payment;
+    private Integer installments;
+    
+    public static final int MONEY = 1;
+    public static final int CREDIT = 2;
+    public static final int DEBIT = 3;
+    public static final int MONEY_CREDIT = 4;
     
     private Date moment;
     
     public Sale() {
+        
     }
 
     public Long getId() {
@@ -104,6 +112,65 @@ public class Sale implements Serializable, TableContract {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+    
+    public String getPaymentName() {
+        if (payment == null) {
+            throw new IllegalStateException("O método de pagamento não pode ser nulo.");
+        }
+        if (payment == MONEY) {
+            return "DINHEIRO";
+        }
+        if (payment == CREDIT) {
+            return "CRÉDITO";
+        }
+        if (payment == DEBIT) {
+            return "DÉBITO";
+        }
+        if (payment == MONEY_CREDIT) {
+            return "DINHEIRO + CRÉDITO";
+        }
+        return "N/A";
+    }
+
+    public Integer getPayment() {
+        return payment;
+    }
+
+    /**
+     * Método de pagamento como um int.
+     * <p>É recomendado usar: 
+     * <p>Sale.MONEY
+     * <p>Sale.CREDIT
+     * <p>Sale.DEBIT
+     * <p>Sale.MONEY_CREDIT
+     * 
+     * @param payment não pode ser nulo
+     * @param installments pode ser nulo
+     */
+    public void setPayment(int payment) {
+        if (payment > 4 || payment < 1) {
+            throw new IllegalArgumentException("Opção inválida");
+        }
+        
+        this.payment = payment;
+       
+    }
+
+    public Object getInstallments() {
+        if (installments == null) {
+            return "N/A";
+        }
+        return installments;
+    }
+
+    public void setInstallments(Integer installments) {
+        if (payment == null) {
+            throw new IllegalStateException("O método de pagamento ainda não foi definido.");
+        }
+        if (payment == Sale.CREDIT || payment == Sale.MONEY_CREDIT){
+            this.installments = installments;
+        }
     }
     
     public String getFormattedDate() {
