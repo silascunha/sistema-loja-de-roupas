@@ -31,6 +31,6 @@ public enum PaymentOption {
                 return value;
             }
         }
-        throw new IllegalArgumentException("Código inválido de PaymentOption");
+        throw new IllegalArgumentException("Código inválido");
     }
 }

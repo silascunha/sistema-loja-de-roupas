@@ -5,7 +5,13 @@
  */
 package br.sistemalojaroupas.view.stock;
 
+import br.sistemalojaroupas.model.dao.ProductDao;
+import br.sistemalojaroupas.model.entities.Product;
 import java.awt.Color;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,13 +19,17 @@ import java.awt.Color;
  */
 public class Add_Product extends javax.swing.JDialog {
 
+    private Product product;
     /**
      * Creates new form Add_Product
      */
-    public Add_Product(java.awt.Frame parent, boolean modal) {
+    public Add_Product(java.awt.Frame parent, boolean modal, Product product) {
         super(parent, modal);
         initComponents();
         jPanel1.setBackground(new Color(0,0,0,0));
+        this.product = product;
+        
+        txt_ProductName.setText(product.getDescription());
     }
 
     /**
@@ -37,7 +47,7 @@ public class Add_Product extends javax.swing.JDialog {
         btn_Apply = new javax.swing.JLabel();
         btn_Cancel = new javax.swing.JLabel();
         txt_ProductName = new javax.swing.JLabel();
-        Spinner_Amount = new javax.swing.JSpinner();
+        spinner_Amount = new javax.swing.JSpinner();
         Filter_BackgroundSale = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -88,7 +98,9 @@ public class Add_Product extends javax.swing.JDialog {
         txt_ProductName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_ProductName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
         jPanel1.add(txt_ProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 110, 20));
-        jPanel1.add(Spinner_Amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 50, 26));
+
+        spinner_Amount.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel1.add(spinner_Amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 70, 26));
 
         Filter_BackgroundSale.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Filter_BackgroundSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background_FiltroAplicado_Purple.png"))); // NOI18N
@@ -122,7 +134,25 @@ public class Add_Product extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_CancelMouseExited
 
     private void btn_ApplyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ApplyMouseClicked
-        // TODO add your handling code here:
+        try {
+            spinner_Amount.commitEdit();
+        } catch (ParseException ex) {
+            spinner_Amount.setValue(0);
+        }
+        
+        Integer value = (Integer) spinner_Amount.getValue();
+        if (value == 0) {
+            JOptionPane.showMessageDialog(this, "O valor deve ser maior do que zero para adicionar ao produto.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        product.setQuantity(product.getQuantity() + value);
+        ProductDao.update(product);
+        
+        JOptionPane.showMessageDialog(this, "Quantidade adicionada com sucesso! Nova quantidade do produto: " + product.getQuantity(),
+                "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
     }//GEN-LAST:event_btn_ApplyMouseClicked
 
     private void btn_ApplyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ApplyMouseEntered
@@ -133,56 +163,15 @@ public class Add_Product extends javax.swing.JDialog {
       btn_Apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btn_aplicar.png")));
     }//GEN-LAST:event_btn_ApplyMouseExited
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Add_Product.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Add_Product.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Add_Product.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Add_Product.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Add_Product dialog = new Add_Product(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Filter_BackgroundSale;
-    private javax.swing.JSpinner Spinner_Amount;
     private javax.swing.JLabel btn_Apply;
     private javax.swing.JLabel btn_Cancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner spinner_Amount;
     private javax.swing.JLabel txt_ProductName;
     // End of variables declaration//GEN-END:variables
 }

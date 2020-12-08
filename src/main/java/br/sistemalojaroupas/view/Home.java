@@ -22,11 +22,14 @@ import br.sistemalojaroupas.model.entities.Sale;
 import br.sistemalojaroupas.model.services.SaleService;
 import br.sistemalojaroupas.view.listeners.DataChangeListener;
 import br.sistemalojaroupas.view.sale.SaleInfo;
+import br.sistemalojaroupas.view.stock.Add_Product;
 import br.sistemalojaroupas.view.util.Utils;
 import com.google.gson.annotations.Until;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.awt.MouseInfo;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -58,6 +61,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private Boolean productFilterVisibility = false;
     private Boolean saleFilterVisibility = false;
     private Boolean homeInfoVisibility = false;
+    
+    private int mouseX;
+    private int mouseY;
     
     private Map<String, Object> productSelectedFilters = new HashMap<>();
     
@@ -146,39 +152,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bgButtonsHome2 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        novaVenda1 = new javax.swing.JLabel();
-        jSeparator11 = new javax.swing.JSeparator();
-        novoProduto1 = new javax.swing.JLabel();
-        jSeparator12 = new javax.swing.JSeparator();
-        novoCliente1 = new javax.swing.JLabel();
-        jSeparator13 = new javax.swing.JSeparator();
-        buscarCliente1 = new javax.swing.JLabel();
-        jSeparator14 = new javax.swing.JSeparator();
-        buscarVenda1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        panelInformacoes = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        faturamento2 = new javax.swing.JLabel();
-        faturamentoValor2 = new javax.swing.JLabel();
-        iconeFaturamento2 = new javax.swing.JLabel();
-        fundoFaturamento2 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        faturamento3 = new javax.swing.JLabel();
-        faturamentoValor3 = new javax.swing.JLabel();
-        iconeFaturamento3 = new javax.swing.JLabel();
-        fundoFaturamento6 = new javax.swing.JLabel();
-        jPanel13 = new javax.swing.JPanel();
-        faturamento4 = new javax.swing.JLabel();
-        faturamentoValor4 = new javax.swing.JLabel();
-        iconeFaturamento4 = new javax.swing.JLabel();
-        fundoFaturamento7 = new javax.swing.JLabel();
-        jPanel14 = new javax.swing.JPanel();
-        faturamento5 = new javax.swing.JLabel();
-        faturamentoValor5 = new javax.swing.JLabel();
-        iconeFaturamento5 = new javax.swing.JLabel();
-        fundoFaturamento8 = new javax.swing.JLabel();
+        popupProductsTable = new javax.swing.JPopupMenu();
+        btnAddProduct = new javax.swing.JMenuItem();
+        popupSaleTable = new javax.swing.JPopupMenu();
+        menuSaleInfo = new javax.swing.JMenuItem();
         Head = new javax.swing.JPanel();
         MaxMinClose = new javax.swing.JPanel();
         pnl_Max = new javax.swing.JPanel();
@@ -346,187 +323,24 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
-        bgButtonsHome2.setBackground(new java.awt.Color(0,0,0,0));
-        bgButtonsHome2.setForeground(new java.awt.Color(51, 51, 51));
-        bgButtonsHome2.setOpaque(false);
-        bgButtonsHome2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel5.setBackground(new java.awt.Color(0,0,0,0));
-        jPanel5.setOpaque(false);
-        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 50));
-
-        novaVenda1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        novaVenda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVenda.png"))); // NOI18N
-        novaVenda1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        novaVenda1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                novaVenda1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                novaVenda1MouseExited(evt);
+        btnAddProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais_claro.png"))); // NOI18N
+        btnAddProduct.setText("Adicionar");
+        btnAddProduct.setToolTipText("");
+        btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddProductActionPerformed(evt);
             }
         });
-        jPanel5.add(novaVenda1);
+        popupProductsTable.add(btnAddProduct);
 
-        jSeparator11.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator11.setPreferredSize(new java.awt.Dimension(3, 180));
-        jPanel5.add(jSeparator11);
-
-        novoProduto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoProduto.png"))); // NOI18N
-        novoProduto1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                novoProduto1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                novoProduto1MouseExited(evt);
+        menuSaleInfo.setText("Ver informações");
+        menuSaleInfo.setToolTipText("");
+        menuSaleInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSaleInfoActionPerformed(evt);
             }
         });
-        jPanel5.add(novoProduto1);
-
-        jSeparator12.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator12.setPreferredSize(new java.awt.Dimension(3, 180));
-        jPanel5.add(jSeparator12);
-
-        novoCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novoCliente.png"))); // NOI18N
-        novoCliente1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                novoCliente1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                novoCliente1MouseExited(evt);
-            }
-        });
-        jPanel5.add(novoCliente1);
-
-        jSeparator13.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator13.setPreferredSize(new java.awt.Dimension(3, 180));
-        jPanel5.add(jSeparator13);
-
-        buscarCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarCliente.png"))); // NOI18N
-        buscarCliente1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                buscarCliente1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                buscarCliente1MouseExited(evt);
-            }
-        });
-        jPanel5.add(buscarCliente1);
-
-        jSeparator14.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator14.setPreferredSize(new java.awt.Dimension(3, 180));
-        jPanel5.add(jSeparator14);
-
-        buscarVenda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscarVenda.png"))); // NOI18N
-        buscarVenda1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                buscarVenda1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                buscarVenda1MouseExited(evt);
-            }
-        });
-        jPanel5.add(buscarVenda1);
-
-        bgButtonsHome2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 280));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo_botoes_home.png"))); // NOI18N
-        bgButtonsHome2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        panelInformacoes.setBackground(new java.awt.Color(0,0,0,0));
-        panelInformacoes.setOpaque(false);
-        panelInformacoes.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 50, 5));
-
-        jPanel8.setBackground(new java.awt.Color(0,0,0,0));
-        jPanel8.setOpaque(false);
-        jPanel8.setPreferredSize(new java.awt.Dimension(215, 66));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        faturamento2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        faturamento2.setForeground(new java.awt.Color(255, 255, 255));
-        faturamento2.setText("Faturamento");
-        jPanel8.add(faturamento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, 20));
-
-        faturamentoValor2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        faturamentoValor2.setForeground(new java.awt.Color(255, 255, 255));
-        faturamentoValor2.setText("R$ 39.482,49");
-        jPanel8.add(faturamentoValor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
-
-        iconeFaturamento2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_dinheiro.png"))); // NOI18N
-        jPanel8.add(iconeFaturamento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        fundoFaturamento2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo1_home.png"))); // NOI18N
-        jPanel8.add(fundoFaturamento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        panelInformacoes.add(jPanel8);
-
-        jPanel12.setBackground(new java.awt.Color(0,0,0,0));
-        jPanel12.setOpaque(false);
-        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        faturamento3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        faturamento3.setForeground(new java.awt.Color(255, 255, 255));
-        faturamento3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        faturamento3.setText("Receita líquida");
-        jPanel12.add(faturamento3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 20));
-
-        faturamentoValor3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        faturamentoValor3.setForeground(new java.awt.Color(255, 255, 255));
-        faturamentoValor3.setText("R$ 3.482,49");
-        jPanel12.add(faturamentoValor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
-
-        iconeFaturamento3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cifrão.png"))); // NOI18N
-        jPanel12.add(iconeFaturamento3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        fundoFaturamento6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo2_home.png"))); // NOI18N
-        jPanel12.add(fundoFaturamento6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        panelInformacoes.add(jPanel12);
-
-        jPanel13.setBackground(new java.awt.Color(0,0,0,0));
-        jPanel13.setOpaque(false);
-        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        faturamento4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        faturamento4.setForeground(new java.awt.Color(255, 255, 255));
-        faturamento4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        faturamento4.setText("Total de vendas");
-        jPanel13.add(faturamento4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 20));
-
-        faturamentoValor4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        faturamentoValor4.setForeground(new java.awt.Color(255, 255, 255));
-        faturamentoValor4.setText("986");
-        jPanel13.add(faturamentoValor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
-
-        iconeFaturamento4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_carrinhoDeCompras.png"))); // NOI18N
-        jPanel13.add(iconeFaturamento4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        fundoFaturamento7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo3_home.png"))); // NOI18N
-        jPanel13.add(fundoFaturamento7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        panelInformacoes.add(jPanel13);
-
-        jPanel14.setBackground(new java.awt.Color(0,0,0,0));
-        jPanel14.setOpaque(false);
-        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        faturamento5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        faturamento5.setForeground(new java.awt.Color(255, 255, 255));
-        faturamento5.setText("Ticket médio");
-        jPanel14.add(faturamento5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 20));
-
-        faturamentoValor5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        faturamentoValor5.setForeground(new java.awt.Color(255, 255, 255));
-        faturamentoValor5.setText("R$ 482,50");
-        jPanel14.add(faturamentoValor5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
-
-        iconeFaturamento5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_ticket.png"))); // NOI18N
-        jPanel14.add(iconeFaturamento5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, -1));
-
-        fundoFaturamento8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo4_home.png"))); // NOI18N
-        jPanel14.add(fundoFaturamento8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        panelInformacoes.add(jPanel14);
+        popupSaleTable.add(menuSaleInfo);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -540,6 +354,16 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         Head.setMaximumSize(new java.awt.Dimension(1000, 50));
         Head.setMinimumSize(new java.awt.Dimension(1000, 50));
         Head.setPreferredSize(new java.awt.Dimension(1000, 50));
+        Head.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                HeadMouseDragged(evt);
+            }
+        });
+        Head.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HeadMousePressed(evt);
+            }
+        });
         Head.setLayout(new java.awt.BorderLayout());
 
         MaxMinClose.setMaximumSize(new java.awt.Dimension(150, 50));
@@ -1514,6 +1338,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         });
         table_Products.setGridColor(new java.awt.Color(204, 204, 204));
         table_Products.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        table_Products.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_ProductsMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table_Products);
         if (table_Products.getColumnModel().getColumnCount() > 0) {
             table_Products.getColumnModel().getColumn(0).setMinWidth(25);
@@ -2524,46 +2353,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         btnSearchCustomer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_pesquisarClaro.png")));
     }//GEN-LAST:event_btnSearchCustomerMouseExited
 
-    private void novaVenda1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novaVenda1MouseEntered
-
-    private void novaVenda1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novaVenda1MouseExited
-
-    private void novoProduto1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novoProduto1MouseEntered
-
-    private void novoProduto1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoProduto1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novoProduto1MouseExited
-
-    private void novoCliente1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novoCliente1MouseEntered
-
-    private void novoCliente1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoCliente1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novoCliente1MouseExited
-
-    private void buscarCliente1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarCliente1MouseEntered
-
-    private void buscarCliente1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCliente1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarCliente1MouseExited
-
-    private void buscarVenda1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarVenda1MouseEntered
-
-    private void buscarVenda1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarVenda1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarVenda1MouseExited
-
     private void novaVenda2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novaVenda2MouseEntered
         novaVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novaVendaAzul.png")));
     }//GEN-LAST:event_novaVenda2MouseEntered
@@ -2914,13 +2703,18 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         JTable table =(JTable) evt.getSource();
         java.awt.Point point = evt.getPoint();
         int row = table.rowAtPoint(point);
-        if (evt.getClickCount() == 2 && row != -1 && SwingUtilities.isLeftMouseButton(evt)) {
-            DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-            Long id = (Long) dtm.getValueAt(row, 0);
-            Sale sale = SaleDao.findById(id);
+        table.setRowSelectionInterval(row, row);
+        
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            evt = SwingUtilities.convertMouseEvent(evt.getComponent(), evt, this);
             
-            SaleInfo dialog = new SaleInfo(this, true, sale);
-            dialog.setVisible(true);
+            int xPos = evt.getX();
+            int yPos = evt.getY();
+            
+            popupSaleTable.show(this, xPos, yPos);
+        }
+        else if (evt.getClickCount() == 2 && SwingUtilities.isLeftMouseButton(evt)) {
+            menuSaleInfoActionPerformed(null);
         }
     }//GEN-LAST:event_tableSalesMouseClicked
 
@@ -2932,6 +2726,69 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         homeInfoVisibility = !homeInfoVisibility;
         refreshHomeData();
     }//GEN-LAST:event_iconeOcultar1MouseClicked
+
+    private void table_ProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_ProductsMouseClicked
+        JTable table =(JTable) evt.getSource();
+        java.awt.Point point = evt.getPoint();
+        int row = table.rowAtPoint(point);
+        table.setRowSelectionInterval(row, row);
+        
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            evt = SwingUtilities.convertMouseEvent(evt.getComponent(), evt, this);
+            
+            int xPos = evt.getX();
+            int yPos = evt.getY();
+            
+            popupProductsTable.show(this, xPos, yPos);
+        }
+        
+        else if (evt.getClickCount() == 2 && SwingUtilities.isLeftMouseButton(evt)) {
+            btnAddProductActionPerformed(null);
+        }
+    }//GEN-LAST:event_table_ProductsMouseClicked
+
+    private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
+        if (!hasPermission("product")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        int selectedRow = table_Products.getSelectedRow();
+        
+        if (selectedRow > -1) {
+            DefaultTableModel dtm = (DefaultTableModel) table_Products.getModel();
+            Long id = (Long) dtm.getValueAt(selectedRow, 0);
+            
+            Product p = ProductDao.findById(id);
+            
+            Add_Product dialog = new Add_Product(this, true, p);
+            dialog.setVisible(true);
+            Utils.updateTable(ProductDao.findAll(), table_Products);
+        }
+    }//GEN-LAST:event_btnAddProductActionPerformed
+
+    private void HeadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeadMousePressed
+        mouseX = evt.getX();
+        mouseY = evt.getY();
+    }//GEN-LAST:event_HeadMousePressed
+
+    private void HeadMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeadMouseDragged
+        this.setLocation(this.getX() + evt.getX() - mouseX, this.getY() + evt.getY() - mouseY);
+    }//GEN-LAST:event_HeadMouseDragged
+
+    private void menuSaleInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSaleInfoActionPerformed
+
+        int row = tableSales.getSelectedRow();
+        
+        if (row != -1) {
+            DefaultTableModel dtm = (DefaultTableModel) tableSales.getModel();
+            Long id = (Long) dtm.getValueAt(row, 0);
+            Sale sale = SaleDao.findById(id);
+            
+            SaleInfo dialog = new SaleInfo(this, true, sale);
+            dialog.setVisible(true);
+        }
+    }//GEN-LAST:event_menuSaleInfoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2996,7 +2853,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel Phone;
     private javax.swing.JLabel State;
     private javax.swing.JPanel bgButtonsHome;
-    private javax.swing.JPanel bgButtonsHome2;
+    private javax.swing.JMenuItem btnAddProduct;
     private javax.swing.JLabel btnDeleteEmployee;
     private javax.swing.JLabel btnEditCustomer;
     private javax.swing.JLabel btnEditEmployee;
@@ -3023,21 +2880,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel btn_removeProduct;
     private javax.swing.JLabel btn_sales;
     private javax.swing.JLabel btn_settings;
-    private javax.swing.JLabel buscarCliente1;
     private javax.swing.JLabel buscarCliente2;
-    private javax.swing.JLabel buscarVenda1;
     private javax.swing.JLabel buscarVenda2;
     private javax.swing.JTextField cSearchCustomer;
     private com.toedter.calendar.JDateChooser dateEnd;
     private com.toedter.calendar.JDateChooser dateStart;
-    private javax.swing.JLabel faturamento2;
-    private javax.swing.JLabel faturamento3;
-    private javax.swing.JLabel faturamento4;
-    private javax.swing.JLabel faturamento5;
-    private javax.swing.JLabel faturamentoValor2;
-    private javax.swing.JLabel faturamentoValor3;
-    private javax.swing.JLabel faturamentoValor4;
-    private javax.swing.JLabel faturamentoValor5;
     private javax.swing.JLabel filter_btn_Apply;
     private javax.swing.JLabel filter_btn_Apply_Sale;
     private javax.swing.JLabel filter_btn_Cancel;
@@ -3047,10 +2894,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JComboBox<Object> filter_cb_Color;
     private javax.swing.JComboBox<String> filter_cb_Size;
     private javax.swing.JLabel fundoFaturamento;
-    private javax.swing.JLabel fundoFaturamento2;
-    private javax.swing.JLabel fundoFaturamento6;
-    private javax.swing.JLabel fundoFaturamento7;
-    private javax.swing.JLabel fundoFaturamento8;
     private javax.swing.JLabel fundoReceita;
     private javax.swing.JLabel fundoTicket;
     private javax.swing.JLabel fundoVendas;
@@ -3064,17 +2907,12 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel icon_products;
     private javax.swing.JLabel icon_sales;
     private javax.swing.JLabel icon_settings;
-    private javax.swing.JLabel iconeFaturamento2;
-    private javax.swing.JLabel iconeFaturamento3;
-    private javax.swing.JLabel iconeFaturamento4;
-    private javax.swing.JLabel iconeFaturamento5;
     private javax.swing.JLabel iconeOcultar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -3087,22 +2925,13 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator11;
-    private javax.swing.JSeparator jSeparator12;
-    private javax.swing.JSeparator jSeparator13;
-    private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator17;
@@ -3115,20 +2944,17 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbl_FinalDate;
     private javax.swing.JLabel lbl_InitialDate;
+    private javax.swing.JMenuItem menuSaleInfo;
     private javax.swing.JPanel menu_customers;
     private javax.swing.JPanel menu_employees;
     private javax.swing.JPanel menu_home;
     private javax.swing.JPanel menu_product;
     private javax.swing.JPanel menu_sale;
     private javax.swing.JPanel menu_settings;
-    private javax.swing.JLabel novaVenda1;
     private javax.swing.JLabel novaVenda2;
-    private javax.swing.JLabel novoCliente1;
     private javax.swing.JLabel novoCliente2;
-    private javax.swing.JLabel novoProduto1;
     private javax.swing.JLabel novoProduto2;
     private javax.swing.JScrollPane pane_Employee;
-    private javax.swing.JPanel panelInformacoes;
     private javax.swing.JPanel panelInformacoes1;
     private javax.swing.JPanel pnFaturamento;
     private javax.swing.JPanel pnMenu;
@@ -3140,6 +2966,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JPanel pnl_IconMenu;
     private javax.swing.JPanel pnl_Max;
     private javax.swing.JPanel pnl_Min;
+    private javax.swing.JPopupMenu popupProductsTable;
+    private javax.swing.JPopupMenu popupSaleTable;
     private javax.swing.JTextField searchSale;
     private javax.swing.JTable tableCustomers;
     private javax.swing.JTable tableSales;
