@@ -5,18 +5,40 @@
  */
 package br.sistemalojaroupas.view.registration;
 
+import br.sistemalojaroupas.model.dao.UserDao;
+import br.sistemalojaroupas.model.entities.User;
+import br.sistemalojaroupas.view.Login;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author steuf0
  */
 public class Change_Password extends javax.swing.JDialog {
-
+    private User user = Login.getLoggedUser();
     /**
      * Creates new form Change_Password
      */
     public Change_Password(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+    public boolean isAllFieldsFilled() {
+        String newPwd = new String(txtNewPassword.getPassword());
+        String oldPwd = new String(txtOldPassword.getPassword());
+        String newPwdConfirm = new String(txtNewPasswordConfirm.getPassword());
+        
+        if (newPwd == null || newPwd.equals("")) {
+            return false;
+        }
+        if (oldPwd == null || oldPwd.equals("")) {
+            return false;
+        }
+        if (newPwdConfirm == null || newPwdConfirm.equals("")) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -29,29 +51,22 @@ public class Change_Password extends javax.swing.JDialog {
     private void initComponents() {
 
         ChangePassword = new javax.swing.JPanel();
-        txtPasswordCurrent = new javax.swing.JTextField();
         PasswordCurrent = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         ChangePwTitle = new javax.swing.JLabel();
         bnt_save = new javax.swing.JLabel();
         btn_cancel = new javax.swing.JLabel();
         PasswordNew = new javax.swing.JLabel();
-        txtPasswordNew = new javax.swing.JTextField();
         PasswordCheck = new javax.swing.JLabel();
-        txtPasswordCheck = new javax.swing.JTextField();
+        txtNewPassword = new javax.swing.JPasswordField();
+        txtNewPasswordConfirm = new javax.swing.JPasswordField();
+        txtOldPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         ChangePassword.setBackground(new java.awt.Color(0, 0, 51));
         ChangePassword.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtPasswordCurrent.setBackground(new java.awt.Color(0, 0, 0));
-        txtPasswordCurrent.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtPasswordCurrent.setForeground(new java.awt.Color(255, 255, 255));
-        txtPasswordCurrent.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        txtPasswordCurrent.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtPasswordCurrent.setOpaque(false);
-        ChangePassword.add(txtPasswordCurrent, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 190, 30));
 
         PasswordCurrent.setBackground(new java.awt.Color(59, 44, 150));
         PasswordCurrent.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -72,17 +87,14 @@ public class Change_Password extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(ChangePwTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+            .addComponent(ChangePwTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(ChangePwTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        ChangePassword.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 40));
+        ChangePassword.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 40));
 
         bnt_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_salvarClaro.png"))); // NOI18N
         bnt_save.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -97,7 +109,7 @@ public class Change_Password extends javax.swing.JDialog {
                 bnt_saveMouseExited(evt);
             }
         });
-        ChangePassword.add(bnt_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, 30));
+        ChangePassword.add(bnt_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, 30));
 
         btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png"))); // NOI18N
         btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -112,7 +124,7 @@ public class Change_Password extends javax.swing.JDialog {
                 btn_cancelMouseExited(evt);
             }
         });
-        ChangePassword.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
+        ChangePassword.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, -1));
 
         PasswordNew.setBackground(new java.awt.Color(59, 44, 150));
         PasswordNew.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -122,14 +134,6 @@ public class Change_Password extends javax.swing.JDialog {
         PasswordNew.setOpaque(true);
         ChangePassword.add(PasswordNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 120, 30));
 
-        txtPasswordNew.setBackground(new java.awt.Color(0, 0, 0));
-        txtPasswordNew.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtPasswordNew.setForeground(new java.awt.Color(255, 255, 255));
-        txtPasswordNew.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        txtPasswordNew.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtPasswordNew.setOpaque(false);
-        ChangePassword.add(txtPasswordNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 190, 30));
-
         PasswordCheck.setBackground(new java.awt.Color(59, 44, 150));
         PasswordCheck.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         PasswordCheck.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,36 +142,63 @@ public class Change_Password extends javax.swing.JDialog {
         PasswordCheck.setOpaque(true);
         ChangePassword.add(PasswordCheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 120, 30));
 
-        txtPasswordCheck.setBackground(new java.awt.Color(0, 0, 0));
-        txtPasswordCheck.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtPasswordCheck.setForeground(new java.awt.Color(255, 255, 255));
-        txtPasswordCheck.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
-        txtPasswordCheck.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtPasswordCheck.setOpaque(false);
-        txtPasswordCheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordCheckActionPerformed(evt);
-            }
-        });
-        ChangePassword.add(txtPasswordCheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 190, 30));
+        txtNewPassword.setBackground(new java.awt.Color(0, 0, 51));
+        txtNewPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNewPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtNewPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        ChangePassword.add(txtNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 190, 30));
+
+        txtNewPasswordConfirm.setBackground(new java.awt.Color(0, 0, 51));
+        txtNewPasswordConfirm.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNewPasswordConfirm.setForeground(new java.awt.Color(255, 255, 255));
+        txtNewPasswordConfirm.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        ChangePassword.add(txtNewPasswordConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 190, 30));
+
+        txtOldPassword.setBackground(new java.awt.Color(0, 0, 51));
+        txtOldPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtOldPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtOldPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 81, 233)));
+        ChangePassword.add(txtOldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 190, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ChangePassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ChangePassword, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(ChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bnt_saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseClicked
+        String oldPassword = new String(txtOldPassword.getPassword());
+        String newPwd = new String(txtNewPassword.getPassword());
+        String newPwdConfirm = new String(txtNewPasswordConfirm.getPassword());
         
-        
+        if (!isAllFieldsFilled()) {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if(!oldPassword.equals(user.getPassword())) {
+            JOptionPane.showMessageDialog(this, "A senha atual está incorreta.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if(!newPwd.equals(newPwdConfirm)) {
+            JOptionPane.showMessageDialog(this, "As senhas não conferem.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else {
+            user.setPassword(newPwd);
+            UserDao.update(user);
+            JOptionPane.showMessageDialog(this, "A nova senha foi definida com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+            
+            this.dispose();
+        }
     }//GEN-LAST:event_bnt_saveMouseClicked
 
     private void bnt_saveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_saveMouseEntered
@@ -194,51 +225,6 @@ public class Change_Password extends javax.swing.JDialog {
         btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_cancelarClaro.png")));
     }//GEN-LAST:event_btn_cancelMouseExited
 
-    private void txtPasswordCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordCheckActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordCheckActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Change_Password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Change_Password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Change_Password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Change_Password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Change_Password dialog = new Change_Password(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ChangePassword;
@@ -249,8 +235,8 @@ public class Change_Password extends javax.swing.JDialog {
     private javax.swing.JLabel bnt_save;
     private javax.swing.JLabel btn_cancel;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txtPasswordCheck;
-    private javax.swing.JTextField txtPasswordCurrent;
-    private javax.swing.JTextField txtPasswordNew;
+    private javax.swing.JPasswordField txtNewPassword;
+    private javax.swing.JPasswordField txtNewPasswordConfirm;
+    private javax.swing.JPasswordField txtOldPassword;
     // End of variables declaration//GEN-END:variables
 }

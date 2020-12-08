@@ -5,6 +5,7 @@
  */
 package br.sistemalojaroupas.view;
 
+import br.sistemalojaroupas.db.DB;
 import br.sistemalojaroupas.model.dao.UserDao;
 import br.sistemalojaroupas.model.dao.exceptions.LoginException;
 import br.sistemalojaroupas.model.entities.User;
@@ -25,6 +26,8 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
         pnl_background.setBackground(new Color(0,0,0,0));
+        
+        DB.start();
     }
     
     public static User getLoggedUser() {

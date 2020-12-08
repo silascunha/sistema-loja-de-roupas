@@ -21,6 +21,7 @@ import br.sistemalojaroupas.model.entities.Product;
 import br.sistemalojaroupas.model.entities.Sale;
 import br.sistemalojaroupas.model.services.SaleService;
 import br.sistemalojaroupas.view.listeners.DataChangeListener;
+import br.sistemalojaroupas.view.registration.Change_Password;
 import br.sistemalojaroupas.view.sale.SaleInfo;
 import br.sistemalojaroupas.view.stock.Add_Product;
 import br.sistemalojaroupas.view.util.Utils;
@@ -135,10 +136,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         
         if (homeInfoVisibility) {
             txtTotalSales.setText(SaleDao.size().toString());
-            txtFaturamentoValor.setText(String.format("R$ %.2f", SaleDao.revenues(30)));
+            txtFaturamentoValor.setText(String.format("R$ %.2f", SaleDao.revenues(0)));
             txtTicketValor.setText(String.format("R$ %.2f", SaleService.ticketMedio()));
             txtReceitaValor.setText(String.format("R$ %.2f", SaleService.receitaLiquida()));
         }
+        
         else {
             txtTotalSales.setText("---");
             txtFaturamentoValor.setText("R$ -,--");
@@ -146,7 +148,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             txtReceitaValor.setText("R$ -,--");
         }
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -314,14 +315,13 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         jSeparator10 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        labelUserName = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        btnChangePassword = new javax.swing.JLabel();
+        btnExitSystem = new javax.swing.JLabel();
 
         btnAddProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_mais_claro.png"))); // NOI18N
         btnAddProduct.setText("Adicionar");
@@ -1817,14 +1817,10 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/avatar.png"))); // NOI18N
 
-        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("%CARGO%");
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("%NOME%");
+        labelUserName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelUserName.setForeground(new java.awt.Color(0, 0, 0));
+        labelUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelUserName.setText("%NOME%");
 
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Vendas realizadas:");
@@ -1843,25 +1839,24 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel2))
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel2)
+                        .addGap(63, 63, 63))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel4)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                            .addComponent(jTextField2))))
-                .addContainerGap())
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField1)
+                                    .addComponent(jTextField2)))
+                            .addComponent(labelUserName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1869,10 +1864,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addComponent(labelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1883,16 +1876,26 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
                 .addContainerGap(259, Short.MAX_VALUE))
         );
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/synchronize (1).png"))); // NOI18N
-        jLabel9.setText("  Alterar senha");
-        jLabel9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnChangePassword.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnChangePassword.setForeground(new java.awt.Color(0, 0, 0));
+        btnChangePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/synchronize (1).png"))); // NOI18N
+        btnChangePassword.setText("  Alterar senha");
+        btnChangePassword.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnChangePassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnChangePasswordMouseClicked(evt);
+            }
+        });
 
-        jLabel10.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit.png"))); // NOI18N
-        jLabel10.setText("        Sair do sistema");
+        btnExitSystem.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnExitSystem.setForeground(new java.awt.Color(0, 0, 0));
+        btnExitSystem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit.png"))); // NOI18N
+        btnExitSystem.setText("        Sair do sistema");
+        btnExitSystem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExitSystemMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Card_SettingsLayout = new javax.swing.GroupLayout(Card_Settings);
         Card_Settings.setLayout(Card_SettingsLayout);
@@ -1905,8 +1908,8 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
                         .addGroup(Card_SettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Card_SettingsLayout.createSequentialGroup()
                                 .addGap(8, 8, 8)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel10))
+                                .addComponent(btnChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnExitSystem))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Card_SettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1925,9 +1928,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
                 .addGroup(Card_SettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(Card_SettingsLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addComponent(btnChangePassword)
                         .addGap(32, 32, 32)
-                        .addComponent(jLabel10)
+                        .addComponent(btnExitSystem)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -2203,6 +2206,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private void menu_settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_settingsMouseClicked
         panelsCardLayout.show(CollectionCard, "cardSettings");
         setMenuButtonsColor(menu_settings);
+        labelUserName.setText(Login.getLoggedUser().getEmployeeName().toUpperCase());
     }//GEN-LAST:event_menu_settingsMouseClicked
 
     private void btn_addProductMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addProductMouseEntered
@@ -2236,8 +2240,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_btn_removeProductMouseExited
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        if (!DB.isClosed())
-            DB.close();
+
     }//GEN-LAST:event_formWindowClosed
 
     private void btnRemoveCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveCustomerMouseClicked
@@ -2702,6 +2705,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     }//GEN-LAST:event_filter_btn_Apply_SaleMouseExited
 
     private void tableSalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSalesMouseClicked
+        if (!hasPermission("sale")) {
+            JOptionPane.showMessageDialog(this, PERMISSION_ERROR, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         JTable table =(JTable) evt.getSource();
         java.awt.Point point = evt.getPoint();
         int row = table.rowAtPoint(point);
@@ -2792,6 +2800,21 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
         }
     }//GEN-LAST:event_menuSaleInfoActionPerformed
 
+    private void btnChangePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChangePasswordMouseClicked
+        Change_Password dialog = new Change_Password(this, true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnChangePasswordMouseClicked
+
+    private void btnExitSystemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitSystemMouseClicked
+        int option = JOptionPane.showConfirmDialog(this, "Você tem certeza que quer sair?", 
+                    "Atenção!", JOptionPane.INFORMATION_MESSAGE);
+            
+        if (option != 0) return;
+        
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnExitSystemMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2856,9 +2879,11 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel State;
     private javax.swing.JPanel bgButtonsHome;
     private javax.swing.JMenuItem btnAddProduct;
+    private javax.swing.JLabel btnChangePassword;
     private javax.swing.JLabel btnDeleteEmployee;
     private javax.swing.JLabel btnEditCustomer;
     private javax.swing.JLabel btnEditEmployee;
+    private javax.swing.JLabel btnExitSystem;
     private javax.swing.JLabel btnNewCustomer;
     private javax.swing.JLabel btnNewEmployee;
     private javax.swing.JLabel btnRemoveCustomer;
@@ -2911,7 +2936,6 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel icon_settings;
     private javax.swing.JLabel iconeOcultar1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -2920,12 +2944,9 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
@@ -2944,6 +2965,7 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel labelUserName;
     private javax.swing.JLabel lbl_FinalDate;
     private javax.swing.JLabel lbl_InitialDate;
     private javax.swing.JMenuItem menuSaleInfo;
