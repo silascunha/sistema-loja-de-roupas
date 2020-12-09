@@ -2273,11 +2273,14 @@ public class Home extends javax.swing.JFrame implements DataChangeListener {
             Customer v = CustomerDao.findByCpf(id);
 
             int ex;
-            ex = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir registro de venda?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            ex = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir este cliente?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             if (ex == 0) {
                 CustomerDao.remove(v);
                 Utils.updateTable(CustomerDao.findAll(), tableCustomers);
             }
+        }
+        else {
+            
         }
     }//GEN-LAST:event_btnRemoveCustomerMouseClicked
 

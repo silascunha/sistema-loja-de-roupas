@@ -1,0 +1,6 @@
+Usuário e senhas inicial:
+login -> admin
+senha -> admin
+
+Clicar com o botão direito do mouse ou dar duplo clique em uma linha da tabela de produtos
+ou da tabela de vendas exibe opções adicionais daquela tabela.
