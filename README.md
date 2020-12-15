@@ -25,7 +25,7 @@ Grupo:
 ### Tela de vendas
 ![](docs/vendas.png)
 
-### Tela de informações de vendas
+### Tela de informações de vendas (a partir do histórico)
 ![](docs/vendainfo.png)
 
 ### Tela de cadastro de novos produtos
