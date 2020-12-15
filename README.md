@@ -12,26 +12,29 @@ Grupo:
 - [Vinícius Ferreira de Souza](https://github.com/vfdesouza).
 
 ## Algumas telas do sistema
+
+### Tela inicial (Home)
 ![](docs/homeinfo.png)
-Tela inicial (Home).
 
+### Tela de login
 ![](docs/login.png)
-Tela de login.
 
+### Tela de produtos
 ![](docs/produtos.png)
-Tela de produtos.
 
+### Tela de vendas
 ![](docs/vendas.png)
-Tela de vendas.
 
+### Tela de informações de vendas
 ![](docs/vendainfo.png)
-Tela de informações de vendas.
 
+### Tela de cadastro de novos produtos
 ![](docs/cadastro-produtos.png)
-Tela de cadastro de novos produtos.
 
+### Tela de cadastro de funcionários
 ![](docs/cadastro-funcionarios.png)
-Tela de cadastro de funcionários. Um login é gerado com o email e CPF, e o funcionário terá restrições no sistema de acordo com o cargo.
+Um login é gerado com o email e o CPF, e o funcionário terá restrições no sistema de acordo com o cargo.
 
+### Tela de cadastro de cargos (onde é possível selecionar as permissões no sistema)
 ![](docs/cadastro-cargo.png)
-Tela de cadastro de cargos (onde é possível selecionar as permissões no sistema).
+
