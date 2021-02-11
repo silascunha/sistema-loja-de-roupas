@@ -11,6 +11,8 @@ Grupo:
 - [Sthefano Garcia Pícoli](https://github.com/steuf0);
 - [Vinícius Ferreira de Souza](https://github.com/vfdesouza).
 
+##### Para utilizar o sistema é necessário fazer um login, utilizando 'admin' como usuário e '12345' como senha.
+
 ## Algumas telas do sistema
 
 ### Tela inicial (Home)
